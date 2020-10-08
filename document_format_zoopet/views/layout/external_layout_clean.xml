@@ -242,7 +242,12 @@
 
                       <span style="display:block;clear:both;" >Las incidencias en transporte (roturas, falta de mercancía, etc.), deberán ser comunicadas antes de 24 horas.</span>
                      <t t-if="isInvoice">
-                        <span style="display:block;clear:both;text-align:center;">La posesión de esta Factura no justifica su pago</span>
+                        <span style="display:block;clear:both;width:50%;float:left;">La posesión de esta Factura no justifica su pago</span>
+                    </t>
+                    <t t-if="serieInv == 'Serie C'">
+                        <t t-if="mostrarFrasePortes == True">
+                            <span style="display:block;width:50%;float:left;">Inversión del sujeto pasivo</span>
+                        </t>
                     </t>
                  </div>
 
@@ -255,7 +260,7 @@
                 </div>
 
                 <div>
-                    <span style="display:block;width:100%;font-size:0.5em">
+                    <span style="display:block;width:100%;font-size:0.5em;clear:both;">
                         En cumplimiento de la Ley Vigente de Protección de Datos, le informamos que sus datos quedarán incorporados y serán tratados en los ficheros titularidad de
 Zoo Pet S.L.U. con CIF. ESB21361506, con el fin de poder prestarle nuestros servicios, así como para mantenerle informado sobre cuestiones relativas a la
 actividad de la empresa y sus servicios. Sus datos no serán cedidos a terceros, salvo para cumplir con obligaciones legales o cuando la prestación de un servicio
