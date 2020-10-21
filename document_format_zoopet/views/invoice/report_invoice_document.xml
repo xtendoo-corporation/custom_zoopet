@@ -28,6 +28,7 @@
             <xpath expr="//div[@class='page']" position="replace">
 
                  <t t-set="isInvoice" t-value="o.type"/>
+                 <t t-set="delivery_method" t-value="o.delivery_method"/>
                  <t t-set="mostrarFrasePortes" t-value="False"/>
                  <t t-foreach="o.invoice_line_ids" t-as="line">
                      <t t-if="line.price_unit &gt; 0.00">
@@ -533,6 +534,7 @@
                 </thead>
                 <tbody class="invoice_tbody">
                     <t t-set="current_subtotal" t-value="0"/>
+                    <t t-set="weight" t-value="0"/>
 
                     <t t-foreach="o.invoice_line_ids" t-as="line">
 
@@ -543,6 +545,7 @@
                             <t t-if="not line.display_type" name="account_invoice_line_accountable">
                                 <!-- Codigo -->
                                 <td><span t-field="line.product_id.default_code"/></td>
+                                <t t-set="weight" t-value="weight + line.product_id.weight"/>
                                 <!-- FIn codigo -->
 
                                 <!-- Descripcion -->
@@ -932,9 +935,9 @@
                 </t>
             </t>
 
-            <t t-if="PortPrice != 0">
+            <!--<t t-if="PortPrice != 0">
                 <span>Inversión del sujeto pasivo</span>
-            </t>
+            </t>-->
         </t>
 
         <!-- Fin inversión del sujeto pasivo-->

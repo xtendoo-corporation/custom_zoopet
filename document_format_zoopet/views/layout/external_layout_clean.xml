@@ -163,11 +163,21 @@
                  <t t-if="isInvoice">
                     <div style="clear:both;">
 
-                        <div style="display:block;" t-if="noIva">
+                        <div style="display:block;width:65%;float:left;" t-if="noIva">
                             <span>*Exenta de IVA, según artículo 20, Ley 37/1992 de IVA.</span>
                         </div>
+                        <t t-if="serieInv == 'Serie C'">
+                            <t t-if="mostrarFrasePortes == True">
+                                <div>
+                                    <span style="display:block;width:35%;float:left;">Inversión del sujeto pasivo</span>
+                                </div>
+                            </t>
+                        </t>
+                        <div style="clear:both;">
+                             <span style="display:block;clear:both;" >Las incidencias en transporte (roturas, falta de mercancía, etc.), deberán ser comunicadas antes de 24 horas.</span>
+                        </div>
 
-                        <div style="display:block;" t-if="o.partner_shipping_id.country_id.name == 'Portugal'" >
+                        <div style="display:block;clear:both;" t-if="o.partner_shipping_id.country_id.name == 'Portugal'" >
                             <span>Para pagos por transferencia:</span>
                             <span> BANCO: BPI</span>
                             <span>IBAN: PT50 0010 0000 4423 5081 5019 1</span>
@@ -188,69 +198,79 @@
 
                          <!-- Fin leyenda Factura -->
 
-                 <!-- Peso -->
 
+                <div style="clear:both;margin-top:-15px;">
+                    <!-- Plazos de pago -->
+                    <t t-if="plazos">
+                        <div t-if="plazos" style="width:27.5%;float:left;">
+                            <span>Forma de Pago: </span><b><span t-esc="plazos"/></b>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div t-if="plazos" style="width:27.5%;float:left;color:white;">
+                        <span>Forma de Pago: </span>
+                        </div>
+                    </t>
+                    <!-- Fin plazos pago -->
+
+                    <!-- Frase factura -->
+                    <t t-if="isInvoice">
+                         <div style="float:left;width:42.5%;">
+                            <span>La posesión de esta Factura no justifica su pago</span>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div style="float:left;width:42.5%;">
+                            <span style="color:white;">0000000000</span>
+                        </div>
+                    </t>
+                    <!-- fin frase factura -->
+
+                    <!-- Portes -->
+                    <t t-if="isSale">
+                        <t t-set="carrier_delivery" t-value="doc.carrier_id.name"></t>
+                    </t>
+                    <t t-if="carrier_delivery">
+                        <div style="width:25%;float:left;">
+                            <span>Método de Envío: </span><b><span t-esc="carrier_delivery"/></b>
+                        </div>
+                    </t>
+                    <t t-else="">
+                         <!-- Portes en factura -->
+                        <t t-if="delivery_method">
+                            <div style="width:25%;float:left;">
+                                <span>Método de Envío: </span><b><span t-esc="delivery_method"/></b>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div style="width:25%;float:left;color:white;">
+                                <span>Método de Envío: </span>
+                            </div>
+                        </t>
+                        <!-- fin portes facturas -->
+                    </t>
+                    <!-- Fin portes -->
+
+                    <!-- Peso -->
                     <t t-if="weight">
                         <t t-if="weight != 0">
-                            <div style="width:15%;float:left;clear:both;margin-top:-3px;">
+                            <div style="width:5%;float:left;">
                                 <b><span t-esc="'%.1f'%weight"></span></b>
                             </div>
                         </t>
                         <t t-else="">
-                            <div style="width:15%;float:left;clear:both;color:white;margin-top:-3px">
+                            <div style="width:5%;float:left;color:white;">
                                 <b><span>aa</span></b>
                             </div>
                         </t>
                     </t>
                     <t t-else="">
-                            <div style="width:15%;float:left;clear:both;color:white;margin-top:-3px">
+                            <div style="width:5%;float:left;color:white;">
                                 <b><span>aa</span></b>
                             </div>
                         </t>
                     <!-- Fin peso -->
-
-                <!-- Portes -->
-                <t t-if="isSale">
-                    <t t-set="carrier_delivery" t-value="doc.carrier_id.name"></t>
-                </t>
-                    <t t-if="carrier_delivery">
-                   <div style="width:33%;float:left;margin-top:-3px;">
-                     <span>Método de Envío: </span><b><span t-esc="carrier_delivery"/></b>
-                    </div>
-                </t>
-                <t t-else="">
-                    <div style="width:33%;float:left;color:white;margin-top:-3px;">
-                     <span>Método de Envío: </span>
-                    </div>
-                </t>
-                    <!-- Fin portes -->
-
-                      <!-- Plazos de pago -->
-                <t t-if="plazos">
-                    <div t-if="plazos" style="width:48%;float:left;margin-top:-3px;">
-                      <span>Forma de Pago: </span><b><span t-esc="plazos"/></b>
-                    </div>
-                </t>
-                <t t-else="">
-                    <div t-if="plazos" style="width:48%;float:left;color:white;margin-top:-3px">
-                      <span>Forma de Pago: </span>
-                    </div>
-                </t>
-                <!-- Fin plazos pago -->
-
-                 <div>
-
-                      <span style="display:block;clear:both;" >Las incidencias en transporte (roturas, falta de mercancía, etc.), deberán ser comunicadas antes de 24 horas.</span>
-                     <t t-if="isInvoice">
-                        <span style="display:block;clear:both;width:50%;float:left;">La posesión de esta Factura no justifica su pago</span>
-                    </t>
-                    <t t-if="serieInv == 'Serie C'">
-                        <t t-if="mostrarFrasePortes == True">
-                            <span style="display:block;width:50%;float:left;">Inversión del sujeto pasivo</span>
-                        </t>
-                    </t>
-                 </div>
-
+                </div>
                 <hr style="height:2px;width:100%;background-color:black;margin-top:-3px;clear:both;"></hr>
 
                 <div style="margin-top:-15px;">
