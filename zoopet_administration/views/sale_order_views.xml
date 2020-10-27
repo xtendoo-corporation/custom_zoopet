@@ -58,12 +58,8 @@
                     <button name="action_sale_order_delivery_and_invoiced" string="Delivery and invoiced"
                             type="object" attrs="{'invisible': ['|',('invoice_status', 'in', ['invoiced']),'|',('state','==','draft'), ('is_comercial','=',True)]}"/>
                 </xpath>
+                <!--Fin Botones stock picking all done -->
             </field>
-              <!--Fin Botones stock picking all done -->
         </record>
-
-
-
-
     </data>
 </odoo>

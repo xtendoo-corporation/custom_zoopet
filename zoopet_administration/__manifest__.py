@@ -11,11 +11,13 @@
         'base',
         'sale',
         'product',
+        'sale_order_picking_all_done',
     ],
     'license': 'AGPL-3',
     'data': [
         'views/sale_order_views.xml',
-        'security/security_group.xml'
+        'security/security_group.xml',
+
     ],
     'installable': True,
     'auto_install': True,
