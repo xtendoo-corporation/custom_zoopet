@@ -703,12 +703,12 @@
                 </t>
 
                 <!-- Descuentos Globales -->
-                <div t-if="doc.amount_global_discount != 0" style="width:50%;float:left;">
+               <!-- <div t-if="doc.amount_global_discount != 0" style="width:50%;float:left;">
                     <span>Total descuentos</span>
                 </div>
                 <div t-if="doc.amount_global_discount != 0" style="width:50%;float:left;text-align:right;">
                     <span t-esc="doc.amount_global_discount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}" />
-                </div>
+                </div> -->
                 <!-- Fin Descuentos Globales -->
 
                 <!-- Base imponible -->

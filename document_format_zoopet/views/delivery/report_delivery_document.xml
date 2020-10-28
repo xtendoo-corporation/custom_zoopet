@@ -765,12 +765,12 @@
                         </t>
 
                         <!-- Descuentos Globales -->
-                        <div t-if="o.sale_id.amount_global_discount != 0" style="width:60%;float:left;">
+                       <!-- <div t-if="o.sale_id.amount_global_discount != 0" style="width:60%;float:left;">
                             <span>Total descuentos</span>
                         </div>
                         <div t-if="o.sale_id.amount_global_discount != 0" style="width:40%;float:left;text-align:right;">
                             <span t-esc="amount_total_discount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.sale_id.pricelist_id.currency_id}" />
-                        </div>
+                        </div> -->
                         <!-- Fin Descuentos Globales -->
 
                         <!-- Base imponible -->

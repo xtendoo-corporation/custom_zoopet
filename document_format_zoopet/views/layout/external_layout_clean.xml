@@ -173,17 +173,17 @@
                                 </div>
                             </t>
                         </t>
-                        <div style="clear:both;">
+                        <div style="clear:both;text-align:center;">
                              <span style="display:block;clear:both;" >Las incidencias en transporte (roturas, falta de mercancía, etc.), deberán ser comunicadas antes de 24 horas.</span>
                         </div>
 
-                        <div style="display:block;clear:both;" t-if="o.partner_shipping_id.country_id.name == 'Portugal'" >
+                        <div style="display:block;clear:both;text-align:center;" t-if="o.partner_shipping_id.country_id.name == 'Portugal'" >
                             <span>Para pagos por transferencia:</span>
                             <span> BANCO: BPI</span>
                             <span>IBAN: PT50 0010 0000 4423 5081 5019 1</span>
                         </div>
 
-                        <div style="display:block;" t-if="o.partner_shipping_id.country_id.name != 'Portugal'" >
+                        <div style="display:block;text-align:center;" t-if="o.partner_shipping_id.country_id.name != 'Portugal'" >
                             <span>Para pagos por transferencia:</span>
                             <span> BANCO: SANTANDER</span>
                             <span>IBAN: ES94 0049 2336 4225 1408 4617</span>
@@ -194,56 +194,42 @@
                     </div>
                 </t>
 
-                 <hr style="height:2px;width:100%;background-color:black;margin-top:-3px;"></hr>
+                <!-- <hr style="height:2px;width:100%;background-color:black;margin-top:-3px;"></hr> -->
 
                          <!-- Fin leyenda Factura -->
 
 
-                <div style="clear:both;margin-top:-15px;">
+                <div style="clear:both;">
                     <!-- Plazos de pago -->
                     <t t-if="plazos">
-                        <div t-if="plazos" style="width:27.5%;float:left;">
+                        <div t-if="plazos" style="width:45%;float:left;">
                             <span>Forma de Pago: </span><b><span t-esc="plazos"/></b>
                         </div>
                     </t>
                     <t t-else="">
-                        <div t-if="plazos" style="width:27.5%;float:left;color:white;">
+                        <div t-if="plazos" style="width:45%;float:left;color:white;">
                         <span>Forma de Pago: </span>
                         </div>
                     </t>
                     <!-- Fin plazos pago -->
-
-                    <!-- Frase factura -->
-                    <t t-if="isInvoice">
-                         <div style="float:left;width:42.5%;">
-                            <span>La posesión de esta Factura no justifica su pago</span>
-                        </div>
-                    </t>
-                    <t t-else="">
-                        <div style="float:left;width:42.5%;">
-                            <span style="color:white;">0000000000</span>
-                        </div>
-                    </t>
-                    <!-- fin frase factura -->
-
                     <!-- Portes -->
                     <t t-if="isSale">
                         <t t-set="carrier_delivery" t-value="doc.carrier_id.name"></t>
                     </t>
                     <t t-if="carrier_delivery">
-                        <div style="width:25%;float:left;">
+                        <div style="width:45%;float:left;">
                             <span>Método de Envío: </span><b><span t-esc="carrier_delivery"/></b>
                         </div>
                     </t>
                     <t t-else="">
                          <!-- Portes en factura -->
                         <t t-if="delivery_method">
-                            <div style="width:25%;float:left;">
+                            <div style="width:45%;float:left;">
                                 <span>Método de Envío: </span><b><span t-esc="delivery_method"/></b>
                             </div>
                         </t>
                         <t t-else="">
-                            <div style="width:25%;float:left;color:white;">
+                            <div style="width:45%;float:left;color:white;">
                                 <span>Método de Envío: </span>
                             </div>
                         </t>
@@ -254,33 +240,44 @@
                     <!-- Peso -->
                     <t t-if="weight">
                         <t t-if="weight != 0">
-                            <div style="width:5%;float:left;">
-                                <b><span t-esc="'%.1f'%weight"></span></b>
+                            <div style="width:10%;float:left;">
+                                <b><span t-esc="'%.3f'%weight"></span></b>
                             </div>
                         </t>
                         <t t-else="">
-                            <div style="width:5%;float:left;color:white;">
+                            <div style="width:10%;float:left;color:white;">
                                 <b><span>aa</span></b>
                             </div>
                         </t>
                     </t>
                     <t t-else="">
-                            <div style="width:5%;float:left;color:white;">
+                            <div style="width:10%;float:left;color:white;">
                                 <b><span>aa</span></b>
                             </div>
                         </t>
                     <!-- Fin peso -->
                 </div>
-                <hr style="height:2px;width:100%;background-color:black;margin-top:-3px;clear:both;"></hr>
+                <div style="clear:both;text-align:center;">
+                    <!-- Frase factura -->
+                    <t t-if="isInvoice">
+                         <div>
+                            <span>La posesión de esta Factura no justifica su pago</span>
+                        </div>
+                    </t>
+                    <t t-else="">
+                    </t>
+                    <!-- fin frase factura -->
+                </div>
+               <!-- <hr style="height:2px;width:100%;background-color:black;margin-top:-3px;clear:both;"></hr> -->
 
-                <div style="margin-top:-15px;">
+                <div style="clear:both;text-align:center;">
                     <span style="font-weight:bolder;font-size:0.9em;">Inscrita en el Reg. Mercantil de Huelva, Tomo 716,
                         Libro 0, Folio 192, Hoja H-12333, Inscrip. 1ª
                     </span>
                 </div>
 
                 <div>
-                    <span style="display:block;width:100%;font-size:0.5em;clear:both;">
+                    <span style="display:block;width:100%;font-size:0.5em;clear:both;text-align:center;">
                         En cumplimiento de la Ley Vigente de Protección de Datos, le informamos que sus datos quedarán incorporados y serán tratados en los ficheros titularidad de
 Zoo Pet S.L.U. con CIF. ESB21361506, con el fin de poder prestarle nuestros servicios, así como para mantenerle informado sobre cuestiones relativas a la
 actividad de la empresa y sus servicios. Sus datos no serán cedidos a terceros, salvo para cumplir con obligaciones legales o cuando la prestación de un servicio

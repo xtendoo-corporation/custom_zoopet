@@ -727,12 +727,12 @@
                 </t>
 
                 <!-- Descuentos Globales -->
-                <div t-if="o.amount_global_discount != 0" style="width:40%;float:left;">
+               <!-- <div t-if="o.amount_global_discount != 0" style="width:40%;float:left;">
                     <span>Total descuentos</span>
                 </div>
                 <div t-if="o.amount_global_discount != 0" style="width:60%;float:left;text-align:right;">
                     <span t-esc="o.amount_global_discount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-                </div>
+                </div> -->
                 <!-- Fin Descuentos Globales -->
 
                 <!-- Base imponible -->
@@ -773,7 +773,7 @@
             <div style="width:40%;margin-left:8%;float:right;font-size:0.7em;margin-right:1.7%;margin-top:-15px;">
 
                  <!-- Base imponible sin descuentos -->
-                <t t-if="o.amount_global_discount != 0">
+                <t t-if="o.amount_global_discount != 0.00">
                     <div style="width:50%;float:left;">
                         <span>Bruto</span>
                     </div>
@@ -785,12 +785,12 @@
                 <t t-else="">
                      <!-- Base imponible -->
 
-                    <div style="width:50%;float:left;">
+                   <!--<div style="width:50%;float:left;">
                         <span>Bruto</span>
                     </div>
                     <div style="width:50%;float:left;text-align:right;">
                         <span t-esc="o.amount_untaxed_before_global_discounts" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-                    </div>
+                    </div> -->
                 </t>
             <!-- Fin base imponible -->
 
@@ -813,12 +813,12 @@
                 </t>
 
                 <!-- Descuentos Globales -->
-                <div t-if="o.amount_global_discount != 0" style="width:50%;float:left;">
+               <!-- <div t-if="o.amount_global_discount != 0" style="width:50%;float:left;">
                     <span>Total descuentos</span>
                 </div>
                 <div t-if="o.amount_global_discount != 0" style="width:50%;float:left;text-align:right;">
                     <span t-esc="o.amount_global_discount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-                </div>
+                </div> -->
                 <!-- Fin Descuentos Globales -->
 
                 <!-- Base imponible -->

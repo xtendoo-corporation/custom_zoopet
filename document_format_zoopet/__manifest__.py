@@ -17,6 +17,7 @@
         "stock",
         "product",
         "sale_global_discount",
+        "zoopet_administration",
     ],
     "license": "AGPL-3",
     "data": [
