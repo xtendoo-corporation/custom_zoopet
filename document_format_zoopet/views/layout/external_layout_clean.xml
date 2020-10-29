@@ -202,12 +202,12 @@
                 <div style="clear:both;">
                     <!-- Plazos de pago -->
                     <t t-if="plazos">
-                        <div t-if="plazos" style="width:45%;float:left;">
+                        <div t-if="plazos" style="width:40%;float:left;">
                             <span>Forma de Pago: </span><b><span t-esc="plazos"/></b>
                         </div>
                     </t>
                     <t t-else="">
-                        <div t-if="plazos" style="width:45%;float:left;color:white;">
+                        <div t-if="plazos" style="width:40%;float:left;color:white;">
                         <span>Forma de Pago: </span>
                         </div>
                     </t>
@@ -216,26 +216,56 @@
                     <t t-if="isSale">
                         <t t-set="carrier_delivery" t-value="doc.carrier_id.name"></t>
                     </t>
+                    <t t-if="isAlbaran">
+                        <t t-set="carrier_delivery" t-value="doc.carrier_id.name"></t>
+                    </t>
                     <t t-if="carrier_delivery">
-                        <div style="width:45%;float:left;">
+                        <div style="width:35%;float:left;">
                             <span>Método de Envío: </span><b><span t-esc="carrier_delivery"/></b>
                         </div>
                     </t>
                     <t t-else="">
                          <!-- Portes en factura -->
                         <t t-if="delivery_method">
-                            <div style="width:45%;float:left;">
+                            <div style="width:35%;float:left;">
                                 <span>Método de Envío: </span><b><span t-esc="delivery_method"/></b>
                             </div>
                         </t>
                         <t t-else="">
-                            <div style="width:45%;float:left;color:white;">
+                            <div style="width:35%;float:left;color:white;">
                                 <span>Método de Envío: </span>
                             </div>
                         </t>
                         <!-- fin portes facturas -->
                     </t>
                     <!-- Fin portes -->
+
+                    <!-- si es albarán, mostramos bultos y palets -->
+                    <t t-if="isAlbaran">
+                        <t t-if="doc.delivery_ids.lumps_number != 0">
+                            <div style="width:7.5%;float:left;">
+                                <span>NºB: </span>
+                                <span t-field="doc.delivery_ids.lumps_number"></span>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div style="width:7.5%;float:left;">
+                                <span style="color:white;">NºB: </span>
+                            </div>
+                        </t>
+                        <t t-if="doc.delivery_ids.pallets_number != 0">
+                            <div style="width:7.5%;float:left;">
+                                <span>NºP: </span>
+                                <span t-field="doc.delivery_ids.pallets_number"></span>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div style="width:7.5%;float:left;">
+                                <span style="color:white;">NºB: </span>
+                            </div>
+                        </t>
+                    </t>
+                    <!-- Fin si es albarán, mostramos bultos y palets -->
 
                     <!-- Peso -->
                     <t t-if="weight">

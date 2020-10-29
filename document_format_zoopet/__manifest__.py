@@ -36,6 +36,11 @@
         # Product Label
         "views/product_label/paper_format.xml",
         "views/product_label/label_template.xml",
+        #Albarán en pedidos
+        "views/sale_delivery/report_sale_delivery_document_without_price.xml",
+        "views/sale_delivery/report_sale_delivery_document.xml",
+
+
     ],
     "demo": [],
     "installable": True,

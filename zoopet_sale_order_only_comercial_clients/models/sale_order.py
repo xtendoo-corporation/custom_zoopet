@@ -26,8 +26,6 @@ class SaleOrder(models.Model):
             domain = {
                 "partner_id": [("customer", "=", True), ("parent_id", "=", False)]
             }
-        print("DOMINIO**************************")
-        print(domain)
 
         return {"domain": domain}
 
