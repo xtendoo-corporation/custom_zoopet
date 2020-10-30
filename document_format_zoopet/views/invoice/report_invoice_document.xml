@@ -545,7 +545,7 @@
                             <t t-if="not line.display_type" name="account_invoice_line_accountable">
                                 <!-- Codigo -->
                                 <td><span t-field="line.product_id.default_code"/></td>
-                                <t t-set="weight" t-value="weight + line.product_id.weight"/>
+                                <t t-set="weight" t-value="weight + line.product_id.weight * line.quantity"/>
                                 <!-- FIn codigo -->
 
                                 <!-- Descripcion -->

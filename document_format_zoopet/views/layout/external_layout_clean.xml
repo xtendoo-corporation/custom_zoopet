@@ -159,17 +159,18 @@
             <xpath expr="//div[@class='row mt8']" position="replace">
 
                          <!-- leyenda Factura -->
+                         <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'/>
 
                  <t t-if="isInvoice">
-                    <div style="clear:both;">
+                    <div style="clear:both;font-family: 'Roboto', sans-serif !important;font-size:0.8em;">
 
-                        <div style="display:block;width:65%;float:left;" t-if="noIva">
+                        <div style="display:block;width:65%;float:left;text-align:center;" t-if="noIva">
                             <span>*Exenta de IVA, según artículo 20, Ley 37/1992 de IVA.</span>
                         </div>
                         <t t-if="serieInv == 'Serie C'">
                             <t t-if="mostrarFrasePortes == True">
                                 <div>
-                                    <span style="display:block;width:35%;float:left;">Inversión del sujeto pasivo</span>
+                                    <span style="display:block;width:35%;float:left;text-align:center;">Inversión del sujeto pasivo</span>
                                 </div>
                             </t>
                         </t>
@@ -199,7 +200,7 @@
                          <!-- Fin leyenda Factura -->
 
 
-                <div style="clear:both;">
+                <div style="clear:both;font-family: 'Roboto', sans-serif !important;font-size:0.8em;">
                     <!-- Plazos de pago -->
                     <t t-if="plazos">
                         <div t-if="plazos" style="width:40%;float:left;">
@@ -270,7 +271,7 @@
                     <!-- Peso -->
                     <t t-if="weight">
                         <t t-if="weight != 0">
-                            <div style="width:10%;float:left;">
+                            <div style="width:10%;float:left;font-family: 'Roboto', sans-serif !important;">
                                 <b><span t-esc="'%.3f'%weight"></span></b>
                             </div>
                         </t>
@@ -287,7 +288,7 @@
                         </t>
                     <!-- Fin peso -->
                 </div>
-                <div style="clear:both;text-align:center;">
+                <div style="clear:both;text-align:center;font-family: 'Roboto', sans-serif !important;font-size:0.8em;">
                     <!-- Frase factura -->
                     <t t-if="isInvoice">
                          <div>
@@ -300,7 +301,7 @@
                 </div>
                <!-- <hr style="height:2px;width:100%;background-color:black;margin-top:-3px;clear:both;"></hr> -->
 
-                <div style="clear:both;text-align:center;">
+                <div style="clear:both;text-align:center;font-family: 'Roboto', sans-serif !important;font-size:0.8em;">
                     <span style="font-weight:bolder;font-size:0.9em;">Inscrita en el Reg. Mercantil de Huelva, Tomo 716,
                         Libro 0, Folio 192, Hoja H-12333, Inscrip. 1ª
                     </span>
