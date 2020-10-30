@@ -217,7 +217,7 @@
                     <t t-if="isSale">
                         <t t-set="carrier_delivery" t-value="doc.carrier_id.name"></t>
                     </t>
-                    <t t-if="isAlbaran">
+                    <t t-if="isAlbaran == 'sale'">
                         <t t-set="carrier_delivery" t-value="doc.carrier_id.name"></t>
                     </t>
                     <t t-if="carrier_delivery">
@@ -242,7 +242,7 @@
                     <!-- Fin portes -->
 
                     <!-- si es albarán, mostramos bultos y palets -->
-                    <t t-if="isAlbaran">
+                    <t t-if="isAlbaran == 'sale'">
                         <t t-if="doc.delivery_ids.lumps_number != 0">
                             <div style="width:7.5%;float:left;">
                                 <span>NºB: </span>

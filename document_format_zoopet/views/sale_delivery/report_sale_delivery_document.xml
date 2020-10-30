@@ -31,7 +31,7 @@
                 <t t-call="web.external_layout">
 
                     <div class="page">
-                        <t t-set="isAlbaran" t-value="doc.state"/>
+                        <t t-set="isAlbaran" t-value="'sale'"/>
                         <t t-set="carrier_delivery" t-value="hola"/>
 
                         <div class="oe_structure"/>
