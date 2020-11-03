@@ -374,7 +374,8 @@
                         <t t-set="has_serial_number" t-value="o.move_line_ids.mapped('lot_id')"/>
                             <t t-set="importeTotal" t-value="0"></t>
 
-                            <t t-foreach="o.move_line_ids" t-as="move_line">
+                           <t t-foreach="o.move_ids_without_package.sorted(key=lambda m: m.product_id.id)" t-as="move">
+                            <t t-foreach="move.move_line_ids.sorted(key=lambda ml: ml.location_id.id)" t-as="move_line">
 
                              <!-- verificar que no sea portes = 0€ -->
                             <t t-set="mostrar" t-value="True"/>
@@ -694,6 +695,7 @@
 
                            </div>
                             </t>
+                        </t>
                         </t>
                         </div>
 
