@@ -194,7 +194,13 @@
                 <span t-if=" not doc.partner_id.parent_id" t-field="doc.partner_id.ref"/>
               </div>
               <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;color:white;">
-               <span style="margin-left:2px;"><b>Pedido:</b></span><span t-field="doc.origin"/>
+               <t t-if="doc.state not in ['draft','sent']">
+                        <b>Pedido:</b>
+                    </t>
+                    <t t-if="doc.state in ['draft','sent']">
+                        <b>Presupuesto:</b>
+                    </t>
+               <span t-field="doc.origin"/>
               </div>
             </div>
           <!-- fin datos documento -->
