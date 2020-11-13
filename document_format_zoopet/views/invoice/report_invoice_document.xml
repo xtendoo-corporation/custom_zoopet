@@ -45,9 +45,9 @@
              <t t-if="iteration">
                         <t t-set="inv_copy" t-value="iteration"/>
                         <t t-if="iteration &lt; 2">
-                            <div style="display:block;width:100%;font-size:0.7em;clear:both;text-align:right;">
+                          <!--  <div style="display:block;width:100%;font-size:0.7em;clear:both;text-align:right;">
                             <span>Documento original</span>
-                            </div>
+                            </div> -->
                         </t>
                         <t t-else="">
                             <div style="display:block;width:100%;font-size:0.7em;clear:both;text-align:right;">
