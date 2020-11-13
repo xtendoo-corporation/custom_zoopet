@@ -34,12 +34,15 @@
         "views/purchase/report_purchaseorder_document.xml",
         # Invoice
         "views/invoice/report_invoice_document.xml",
+        "views/invoice/report_invoice.xml",
         # Product Label
         "views/product_label/paper_format.xml",
         "views/product_label/label_template.xml",
         #Albarán en pedidos
         "views/sale_delivery/report_sale_delivery_document_without_price.xml",
         "views/sale_delivery/report_sale_delivery_document.xml",
+        #Res_Partner
+        "views/res_partner/res_partner_view.xml",
 
 
     ],

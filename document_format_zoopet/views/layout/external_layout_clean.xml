@@ -316,6 +316,7 @@ así lo requiera. Puede ejercer sus derechos de acceso, rectificación, cancelac
 Huelva
                     </span>
                 </div>
+
                 <!-- <div class="col-1" style="width:5%; float:left;">
                      <ul style="background-color:red; border-color:red; display:none;" t-if="report_type == 'pdf'" class="list-inline pagenumber float-right text-center">
                        <li class="list-inline-item"><strong><span class="page"/></strong></li>

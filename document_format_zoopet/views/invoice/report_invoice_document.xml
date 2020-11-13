@@ -37,10 +37,29 @@
                         </t>
                     </t>
                  </t>
-
                  <t t-set="serieInv" t-value="o.sale_type_id.name"/>
 
         <!--Datos del docuumento -->
+
+            <!-- si tiene copias -->
+             <t t-if="iteration">
+                        <t t-set="inv_copy" t-value="iteration"/>
+                        <t t-if="iteration == 1">
+                            <div style="display:block;width:100%;font-size:0.7em;clear:both;text-align:right;">
+                            <span>Documento original</span>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div style="display:block;width:100%;font-size:0.7em;clear:both;text-align:right;">
+                            <span>Copia </span><span t-esc="iteration -1"></span>
+                            </div>
+                        </t>
+                    </t>
+                    <!--<t t-if="inv_copy">
+                        <span style="display:block;width:100%;font-size:0.5em;clear:both;text-align:right;" t-esc="inv_copy"></span>
+                    </t>-->
+            <!-- si tiene copias -->
+
         <!-- Direcciones -->
 
     <!-- DIreccion de facturacion -->
@@ -52,7 +71,7 @@
         <div t-if="o.partner_id" style="margin-left:2%;">
             <!-- nombre -->
             <div t-if="o.partner_id.name">
-                <span t-field="o.partner_id.name"/>
+               <span t-field="o.partner_id.name"/>
             </div>
             <!-- nombre comercial -->
             <div t-if="o.partner_id.comercial">
