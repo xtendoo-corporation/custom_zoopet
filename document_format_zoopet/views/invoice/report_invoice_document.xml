@@ -44,7 +44,7 @@
             <!-- si tiene copias -->
              <t t-if="iteration">
                         <t t-set="inv_copy" t-value="iteration"/>
-                        <t t-if="iteration == 1">
+                        <t t-if="iteration &lt; 2">
                             <div style="display:block;width:100%;font-size:0.7em;clear:both;text-align:right;">
                             <span>Documento original</span>
                             </div>

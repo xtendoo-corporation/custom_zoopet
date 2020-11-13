@@ -18,11 +18,12 @@
                 <t t-set="iteration" t-value="0"/>
                 <t t-foreach="docs" t-as="o">
                     <!-- Comprobamos que numero de copias sea > 1-->
-                    <t t-if="o.partner_id.copy_num == 1">
+                    <t t-if="o.partner_id.copy_num &lt; 2">
                         <t t-set="lang" t-value="o.user_id.sudo().lang if o.type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>
                         <t t-call="account.report_invoice_document" t-lang="lang"/>
                     </t>
                     <t t-else="">
+                    <!-- lanzamos el bucle si es mayor que 1 -->
                         <t t-foreach="int(o.partner_id.copy_num)" t-as="">
                             <t t-set="iteration" t-value="iteration+1"/>
                             <t t-set="lang" t-value="o.user_id.sudo().lang if o.type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>
