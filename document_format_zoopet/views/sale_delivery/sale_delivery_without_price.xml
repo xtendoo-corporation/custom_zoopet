@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <odoo>
-
     <data>
-
-
-      <report id="document_format_zoopet.report_sale_delivery_without_price_report"
+      <report id="sale_delivery_without_price"
                 string="Albarán sin valorar"
                 model="sale.order"
                 report_type="qweb-pdf"
-                name="document_format_zoopet.report_sale_delivery_without_price_report"
-                file="document_format_zoopet.report_sale_delivery_document_without_price_report"
+                name="document_format_zoopet.sale_delivery_without_price_document"
                 print_report_name="(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or 'Order - %s' % (object.name)"
         />
-
-        <template id="document_format_zoopet.report_sale_delivery_without_price_report">
-            <t t-name="document_format_zoopet.report_sale_delivery_without_price_report"/>
-            <t t-call="web.html_container">
-                <t t-foreach="docs" t-as="doc">
-                    <t t-call="document_format_zoopet.report_sale_delivery_document_without_pice_document" t-lang="doc.partner_id.lang"/>
+        <template id="document_format_zoopet.sale_delivery_without_price_document">
+            <t t-name="document_format_zoopet.sale_delivery_without_price_document">
+               <t t-call="web.html_container">
+                    <t t-foreach="docs" t-as="doc">
+                        <t t-call="document_format_zoopet.sale_delivery_document_without_pice_document" t-lang="doc.partner_id.lang"/>
+                    </t>
                 </t>
             </t>
         </template>
+        <template id="document_format_zoopet.sale_delivery_document_without_pice_document">
 
-
-
-        <template id="document_format_zoopet.report_sale_delivery_document_without_pice_document">
-
-        <t t-name="document_format_zoopet.report_sale_delivery_document_without_pice_document">
+        <t t-name="document_format_zoopet.sale_delivery_document_without_pice_document">
             <t t-call="web.external_layout">
 
                 <div class="page">
@@ -513,7 +505,5 @@
         </t>
 
         </template>
-
     </data>
-
 </odoo>

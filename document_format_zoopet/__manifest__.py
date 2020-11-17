@@ -29,7 +29,7 @@
         "views/delivery/report_delivery_document_without_price.xml",
         # sale_order
         "views/sale/report_saleorder_document.xml",
-        "views/sale/report_sale_order_document_without_price.xml",
+        "views/sale/sale_without_price.xml",
         # Purchase_order
         "views/purchase/report_purchaseorder_document.xml",
         # Invoice
@@ -39,8 +39,9 @@
         "views/product_label/paper_format.xml",
         "views/product_label/label_template.xml",
         #Albarán en pedidos
-        "views/sale_delivery/report_sale_delivery_document_without_price.xml",
-        "views/sale_delivery/report_sale_delivery_document.xml",
+        "views/sale_delivery/sale_delivery_without_price.xml",
+        "views/sale_delivery/sale_delivery.xml",
+
         #Res_Partner
         "views/res_partner/res_partner_view.xml",
 
