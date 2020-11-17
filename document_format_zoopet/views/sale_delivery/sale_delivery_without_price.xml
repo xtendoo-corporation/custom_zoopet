@@ -293,7 +293,7 @@
                          <!-- verificar que no sea portes = 0€ -->
                         <t t-set="mostrar" t-value="True"/>
                         <t t-if="line.price_unit &lt; 0.01">
-                            <t t-if="line.product_id.default_code == 'ENT0'">
+                            <t t-if="line.product_id.type == 'service'">
                                 <t t-set="mostrar" t-value="False"/>
                             </t>
                         </t>
