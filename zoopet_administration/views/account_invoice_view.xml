@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="account_invoice_form_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.form.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_invoice_open']" position="replace">
+                    <field name="is_comercial" invisible="1"/>
+                    <button name="action_invoice_open"
+                            type="object"
+                            string="Validate"
+                            class="oe_highlight o_invoice_validate"
+                            attrs="{'invisible':
+                            ['|',   ('state', '!=', 'draft'),
+                                    ('is_comercial', '=', True)]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
