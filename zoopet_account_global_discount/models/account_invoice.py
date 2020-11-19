@@ -106,7 +106,6 @@ class AccountInvoice(models.Model):
     @api.onchange('partner_id', 'company_id')
     def _onchange_partner_id(self):
         res = super()._onchange_partner_id()
-        print("previous origin:", self.origin)
         if (self.type in ['out_invoice', 'out_refund'] and
                 self.partner_id.customer_global_discount_ids):
             sale_order = self.env["sale.order"].search([("name", "=", self.origin)])
