@@ -16,7 +16,7 @@
         "web",
         "stock",
         "product",
-        "sale_global_discount",
+        "zoopet_sale_global_discount",
         "zoopet_administration",
         "stock_picking_pallets_lumps",
     ],
