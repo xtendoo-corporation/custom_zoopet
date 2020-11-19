@@ -50,8 +50,8 @@
                             </div> -->
                         </t>
                         <t t-else="">
-                            <div style="display:block;width:100%;font-size:0.7em;clear:both;text-align:right;">
-                            <span>Copia </span><span t-esc="iteration -1"></span>
+                            <div style="display:block;width:100%;clear:both;text-align:right;">
+                            <b><span>Copia </span><span t-esc="iteration -1"></span></b>
                             </div>
                         </t>
                     </t>
