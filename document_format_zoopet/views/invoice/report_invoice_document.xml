@@ -20,7 +20,8 @@
 
             <xpath expr="//t[@t-set='address']" position="replace">
 
-                <div></div>
+                <div>
+                </div>
 
 
             </xpath>
