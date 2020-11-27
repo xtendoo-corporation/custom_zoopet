@@ -129,7 +129,7 @@
 
                     <!-- si es factura -->
                     <t t-if="isInvoice">
-                        <div style="float:left;width:20%;text-align:center;margin-top:20px;-webkit-transform: rotate(-37deg);">
+                        <div style="float:left;width:20%;text-align:center;margin-top:50px;-webkit-transform: rotate(-37deg);">
                             <div style="font-size:1.2em;">
                                 <t t-if="isInvoice == 'out_invoice'">
                                     <b><span>*FACTURA*</span></b>
@@ -208,8 +208,8 @@
                         </div>
                     </t>
                     <t t-else="">
-                        <div t-if="plazos" style="width:40%;float:left;color:white;">
-                        <span>Forma de Pago: </span>
+                        <div style="width:40%;float:left;color:white;">
+                            <span style="color:white;">Forma de Pago: </span>
                         </div>
                     </t>
                     <!-- Fin plazos pago -->
@@ -220,24 +220,18 @@
                     <t t-if="isAlbaran == 'sale'">
                         <t t-set="carrier_delivery" t-value="doc.carrier_id.name"></t>
                     </t>
+                    <t t-if="delivery_method">
+                        <t t-set="carrier_delivery" t-value="delivery_method"></t>
+                    </t>
                     <t t-if="carrier_delivery">
                         <div style="width:35%;float:left;">
                             <span>Método de Envío: </span><b><span t-esc="carrier_delivery"/></b>
                         </div>
                     </t>
                     <t t-else="">
-                         <!-- Portes en factura -->
-                        <t t-if="delivery_method">
-                            <div style="width:35%;float:left;">
-                                <span>Método de Envío: </span><b><span t-esc="delivery_method"/></b>
-                            </div>
-                        </t>
-                        <t t-else="">
-                            <div style="width:35%;float:left;color:white;">
-                                <span>Método de Envío: </span>
-                            </div>
-                        </t>
-                        <!-- fin portes facturas -->
+                         <div style="width:35%;float:left;">
+                            <span style="color:white;">Método de Envío: </span>
+                        </div>
                     </t>
                     <!-- Fin portes -->
 
@@ -265,6 +259,14 @@
                                 <span style="color:white;">NºB: </span>
                             </div>
                         </t>
+                    </t>
+                    <t t-else="">
+                        <div style="width:7.5%;float:left;">
+                            <span style="color:white;">NºB: </span>
+                        </div>
+                       <div style="width:7.5%;float:left;">
+                            <span style="color:white;">NºP: </span>
+                        </div>
                     </t>
                     <!-- Fin si es albarán, mostramos bultos y palets -->
 

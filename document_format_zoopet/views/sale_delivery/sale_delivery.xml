@@ -362,7 +362,7 @@
                                     <t t-else="">
                                     </t>
                                 </t>
-                                <t t-if="IVALin != 0">
+                                <t t-if="IVALin != '0.00'">
                                     <span t-esc="IVALin"/>
                                 </t>
                                 <t t-else="">

@@ -678,15 +678,17 @@
                                         </td>
                                     </t>
                                     <t t-else="">
-                                        <td>
-                                            <span t-esc="amount_by_group[0]"/>
-                                            <span>&amp;nbsp;<span>on</span>
-                                                <t t-esc="amount_by_group[4]"/>
-                                            </span>
-                                        </td>
-                                        <td class="text-right o_price_total">
-                                            <span t-esc="amount_by_group[3]"/>
-                                        </td>
+                                       <!-- <t t-if="amount_by_group[4] &gt; '0'">
+                                            <td>
+                                                <span t-esc="amount_by_group[0]"/>
+                                                <span>&amp;nbsp;<span>on</span>
+                                                    <t t-esc="amount_by_group[4]"/>
+                                                </span>
+                                            </td>
+                                            <td class="text-right o_price_total">
+                                                <span t-esc="amount_by_group[3]"/>
+                                            </td>
+                                        </t>-->
                                     </t>
                                 </tr>
                             </t>
@@ -855,22 +857,27 @@
                     <t t-foreach="o.amount_by_group" t-as="amount_by_group">
                         <div style="">
                             <t t-if="amount_by_group[3] == 1 and doc.amount_untaxed == amount_by_group[2]">
-                                <div>
-                                    <span t-esc="amount_by_group[0]"/>
-                                    <span>en</span>
-                                    <t t-esc="amount_by_group[2]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-                                    <span t-esc="amount_by_group[1]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-                                </div>
+                                <t t-if="amount_by_group[2] &gt; 0">
+                                    <div>
+                                        <span t-esc="amount_by_group[0]"/>
+                                        <span>en</span>
+                                        <t t-esc="amount_by_group[2]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                        <span t-esc="amount_by_group[1]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                    </div>
+                                </t>
                             </t>
                             <t t-else="">
-                                <div style="width:60%;float:left;">
-                                    <span t-esc="amount_by_group[0]"/>
-                                    <span>en</span>
-                                    <span t-esc="amount_by_group[2]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-                                </div>
-                                <div style="width:40%;float:left;text-align:right;">
-                                    <span t-esc="amount_by_group[1]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-                                </div>
+                                <t t-if="amount_by_group[2] &gt; 0">
+                                    <div style="width:60%;float:left;">
+
+                                        <span t-esc="amount_by_group[0]"/>
+                                        <span>en</span>
+                                        <span t-esc="amount_by_group[2]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                    </div>
+                                    <div style="width:40%;float:left;text-align:right;">
+                                        <span t-esc="amount_by_group[1]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                    </div>
+                                </t>
                             </t>
                         </div>
                     </t>
