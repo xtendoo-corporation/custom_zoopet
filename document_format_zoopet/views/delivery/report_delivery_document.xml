@@ -169,14 +169,14 @@
           <!-- datos documento -->
             <div style="width:49%;clear:both;float:left;margin-right:1%;margin-top:5px;font-size:0.9em;">
               <div style="width:50%;float:left;border:2px solid black;height:25px;">
-                <span style="margin-left:2px;"><b>Nª Albaran:</b></span><span t-field="o.name"/>
+                <span style="margin-left:2px;"><b>Nª Albaran: </b></span><span t-field="o.name"/>
               </div>
               <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;height:25px;">
-               <span style="margin-left:2px;"><b>Fecha:</b></span><span t-field="o.date_done" t-options="{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
+               <span style="margin-left:2px;"><b>Fecha: </b></span><span t-field="o.date_done" t-options="{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
               </div>
               <t t-if="o.partner_id.ref">
                   <div style="width:50%;float:left;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black;height:25px;">
-                      <span style="margin-left:2px;"><b>Cliente:</b></span><span t-field="o.partner_id.ref"></span>
+                      <span style="margin-left:2px;"><b>Cliente: </b></span><span t-field="o.partner_id.ref"></span>
                   </div>
               </t>
               <t t-else="">
@@ -187,12 +187,12 @@
                   </t>
                   <t t-else="">
                       <div style="width:50%;float:left;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black;color:white;height:25px;">
-                          <span style="margin-left:2px;"><b>Cliente:</b></span>
+                          <span style="margin-left:2px;"><b>Cliente: </b></span>
                       </div>
                   </t>
               </t>
               <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
-               <span style="margin-left:2px;"><b>Pedido:</b></span><span t-field="o.origin"/>
+               <span style="margin-left:2px;"><b>Pedido: </b></span><span t-field="o.origin"/>
               </div>
             </div>
           <!-- fin datos documento -->
@@ -208,7 +208,7 @@
                         <t t-set="sale_type" t-value="line.move_id.sale_line_id.order_id.type_id.name"></t>
                     </t>
                 </t>
-                <span style="margin-left:2px;"><b>Observaciones:</b></span><span t-esc="obser"></span>
+                <span style="margin-left:2px;"><b>Observaciones: </b></span><span t-esc="obser"></span>
             </div>
           <!-- fin observaciones -->
 

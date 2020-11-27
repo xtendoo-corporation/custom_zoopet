@@ -152,7 +152,7 @@
             <span t-field="o.number"/>
         </div>
         <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;height:25px;">
-            <span style="margin-left:2px;"><b>Fecha:</b></span><span t-field="o.create_date" t-options="{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
+            <span style="margin-left:2px;"><b>Fecha: </b></span><span t-field="o.create_date" t-options="{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
         </div>
         <div style="width:50%;float:left;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black;height:25px;">
             <span style="margin-left:2px;"><b>Cliente:</b></span>
@@ -160,13 +160,13 @@
             <span t-if=" not o.partner_id.parent_id" t-field="o.partner_id.ref"/>
         </div>
         <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
-        <span style="margin-left:2px;"><b>Pedido:</b></span><span t-field="o.origin"/>
+        <span style="margin-left:2px;"><b>Pedido: </b></span><span t-field="o.origin"/>
         </div>
     </div>
     <!-- fin datos documento -->
     <!-- observaciones -->
     <div style="width:49%;float:left;margin-left:1%;border:2px solid black;height:51px;margin-top:5px;">
-        <span style="margin-left:2px;"><b>Observaciones:</b></span><span t-field="o.comment"/>
+        <span style="margin-left:2px;"><b>Observaciones: </b></span><span t-field="o.comment"/>
     </div>
     <!-- fin observaciones -->
     <!-- Fin datos documento -->
