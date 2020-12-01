@@ -8,8 +8,7 @@
                 name="document_format_zoopet.sale_without_price_document"
                 print_report_name="(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or 'Order - %s' % (object.name)"
         />
-
-          <template id="document_format_zoopet.sale_without_price_document">
+        <template id="document_format_zoopet.sale_without_price_document">
             <t t-name="document_format_zoopet.sale_without_price_document">
                <t t-call="web.html_container">
                     <t t-foreach="docs" t-as="doc">
@@ -66,9 +65,7 @@
                         </div>
                     </div>
                     <!-- Direcciones -->
-
                     <!-- DIreccion de facturacion -->
-
                     <div style="width:49%;float:left;clear:both;margin-right:1%;border:2px solid black;height:195px;">
                         <div style="background-color:blue;color:white;text-align:center;">
                             Dirección de facturacíon
@@ -97,7 +94,7 @@
                             </div>
                             <!-- tlf -->
                             <div>
-                                <span t-if="doc.partner_invoice_id.phone">TLF.:</span><span t-if="doc.partner_invoice_id.phone" t-field="doc.partner_invoice_id.phone"/>
+                                <span t-if="doc.partner_invoice_id.phone">TLF.: </span><span t-if="doc.partner_invoice_id.phone" t-field="doc.partner_invoice_id.phone"/>
                             </div>
                             <!-- CIF/NIF -->
                             <div>
@@ -135,7 +132,7 @@
                             </div>
                             <!-- tlf -->
                             <div>
-                                <span t-if="doc.partner_shipping_id.phone">TLF.:</span><span t-if="doc.partner_shipping_id.phone" t-field="doc.partner_shipping_id.phone"/>
+                                <span t-if="doc.partner_shipping_id.phone">TLF.: </span><span t-if="doc.partner_shipping_id.phone" t-field="doc.partner_shipping_id.phone"/>
                             </div>
                         </div>
                     </div>
@@ -157,7 +154,7 @@
                             <span t-field="doc.name"/>
                         </div>
                         <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;height:25px;">
-                            <span style="margin-left:2px;"><b>Fecha:</b></span><span t-field="doc.date_order" t-options="{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
+                            <span style="margin-left:2px;"><b>Fecha: </b></span><span t-field="doc.date_order" t-options="{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
                         </div>
                         <div style="width:50%;float:left;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black;height:25px;">
                             <span style="margin-left:2px;"><b>Cliente:</b></span>
@@ -177,7 +174,7 @@
                     <!-- fin datos documento -->
                     <!-- observaciones -->
                     <div style="width:49%;float:left;margin-left:1%;border:2px solid black;height:51px;margin-top:5px;">
-                        <span style="margin-left:2px;"><b>Observaciones:</b></span><span t-field="doc.note"/>
+                        <span style="margin-left:2px;"><b>Observaciones: </b></span><span t-field="doc.note"/>
                     </div>
                     <!-- fin observaciones -->
                     <!-- Fin datos documento -->
@@ -209,8 +206,8 @@
                     </div>
                     <!-- Is there a discount on at least one line? -->
                     <t t-set="display_discount" t-value="any([l.discount for l in doc.order_line])"/>
-                    <div style="clear:both;font-size:0.7em;padding-bottom:15px;width:100%;">
-                        <div style="height:14px; width:10%; display:block; float:left; margin-left:-15px;font-size:1.2em;">
+                    <div style="clear:both;padding-bottom:5px;width:99.6%;font-size:0.8em;">
+                        <div style="height:14px; width:10%; display:block; float:left;font-size:1.2em;">
                             <span><b>Código</b></span>
                         </div>
                         <div style="height:14px; width:80%; display:block;float:left;font-size:1.2em;">
@@ -236,7 +233,7 @@
                         </t>
                     </div>
                     <!-- fin marca de agua -->
-                    <hr style="height:2px;width:110%;background-color:black;margin-left:-15px;"></hr>
+                   <hr style="height:2px;width:99.5%;background-color:black;margin-bottom:-1px;"/>
                     <!-- Variables -->
                     <t t-set="current_subtotal" t-value="0"/>
                     <t t-set="current_discount" t-value="0"/>
@@ -262,7 +259,7 @@
                         <t t-set="productName" t-value="line.name"></t>
                          <!--Si es nota -->
                         <t t-if="not line.product_id">
-                            <div class="text-left" style="width:100%;margin-left:-15px;font-size:0.9em;">
+                            <div class="text-left" style="width:99.6%;font-size:0.9em;">
                                 <span style="margin-left:15px;">NOTA:</span> <span t-field="line.name"/>
                             </div>
                         </t>
@@ -277,9 +274,9 @@
                         </t>
                         <t t-if="mostrar == True">
                             <!-- verificar que no sea portes = 0€ -->
+                            <div style="font-size:0.9em;clear:both;width:99.6%;">
                             <!-- codigo -->
-                            <div style="font-size:0.9em;clear:both;margin-top:5px;">
-                                <div style="width:10%; display:block; float:left; margin-left:-15px;">
+                                <div style="width:10%; display:block; float:left;">
                                     <t t-if="line.product_id.default_code">
                                         <span t-field="line.product_id.default_code"/>
                                     </t>
@@ -310,7 +307,7 @@
                         </t>
                     </t>
                 </t>
-                <hr style="height:2px;width:110%;background-color:black;margin-left:-15px;"></hr>
+               <hr style="height:2px;width:99.6%;background-color:black;"/>
                 <p t-if="doc.payment_term_id.note" style="display:none;">
                     <span t-field="doc.payment_term_id.note"/>
                 </p>
@@ -412,24 +409,21 @@
             <span style="margin-left:10px;" t-field="doc.note"/>
             </div>
             -->
-            <div t-if="doc.signature" class="mt32 ml16 mr16" name="signature">
-                <div class="offset-8">
-                    <strong>Signature</strong>
+                <div t-if="doc.signature" class="mt32 ml16 mr16" name="signature">
+                    <div class="offset-8">
+                        <strong>Signature</strong>
+                    </div>
+                    <div class="offset-8">
+                        <img t-att-src="image_data_uri(doc.signature)" style="max-height: 4cm; max-width: 8cm;"/>
+                    </div>
+                    <div class="offset-8 text-center">
+                        <p t-field="doc.signed_by"/>
+                    </div>
                 </div>
-                <div class="offset-8">
-                    <img t-att-src="image_data_uri(doc.signature)" style="max-height: 4cm; max-width: 8cm;"/>
+                <div class="oe_structure"/>
                 </div>
-                <div class="offset-8 text-center">
-                    <p t-field="doc.signed_by"/>
-                </div>
-            </div>
-
-            <div class="oe_structure"/>
-                </div>
+                </t>
             </t>
-        </t>
         </template>
-
     </data>
-
 </odoo>
