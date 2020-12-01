@@ -214,7 +214,7 @@
 
       <!-- Fin datos documento -->
 
-                <div style="width:40%;float:left;padding-bottom:30px;">
+                <div style="width:40%;float:left;padding-bottom:5px;">
                 <t t-if="partner" name="partner_header">
                     <t t-set="address">
                         <!--<div t-esc="partner" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True}"/>-->
