@@ -23,6 +23,7 @@
                     <div class="page">
                         <t t-set="isAlbaran" t-value="'sale'"/>
                         <t t-set="carrier_delivery" t-value="hola"/>
+                        <t t-set="doc_name" t-value="doc.delivery_ids.name"/>
                         <div class="oe_structure"/>
                         <div style="display:none;">
                             <h2 style="padding-top:30px;margin-left:50px;">
@@ -226,181 +227,193 @@
                             </t>
                         </t>
                         <!-- fin descuentos -->
-                        <div style="clear:both;padding-bottom:3px;width:100%;">
-                            <div style="height:14px; width:10%; display:block; float:left;text-align:left;font-size:0.8em;">
-                                <span>
-                                    <b>Código</b>
-                                </span>
-                            </div>
-                            <div style="height:14px; width:36%; display:block;float:left;text-align:left;font-size:0.8em;">
-                                <span>
-                                    <b>Descripción</b>
-                                </span>
-                            </div>
-                            <div style="height:14px; width:8%; display:block; float:left;text-align:right;font-size:0.8em;">
-                                <span>
-                                    <b>IVA%</b>
-                                </span>
-                            </div>
-                            <div style="height:14px; width:8%; display:block; float:left;text-align:right;font-size:0.8em;">
-                                <span>
-                                    <b>UD</b>
-                                </span>
-                            </div>
-                            <div style="height:14px; width:10%; display:block;float:left;text-align:right;font-size:0.8em;">
-                                <span>
-                                    <b>Precio/U</b>
-                                </span>
-                            </div>
-                            <div style="height:14px; width:8%;  display:block; float:left;text-align:right;font-size:0.8em;">
-                                <t t-if="total_discount1 != 0">
-                                    <span>
-                                        <b>Desc%</b>
-                                    </span>
-                                </t>
-                            </div>
-                            <div style="height:14px; width:10%;  display:block; float:left;text-align:right;font-size:0.8em;">
-                                <span>
-                                    <b>Neto</b>
-                                </span>
-                            </div>
-                            <div style="height:14px; width:10%;  display:block; float:left;text-align:right;font-size:0.8em;">
-                                <span>
-                                    <b>Importe</b>
-                                </span>
-                            </div>
-                        </div>
-                        <!-- marca de agua-->
-                        <div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:150px;">
-                            <p>*NOTA DE ENTREGA*</p>
-                        </div>
-                        <!-- fin marca de agua -->
-                        <hr style="height:2px;width:99.5%;background-color:black;margin-bottom:-1px;"/>
-                        <!-- Variables -->
-                        <t t-set="current_subtotal" t-value="0"/>
-                        <t t-set="current_discount" t-value="0"/>
-                        <t t-set="current_bruto" t-value="0"/>
-                        <t t-set="lineas" t-value="0"/>
-                        <!-- IVAS -->
-                        <t t-set="weight" t-value="0"/>
-                        <!-- fin ivas -->
-                        <!-- Fin variables -->
-                        <t t-foreach="doc.order_line" t-as="line">
-                            <!-- calculo peso -->
-                            <t t-if="line.product_id.weight">
-                                <t t-set="weight" t-value="weight + line.product_id.weight * line.product_uom_qty"/>
-                            </t>
-                            <!-- fin calculo peso -->
-                            <t t-set="productName" t-value="line.product_id.name"/>
-                            <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
-                            <t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
-                            <!-- calculos del descuento -->
-                            <t t-set="current_discount" t-value="current_discount + (line.product_uom_qty*line.price_unit-line.price_subtotal)" groups="sale.group_discount_per_so_line"/>
-                            <!-- Fin calculos del descuento -->
-                            <!-- Calculos del bruto -->
-                            <t t-set="current_bruto" t-value="current_bruto + (line.product_uom_qty*line.price_unit)" groups="account.group_show_line_subtotals_tax_excluded"/>
-                            <!-- Fin calculos del bruto -->
-                            <t t-set="productName" t-value="line.name"/>
-                                <!--Si es nota -->
-                                <t t-if="not line.product_id">
-                                    <div class="text-left" style="width:100%;font-size:0.9em;">
-                                        <span style="margin-left:15px;">NOTA:</span>
-                                        <span t-field="line.name"/>
-                                    </div>
-                                </t>
-                                <!-- Fin si es nota -->
-                                <t t-if="line.product_id">
-                                    <!-- verificar que no sea portes = 0€ -->
-                                    <t t-set="mostrar" t-value="True"/>
-                                    <t t-if="line.price_unit &lt; 0.01">
-                                        <t t-if="line.product_id.type == 'service'">
-                                            <t t-set="mostrar" t-value="False"/>
-                                        </t>
-                                    </t>
-                                    <t t-if="mostrar == True">
-                                        <!-- verificar que no sea portes = 0€ -->
-                                        <div style="font-size:0.9em;clear:both;width:100%;">
-                                            <!-- codigo -->
-                                            <div style="width:10%;display:block; float:left;">
-                                                <t t-if="line.product_id.default_code">
-                                                    <span t-field="line.product_id.default_code"/>
-                                                </t>
-                                                <t t-else="">
-                                                    <span style="color:white;">aaa</span>
+                        <table class="table">
+                            <thead>
+                                <tr style="border-top:4px solid black;">
+                                    <th style="padding:0px;margin:0px;border-bottom:2px solid black;padding-bottom:1px;">
+                                        <div style="clear:both;padding-bottom:3px;width:100%;color:black;">
+                                            <div style="height:14px; width:10%; display:block; float:left;text-align:left;font-size:0.8em;">
+                                                <span>
+                                                    <b>Código</b>
+                                                </span>
+                                            </div>
+                                            <div style="height:14px; width:36%; display:block;float:left;text-align:left;font-size:0.8em;">
+                                                <span>
+                                                    <b>Descripción</b>
+                                                </span>
+                                            </div>
+                                            <div style="height:14px; width:8%; display:block; float:left;text-align:right;font-size:0.8em;">
+                                                <span>
+                                                    <b>IVA%</b>
+                                                </span>
+                                            </div>
+                                            <div style="height:14px; width:8%; display:block; float:left;text-align:right;font-size:0.8em;">
+                                                <span>
+                                                    <b>UD</b>
+                                                </span>
+                                            </div>
+                                            <div style="height:14px; width:10%; display:block;float:left;text-align:right;font-size:0.8em;">
+                                                <span>
+                                                    <b>Precio/U</b>
+                                                </span>
+                                            </div>
+                                            <div style="height:14px; width:8%;  display:block; float:left;text-align:right;font-size:0.8em;">
+                                                <t t-if="total_discount1 != 0">
+                                                    <span>
+                                                        <b>Desc%</b>
+                                                    </span>
                                                 </t>
                                             </div>
-                                            <!-- Fin codigo -->
-                                            <!-- Descripcion -->
-                                            <div style="width:36%;display:block;float:left;;font-size:0.8em;">
-                                                <t t-if="line.name">
-                                                    <t t-set="productName" t-value="line.name"/>
-                                                    <t t-set="name_num" t-value="productName.find(']') + 1 "/>
-                                                    <t t-set="name" t-value="productName[name_num:]"/>
-                                                    <span t-esc="name"/>
-                                                </t>
-                                                <t t-else="">
-                                                    <span style="color:white;">aaa</span>
-                                                </t>
+                                            <div style="height:14px; width:10%;  display:block; float:left;text-align:right;font-size:0.8em;">
+                                                <span>
+                                                    <b>Neto</b>
+                                                </span>
                                             </div>
-                                            <!-- Fin descripcion -->
-                                            <!-- % de IVA -->
-                                            <div style="width:8%;display:block; float:left;text-align:right;">
-                                                <t t-set="IVALin" t-value="0"/>
-                                                <t t-foreach="line.tax_id" t-as="tax">
-                                                    <t t-set="tax_name" t-value="tax.name"/>
-                                                    <t t-set="isIVA" t-value="tax_name.find('IVA')"/>
-                                                    <t t-if="isIVA &gt; -1">
-                                                        <t t-set="IVALin" t-value="'%.2f'%tax.amount"/>
-                                                    </t>
-                                                    <t t-else="">
-                                                    </t>
-                                                </t>
-                                                <t t-if="IVALin != '0.00'">
-                                                    <span t-esc="IVALin"/>
-                                                </t>
-                                                <t t-else="">
-                                                    <span style="color:white;">aaa</span>
-                                                </t>
-                                            </div>
-                                            <!-- Fin % de IVA -->
-                                            <!-- Cantidad entregada -->
-                                            <div style="width:8%; display:block; float:left; text-align:right">
-                                                <span t-esc="'%.2f'%line.product_uom_qty"/>
-                                            </div>
-                                            <!-- Fin cantidad entregada -->
-                                            <!--Precio / U -->
-                                            <div style="width:10%; display:block;float:left; text-align:right;">
-                                                <span t-field="line.price_unit" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
-                                            </div>
-                                            <!-- Fin precio / u -->
-                                            <!-- Descuento -->
-                                            <div t-if="line.discount != 0.00" style="width:8%; display:block; float:left;text-align:right;">
-                                                <t t-if="line.discount != 0.00">
-                                                    <span t-field="line.discount"/>
-                                                </t>
-                                                <t t-else="">
-                                                    <span style="color:white;">abc</span>
-                                                </t>
-                                            </div>
-                                            <div t-else="" style="width:8%; display:block; float:left;text-align:right;">
-                                                <span style="color:white;">aaa</span>
-                                            </div>
-                                            <!-- Fin descuento -->
-                                            <!-- Precio Neto / u -->
-                                            <div style="width:10%; display:block; float:left; text-align:right;">
-                                                <span t-esc="line.price_reduce" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
-                                            </div>
-                                            <!-- Fin precio neto / u -->
-                                            <!-- Precio total linea -->
-                                            <div style="width:10%; display:block;float:left;text-align:right;">
-                                                <t t-set="neto_linea" t-value="line.price_reduce * line.product_uom_qty"/>
-                                                <span t-esc="line.price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"></span>
+                                            <div style="height:14px; width:10%;  display:block; float:left;text-align:right;font-size:0.8em;">
+                                                <span>
+                                                    <b>Importe</b>
+                                                </span>
                                             </div>
                                         </div>
-                                    </t>
+                                    </th>
+                                </tr>
+                            </thead>
+                                            <!-- marca de agua-->
+                                            <!--<div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:150px;">
+                                                <p>*NOTA DE ENTREGA*</p>
+                                            </div>-->
+                                            <!-- fin marca de agua -->
+                                            <!--<hr style="height:2px;width:99.5%;background-color:black;margin-bottom:-1px;"/>-->
+                            <tbody class="sale_tbody" style="border-bottom:4px solid black;">
+                                <!-- Variables -->
+                                <t t-set="current_subtotal" t-value="0"/>
+                                <t t-set="current_discount" t-value="0"/>
+                                <t t-set="current_bruto" t-value="0"/>
+                                <t t-set="lineas" t-value="0"/>
+                                <t t-set="weight" t-value="0"/>
+                                <!-- Fin variables -->
+                                <t t-foreach="doc.order_line" t-as="line">
+                                    <tr>
+                                        <td style="padding:0px;margin:0px;">
+                                            <!-- calculo peso -->
+                                            <t t-if="line.product_id.weight">
+                                                <t t-set="weight" t-value="weight + line.product_id.weight * line.product_uom_qty"/>
+                                            </t>
+                                            <!-- fin calculo peso -->
+                                            <t t-set="productName" t-value="line.product_id.name"/>
+                                            <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                            <t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
+                                            <!-- calculos del descuento -->
+                                            <t t-set="current_discount" t-value="current_discount + (line.product_uom_qty*line.price_unit-line.price_subtotal)" groups="sale.group_discount_per_so_line"/>
+                                            <!-- Fin calculos del descuento -->
+                                            <!-- Calculos del bruto -->
+                                            <t t-set="current_bruto" t-value="current_bruto + (line.product_uom_qty*line.price_unit)" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                            <!-- Fin calculos del bruto -->
+                                            <t t-set="productName" t-value="line.name"/>
+                                            <!--Si es nota -->
+                                            <t t-if="not line.product_id">
+                                                <div class="text-left" style="width:100%;font-size:0.9em;">
+                                                    <span style="margin-left:15px;">NOTA:</span>
+                                                    <span t-field="line.name"/>
+                                                </div>
+                                            </t>
+                                            <!-- Fin si es nota -->
+                                            <t t-if="line.product_id">
+                                                <!-- verificar que no sea portes = 0€ -->
+                                                <t t-set="mostrar" t-value="True"/>
+                                                <t t-if="line.price_unit &lt; 0.01">
+                                                    <t t-if="line.product_id.type == 'service'">
+                                                        <t t-set="mostrar" t-value="False"/>
+                                                    </t>
+                                                </t>
+                                                <!-- verificar que no sea portes = 0€ -->
+                                                <t t-if="mostrar == True">
+                                                    <div style="font-size:0.9em;clear:both;width:100%;">
+                                                        <!-- codigo -->
+                                                        <div style="width:10%;display:block; float:left;">
+                                                            <t t-if="line.product_id.default_code">
+                                                                <span t-field="line.product_id.default_code"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <span style="color:white;">aaa</span>
+                                                            </t>
+                                                        </div>
+                                                        <!-- Fin codigo -->
+                                                        <!-- Descripcion -->
+                                                        <div style="width:36%;display:block;float:left;;font-size:0.8em;">
+                                                            <t t-if="line.name">
+                                                                <t t-set="productName" t-value="line.name"/>
+                                                                <t t-set="name_num" t-value="productName.find(']') + 1 "/>
+                                                                <t t-set="name" t-value="productName[name_num:]"/>
+                                                                <span t-esc="name"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <span style="color:white;">aaa</span>
+                                                            </t>
+                                                        </div>
+                                                        <!-- Fin descripcion -->
+                                                        <!-- % de IVA -->
+                                                        <div style="width:8%;display:block; float:left;text-align:right;">
+                                                            <t t-set="IVALin" t-value="0"/>
+                                                            <t t-foreach="line.tax_id" t-as="tax">
+                                                                <t t-set="tax_name" t-value="tax.name"/>
+                                                                <t t-set="isIVA" t-value="tax_name.find('IVA')"/>
+                                                                <t t-if="isIVA &gt; -1">
+                                                                    <t t-set="IVALin" t-value="'%.2f'%tax.amount"/>
+                                                                </t>
+                                                                <t t-else="">
+                                                                </t>
+                                                            </t>
+                                                            <t t-if="IVALin != '0.00'">
+                                                                <span t-esc="IVALin"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <span style="color:white;">aaa</span>
+                                                            </t>
+                                                        </div>
+                                                        <!-- Fin % de IVA -->
+                                                        <!-- Cantidad entregada -->
+                                                        <div style="width:8%; display:block; float:left; text-align:right">
+                                                            <span t-esc="'%.2f'%line.product_uom_qty"/>
+                                                        </div>
+                                                        <!-- Fin cantidad entregada -->
+                                                        <!--Precio / U -->
+                                                        <div style="width:10%; display:block;float:left; text-align:right;">
+                                                            <span t-field="line.price_unit" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
+                                                        </div>
+                                                        <!-- Fin precio / u -->
+                                                        <!-- Descuento -->
+                                                        <div t-if="line.discount != 0.00" style="width:8%; display:block; float:left;text-align:right;">
+                                                            <t t-if="line.discount != 0.00">
+                                                                <span t-field="line.discount"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <span style="color:white;">abc</span>
+                                                            </t>
+                                                        </div>
+                                                        <div t-else="" style="width:8%; display:block; float:left;text-align:right;">
+                                                            <span style="color:white;">aaa</span>
+                                                        </div>
+                                                        <!-- Fin descuento -->
+                                                        <!-- Precio Neto / u -->
+                                                        <div style="width:10%; display:block; float:left; text-align:right;">
+                                                            <span t-esc="line.price_reduce" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
+                                                        </div>
+                                                        <!-- Fin precio neto / u -->
+                                                        <!-- Precio total linea -->
+                                                        <div style="width:10%; display:block;float:left;text-align:right;">
+                                                            <t t-set="neto_linea" t-value="line.price_reduce * line.product_uom_qty"/>
+                                                            <span t-esc="line.price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"></span>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </t>
+                                        </td>
+                                    </tr>
                                 </t>
-                            </t>
-                            <hr style="height:2px;width:99.5%;background-color:black;"/>
+                            </tbody>
+                        </table>
+                                <!--<hr style="height:2px;width:99.5%;background-color:black;"/>-->
                             <p t-if="doc.payment_term_id.note" style="display:none;">
                                 <span t-field="doc.payment_term_id.note"/>
                             </p>

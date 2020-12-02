@@ -280,11 +280,32 @@ así lo requiera. Puede ejercer sus derechos de acceso, rectificación, cancelac
 Huelva
                     </span>
                 </div>
-                <!-- <div class="col-1" style="width:5%; float:left;">
-                     <ul style="background-color:red; border-color:red; display:none;" t-if="report_type == 'pdf'" class="list-inline pagenumber float-right text-center">
-                       <li class="list-inline-item"><strong><span class="page"/></strong></li>
+                <div style="width:100%;text-align:right;font-size:0.7em;">
+                    <ul style="background-color:white; border-color:white;list-style:none;" t-if="report_type == 'pdf'">
+                        <li style="color:black;">
+                            <strong>
+                            <t t-if="isSale">
+                                <t t-if="isDep == 'Depósito'">
+                                    <span >Depósito: </span>
+                                </t>
+                                <t t-else="">
+                                     <t t-if="isSale in ['sale','done']">
+                                        <span >Pedido: </span>
+                                    </t>
+                                    <t t-if="isSale == 'draft'">
+                                        <span >Presupuesto: </span>
+                                    </t>
+                                </t>
+                            </t>
+                            <t t-if="isAlbaran">
+                                <span>Albarán: </span>
+                            </t>
+                            <span t-esc="doc_name"/>
+                            <span> / Pág. </span>
+                            <span class="page"/></strong>
+                        </li>
                      </ul>
-                 </div>-->
+                 </div>
             </xpath>
             <!-- Fin footer -->
         </template>
