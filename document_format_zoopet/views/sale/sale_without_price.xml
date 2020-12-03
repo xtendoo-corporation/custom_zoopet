@@ -210,15 +210,15 @@
                     <table class="table">
                         <thead>
                             <tr style="border-top:4px solid black;">
-                                <th style="padding:0px;margin:0px;font-size:0.8em;border-bottom:2px solid black;padding-bottom:1px;">
-                                    <div style="clear:both;padding-bottom:5px;width:99.6%;font-size:0.8em;color:black;">
-                                        <div style="height:14px; width:10%; display:block; float:left;font-size:1.2em;">
+                                <th style="padding:0px;margin:0px;font-size:0.7em;border-bottom:2px solid black;padding-bottom:1px;">
+                                    <div style="clear:both;padding-bottom:5px;width:99.6%;color:black;">
+                                        <div style="height:14px; width:10%; display:block; float:left;">
                                             <span><b>Código</b></span>
                                         </div>
-                                        <div style="height:14px; width:80%; display:block;float:left;font-size:1.2em;">
+                                        <div style="height:14px; width:80%; display:block;float:left;">
                                             <span><b>Descripción</b></span>
                                         </div>
-                                        <div style="height:14px; width:10%;  display:block; float:left;font-size:1.2em;text-align:right;">
+                                        <div style="height:14px; width:10%;  display:block; float:left;text-align:right;">
                                             <span><b>UD</b></span>
                                         </div>
                                     </div>
@@ -253,7 +253,7 @@
                             <!-- Fin variables -->
                             <t t-foreach="doc.order_line" t-as="line">
                                 <tr>
-                                    <td style="padding:0px;margin:0px;">
+                                    <td style="padding:0px;margin:0px;border:none;">
                                         <!-- calculo peso -->
                                         <t t-if="line.product_id.weight">
                                             <t t-set="weight" t-value="weight + line.product_id.weight * line.product_uom_qty"></t>
@@ -271,7 +271,7 @@
                                         <t t-set="productName" t-value="line.name"></t>
                                         <!--Si es nota -->
                                         <t t-if="not line.product_id">
-                                            <div class="text-left" style="width:99.6%;font-size:0.9em;">
+                                            <div class="text-left" style="width:99.6%;font-size:0.7em;">
                                                 <span style="margin-left:15px;">NOTA:</span> <span t-field="line.name"/>
                                             </div>
                                         </t>
@@ -286,7 +286,7 @@
                                             </t>
                                             <!-- verificar que no sea portes = 0€ -->
                                             <t t-if="mostrar == True">
-                                                <div style="font-size:0.9em;clear:both;width:99.6%;">
+                                                <div style="font-size:0.7em;clear:both;width:99.6%;">
                                                     <!-- codigo -->
                                                     <div style="width:10%; display:block; float:left;">
                                                         <t t-if="line.product_id.default_code">
@@ -298,7 +298,7 @@
                                                     </div>
                                                     <!-- Fin codigo -->
                                                     <!-- Descripcion -->
-                                                    <div style="width:80%; display:block;float:left;;font-size:0.8em;">
+                                                    <div style="width:80%; display:block;float:left;">
                                                         <t t-if="line.name">
                                                             <t t-set="productName" t-value="line.name"></t>
                                                             <t t-set="name_num" t-value="productName.find(']') + 1 "></t>

@@ -230,46 +230,46 @@
                         <table class="table">
                             <thead>
                                 <tr style="border-top:4px solid black;">
-                                    <th style="padding:0px;margin:0px;border-bottom:2px solid black;padding-bottom:1px;">
-                                        <div style="clear:both;padding-bottom:3px;width:100%;color:black;">
-                                            <div style="height:14px; width:10%; display:block; float:left;text-align:left;font-size:0.8em;">
+                                    <th style="padding:0px;margin:0px;border-bottom:2px solid black;">
+                                        <div style="clear:both;width:100%;color:black;font-size:0.7em;">
+                                            <div style="height:14px; width:10%; display:block; float:left;text-align:left;">
                                                 <span>
                                                     <b>Código</b>
                                                 </span>
                                             </div>
-                                            <div style="height:14px; width:36%; display:block;float:left;text-align:left;font-size:0.8em;">
+                                            <div style="height:14px; width:36%; display:block;float:left;text-align:left;">
                                                 <span>
                                                     <b>Descripción</b>
                                                 </span>
                                             </div>
-                                            <div style="height:14px; width:8%; display:block; float:left;text-align:right;font-size:0.8em;">
+                                            <div style="height:14px; width:8%; display:block; float:left;text-align:right;">
                                                 <span>
                                                     <b>IVA%</b>
                                                 </span>
                                             </div>
-                                            <div style="height:14px; width:8%; display:block; float:left;text-align:right;font-size:0.8em;">
+                                            <div style="height:14px; width:8%; display:block; float:left;text-align:right;">
                                                 <span>
                                                     <b>UD</b>
                                                 </span>
                                             </div>
-                                            <div style="height:14px; width:10%; display:block;float:left;text-align:right;font-size:0.8em;">
+                                            <div style="height:14px; width:10%; display:block;float:left;text-align:right;">
                                                 <span>
                                                     <b>Precio/U</b>
                                                 </span>
                                             </div>
-                                            <div style="height:14px; width:8%;  display:block; float:left;text-align:right;font-size:0.8em;">
+                                            <div style="height:14px; width:8%;  display:block; float:left;text-align:right;">
                                                 <t t-if="total_discount1 != 0">
                                                     <span>
                                                         <b>Desc%</b>
                                                     </span>
                                                 </t>
                                             </div>
-                                            <div style="height:14px; width:10%;  display:block; float:left;text-align:right;font-size:0.8em;">
+                                            <div style="height:14px; width:10%;  display:block; float:left;text-align:right;">
                                                 <span>
                                                     <b>Neto</b>
                                                 </span>
                                             </div>
-                                            <div style="height:14px; width:10%;  display:block; float:left;text-align:right;font-size:0.8em;">
+                                            <div style="height:14px; width:10%;  display:block; float:left;text-align:right;">
                                                 <span>
                                                     <b>Importe</b>
                                                 </span>
@@ -294,7 +294,7 @@
                                 <!-- Fin variables -->
                                 <t t-foreach="doc.order_line" t-as="line">
                                     <tr>
-                                        <td style="padding:0px;margin:0px;">
+                                        <td style="padding:0px;margin:0px;border:none;">
                                             <!-- calculo peso -->
                                             <t t-if="line.product_id.weight">
                                                 <t t-set="weight" t-value="weight + line.product_id.weight * line.product_uom_qty"/>
@@ -312,7 +312,7 @@
                                             <t t-set="productName" t-value="line.name"/>
                                             <!--Si es nota -->
                                             <t t-if="not line.product_id">
-                                                <div class="text-left" style="width:100%;font-size:0.9em;">
+                                                <div class="text-left" style="width:100%;font-size:0.7em;">
                                                     <span style="margin-left:15px;">NOTA:</span>
                                                     <span t-field="line.name"/>
                                                 </div>
@@ -328,7 +328,7 @@
                                                 </t>
                                                 <!-- verificar que no sea portes = 0€ -->
                                                 <t t-if="mostrar == True">
-                                                    <div style="font-size:0.9em;clear:both;width:100%;">
+                                                    <div style="font-size:0.7em;clear:both;width:100%;">
                                                         <!-- codigo -->
                                                         <div style="width:10%;display:block; float:left;">
                                                             <t t-if="line.product_id.default_code">
@@ -340,7 +340,7 @@
                                                         </div>
                                                         <!-- Fin codigo -->
                                                         <!-- Descripcion -->
-                                                        <div style="width:36%;display:block;float:left;;font-size:0.8em;">
+                                                        <div style="width:36%;display:block;float:left;">
                                                             <t t-if="line.name">
                                                                 <t t-set="productName" t-value="line.name"/>
                                                                 <t t-set="name_num" t-value="productName.find(']') + 1 "/>
@@ -568,7 +568,7 @@
                                 </div>
                             </div>
                             <!-- Desglose -->
-                            <div style="width:40%;margin-left:8%;float:right;font-size:0.8em;margin-right:0.75%;margin-top:-10px;">
+                            <div style="width:40%;margin-left:8%;float:right;font-size:0.7em;margin-right:0.75%;margin-top:-15px;">
                                 <!-- Base imponible sin descuentos -->
                                 <div t-if="doc.amount_global_discount != 0" style="width:50%;float:left;">
                                     <span>Bruto</span>
