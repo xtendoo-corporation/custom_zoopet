@@ -284,33 +284,11 @@ Huelva
                     <ul style="background-color:white; border-color:white;list-style:none;" t-if="report_type == 'pdf'">
                         <li style="color:black;">
                             <strong>
-                            <t t-if="isSale">
-                                <t t-if="isDep == 'Depósito'">
-                                    <span >Depósito: </span>
-                                </t>
-                                <t t-else="">
-                                     <t t-if="isSale in ['sale','done']">
-                                        <span >Pedido: </span>
-                                    </t>
-                                    <t t-if="isSale == 'draft'">
-                                        <span >Presupuesto: </span>
-                                    </t>
-                                </t>
-                            </t>
-                            <t t-if="isAlbaran">
-                                <span>Albarán: </span>
-                            </t>
-                            <t t-if="isInvoice">
-                                <t t-if="isInvoice == 'out_invoice'">
-                                    <span>Factura: </span>
-                                </t>
-                                 <t t-if="isInvoice == 'out_refund'">
-                                    <span>Factura rectificativa: </span>
-                                </t>
-                            </t>
-                            <span t-esc="doc_name"/>
-                            <span> / Pág. </span>
-                            <span class="page"/></strong>
+                                <span>Pág. </span>
+                                <span class="page"/>
+                                <span> / </span>
+                                <span class="topage"/>
+                            </strong>
                         </li>
                      </ul>
                  </div>
