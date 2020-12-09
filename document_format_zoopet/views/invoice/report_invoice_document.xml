@@ -409,6 +409,18 @@
                                                     <t t-set="total_linea" t-value="neto_linea * line.quantity"/>
                                                     <span t-esc="line.price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                                                 </div>
+                                                <!-- Lista de materiales -->
+                                                        <t t-if="line.product_id.bom_count">
+                                                            <t t-foreach="line.product_id.product_tmpl_id.bom_ids.bom_line_ids" t-as="bom_list">
+                                                                <div style="width:41.45%;margin-left:4%;float:left;clear:both;">
+                                                                    <span t-esc="bom_list.product_id.name"/>
+                                                                </div>
+                                                                <div style="width:19.5%;float:left;text-align:right;">
+                                                                    <span t-esc="'%.2f'%bom_list.product_qty"/>
+                                                                </div>
+                                                            </t>
+                                                        </t>
+                                                        <!-- Fin Lista de materiales -->
                                                 <t t-if="o.sale_type_id.name != 'Serie C'">
                                                     <t t-foreach="line.invoice_line_tax_ids" t-as="tax">
                                                         <t t-set="tax_name" t-value="tax.name"/>

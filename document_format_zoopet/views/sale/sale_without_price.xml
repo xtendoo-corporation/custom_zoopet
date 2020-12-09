@@ -316,6 +316,19 @@
                                                     </div>
                                                     <!-- Fin cantidad entregada -->
                                                 </div>
+                                                <!-- Lista de materiales -->
+                                                <t t-if="line.product_id.bom_count">
+                                                     <t t-foreach="line.product_id.product_tmpl_id.bom_ids.bom_line_ids" t-as="bom_list">
+                                                        <div style="width:76%;margin-left:4%;font-size:0.7em;float:left;clear:both;">
+                                                            <span t-esc="bom_list.product_id.name"/>
+                                                       </div>
+                                                       <div style="width:19.5%;font-size:0.7em;float:left;text-align:right;">
+                                                            <span t-esc="'%.2f'%bom_list.product_qty"/>
+                                                       </div>
+                                                    </t>
+
+                                                </t>
+                                                <!-- Fin Lista de materiales -->
                                             </t>
                                         </t>
                                     </td>

@@ -4,9 +4,6 @@
 from odoo import api, fields, models, _
 import logging
 
-_logger = logging.getLogger(__name__)
-
-
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
@@ -19,14 +16,11 @@ class SaleOrder(models.Model):
     def _delivery_ids(self):
         self.delivery_ids = self.env['stock.picking'].search(
             [('sale_id', '=', self.id)], limit=1)
-        print(self.delivery_ids)
 
     @api.model
     def _get_delivery_ids(self):
 
         delivery_ids= self.env['stock.picking'].search(
             [('sale_id', '=', self.id)], limit=1)
-        print("delivery_ids***************************")
-        print(delivery_ids)
         return delivery_ids
 
