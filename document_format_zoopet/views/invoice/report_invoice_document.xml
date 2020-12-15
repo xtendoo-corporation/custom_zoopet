@@ -23,6 +23,8 @@
                 <t t-set="doc_name" t-value="o.number"/>
                 <t t-set="isInvoice" t-value="o.type"/>
                 <t t-set="delivery_method" t-value="o.delivery_method"/>
+                <t t-set="lumps_number" t-value="o.lumps_number"/>
+                <t t-set="palets_number" t-value="o.palets_number"/>
                 <t t-set="mostrarFrasePortes" t-value="False"/>
                 <t t-foreach="o.invoice_line_ids" t-as="line">
                     <t t-if="line.price_unit &gt; 0.00">
@@ -412,12 +414,12 @@
                                                 <!-- Lista de materiales -->
                                                         <t t-if="line.product_id.bom_count">
                                                             <t t-foreach="line.product_id.product_tmpl_id.bom_ids.bom_line_ids" t-as="bom_list">
-                                                                <div style="width:41.45%;margin-left:4%;float:left;clear:both;">
+                                                                <div style="width:10%;margin-left:4%;float:left;clear:both;">
                                                                     <i>
                                                                         <span t-esc="bom_list.product_id.default_code"/>
                                                                     </i>
                                                                 </div>
-                                                                <div style="width:41.45%;margin-left:4%;float:left;clear:both;">
+                                                                <div style="width:31.45%;float:left;">
                                                                     <i>
                                                                         <span t-esc="bom_list.product_id.name"/>
                                                                     </i>

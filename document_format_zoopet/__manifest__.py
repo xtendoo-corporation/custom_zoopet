@@ -18,7 +18,7 @@
         "product",
         "zoopet_sale_global_discount",
         "zoopet_administration",
-        "stock_picking_pallets_lumps",
+        "stock_picking_and_sale_order_pallets_and_lumps",
     ],
     "license": "AGPL-3",
     "data": [

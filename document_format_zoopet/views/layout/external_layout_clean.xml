@@ -201,7 +201,43 @@
                     </t>
                     <!-- Fin portes -->
                     <!-- si es albarán, mostramos bultos y palets -->
-                    <t t-if="isAlbaran == 'sale'">
+                    <t t-if="lumps_number">
+                        <t t-if="lumps_number != 0">
+                            <div style="width:7.5%;float:left;">
+                                <span>NºB: </span>
+                                <span t-esc="lumps_number"></span>
+                            </div>
+                        </t>
+                        <t t-else="">
+                             <div style="width:7.5%;float:left;color:white">
+                                <span>NºB: </span>
+                            </div>
+                        </t>
+                    </t>
+                    <t t-else="">
+                        <div style="width:7.5%;float:left;color:white">
+                            <span>NºBB: </span>
+                        </div>
+                    </t>
+                    <t t-if="palets_number">
+                        <t t-if="palets_number != 0">
+                            <div style="width:7.5%;float:left;">
+                                <span>NºP: </span>
+                                <span t-esc="palets_number"></span>
+                            </div>
+                        </t>
+                        <t t-else="">
+                             <div style="width:7.5%;float:left;color:white">
+                                <span>NºP: </span>
+                            </div>
+                        </t>
+                    </t>
+                    <t t-else="">
+                        <div style="width:7.5%;float:left;color:white">
+                            <span>NºPP: </span>
+                        </div>
+                    </t>
+                    <!--<t t-if="isAlbaran == 'sale'">
                         <t t-if="doc.delivery_ids.lumps_number != 0">
                             <div style="width:7.5%;float:left;">
                                 <span>NºB: </span>
@@ -232,7 +268,7 @@
                        <div style="width:7.5%;float:left;">
                             <span style="color:white;">NºP: </span>
                         </div>
-                    </t>
+                    </t> -->
                     <!-- Fin si es albarán, mostramos bultos y palets -->
                     <!-- Peso -->
                     <t t-if="weight">

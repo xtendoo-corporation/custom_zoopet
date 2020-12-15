@@ -25,6 +25,8 @@
                         <t t-set="isDep" t-value="doc.type_id.name"></t>
                         <t t-set="carrier_delivery" t-value="hola"></t>
                         <t t-set="doc_name" t-value="doc.name"/>
+                        <t t-set="lumps_number" t-value="doc.lumps_number"/>
+                        <t t-set="palets_number" t-value="doc.palets_number"/>
                         <div class="oe_structure"/>
                         <div style="display:none;">
                             <h2 style="padding-top:30px;margin-left:50px;">
