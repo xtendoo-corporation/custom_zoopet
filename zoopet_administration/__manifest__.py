@@ -17,6 +17,7 @@
     'data': [
         'views/sale_order_views.xml',
         'views/account_invoice_view.xml',
+        'views/mrp_bom_view.xml',
         'security/security_group.xml',
 
     ],

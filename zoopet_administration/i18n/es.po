@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* dji_administration
+#	* zoopet_administration
 #
 msgid ""
 msgstr ""
@@ -15,34 +15,10 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: dji_administration
-#: model_terms:ir.ui.view,arch_db:dji_administration.view_users_form_create_invoice
-msgid "Administration Roles"
-msgstr "Permisos de Administradción"
+#. module: zoopet_administration
+#: model:ir.model.fields,field_description:zoopet_administration.field_mrp_bom__to_print
+msgid "To Print"
+msgstr "Imprimir"
 
-#. module: dji_administration
-#: model:ir.model.fields,field_description:dji_administration.field_res_users__administrator
-#: model_terms:ir.ui.view,arch_db:dji_administration.view_users_form_create_invoice
-msgid "Administrator"
-msgstr "Administrador"
 
-#. module: dji_administration
-#: model:ir.model.fields,field_description:dji_administration.field_sale_order__is_administrator
-#: model:ir.model.fields,field_description:dji_administration.field_sale_order_line__is_administrator
-msgid "Is Administrator"
-msgstr "Es Administrador"
 
-#. module: dji_administration
-#: model:ir.model,name:dji_administration.model_sale_order
-msgid "Sale Order"
-msgstr "Pedido de venta"
-
-#. module: dji_administration
-#: model:ir.model,name:dji_administration.model_sale_order_line
-msgid "Sales Order Line"
-msgstr "Línea de pedido de venta"
-
-#. module: dji_administration
-#: model:ir.model,name:dji_administration.model_res_users
-msgid "Users"
-msgstr "Usuarios"
