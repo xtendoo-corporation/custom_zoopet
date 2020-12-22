@@ -4,4 +4,5 @@
 #document_format_zoopet -> Formatos de impresión.  
 #zoopet_administration -> Particularidades de administración de Zoopet.  
 #zoopet_sale_order_only_comercial_clients -> Filtrado en ventas por comercial, depende de zoopet_administration.  
-#stock_picking_add_pallets_lumps -> Añade los campos nº de bultos y nº de palets en Albaranes
+#stock_picking_add_pallets_lumps -> Añade los campos nº de bultos y nº de palets en Albaranes  
+#sale_order_show_more_tags -> Añade etiquetas de productos en la vista "Buscar mas..." en productos al hacer una venta, depende de product_template_tags
