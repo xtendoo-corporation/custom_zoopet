@@ -16,9 +16,41 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: zoopet_administration
+#: model:res.groups,name:zoopet_administration.comercial_group
+msgid "Comercials"
+msgstr "Comerciales"
+
+#. module: zoopet_administration
+#: model:res.groups,comment:zoopet_administration.comercial_group
+msgid "Comercials Group"
+msgstr "Grupo de comerciales"
+
+#. module: zoopet_administration
 #: model:ir.model.fields,field_description:zoopet_administration.field_mrp_bom__to_print
 msgid "To Print"
 msgstr "Imprimir"
 
+#. module: zoopet_administration
+#: model:res.groups,name:zoopet_administration.show_margins
+msgid "Show Margins"
+msgstr "Mostrar Márgenes"
 
+#. module: zoopet_administration
+#: model:res.groups,name:zoopet_administration.show_cost_price
+msgid "Show cost price"
+msgstr "Mostrar precio de coste"
 
+#. module: zoopet_administration
+#: model:res.groups,name:zoopet_administration.show_sale_price
+msgid "Show sale price"
+msgstr "Mostrar precio de venta"
+
+#. module: zoopet_administration
+#: model:res.groups,name:zoopet_administration.show_purchase_page
+msgid "Show Purcahse Page"
+msgstr "Mostrar pestaña de compras"
+
+#. module: zoopet_administration
+#: model:res.groups,name:zoopet_administration.edit_block_so
+msgid "Edit block sale orders"
+msgstr "Editar pedidos bloqueados"
