@@ -114,12 +114,12 @@
                     <!-- si es factura -->
                     <t t-if="isInvoice">
                         <div style="float:left;width:25%;text-align:center;margin-top:45px;-webkit-transform: rotate(-37deg);">
-                            <div style="font-size:1.5em;">
+                            <div>
                                 <t t-if="isInvoice == 'out_invoice'">
-                                    <b><span>*FACTURA*</span></b>
+                                    <b><span style="font-size:1.5em;">*FACTURA*</span></b>
                                 </t>
                                  <t t-if="isInvoice == 'out_refund'">
-                                    <b><span>*FACTURA RECTIFICATIVA*</span></b>
+                                    <b><span style="font-size:1.1em;">*FACTURA RECTIFICATIVA*</span></b>
                                 </t>
                                <!-- <t t-if="isSale == 'draft'">
                                     <b><span>*PRESUPUESTO*</span></b>

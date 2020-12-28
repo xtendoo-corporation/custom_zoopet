@@ -142,7 +142,12 @@
                         </div>
                         <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
                             <span style="margin-left:2px;"><b>Pedido: </b></span>
-                            <t t-set="name_with_type" t-value="o.sale_type_id.journal_id.code + '/' + o.origin"/>
+                            <t t-if="isInvoice == 'out_refund'">
+                                <t t-set="name_with_type" t-value="o.origin"/>
+                            </t>
+                            <t t-else="">
+                                <t t-set="name_with_type" t-value="o.sale_type_id.journal_id.code + '/' + o.origin"/>
+                            </t>
                             <span t-esc="name_with_type"/>
                         </div>
                     </div>
@@ -180,7 +185,7 @@
                             <p class="m-0" t-field="o.reference"/>
                         </div>
                     </div>
-                    <!--Datos del docuumento -->
+                    <!--Datos del documento -->
                     <div style="width:50%;float:left;margin-top:-115px;margin-bottom:15px;display:none;">
                         <h2 style="padding-top:30px;margin-left:50px;">
                             <span t-if="o.type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')">Invoice</span>
