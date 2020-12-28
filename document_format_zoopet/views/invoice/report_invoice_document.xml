@@ -141,7 +141,9 @@
                             <span t-if=" not o.partner_id.parent_id" t-field="o.partner_id.ref"/>
                         </div>
                         <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
-                            <span style="margin-left:2px;"><b>Pedido: </b></span><span t-field="o.origin"/>
+                            <span style="margin-left:2px;"><b>Pedido: </b></span>
+                            <t t-set="name_with_type" t-value="o.sale_type_id.journal_id.code + '/' + o.origin"/>
+                            <span t-esc="name_with_type"/>
                         </div>
                     </div>
                     <!-- fin datos documento -->

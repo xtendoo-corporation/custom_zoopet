@@ -183,7 +183,8 @@
                                     </t>
                                 </b>
                             </span>
-                            <span t-field="doc.name"/>
+                            <t t-set="name_with_type" t-value="doc.type_id.journal_id.code + '/' + doc.name"/>
+                            <span t-esc="name_with_type"/>
                         </div>
                         <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;height:25px;">
                             <span style="margin-left:2px;">
@@ -198,7 +199,7 @@
                             <span t-if="doc.partner_id.parent_id" t-field="doc.partner_id.parent_id.ref"/>
                             <span t-if=" not doc.partner_id.parent_id" t-field="doc.partner_id.ref"/>
                         </div>
-                        <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;color:white;">
+                        <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
                             <span style="margin-left:2px;">
                                 <t t-if="doc.state not in ['draft','sent']">
                                     <b>Pedido:</b>
@@ -297,6 +298,11 @@
                                         <div style="width:8%;display:block;float:left;text-align:right;">
                                             <t t-if="total_discount1 != 0">
                                                 <span>
+                                                    <b>Desc%</b>
+                                                </span>
+                                            </t>
+                                            <t t-else="">
+                                                 <span style="color:white;">
                                                     <b>Desc%</b>
                                                 </span>
                                             </t>
