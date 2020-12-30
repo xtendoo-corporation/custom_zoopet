@@ -141,19 +141,26 @@
                             <span t-if=" not o.partner_id.parent_id" t-field="o.partner_id.ref"/>
                         </div>
                         <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
-                            <span style="margin-left:2px;"><b>Pedido: </b></span>
+                        <t t-set="origin_label" t-value="'Pedido: '"/>
                             <t t-if="isInvoice == 'out_refund'">
+                                <t t-set="origin_label" t-value="'Referencia :'"/>
                                 <t t-set="name_with_type" t-value="o.origin"/>
                             </t>
                             <t t-else="">
                                 <t t-set="name_with_type" t-value="o.sale_type_id.journal_id.code + '/' + o.origin"/>
                             </t>
+                            <b><span style="margin-left:2px;" t-esc="origin_label"/></b>
                             <span t-esc="name_with_type"/>
                         </div>
                     </div>
                     <!-- fin datos documento -->
                     <!-- observaciones -->
                     <div style="width:49%;float:left;margin-left:1%;border:2px solid black;height:51px;margin-top:5px;">
+                        <t t-if="isInvoice == 'out_refund'">
+                            <div>
+                                <span style="margin-left:2px;"><b>Mótivo: </b></span><span t-field="o.name"/>
+                            </div>
+                        </t>
                         <span style="margin-left:2px;"><b>Observaciones: </b></span><span t-field="o.comment"/>
                     </div>
                     <!-- fin observaciones -->
