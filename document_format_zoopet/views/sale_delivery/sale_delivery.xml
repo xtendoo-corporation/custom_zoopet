@@ -283,9 +283,9 @@
                                 </tr>
                             </thead>
                                             <!-- marca de agua-->
-                                            <!--<div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:150px;">
+                                            <div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:450px;">
                                                 <p>*NOTA DE ENTREGA*</p>
-                                            </div>-->
+                                            </div>
                                             <!-- fin marca de agua -->
                                             <!--<hr style="height:2px;width:99.5%;background-color:black;margin-bottom:-1px;"/>-->
                             <tbody class="sale_tbody" style="border-bottom:4px solid black;">

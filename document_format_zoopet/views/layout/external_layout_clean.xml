@@ -119,7 +119,7 @@
                                     <b><span style="font-size:1.5em;">*FACTURA*</span></b>
                                 </t>
                                  <t t-if="isInvoice == 'out_refund'">
-                                    <b><span style="font-size:1.1em;">*FACTURA RECTIFICATIVA*</span></b>
+                                    <b><span style="font-size:1.1em;">*NOTA DE CREDITO*</span></b>
                                 </t>
                                <!-- <t t-if="isSale == 'draft'">
                                     <b><span>*PRESUPUESTO*</span></b>

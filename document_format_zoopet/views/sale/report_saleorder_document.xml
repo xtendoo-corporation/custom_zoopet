@@ -321,6 +321,22 @@
                                 </th>
                             </tr>
                         </thead>
+                         <!-- marca de agua-->
+                                <div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:450px;">
+                                        <t t-set="type" t-value="doc.state"></t>
+                                        <t t-if="doc.type_id.name == 'Depósito'">
+                                            <p>*DEPÓSITO*</p>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-if="type == 'draft'">
+                                                <p>*PRESUPUESTO*</p>
+                                            </t>
+                                            <t t-else="">
+                                                <p>*PEDIDO*</p>
+                                            </t>
+                                        </t>
+                                    </div>
+                                    <!-- fin marca de agua -->
                         <tbody class="sale_tbody" style="border-bottom:4px solid black;">
                             <!-- Variables -->
                             <t t-set="current_subtotal" t-value="0"/>

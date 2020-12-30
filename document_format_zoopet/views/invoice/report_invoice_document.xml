@@ -277,9 +277,14 @@
                             </thead>
                                      <!--<hr style="height:2px;width:99.6%;background-color:black;margin-top:-5px;"/>-->
                                     <!-- marca de agua-->
-                                    <!--<div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:150px;">
-                                        <p>*FACTURA*</p>
-                                    </div> -->
+                                    <div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:450px;">
+                                         <t t-if="isInvoice == 'out_invoice'">
+                                            <p>*FACTURA*</p>
+                                        </t>
+                                        <t t-if="isInvoice == 'out_refund'">
+                                            <p>*NOTA DE CREDITO*</p>
+                                        </t>
+                                    </div>
                                     <!-- fin marca de agua -->
                     <!-- Variables -->
                     <t t-set="current_subtotal" t-value="0"/>

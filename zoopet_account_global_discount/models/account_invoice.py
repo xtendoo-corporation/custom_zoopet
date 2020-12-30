@@ -220,7 +220,7 @@ class AccountInvoice(models.Model):
     @api.model
     def _get_refund_copy_fields(self):
 
-        copy_fields = ['company_id', 'user_id', 'fiscal_position_id', 'global_discount_ids']
+        copy_fields = ['company_id', 'user_id', 'fiscal_position_id', 'global_discount_ids','lumps_number','palets_number']
         return self._get_refund_common_fields() + self._get_refund_prepare_fields() + copy_fields
 
     @api.model
