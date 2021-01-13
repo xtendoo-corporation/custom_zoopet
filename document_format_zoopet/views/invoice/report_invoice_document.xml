@@ -34,6 +34,9 @@
                     </t>
                 </t>
                 <t t-set="serieInv" t-value="o.sale_type_id.name"/>
+                <!-- Buscamos el tipo en el number de la rectificativa-->
+                <t t-set="isSerieT" t-value="doc_name.find('RT')"/>
+                <!-- Fin buscamos el tipo en el number de la rectificativa-->
                 <!--Datos del docuumento -->
                 <!-- si tiene copias -->
                 <t t-if="iteration">
@@ -127,10 +130,12 @@
                     <!-- datos documento -->
                     <div style="width:49%;clear:both;float:left;margin-right:1%;margin-top:5px;font-size:0.9em;margin-bottom:5px;">
                         <div style="width:50%;float:left;border:2px solid black;height:25px;">
-                            <span style="margin-left:2px;">
-                                <b><span>Factura: </span></b>
-                            </span>
-                            <span t-field="o.number"/>
+                            <t t-if="isSerieT &lt; 0">
+                                <span style="margin-left:2px;">
+                                    <b><span>Factura: </span></b>
+                                </span>
+                                <span t-field="o.number"/>
+                            </t>
                         </div>
                         <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;height:25px;">
                             <span style="margin-left:2px;"><b>Fecha: </b></span><span t-field="o.create_date" t-options="{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
@@ -149,8 +154,10 @@
                             <t t-else="">
                                 <t t-set="name_with_type" t-value="o.sale_type_id.journal_id.code + '/' + o.origin"/>
                             </t>
-                            <b><span style="margin-left:2px;" t-esc="origin_label"/></b>
-                            <span t-esc="name_with_type"/>
+                            <t t-if="isSerieT &lt; 0">
+                                <b><span style="margin-left:2px;" t-esc="origin_label"/></b>
+                                <span t-esc="name_with_type"/>
+                            </t>
                         </div>
                     </div>
                     <!-- fin datos documento -->
