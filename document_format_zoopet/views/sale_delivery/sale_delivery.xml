@@ -615,7 +615,11 @@
                                 </div>
                             </div>
                             <!-- Desglose -->
-                            <div style="width:40%;margin-left:8%;float:right;font-size:0.7em;margin-right:0.75%;margin-top:-15px;">
+                            <div style="width:43%;float:right;font-size:0.7em;margin-top:-15px;margin-right:5px">
+                               <table style="border-bottom:4px solid black;">
+                                    <tr>
+                                        <td style="solid; black; padding: 0px; margin: 0px; width:13%; !important;">
+                            
                                 <!-- Base imponible sin descuentos -->
                                 <div t-if="doc.amount_global_discount != 0" style="width:50%;float:left;">
                                     <span>Bruto</span>
@@ -696,10 +700,12 @@
                                     </b>
                                 </div>
                                 <!-- Fin Desglose -->
-                                <hr style="height:2px;width:100%;background-color:black;"/>
+                            </td>
+                        </tr>
+                    </table>
                             </div>
                             <div style="margin-top:10px;text-align:right;clear:both;" t-if="doc.state in ['draft','sent']">
-                                <p>Este presupuesto tiene una validez de 30 días.</p>
+                                <!--<p>Este presupuesto tiene una validez de 30 días.</p> -->
                             </div>
                             <!--<div style="margin-top:10px;text-align:right;clear:both;" t-if="doc.payment_term_id">
                                 <span>Plazos de Pago: </span><span t-field="doc.payment_term_id"/>
