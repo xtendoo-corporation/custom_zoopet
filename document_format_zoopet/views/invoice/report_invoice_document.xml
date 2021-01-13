@@ -61,16 +61,24 @@
                         </div>
                         <div t-if="o.partner_id" style="margin-left:2%;">
                             <!-- nombre -->
-                            <div t-if="o.partner_id.name">
-                                <span t-field="o.partner_id.name"/>
+                             <t t-set="partner_id" t-value="o.partner_id"/>
+                            <t t-if="partner_id.parent_id">
+                                <t t-set="partner_id" t-value="o.partner_id.parent_id"/>
+                            </t>
+                            <div t-if="partner_id.name">
+                                <span t-field="partner_id.name"/>
                             </div>
                             <!-- nombre comercial -->
-                            <div t-if="o.partner_id.comercial">
+                            <div t-if="partner_id.comercial">
                                 <span t-field="o.partner_id.comercial"/>
                             </div>
                             <!-- calle -->
                             <div>
                                 <span t-field="o.partner_id.street"/>
+                            </div>
+                             <!-- calle 2 -->
+                            <div>
+                                <span t-field="o.partner_id.street2"/>
                             </div>
                             <!-- CP, ciudad -->
                             <div>
@@ -89,6 +97,12 @@
                             <div>
                                 <span t-if="o.partner_id.vat">NIF/CIF: </span><span t-if="o.partner_id.vat" t-field="o.partner_id.vat"/>
                             </div>
+                             <!-- Nota -->
+                            <t t-if="o.partner_id.parent_id">
+                                <div t-if="o.partner_id.comment">
+                                    <span>Nota: </span><span t-field="o.partner_id.comment"/>
+                                </div>
+                            </t>
                         </div>
                     </div>
                     <!-- Fin direccion de facturacion -->
@@ -99,16 +113,24 @@
                         </div>
                         <div t-if="o.partner_id" style="margin-left:2%;">
                             <!-- nombre -->
-                            <div t-if="o.partner_id.name">
-                                <span t-field="o.partner_id.name"/>
+                            <t t-set="partner_id" t-value="o.partner_id"/>
+                            <t t-if="partner_id.parent_id">
+                                <t t-set="partner_id" t-value="o.partner_id.parent_id"/>
+                            </t>
+                            <div t-if="partner_id.name">
+                                <span t-field="partner_id.name"/>
                             </div>
                             <!-- nombre comercial -->
-                            <div t-if="o.partner_id.comercial">
-                                <span t-field="o.partner_id.comercial"/>
+                            <div t-if="partner_id.comercial">
+                                <span t-field="partner_id.comercial"/>
                             </div>
                             <!-- calle -->
                             <div>
                                 <span t-field="o.partner_shipping_id.street"/>
+                            </div>
+                            <!-- calle 2 -->
+                            <div>
+                                <span t-field="o.partner_shipping_id.street2"/>
                             </div>
                             <!-- CP, ciudad -->
                             <div>
@@ -123,6 +145,12 @@
                             <div>
                                 <span t-if="o.partner_shipping_id.phone">TLF.:</span><span t-if="o.partner_shipping_id.phone" t-field="o.partner_shipping_id.phone"/>
                             </div>
+                             <!-- Nota -->
+                            <t t-if="o.partner_id != o.partner_shipping_id">
+                                <div t-if="o.partner_shipping_id.comment">
+                                    <span>Nota: </span><span t-field="o.partner_shipping_id.comment"/>
+                                </div>
+                            </t>
                         </div>
                     </div>
                     <!-- Fin direccion de envio -->

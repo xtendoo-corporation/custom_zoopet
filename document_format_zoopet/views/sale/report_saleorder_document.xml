@@ -112,6 +112,10 @@
                             <div>
                                 <span t-field="doc.partner_invoice_id.street"/>
                             </div>
+                            <!-- calle 2 -->
+                            <div>
+                                <span t-field="doc.partner_invoice_id.street2"/>
+                            </div>
                             <!-- CP, ciudad -->
                             <div>
                                 <span t-if="doc.partner_invoice_id.zip" t-field="doc.partner_invoice_id.zip"/>
@@ -131,6 +135,12 @@
                                 <span t-if="doc.partner_invoice_id.vat">NIF/CIF:</span>
                                 <span t-if="doc.partner_invoice_id.vat" t-field="doc.partner_invoice_id.vat"/>
                             </div>
+                            <!-- Nota -->
+                            <t t-if="doc.partner_id != doc.partner_invoice_id">
+                                <div t-if="doc.partner_invoice_id.comment">
+                                    <span>Nota: </span><span t-field="doc.partner_invoice_id.comment"/>
+                                </div>
+                            </t>
                         </div>
                     </div>
                     <!-- Fin direccion de facturacion -->
@@ -152,6 +162,10 @@
                             <div>
                                 <span t-field="doc.partner_shipping_id.street"/>
                             </div>
+                             <!-- calle 2 -->
+                            <div>
+                                <span t-field="doc.partner_shipping_id.street2"/>
+                            </div>
                             <!-- CP, ciudad -->
                             <div>
                                 <span t-if="doc.partner_shipping_id.zip" t-field="doc.partner_shipping_id.zip"/>
@@ -165,6 +179,12 @@
                             <div>
                                 <span t-if="doc.partner_shipping_id.phone">TLF.: </span><span t-if="doc.partner_shipping_id.phone" t-field="doc.partner_shipping_id.phone"/>
                             </div>
+                            <!-- Nota -->
+                            <t t-if="doc.partner_id != doc.partner_shipping_id">
+                                <div t-if="doc.partner_shipping_id.comment">
+                                    <span>Nota: </span><span t-field="doc.partner_shipping_id.comment"/>
+                                </div>
+                            </t>
                         </div>
                     </div>
                     <!-- Fin direccion de envio -->
