@@ -32,11 +32,12 @@
            <xpath expr="//div[@class='page']" position="replace">
                 <!-- variables header & footer -->
                 <t t-set="isSale" t-value="doc.state"/>
-                <t t-set="isDep" t-value="doc.type_id.name"/>
+                <t t-set="isDep" t-value="doc.so_tag_ids.name"/>
                 <t t-set="carrier_delivery" t-value="hola"/>
                 <t t-set="doc_name" t-value="doc.name"/>
                 <t t-set="lumps_number" t-value="doc.lumps_number"/>
                 <t t-set="palets_number" t-value="doc.palets_number"/>
+                
                 <!-- Variables cuadro de direcciones -->
                 <!--<t t-set="partner_name" t-value="doc.partner_id"/>
                 <t t-set="partner_invoice_id" t-value="dos.partner_invoice_id"/>
@@ -174,7 +175,7 @@
                         <div style="width:50%;float:left;border:2px solid black;height:25px;">
                             <span style="margin-left:2px;">
                                 <b>
-                                    <t t-if="doc.type_id.name == 'Depósito'">
+                                    <t t-if="isDep == 'Depositos'">
                                         <span>Depósito:</span>
                                     </t>
                                     <t t-else="">
@@ -183,7 +184,7 @@
                                     </t>
                                 </b>
                             </span>
-                            <t t-set="name_with_type" t-value="doc.type_id.journal_id.code + '/' + doc.name"/>
+                            <t t-set="name_with_type" t-value="doc.type_id.journal_id.code + '/' + doc.name" />
                             <span t-esc="name_with_type" style="font-size:0.8em;"/>
                         </div>
                         <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;height:25px;">
@@ -200,15 +201,15 @@
                             <span t-if=" not doc.partner_id.parent_id" t-field="doc.partner_id.ref"/>
                         </div>
                         <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
-                            <span style="margin-left:2px;">
-                                <t t-if="doc.state not in ['draft','sent']">
+                           <!-- <span style="margin-left:2px;">
+                               <t t-if="doc.state not in ['draft','sent']">
                                     <b>Pedido:</b>
                                 </t>
                                 <t t-if="doc.state in ['draft','sent']">
                                     <b>Presupuesto:</b>
                                 </t>
                             </span>
-                            <span t-field="doc.origin"/>
+                            <span t-field="doc.origin"/>-->
                         </div>
                     </div>
                     <!-- fin datos documento -->
@@ -324,7 +325,7 @@
                          <!-- marca de agua-->
                                 <div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:450px;">
                                         <t t-set="type" t-value="doc.state"></t>
-                                        <t t-if="doc.type_id.name == 'Depósito'">
+                                        <t t-if="isDep == 'Depositos'">
                                             <p>*DEPÓSITO*</p>
                                         </t>
                                         <t t-else="">

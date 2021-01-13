@@ -96,7 +96,7 @@
                     <t t-if="isSale">
                         <div style="float:left;width:25%;text-align:center;margin-top:50px;-webkit-transform: rotate(-37deg);">
                             <div>
-                                <t t-if="isDep == 'Depósito'">
+                                <t t-if="isDep == 'Depositos'">
                                     <b><span style="font-size:2em;">*DEPÓSITO*</span></b>
                                 </t>
                                 <t t-else="">
