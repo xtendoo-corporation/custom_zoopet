@@ -155,7 +155,7 @@
                                 </t>
                             </b></span>
                             <t t-set="name_with_type" t-value="doc.type_id.journal_id.code + '/' + doc.name"/>
-                            <span t-esc="name_with_type"/>
+                            <span t-esc="name_with_type" style="font-size:0.8em;"/>
                         </div>
                         <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;height:25px;">
                             <span style="margin-left:2px;"><b>Fecha: </b></span><span t-field="doc.date_order" t-options="{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
