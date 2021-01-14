@@ -894,88 +894,93 @@
 				</div>
 				<!-- desgloses IVA y RECARAGO  serie C -->
 				<t t-if="o.sale_type_id.name == 'Serie C'">
-					<div style="width:40%;margin-left:8%;float:right;font-size:0.7em;margin-right:0.65%;margin-top:-15px;">
-						<!-- base imponible sin descuentos -->
-						<t t-if="o.amount_untaxed_before_global_discounts != 0">
-							<div style="width:40%;float:left;">
-								<span>
-									Bruto
-								</span>
-							</div>
-							<div style="width:60%;float:left;text-align:right;">
-								<span t-esc="o.amount_untaxed_before_global_discounts" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
-							</div>
-							<!-- Fin base imponible sin descuentos -->
-						</t>
-						<t t-else="">
-							<!-- Base imponible -->
-							<!--
-							<div style="width:40%;float:left;">
-							<span>Bruto</span>
-							</div>
-							<div style="width:60%;float:left;text-align:right;">
-							<span t-esc="o.amount_untaxed_before_global_discounts" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-							</div>
-							-->
-						</t>
-						<!-- Fin base imponible -->
-						<!-- Descuentos Globales -->
-						<t t-set="amount_untaxed_before_global_discounts" t-value="o.amount_untaxed_before_global_discounts" />
-						<t t-foreach="o.global_discount_ids" t-as="discount">
-							<div t-if="o.amount_global_discount != 0" style="width:40%;float:left;clear:both;">
-								<span t-esc="discount.name" />
-								<span t-esc="discount.discount" />
-								<span>
-									%
-								</span>
-							</div>
-							<div t-if="o.amount_global_discount != 0" style="width:60%;float:left;text-align:right;">
-								<t t-set="global_discount_line" t-value="(amount_untaxed_before_global_discounts * discount.discount / 100)" />
-								<t t-set="amount_untaxed_before_global_discounts" t-value="amount_untaxed_before_global_discounts - global_discount_line" />
-								<t t-set="discount_global" t-value="global_discount_line * -1" />
-								<span t-esc="discount_global" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}">
-								</span>
-							</div>
-						</t>
-						<!-- Descuentos Globales -->
-						<!--
-						<div t-if="o.amount_global_discount != 0" style="width:40%;float:left;">
-						<span>Total descuentos</span>
-						</div>
-						<div t-if="o.amount_global_discount != 0" style="width:60%;float:left;text-align:right;">
-						<span t-esc="o.amount_global_discount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-						</div>
-						-->
-						<!-- Fin Descuentos Globales -->
-						<!-- Base imponible -->
-						<div style="width:40%;float:left;">
-							<span>
-								Base imponible
-							</span>
-						</div>
-						<div style="width:60%;float:left;text-align:right;">
-							<span t-esc="o.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
-						</div>
-						<!-- Fin base imponible -->
-						<!-- Total -->
-						<div style="width:40%;float:left;">
-							<b>
-								<span>
-									Total
-								</span>
-							</b>
-						</div>
-						<div style="width:60%;float:left;text-align:right;">
-							<b>
-								<span t-esc="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
-							</b>
-						</div>
-						<!-- Fin Desglose -->
-						<hr style="height:2px;width:100%;background-color:black;" />
-					</div>
-					<div style="clear:both;margin-top:5px;">
-						<t t-set="noIva" t-value="1" />
-						<!-- <p>*Exenta de IVA, según artículo 20, Ley 37/1992 de IVA.</p> -->
+					<div style="width:43%;float:right;font-size:0.7em;margin-top:-15px;">
+						<table style="border-bottom:4px solid black;">
+							<tr>
+								<td style="solid; black; padding: 0px; margin: 0px; width:13%; !important;">
+									<!-- base imponible sin descuentos -->
+									<t t-if="o.amount_untaxed_before_global_discounts != 0">
+										<div style="width:40%;float:left;">
+											<span>
+												Bruto
+											</span>
+										</div>
+										<div style="width:60%;float:left;text-align:right;">
+											<span t-esc="o.amount_untaxed_before_global_discounts" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
+										</div>
+										<!-- Fin base imponible sin descuentos -->
+									</t>
+									<t t-else="">
+										<!-- Base imponible -->
+										<!--
+										<div style="width:40%;float:left;">
+										<span>Bruto</span>
+										</div>
+										<div style="width:60%;float:left;text-align:right;">
+										<span t-esc="o.amount_untaxed_before_global_discounts" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+										</div>
+										-->
+									</t>
+									<!-- Fin base imponible -->
+									<!-- Descuentos Globales -->
+									<t t-set="amount_untaxed_before_global_discounts" t-value="o.amount_untaxed_before_global_discounts" />
+									<t t-foreach="o.global_discount_ids" t-as="discount">
+										<div t-if="o.amount_global_discount != 0" style="width:40%;float:left;clear:both;">
+											<span t-esc="discount.name" />
+											<span t-esc="discount.discount" />
+											<span>
+												%
+											</span>
+										</div>
+										<div t-if="o.amount_global_discount != 0" style="width:60%;float:left;text-align:right;">
+											<t t-set="global_discount_line" t-value="(amount_untaxed_before_global_discounts * discount.discount / 100)" />
+											<t t-set="amount_untaxed_before_global_discounts" t-value="amount_untaxed_before_global_discounts - global_discount_line" />
+											<t t-set="discount_global" t-value="global_discount_line * -1" />
+											<span t-esc="discount_global" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}">
+											</span>
+										</div>
+									</t>
+									<!-- Descuentos Globales -->
+									<!--
+									<div t-if="o.amount_global_discount != 0" style="width:40%;float:left;">
+									<span>Total descuentos</span>
+									</div>
+									<div t-if="o.amount_global_discount != 0" style="width:60%;float:left;text-align:right;">
+									<span t-esc="o.amount_global_discount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+									</div>
+									-->
+									<!-- Fin Descuentos Globales -->
+									<!-- Base imponible -->
+									<div style="width:40%;float:left;">
+										<span>
+											Base imponible
+										</span>
+									</div>
+									<div style="width:60%;float:left;text-align:right;">
+										<span t-esc="o.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
+									</div>
+									<!-- Fin base imponible -->
+									<!-- Total -->
+									<div style="width:40%;float:left;clear:both;">
+										<b>
+											<span>
+												Total
+											</span>
+										</b>
+									</div>
+									<div style="width:60%;float:left;text-align:right;">
+										<b>
+											<span t-esc="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
+										</b>
+									</div>
+									<!-- Fin Desglose -->
+									<div style="clear:both;margin-top:5px;">
+										<t t-set="noIva" t-value="1" />
+										<!-- <p>*Exenta de IVA, según artículo 20, Ley 37/1992 de IVA.</p> -->
+									</div>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</t>
 				<!-- Fin desgloses IVA y RECARAGO serie C -->
@@ -983,117 +988,122 @@
 				<t t-if="o.sale_type_id.name != 'Serie C'">
 					<!-- Desglose -->
 					<div style="width:40%;margin-left:8%;float:right;font-size:0.7em;margin-top:-15px;margin-right:0.65%;">
-						<!-- Base imponible sin descuentos -->
-						<t t-if="o.amount_global_discount != 0.00">
-							<div style="width:50%;float:left;">
-								<span>
-									Bruto
-								</span>
-							</div>
-							<div style="width:50%;float:left;text-align:right;">
-								<span t-esc="o.amount_untaxed_before_global_discounts" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
-							</div>
-							<!-- Fin base imponible sin descuentos -->
-						</t>
-						<t t-else="">
-							<!-- Base imponible -->
-							<!--
-							<div style="width:50%;float:left;">
-							<span>Bruto</span>
-							</div>
-							<div style="width:50%;float:left;text-align:right;">
-							<span t-esc="o.amount_untaxed_before_global_discounts" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-							</div>
-							-->
-						</t>
-						<!-- Fin base imponible -->
-						<!-- Descuentos Globales -->
-						<t t-set="amount_untaxed_before_global_discounts" t-value="o.amount_untaxed_before_global_discounts" />
-						<t t-foreach="o.global_discount_ids" t-as="discount">
-							<div t-if="o.amount_global_discount != 0" style="width:50%;float:left;clear:both;">
-								<span t-esc="discount.name" />
-								<span t-esc="discount.discount" />
-								<span>
-									%
-								</span>
-							</div>
-							<div t-if="o.amount_global_discount != 0" style="width:50%;float:left;text-align:right;">
-								<t t-set="global_discount_line" t-value="(amount_untaxed_before_global_discounts * discount.discount / 100)" />
-								<t t-set="amount_untaxed_before_global_discounts" t-value="amount_untaxed_before_global_discounts - global_discount_line" />
-								<t t-set="discount_global" t-value="global_discount_line * -1" />
-								<span t-esc="discount_global" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}">
-								</span>
-							</div>
-						</t>
-						<!-- Descuentos Globales -->
-						<!--
-						<div t-if="o.amount_global_discount != 0" style="width:50%;float:left;">
-						<span>Total descuentos</span>
-						</div>
-						<div t-if="o.amount_global_discount != 0" style="width:50%;float:left;text-align:right;">
-						<span t-esc="o.amount_global_discount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-						</div>
-						-->
-						<!-- Fin Descuentos Globales -->
-						<!-- Base imponible -->
-						<div style="width:50%;float:left;">
-							<span>
-								Base imponible
-							</span>
-						</div>
-						<div style="width:50%;float:left;text-align:right;">
-							<span t-esc="o.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
-						</div>
-						<!-- Fin base imponible -->
-						<!-- desglose de Impuestos -->
-						<div style="clear:both;">
-							<t t-foreach="o.amount_by_group" t-as="amount_by_group">
-								<div style="">
-									<t t-if="amount_by_group[3] == 1 and doc.amount_untaxed == amount_by_group[2]">
-										<t t-if="amount_by_group[2] &gt; 0">
-											<div>
-												<span t-esc="amount_by_group[0]" />
-												<span>
-													en
-												</span>
-												<t t-esc="amount_by_group[2]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
-												<span t-esc="amount_by_group[1]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
-											</div>
-										</t>
+						<table style="border-bottom:4px solid black;">
+							<tr>
+								<td style="solid; black; padding: 0px; margin: 0px; width:13%; !important;">
+									<!-- Base imponible sin descuentos -->
+									<t t-if="o.amount_global_discount != 0.00">
+										<div style="width:50%;float:left;">
+											<span>
+												Bruto
+											</span>
+										</div>
+										<div style="width:50%;float:left;text-align:right;">
+											<span t-esc="o.amount_untaxed_before_global_discounts" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
+										</div>
+										<!-- Fin base imponible sin descuentos -->
 									</t>
 									<t t-else="">
-										<t t-if="amount_by_group[2] &gt; 0">
-											<div style="width:60%;float:left;">
-												<span t-esc="amount_by_group[0]" />
-												<span>
-													en
-												</span>
-												<span t-esc="amount_by_group[2]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
-											</div>
-											<div style="width:40%;float:left;text-align:right;">
-												<span t-esc="amount_by_group[1]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
+										<!-- Base imponible -->
+										<!--
+										<div style="width:50%;float:left;">
+										<span>Bruto</span>
+										</div>
+										<div style="width:50%;float:left;text-align:right;">
+										<span t-esc="o.amount_untaxed_before_global_discounts" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+										</div>
+										-->
+									</t>
+									<!-- Fin base imponible -->
+									<!-- Descuentos Globales -->
+									<t t-set="amount_untaxed_before_global_discounts" t-value="o.amount_untaxed_before_global_discounts" />
+									<t t-foreach="o.global_discount_ids" t-as="discount">
+										<div t-if="o.amount_global_discount != 0" style="width:50%;float:left;clear:both;">
+											<span t-esc="discount.name" />
+											<span t-esc="discount.discount" />
+											<span>
+												%
+											</span>
+										</div>
+										<div t-if="o.amount_global_discount != 0" style="width:50%;float:left;text-align:right;">
+											<t t-set="global_discount_line" t-value="(amount_untaxed_before_global_discounts * discount.discount / 100)" />
+											<t t-set="amount_untaxed_before_global_discounts" t-value="amount_untaxed_before_global_discounts - global_discount_line" />
+											<t t-set="discount_global" t-value="global_discount_line * -1" />
+											<span t-esc="discount_global" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}">
+											</span>
+										</div>
+									</t>
+									<!-- Descuentos Globales -->
+									<!--
+									<div t-if="o.amount_global_discount != 0" style="width:50%;float:left;">
+									<span>Total descuentos</span>
+									</div>
+									<div t-if="o.amount_global_discount != 0" style="width:50%;float:left;text-align:right;">
+									<span t-esc="o.amount_global_discount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+									</div>
+									-->
+									<!-- Fin Descuentos Globales -->
+									<!-- Base imponible -->
+									<div style="width:50%;float:left;">
+										<span>
+											Base imponible
+										</span>
+									</div>
+									<div style="width:50%;float:left;text-align:right;">
+										<span t-esc="o.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
+									</div>
+									<!-- Fin base imponible -->
+									<!-- desglose de Impuestos -->
+									<div style="clear:both;">
+										<t t-foreach="o.amount_by_group" t-as="amount_by_group">
+											<div style="">
+												<t t-if="amount_by_group[3] == 1 and doc.amount_untaxed == amount_by_group[2]">
+													<t t-if="amount_by_group[2] &gt; 0">
+														<div>
+															<span t-esc="amount_by_group[0]" />
+															<span>
+																en
+															</span>
+															<t t-esc="amount_by_group[2]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
+															<span t-esc="amount_by_group[1]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
+														</div>
+													</t>
+												</t>
+												<t t-else="">
+													<t t-if="amount_by_group[2] &gt; 0">
+														<div style="width:60%;float:left;">
+															<span t-esc="amount_by_group[0]" />
+															<span>
+																en
+															</span>
+															<span t-esc="amount_by_group[2]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
+														</div>
+														<div style="width:40%;float:left;text-align:right;">
+															<span t-esc="amount_by_group[1]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
+														</div>
+													</t>
+												</t>
 											</div>
 										</t>
-									</t>
-								</div>
-							</t>
-						</div>
-						<!-- Fin desglose impuestos -->
-						<!-- Total -->
-						<div style="width:50%;float:left;">
-							<b>
-								<span>
-									Total
-								</span>
-							</b>
-						</div>
-						<div style="width:50%;float:left;text-align:right;">
-							<b>
-								<span t-esc="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
-							</b>
-						</div>
-						<!-- Fin Desglose -->
-						<hr style="height:2px;width:101%;background-color:black;" />
+									</div>
+									<!-- Fin desglose impuestos -->
+									<!-- Total -->
+									<div style="width:50%;float:left;">
+										<b>
+											<span>
+												Total
+											</span>
+										</b>
+									</div>
+									<div style="width:50%;float:left;text-align:right;">
+										<b>
+											<span t-esc="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
+										</b>
+									</div>
+									<!-- Fin Desglose -->
+								</td>
+							</tr>
+						</table>
 					</div>
 				</t>
 				<!-- Metodo de pago -->
