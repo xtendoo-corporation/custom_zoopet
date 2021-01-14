@@ -2,38 +2,18 @@
 <odoo>
 	<data>
 		<record id="a4_invoice" model="report.paperformat">
-			<field name="name">
-				A4 Invoice
-			</field>
-			<field name="default" eval="False" />
-			<field name="format">
-				A4
-			</field>
-			<field name="margin_top">
-				40
-			</field>
-			<field name="margin_bottom">
-				45
-			</field>
-			<field name="margin_right">
-				7
-			</field>
-			<field name="margin_left">
-				7
-			</field>
-			<field name="orientation">
-				Portrait
-			</field>
-			<field name="header_line">
-				False
-			</field>
-			<field name="header_spacing">
-				35
-			</field>
-			<field name="dpi">
-				90
-			</field>
-		</record>
+            <field name="name">A4 Invoice</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">45</field>
+            <field name="margin_right">7</field>
+            <field name="margin_left">7</field>
+            <field name="orientation">Portrait</field>
+            <field name="header_line">False</field>
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
 		<template id="document_format_zoopet.report_invoice_document_zoopet" inherit_id="account.report_invoice_document">
 			<xpath expr="//t[@t-set='address']" position="replace">
 				<div>
