@@ -12,6 +12,7 @@
         'sale',
         'product',
         'sale_order_picking_all_done',
+        'res_partner_hide_internal_notes',
     ],
     'license': 'AGPL-3',
     'data': [

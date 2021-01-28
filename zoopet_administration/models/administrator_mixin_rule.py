@@ -23,3 +23,21 @@ class AdministratorMixinRule(models.Model):
         return self.env["res.users"].has_group(
                 "zoopet_administration.comercial_group"
             )
+
+    show_admin_notes = fields.Boolean(
+        compute='_show_admin_notes',
+        string="Show Admin Notes",
+        default=lambda self: self._get_default_show_admin_notes()
+    )
+
+    @api.one
+    def _show_admin_notes(self):
+        self.show_admin_notes = self.env["res.users"].has_group(
+                "res_partner_hide_internal_notes.view_partner_internal_notes"
+            )
+
+    @api.model
+    def _get_default_show_admin_notes(self):
+        return self.env["res.users"].has_group(
+                "res_partner_hide_internal_notes.view_partner_internal_notes"
+            )
