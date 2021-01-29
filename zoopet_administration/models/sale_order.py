@@ -16,15 +16,15 @@ class SaleOrder(models.Model):
         partner_id = self.partner_id
         title = ("Nota para %s") % partner_id.name
         # Montamos el warning para el comentario de cliente
-        if partner_id.comment != "":
+        if partner_id.comment != False and partner_id.comment != "":
             message = "Nota cliente: %s" % partner_id.comment
             
         # Montamos el warning para el comentario de administradores
-        if self.show_admin_notes and partner_id.admin_comment != "":        
+        if self.show_admin_notes and partner_id.admin_comment != False and partner_id.admin_comment != "":        
             message = message + " \n Nota de administrador: %s" % partner_id.admin_comment
 
         # Montamos el warning para la alerta de venta
-        if partner_id.sale_warn in ['warning','block'] and partner_id.sale_warn_msg != "":
+        if partner_id.sale_warn in ['warning','block'] and partner_id.sale_warn_msg != False and  partner_id.sale_warn_msg != "":
             message = message + " \n Alerta de Pedido : %s" % partner_id.sale_warn_msg
             
         #Si Se rellena message, se devuelve el warning
