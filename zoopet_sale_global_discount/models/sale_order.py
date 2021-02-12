@@ -129,29 +129,28 @@ class SaleOrder(models.Model):
     def _amount_by_group(self):
         """We can apply discounts directly by tax groups."""
         super()._amount_by_group()
-        discounts = self.global_discount_ids.mapped('discount')
-        if not discounts:
-            return
         for order in self:
-            round_curr = order.currency_id.round
-            fmt = partial(
-                formatLang, self.with_context(lang=order.partner_id.lang).env,
-                currency_obj=order.currency_id
-            )
-            res = []
-            for tax in order.amount_by_group:
-                tax_amount = round_curr(
-                    self.get_discounted_global(tax[1], discounts.copy()))
-                tax_base = round_curr(
-                    self.get_discounted_global(tax[2], discounts.copy()))
-                res.append(
-                    (
-                        tax[0],
-                        tax_amount,
-                        tax_base,
-                        fmt(tax_amount),
-                        fmt(tax_base),
-                        len(order.amount_by_group)
-                    )
+            discounts = order.global_discount_ids.mapped('discount')
+            if discounts:
+                round_curr = order.currency_id.round
+                fmt = partial(
+                    formatLang, self.with_context(lang=order.partner_id.lang).env,
+                    currency_obj=order.currency_id
                 )
-            order.amount_by_group = res
+                res = []
+                for tax in order.amount_by_group:
+                    tax_amount = round_curr(
+                        self.get_discounted_global(tax[1], discounts.copy()))
+                    tax_base = round_curr(
+                        self.get_discounted_global(tax[2], discounts.copy()))
+                    res.append(
+                        (
+                            tax[0],
+                            tax_amount,
+                            tax_base,
+                            fmt(tax_amount),
+                            fmt(tax_base),
+                            len(order.amount_by_group)
+                        )
+                    )
+                order.amount_by_group = res

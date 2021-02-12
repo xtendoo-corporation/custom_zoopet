@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 	<data>
-		<!--
-		<record id="A4_presupuesto" model="report.paperformat">
-		<field name="name">A4 Presupuesto</field>
-		<field name="default" eval="True"/>
-		<field name="format">A4</field>
-		<field name="margin_top">55</field>
-		<field name="margin_bottom">28</field>
-		<field name="margin_right">7</field>
-		<field name="margin_left">7</field>
-		<field name="orientation">Portrait</field>
-		<field name="header_spacing">50</field>
-		<field name="dpi">95</field>
-		</record>
-		-->
-		<!--
-		<record id="sale.action_report_saleorder" model="ir.actions.report">
-		<field name="paperformat_id" ref="document_format_zoopet.A4_presupuesto" />
-		</record>
-		-->
-		<template id="document_format_zoopet.report_saleorder_document_zoopet" inherit_id="sale.report_saleorder_document">
-			<xpath expr="//div[@t-field='doc.partner_id']" position="replace">
+		<template id="document_format_zoopet.report_saleorder_document_zoopet"
+                  inherit_id="sale.report_saleorder_document">
+			<xpath expr="//div[@t-field='doc.partner_id']"
+                   position="replace">
 				<div>
 				</div>
 			</xpath>
@@ -842,36 +825,36 @@
 									<!-- Fin base imponible -->
 									<!-- desglose de Impuestos -->
 									<div style="clear:both;">
-										<t t-foreach="doc.amount_by_group" t-as="amount_by_group">
-											<div style="">
-												<t t-if="amount_by_group[3] == 1 and doc.amount_untaxed == amount_by_group[2]">
-													<div>
-														<span t-esc="amount_by_group[0]" />
-														<span>
-															en
-														</span>
-														<t t-esc="amount_by_group[2]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}" />
-														<span t-esc="amount_by_group[1]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}" />
-													</div>
-												</t>
-												<t t-else="">
-													<t t-if="amount_by_group[1] != 0.0">
-														<div style="width:60%;float:left;">
-															<span t-esc="amount_by_group[0]" />
-															<span>
-																en
-															</span>
-															<span t-esc="amount_by_group[2]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}" />
-														</div>
-														<div style="width:40%;float:left;text-align:right;">
-															<span t-esc="amount_by_group[1]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}" />
-														</div>
-													</t>
-													<t t-else="">
-													</t>
-												</t>
-											</div>
-										</t>
+<!--										<t t-foreach="doc.amount_by_group" t-as="amount_by_group">-->
+<!--											<div style="">-->
+<!--												<t t-if="amount_by_group[3] == 1 and doc.amount_untaxed == amount_by_group[2]">-->
+<!--													<div>-->
+<!--														<span t-esc="amount_by_group[0]" />-->
+<!--														<span>-->
+<!--															en-->
+<!--														</span>-->
+<!--														<t t-esc="amount_by_group[2]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}" />-->
+<!--														<span t-esc="amount_by_group[1]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}" />-->
+<!--													</div>-->
+<!--												</t>-->
+<!--												<t t-else="">-->
+<!--													<t t-if="amount_by_group[1] != 0.0">-->
+<!--														<div style="width:60%;float:left;">-->
+<!--															<span t-esc="amount_by_group[0]" />-->
+<!--															<span>-->
+<!--																en-->
+<!--															</span>-->
+<!--															<span t-esc="amount_by_group[2]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}" />-->
+<!--														</div>-->
+<!--														<div style="width:40%;float:left;text-align:right;">-->
+<!--															<span t-esc="amount_by_group[1]" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}" />-->
+<!--														</div>-->
+<!--													</t>-->
+<!--													<t t-else="">-->
+<!--													</t>-->
+<!--												</t>-->
+<!--											</div>-->
+<!--										</t>-->
 									</div>
 									<!-- Fin desglose impuestos -->
 									<!-- Total -->
