@@ -21,10 +21,19 @@
 			</xpath>
 			<xpath expr="//div[@class='page']" position="replace">
 				<t t-set="doc_name" t-value="o.number"/>
+				<t t-set="serieInv" t-value="o.sale_type_id.name" />
+				<t t-set="printInvoice" t-value="True"/>
 				<!--Comprobar si es serie P-->
-				<t t-set="isSerieP" t-value="doc_name.find('P')"/>
-				<t t-if="isSerieP &lt; 0">
-					<!--Fin Comprobar si es serie P-->	
+				<t t-set="isSerieP" t-value="serieInv.find('Serie P')"/>
+				<t t-if="isSerieP &gt; -1">
+					<t t-set="printInvoice" t-value="False"/>
+				</t>
+				<t t-set="isSerieT" t-value="serieInv.find('Serie T')"/>
+				<t t-if="isSerieT &gt; -1">
+					<t t-set="printInvoice" t-value="False"/>
+				</t>
+				<t t-if="printInvoice == True">
+					<!--Fin Comprobar si es serie P o T-->	
 					<t t-set="isInvoice" t-value="o.type"/>
 					<t t-set="delivery_method" t-value="o.delivery_method"/>
 					<t t-set="lumps_number" t-value="o.lumps_number"/>
@@ -37,7 +46,6 @@
 							</t>
 						</t>
 					</t>
-					<t t-set="serieInv" t-value="o.sale_type_id.name" />
 					<!-- Buscamos el tipo en el number de la rectificativa -->
 					<t t-set="isSerieT" t-value="doc_name.find('RT')" />
 					<!-- Fin buscamos el tipo en el number de la rectificativa -->
