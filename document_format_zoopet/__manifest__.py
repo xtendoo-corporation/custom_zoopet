@@ -22,14 +22,15 @@
         "pos_margin",
         "sale_margin",
         "product_brand",
+        "stock_picking_report_valued",
     ],
     "license": "AGPL-3",
     "data": [
         # layout
         "views/layout/external_layout_clean.xml",
         # delivery
-        "views/delivery/report_delivery_document.xml",
         "views/delivery/report_delivery_document_without_price.xml",
+        "views/delivery/report_delivery_document_valued.xml",
         # sale_order
         "views/sale/report_saleorder_document.xml",
         "views/sale/sale_without_price.xml",
