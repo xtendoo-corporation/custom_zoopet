@@ -19,6 +19,9 @@
         "zoopet_sale_global_discount",
         "zoopet_administration",
         "stock_picking_and_sale_order_pallets_and_lumps",
+        "pos_margin",
+        "sale_margin",
+        "product_brand",
     ],
     "license": "AGPL-3",
     "data": [
