@@ -139,7 +139,7 @@ class SaleReport(models.Model):
             l.discount,
             s.id,
             l.margin,
-            s.warehouse_id,
+            s.warehouse_id
         '''
         
         _pos_groupby_ = '''
@@ -164,7 +164,7 @@ class SaleReport(models.Model):
             u.factor,
             config.crm_team_id,
             l.margin,
-            warehouse_id,
+            warehouse_id
         '''
 
         sale = '(SELECT %s FROM %s GROUP BY %s)' % (_sale_select_, _sale_from_, _sale_groupby_)
