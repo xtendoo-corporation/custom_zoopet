@@ -43,7 +43,7 @@ class SaleReport(models.Model):
             sum((l.price_unit * l.product_uom_qty * l.discount / 100.0 / CASE COALESCE(s.currency_rate, 0) WHEN 0 THEN 1.0 ELSE s.currency_rate END)) as discount_amount,
             s.id as order_id,
             SUM(l.margin / CASE COALESCE(s.currency_rate, 0) WHEN 0 THEN 1.0 ELSE s.currency_rate END) AS margin,
-            s.warehouse_id as warehouse_id,
+            s.warehouse_id as warehouse_id
         """
 
 
@@ -88,7 +88,7 @@ class SaleReport(models.Model):
             sum((l.price_unit * l.discount * l.qty / 100.0 / CASE COALESCE(pos.currency_rate, 0) WHEN 0 THEN 1.0 ELSE pos.currency_rate END)) as discount_amount,
             NULL as order_id,
             SUM(l.margin / CASE COALESCE(pos.currency_rate, 0) WHEN 0 THEN 1.0 ELSE pos.currency_rate END) AS margin,
-            0 as warehouse_id,
+            0 as warehouse_id
         '''
 
         for field in fields.keys():
