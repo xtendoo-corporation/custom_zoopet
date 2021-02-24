@@ -13,12 +13,18 @@
         'product',
         'sale_order_picking_all_done',
         'res_partner_hide_internal_notes',
+        'crm',
+        'stock',
+        'delivery',
+        'mrp',
+        'account',
     ],
     'license': 'AGPL-3',
     'data': [
         'views/sale_order_views.xml',
         'views/account_invoice_view.xml',
         'views/mrp_bom_view.xml',
+        'views/permission_to_archive_view.xml',
         'security/security_group.xml',
 
     ],

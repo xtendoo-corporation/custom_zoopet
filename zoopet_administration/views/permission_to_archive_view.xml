@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Archivar en productos-->
+        <record id="product_template_form_view_inherit" model="ir.ui.view">
+            <field name="name">product.template.form.view.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en productos-->
+        <!-- Archivar en contactos-->
+        <record id="res_partner_form_inherit" model="ir.ui.view">
+            <field name="name">	res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en contactos-->
+        <!-- Archivar en tarifas-->
+        <record id="product_pricelist_form_inherit" model="ir.ui.view">
+            <field name="name">product.pricelist.form.inherit</field>
+            <field name="model">product.pricelist</field>
+            <field name="inherit_id" ref="product.product_pricelist_view"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en tarifas-->
+        <!-- Archivar en Almacén-->
+        <record id="stock_warehouse_inherit" model="ir.ui.view">
+            <field name="name">stock.warehouse.inherit</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref="stock.view_warehouse"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en Almacén-->          
+        <!-- Archivar en Posicion fiscal-->
+        <record id="account_fiscal_position_form_inherit" model="ir.ui.view">
+            <field name="name">account.fiscal.position.form.inherit</field>
+            <field name="model">account.fiscal.position</field>
+            <field name="inherit_id" ref="account.view_account_position_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en Posicion fiscal--> 
+        <!-- Archivar en Diario de Facturación-->
+        <record id="account_journal_form_inherit" model="ir.ui.view">
+            <field name="name">account.journal.form.inherit</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en Diario de Facturación-->     
+        <!-- Archivar en Terminos de pago-->
+        <record id="account_payment_term_form_inherit" model="ir.ui.view">
+            <field name="name">account.payment.term.form.inherit</field>
+            <field name="model">account.payment.term</field>
+            <field name="inherit_id" ref="account.view_payment_term_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en Terminos de pago-->     
+        <!-- Archivar en Equipo de ventas-->
+        <record id="crm_team_form_inherit" model="ir.ui.view">
+            <field name="name">crm.team.form.inherit</field>
+            <field name="model">crm.team</field>
+            <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en Equipo de ventas-->
+        <!-- Archivar en Ubicaciones-->
+        <record id="stock_location_form_inherit" model="ir.ui.view">
+            <field name="name">stock.location.form.inherit</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock.view_location_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en Ubicaciones--> 
+        <!-- Archivar en Tipos de operación-->
+        <record id="view_picking_type_form_inherit" model="ir.ui.view">
+            <field name="name">view.picking.type.form.inherit</field>
+            <field name="model">stock.picking.type</field>
+            <field name="inherit_id" ref="stock.view_picking_type_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en Tipos de operación-->
+        <!-- Archivar en Metodo de envio-->
+        <record id="delivery_carrier_form_inherit" model="ir.ui.view">
+            <field name="name">delivery.carrier.form.inherit</field>
+            <field name="model">delivery.carrier</field>
+            <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en Metodo de envio-->  
+        <!-- Archivar en Regla de abastecimiento-->
+        <record id="stock_warehouse_orderpoint_form_inherit" model="ir.ui.view">
+            <field name="name">stock.warehouse.orderpoint.form.inherit</field>
+            <field name="model">stock.warehouse.orderpoint</field>
+            <field name="inherit_id" ref="stock.view_warehouse_orderpoint_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en Regla de abastecimiento--> 
+        <!-- Archivar en lista de materiales-->
+        <record id="mrp_bom_form_inherit" model="ir.ui.view">
+            <field name="name">mrp.bom.form.inherit</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en lista de materiales-->  
+        <!-- Archivar en Rutas de producción-->
+        <record id="mrp_routing_form_inherit" model="ir.ui.view">
+            <field name="name">mrp.routing.form.inherit</field>
+            <field name="model">mrp.routing</field>
+            <field name="inherit_id" ref="mrp.mrp_routing_form_view"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en Rutas de producción-->     
+        <!-- Archivar en Centros de producción-->
+        <record id="mrp_workcenter_form_inherit" model="ir.ui.view">
+            <field name="name">mrp.workcenter.form.inherit</field>
+            <field name="model">mrp.workcenter</field>
+            <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en Centros de producción-->    
+        <!-- Archivar en Impuestos-->
+        <record id="account_tax_form_inherit" model="ir.ui.view">
+            <field name="name">account.tax.form.inherit</field>
+            <field name="model">account.tax</field>
+            <field name="inherit_id" ref="account.view_tax_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en Impuestos-->   
+        <!-- Archivar en Icotemrs-->
+        <record id="account_incoterms_form_inherit" model="ir.ui.view">
+            <field name="name">account.incoterms.form.inherit</field>
+            <field name="model">account.incoterms</field>
+            <field name="inherit_id" ref="account.account_incoterms_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//form/sheet/div[@name='button_box']/button[@name='toggle_active']" position="attributes">
+                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
+                 </xpath>
+            </field>
+        </record>
+        <!-- Fin Archivar en Icotemrss-->                                                  
+    </data>
+</odoo>

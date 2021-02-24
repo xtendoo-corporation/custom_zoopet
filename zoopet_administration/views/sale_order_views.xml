@@ -49,7 +49,6 @@
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='action_sale_order_confirm_and_delivery']" position="replace">
                     <field name="is_comercial" invisible="1"/>
-                    -->
                     <!-- Pedido sin confirmar(Presupuesto-->
                     <button name="action_sale_order_confirm_and_delivery" string="Confirm and delivery"
                             type="object" attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>

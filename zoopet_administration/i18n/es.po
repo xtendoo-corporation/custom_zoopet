@@ -54,3 +54,8 @@ msgstr "Mostrar pestaña de compras"
 #: model:res.groups,name:zoopet_administration.edit_block_so
 msgid "Edit block sale orders"
 msgstr "Editar pedidos bloqueados"
+
+#. module: zoopet_administration
+#: model:res.groups,name:zoopet_administration.permission_to_archive
+msgid "Permission to archive"
+msgstr "Permiso para archivar"

@@ -25,6 +25,12 @@
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
         </record>
         <!-- Fin Pvp -->
+        <!-- Permitir archivar -->
+        <record id="permission_to_archive" model="res.groups">
+            <field name="name">Permission to archive</field>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+        <!-- Fin Permitir archivar -->
         <!-- Purchase Page -->
         <record id="show_purchase_page" model="res.groups">
             <field name="name">Show Purcahse Page</field>
