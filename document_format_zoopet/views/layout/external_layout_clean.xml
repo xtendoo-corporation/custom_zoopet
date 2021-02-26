@@ -115,16 +115,57 @@
                     <t t-if="isInvoice">
                         <div style="float:left;width:25%;text-align:center;margin-top:45px;-webkit-transform: rotate(-37deg);">
                             <div>
-                                <t t-if="isInvoice == 'out_invoice'">
-                                    <b><span style="font-size:1.5em;">*FACTURA*</span></b>
+                                <t t-if="not_use_invoice == 0">
+                                    <t t-if="isInvoice == 'out_invoice'">
+									    <t t-if="serieInv == 'Serie P'">
+										    <b><span>
+											    *NOTA DE CRÉDITO*
+										    </span></b>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-if="serieInv == 'Serie T'">
+                                                <b><span>
+                                                    *NOTA DE CRÉDITO*
+                                                </span></b>
+                                            </t>
+                                            <t t-else="">
+                                                <b><span>
+                                                    *FACTURA*
+                                                </span></b>
+                                            </t>
+                                        </t>
+                                    </t>
+                                    <t t-else="isInvoice == 'out_refund'">
+                                        <t t-if="isRecT &gt; 0">
+                                            <b><span>
+                                                *ABONO*
+                                            </span></b>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-if="isRecP &gt; 0">
+                                                <b><span>
+                                                    *ABONO*
+                                                </span></b>
+                                            </t>
+                                            <t t-else="">
+                                                <b><span >
+                                                    *NOTA DE CRÉDITO*
+                                                </span></b>
+                                            </t>
+                                        </t>
+								    </t>
                                 </t>
-                                 <t t-if="isInvoice == 'out_refund'">
-                                    <t t-if="isSerieT &lt; 0">
-                                        <b><span style="font-size:1.1em;">*FACTURA RECTIFICATIVA*</span></b>
-                                    </t>
-                                    <t t-else="">
-                                        <b><span style="font-size:1.1em;">*NOTA DE CRÉDITO*</span></b>
-                                    </t>
+                                <t t-else="">
+                                    <t t-if="isInvoice == 'out_invoice'">
+										<b><span>
+                                            *FACTURA*
+                                        </span></b>
+								    </t>
+								    <t t-else="isInvoice == 'out_refund'">
+									    <b><span>
+										      *NOTA DE CRÉDITO*
+									    </span></b>				
+								    </t>
                                 </t>
                                <!-- <t t-if="isSale == 'draft'">
                                     <b><span>*PRESUPUESTO*</span></b>
@@ -299,7 +340,13 @@
                     <!-- Frase factura -->
                     <t t-if="isInvoice">
                          <div>
-                            <span>La posesión de esta Factura no justifica su pago</span>
+                            <span>La posesión de esta
+                                <t t-if="not_use_invoice == 1">
+                                    Factura
+                                </t>
+                                <t t-else="">
+                                    Nota de crédito
+                                </t> no justifica su pago</span>
                         </div>
                     </t>
                     <t t-else="">

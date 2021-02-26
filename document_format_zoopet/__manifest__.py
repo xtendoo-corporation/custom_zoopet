@@ -40,6 +40,9 @@
         # Invoice
         "views/invoice/report_invoice_document.xml",
         "views/invoice/report_invoice.xml",
+        #Invoice - NO USAR
+        "views/invoice/report_invoice_document_no_usar.xml",
+        "views/invoice/report_invoice_no_usar.xml",
         # Product Label
         "views/product_label/paper_format.xml",
         "views/product_label/label_template.xml",
@@ -58,7 +61,6 @@
     "qweb": [
         "static/src/xml/pos.xml",
     ],
-    "demo": [],
     "installable": True,
     "auto_install": False,
 }
