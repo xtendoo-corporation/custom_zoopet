@@ -5,9 +5,9 @@
     "summary": """Formatos de documentos Zoopet""",
     "version": "12.0.1.0.0",
     "description": """Formatos de documentos Zoopet""",
-    "author": "DDL",
+    "author": "DDL-Xtendoo",
     "company": "Xtendoo",
-    "website": "http://www.xtendoo.com",
+    "website": "https://xtendoo.es/",
     "category": "Extra Tools",
     "depends": [
         "base",
@@ -23,6 +23,7 @@
         "sale_margin",
         "product_brand",
         "stock_picking_report_valued",
+        "point_of_sale",
     ],
     "license": "AGPL-3",
     "data": [
@@ -49,7 +50,13 @@
         #Res_Partner
         "views/res_partner/res_partner_view.xml",
 
+        #Añadir JS del POS
+        "templates/assets.xml",
 
+
+    ],
+    "qweb": [
+        "static/src/xml/pos.xml",
     ],
     "demo": [],
     "installable": True,

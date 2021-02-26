@@ -13,10 +13,10 @@ class ProductTemplate(models.Model):
     bom_ids = fields.Many2one(
         comodel_name='mrp.bom', string='Lista de materiales', invisible=True,
         default=lambda self: self._get_bom_ids(),
-        compute="_delivery_ids")
+        compute="_bom_ids")
 
     @api.one
-    def _delivery_ids(self):
+    def _bom_ids(self):
         self.bom_ids = self.env['mrp.bom'].search(
             [('product_tmpl_id', '=', self.id)], limit=1)
         print(self.delivery_ids)
