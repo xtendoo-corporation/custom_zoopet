@@ -53,20 +53,20 @@
                 <!-- Fin Lineas-->
                 <!--Subtotal, Descuentos, Iva, Total, Pagado y cambio -->
                 <div style="font-size:0.8em;">
-                    <div style="width:40%;float:left;margin-left:30%;">
+                    <div style="width:42%;float:left;margin-left:15%;">
                         <b><span>SUBTOTAL</span></b>
                     </div>
                     <div style="width:30%;float:left;text-align:right;">
                          <t t-esc="widget.format_currency(order.get_total_without_tax())"/>
                     </div>
-                    <div style="width:40%;float:left;margin-left:30%;">
+                    <div style="width:42%;float:left;margin-left:15%;">
                         <b><span>DESCUENTO TOTAL</span></b>
                     </div>
                     <div style="width:30%;float:left;text-align:right;">
                          <t t-esc="widget.format_currency(order.get_total_discount())"/>
                     </div>
                     <t t-foreach="order.get_tax_name()" t-as="taxdetail">
-                        <div style="width:40%;float:left;margin-left:30%;">
+                        <div style="width:42%;float:left;margin-left:15%;">
                             <t t-set="taxName" t-value="taxdetail.name"/>
                             <b><t t-esc="taxName" /></b>
                         </div>
@@ -74,21 +74,21 @@
                             <t t-esc="widget.format_currency(taxdetail.amount)" />
                         </div>
                     </t>
-                    <div style="width:40%;float:left;margin-left:30%;">
+                    <div style="width:42%;float:left;margin-left:15%;">
                         <b><span>TOTAL</span></b>
                     </div>
                     <div style="width:30%;float:left;text-align:right;">
                         <b><t t-esc="widget.format_currency(order.get_total_with_tax())"/></b>
                     </div>
                     <t t-foreach="paymentlines" t-as="line">
-                        <div style="width:40%;float:left;margin-left:30%;">
+                        <div style="width:42%;float:left;margin-left:15%;">
                             <b><span><t t-esc="line.name"/></span></b>
                         </div>
                         <div style="width:30%;float:left;text-align:right;">
                             <b><t t-esc="widget.format_currency(line.get_amount())"/></b>
                         </div>
                     </t>
-                    <div style="width:40%;float:left;margin-left:30%;">
+                    <div style="width:42%;float:left;margin-left:15%;">
                         <b><span>CAMBIO</span></b>
                     </div>
                     <div style="width:30%;float:left;text-align:right;">
@@ -97,7 +97,7 @@
                 </div>
                 <!--Fin Subtotal, Descuentos, Iva, Total, Pagado y cambio -->
                 <!-- Le atendio-->
-                <div class="receipt-user pos-center-align">
+                <div class="receipt-user pos-center-align" style="clear:both;">
                     Le atendió: <t t-esc="widget.pos.get_cashier().name"/>
                 </div>
                 <!-- Fin Le atendio-->
