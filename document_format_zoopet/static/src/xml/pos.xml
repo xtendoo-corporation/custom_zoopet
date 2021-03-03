@@ -16,14 +16,11 @@
                 </div>
                 <!--Cabecera-->
                 <div>
-                    <div style="width:15%;float:left;text-align:center;">
+                    <div style="width:15%;float:left;text-align:center;margin-left:">
                         <b><span>Uds.</span></b>
                     </div>
                     <div style="text-align:left;width:55%;float:left;">
                         <b><span>Producto</span></b>
-                    </div>
-                    <div style="width:13%;float:left;text-align:center;">
-                        <b><span>Des.%</span></b>
                     </div>
                     <div style="width:17%;float:left;text-align:right;">
                         <b><span>Subt.</span></b>
@@ -41,15 +38,11 @@
                         <div style="width:55%;float:left;font-size:0.8em;text-align:left;">
                             <span style="margin-left:2px;">
                                 <t t-esc="orderline.get_product().display_name"/> 
+                                <t t-if="orderline.get_discount() > 0">
+                                <span>con descuento del </span>
+                                    <t t-esc="orderline.get_discount()"/>%
+                                </t>
                             </span>
-                        </div>
-                        <div class="pos-right-align" style="width:13%;float:left;font-size:0.8em;">
-                            <t t-if="orderline.get_discount() > 0">
-                                <t t-esc="orderline.get_discount()"/>
-                            </t>
-                            <t t-else="">
-                                <span style="color:white;">aaaa</span>
-                            </t>
                         </div>
                         <div class="pos-right-align" style="width:17%;float:left;font-size:0.8em;">
                             <t t-esc="widget.format_currency(orderline.get_price_with_tax())"/>

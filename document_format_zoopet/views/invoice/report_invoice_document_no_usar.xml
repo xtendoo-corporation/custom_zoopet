@@ -180,7 +180,7 @@
 								<t t-else="isInvoice == 'out_refund'">
 						
 											<b><span style="font-size:0.8em;">
-												Nota de credito:
+												Rectificativa:
 											</span></b>
 									
 								</t>

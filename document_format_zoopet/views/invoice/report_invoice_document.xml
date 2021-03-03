@@ -187,13 +187,13 @@
 								<t t-if="isInvoice == 'out_invoice'">
 									<t t-if="serieInv == 'Serie P'">
 										<b><span style="font-size:0.8em;">
-											Nota de credito:
+											Albarán:
 										</span></b>
 									</t>
 									<t t-else="">
 										<t t-if="serieInv == 'Serie T'">
 											<b><span style="font-size:0.8em;">
-												Nota de credito:
+												Albarán:
 											</span></b>
 										</t>
 										<t t-else="">
@@ -217,7 +217,7 @@
 										</t>
 										<t t-else="">
 											<b><span style="font-size:0.8em;">
-												Nota de credito:
+												Rectificativa:
 											</span></b>
 										</t>
 									</t>
@@ -477,13 +477,13 @@
 								<t t-if="isInvoice == 'out_invoice'">
 									<t t-if="serieInv == 'Serie P'">
 										<b><span>
-											*NOTA DE CRÉDITO*
+											*NOTA DE ENTREGA*
 										</span></b>
 									</t>
 									<t t-else="">
 										<t t-if="serieInv == 'Serie T'">
 											<b><span>
-												*NOTA DE CRÉDITO*
+												*NOTA DE ENTREGA*
 											</span></b>
 										</t>
 										<t t-else="">
@@ -496,13 +496,13 @@
 								<t t-else="isInvoice == 'out_refund'">
 									<t t-if="isRecT &gt; 0">
 										<b><span>
-											*ABONO*
+											*NOTA DE CRÉDITO*
 										</span></b>
 									</t>
 									<t t-else="">
 										<t t-if="isRecP &gt; 0">
 											<b><span>
-												*ABONO*
+												*NOTA DE CRÉDITO*
 											</span></b>
 										</t>
 										<t t-else="">

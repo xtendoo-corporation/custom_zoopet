@@ -114,63 +114,79 @@
                     <!-- si es factura -->
                     <t t-if="isInvoice">
                         <div style="float:left;width:25%;text-align:center;margin-top:45px;-webkit-transform: rotate(-37deg);">
-                            <div>
-                                <t t-if="not_use_invoice == 0">
-                                    <t t-if="isInvoice == 'out_invoice'">
-									    <t t-if="serieInv == 'Serie P'">
-										    <b><span>
-											    *NOTA DE CRÉDITO*
-										    </span></b>
+                            <t t-if="not_use_invoice == 0">
+                                <t t-if="isInvoice == 'out_invoice'">
+								    <t t-if="serieInv == 'Serie P'">
+                                        <div style="font-size:1.5em;">
+                                            <b><span>*ALBARAN*</span></b>
+                                        </div>
+                                        <div>
+                                            <b><span>NOTA DE ENTREGA</span></b>
+                                        </div>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-if="serieInv == 'Serie T'">
+                                           <div style="font-size:1.5em;">
+                                                <b><span>*ALBARAN*</span></b>
+                                            </div>
+                                            <div>
+                                                <b><span>NOTA DE ENTREGA</span></b>
+                                            </div>
                                         </t>
                                         <t t-else="">
-                                            <t t-if="serieInv == 'Serie T'">
-                                                <b><span>
-                                                    *NOTA DE CRÉDITO*
-                                                </span></b>
-                                            </t>
-                                            <t t-else="">
+                                            <div>
                                                 <b><span>
                                                     *FACTURA*
                                                 </span></b>
-                                            </t>
+                                            </div>
                                         </t>
                                     </t>
-                                    <t t-else="isInvoice == 'out_refund'">
-                                        <t t-if="isRecT &gt; 0">
+                                </t>
+                                <t t-else="isInvoice == 'out_refund'">
+                                    <t t-if="isRecT &gt; 0">
+                                        <div>
                                             <b><span>
-                                                *ABONO*
+                                                 *NOTA DE CRÉDITO*
                                             </span></b>
-                                        </t>
-                                        <t t-else="">
-                                            <t t-if="isRecP &gt; 0">
+                                        </div>
+                                    </t>
+                                     <t t-else="">
+                                        <t t-if="isRecP &gt; 0">
+                                            <div>
                                                 <b><span>
-                                                    *ABONO*
-                                                </span></b>
-                                            </t>
-                                            <t t-else="">
-                                                <b><span >
                                                     *NOTA DE CRÉDITO*
                                                 </span></b>
-                                            </t>
+                                            </div>
                                         </t>
-								    </t>
-                                </t>
-                                <t t-else="">
-                                    <t t-if="isInvoice == 'out_invoice'">
-										<b><span>
+                                        <t t-else="">
+                                            <div>
+                                                <b><span>
+                                                        *FACTURA RECTIFICATIVA*
+                                                </span></b>
+                                            </div>
+                                        </t>
+                                    </t>
+				    		    </t>
+                            </t>
+                            <t t-else="">
+                                <t t-if="isInvoice == 'out_invoice'">
+                                    <div>
+									    <b><span>
                                             *FACTURA*
                                         </span></b>
-								    </t>
-								    <t t-else="isInvoice == 'out_refund'">
-									    <b><span>
-										      *NOTA DE CRÉDITO*
+                                    </div>
+							    </t>
+							    <t t-else="isInvoice == 'out_refund'">
+                                    <div>
+								        <b><span>
+									          *FACTURA RECTIFICATIVA*
 									    </span></b>				
-								    </t>
+                                    </div>
                                 </t>
+                            </t>
                                <!-- <t t-if="isSale == 'draft'">
                                     <b><span>*PRESUPUESTO*</span></b>
                                 </t> -->
-                            </div>
                         </div>
                     </t>
                     <!-- fin si es factura -->
