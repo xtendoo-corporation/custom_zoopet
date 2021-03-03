@@ -24,8 +24,10 @@
 				<t t-set="doc_name" t-value="o.number" />
 				<t t-set="isInvoice" t-value="o.type" />
 				<t t-set="delivery_method" t-value="o.delivery_method" />
-				<t t-set="lumps_number" t-value="o.lumps_number" />
-				<t t-set="palets_number" t-value="o.palets_number" />
+				<t t-if="isInvoice == 'out_invoice">
+                    <t t-set="lumps_number" t-value="o.lumps_number" />
+                    <t t-set="palets_number" t-value="o.palets_number" />
+                </t>
 				<t t-set="mostrarFrasePortes" t-value="False" />
 				<t t-foreach="o.invoice_line_ids" t-as="line">
 					<t t-if="line.price_unit &gt; 0.00">
