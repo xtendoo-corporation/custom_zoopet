@@ -5,7 +5,7 @@
             <t t-name="document_format_zoopet.report_invoice_not_use_document">
                 <t t-call="web.external_layout">
                     <div class="page">
-                    <t t-set="not_use_invoice" t-value="1"/>  
+                    <t t-set="not_use_invoice" t-value="1"/>
                     <t t-set="doc_name" t-value="o.number" />
                     <t t-set="isInvoice" t-value="o.type" />
                     <t t-set="delivery_method" t-value="o.delivery_method" />
