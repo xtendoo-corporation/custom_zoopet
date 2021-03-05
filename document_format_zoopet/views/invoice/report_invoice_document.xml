@@ -107,6 +107,7 @@
 								TLF.:
 							</span>
 							<span t-if="o.partner_id.phone" t-field="o.partner_id.phone" />
+							<span t-if="o.partner_id.mobile">, </span><span t-if="o.partner_id.mobile" t-field="o.partner_id.mobile"/>
 						</div>
 						<!-- CIF/NIF -->
 						<div>
@@ -168,6 +169,7 @@
 								TLF.:
 							</span>
 							<span t-if="o.partner_shipping_id.phone" t-field="o.partner_shipping_id.phone" />
+							<span t-if="o.partner_shipping_id.mobile">, </span><span t-if="o.partner_shipping_id.mobile" t-field="o.partner_shipping_id.mobile"/>
 						</div>
 						<!-- Nota -->
 						<t t-if="o.partner_id != o.partner_shipping_id">

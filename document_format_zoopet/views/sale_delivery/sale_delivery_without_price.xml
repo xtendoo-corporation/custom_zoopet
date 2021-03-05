@@ -103,6 +103,7 @@
                             <div>
                                 <span t-if="doc.partner_invoice_id.phone">TLF.:</span>
                                 <span t-if="doc.partner_invoice_id.phone" t-field="doc.partner_invoice_id.phone"/>
+                                <span t-if="doc.partner_invoice_id.mobile">, </span><span t-if="doc.partner_invoice_id.mobile" t-field="doc.partner_invoice_id.mobile"/>
                             </div>
                             <!-- CIF/NIF -->
                             <div>
@@ -152,6 +153,7 @@
                             <!-- tlf -->
                             <div>
                                 <span t-if="doc.partner_shipping_id.phone">TLF.: </span><span t-if="doc.partner_shipping_id.phone" t-field="doc.partner_shipping_id.phone"/>
+                                 <span t-if="doc.partner_shipping_id.mobile">, </span><span t-if="doc.partner_shipping_id.mobile" t-field="doc.partner_shipping_id.mobile"/>
                             </div>
                             <!-- Nota -->
                             <t t-if="doc.partner_id != doc.partner_shipping_id">

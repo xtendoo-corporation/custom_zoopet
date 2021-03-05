@@ -119,7 +119,8 @@
                                     <!-- tlf -->
                                     <div>
                                         <span t-if="o.partner_id.parent_id.phone">TLF.:</span><span t-if="o.partner_id.parent_id.phone" t-field="o.partner_id.parent_id.phone"/>
-                                    </div>
+                                        <span t-if="o.partner_id.parent_id.mobile">, </span><span t-if="o.partner_id.parent_id.mobile" t-field="o.partner_id.parent_id.mobile"/>
+                                   </div>
                                     <!-- CIF/NIF -->
                                     <div>
                                         <span t-if="o.partner_id.parent_id.vat">NIF/CIF: </span><span  t-if="o.partner_id.parent_id.vat" t-field="o.partner_id.parent_id.vat"/>
@@ -151,6 +152,7 @@
                                     <!-- tlf -->
                                     <div>
                                         <span t-if="o.partner_id.phone">TLF.:</span><span t-if="o.partner_id.phone" t-field="o.partner_id.phone"/>
+                                        <span t-if="o.partner_id.mobile">, </span><span t-if="o.partner_id.mobile" t-field="o.partner_id.mobile"/>
                                     </div>
                                     <!-- CIF/NIF -->
                                     <div>
@@ -195,6 +197,7 @@
                                 <!-- tlf -->
                                 <div>
                                     <span t-if="o.partner_id.phone">TLF.:</span><span t-if="o.partner_id.phone" t-field="o.partner_id.phone"/>
+                                    <span t-if="o.partner_id.mobile">, </span><span t-if="o.partner_id.mobile" t-field="o.partner_id.mobile"/>
                                 </div>
                             </div>
                             <!-- Fin direccion de envio -->
