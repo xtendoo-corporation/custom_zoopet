@@ -338,7 +338,7 @@
                                                     <!-- Fin IVA-->
                                                     <!-- Cantidad entregada -->
                                                     <div style="width:5%;display:block;float:left;text-align:right;">
-                                                        <span t-esc="'%.2f'%move_line.move_id.quantity_done"/>
+                                                        <span t-esc="'%.2f'%move_line.qty_done"/>
                                                     </div>
                                                     <!-- Fin cantidad entregada -->
                                                     <!-- Precio/U -->
