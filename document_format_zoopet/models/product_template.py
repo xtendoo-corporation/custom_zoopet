@@ -19,7 +19,6 @@ class ProductTemplate(models.Model):
     def _bom_ids(self):
         self.bom_ids = self.env['mrp.bom'].search(
             [('product_tmpl_id', '=', self.id)], limit=1)
-        print(self.delivery_ids)
 
     @api.model
     def _get_bom_ids(self):

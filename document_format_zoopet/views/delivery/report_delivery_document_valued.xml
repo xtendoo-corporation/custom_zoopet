@@ -89,7 +89,7 @@
                             </div>
                             <!-- Direcciones -->
                             <!-- DIreccion de facturacion -->
-                            <div style="width:49%;float:left;clear:both;margin-right:1%;border:2px solid black;height:195px;">
+                            <div style="width:49%;float:left;clear:both;margin-right:1%;border:2px solid black;height:223px;">
                                 <div style="background-color:blue;color:white;text-align:center;">
                                     Dirección de facturacíon
                                 </div>
@@ -162,7 +162,7 @@
                             </div>
                             <!-- Fin direccion de facturacion -->
                             <!-- Direccion de envio -->
-                            <div style="width:49%;float:left;border:2px solid black;margin-left:1%;height:195px;">
+                            <div style="width:49%;float:left;border:2px solid black;margin-left:1%;height:223px;">
                                 <div style="background-color:blue;color:white;text-align:center;">
                                     Dirección de envío
                                 </div>
