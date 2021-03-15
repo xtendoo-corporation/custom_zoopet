@@ -878,9 +878,11 @@
 						</table>
 					</div>
 					<div style="margin-top:10px;text-align:right;clear:both;" t-if="doc.state in ['draft','sent']">
-						<p>
-							Este presupuesto tiene una validez de 30 días.
-						</p>
+						<t t-if="isDep != 'Depositos'">
+							<p>
+								Este presupuesto tiene una validez de 30 días.
+							</p>
+						</t>
 					</div>
 					<!--
 					<div style="margin-top:10px;text-align:right;clear:both;" t-if="doc.payment_term_id">

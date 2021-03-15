@@ -24,6 +24,7 @@
         "product_brand",
         "stock_picking_report_valued",
         "point_of_sale",
+        "account_invoice_report_grouped_by_picking",
     ],
     "license": "AGPL-3",
     "data": [
@@ -49,6 +50,7 @@
         #Albarán en pedidos
         "views/sale_delivery/sale_delivery_without_price.xml",
         "views/sale_delivery/sale_delivery.xml",
+        "views/sale_delivery/sale_delivery_delivered_qty.xml",
 
         #Res_Partner
         "views/res_partner/res_partner_view.xml",
