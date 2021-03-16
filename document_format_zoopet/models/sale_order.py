@@ -19,8 +19,8 @@ class SaleOrder(models.Model):
 
     @api.model
     def _get_delivery_ids(self):
-
         delivery_ids= self.env['stock.picking'].search(
             [('sale_id', '=', self.id)], limit=1)
         return delivery_ids
+        
 

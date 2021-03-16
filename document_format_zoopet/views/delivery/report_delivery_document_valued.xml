@@ -38,8 +38,8 @@
             </t>
         </template>
 
-        <template id="report_delivery_document_valued">
-            <t t-name="stock.report_delivery_document">
+        <template id="document_format_zoopet.report_delivery_document_valued">
+            <t t-name="document_format_zoopet.report_delivery_document_valued">
                 <t t-set="isAlbaran" t-value="o.move_line_ids"></t>
                 <t t-set="doc_name" t-value="o.name"/>
                 <t t-call="web.html_container">
