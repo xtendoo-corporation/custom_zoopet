@@ -317,7 +317,7 @@
                                                                 <!-- Fin descripcion -->
                                                                 <!-- Cantidad entregada -->
                                                                 <div style="width:10%;display:block; float:left;text-align:right">
-                                                                    <span t-esc="'%.2f'%line.product_uom_qty"/>
+                                                                        <span t-esc="'%.2f'%line.qty_delivered"/>
                                                                 </div>
                                                                 <!-- Fin cantidad entregada -->
                                                                 <!-- Lista de materiales -->

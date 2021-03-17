@@ -222,10 +222,15 @@
                             <t t-else="">
                                 <t t-set="name_with_type" t-value="o.sale_type_id.journal_id.code + '/' + o.origin" />
                             </t>
-                                <b>
-                                    <span style="margin-left:2px;" t-esc="origin_label" />
-                                </b>
-                                <span t-esc="name_with_type" />
+                            <t t-set="origin_num" t-value="name_with_type.find(',')"/>
+								<t t-if="origin_num &gt; 0">
+								</t>
+								<t t-else="">
+									<b>
+									<span style="margin-left:2px;" t-esc="origin_label" />
+									</b>
+									<span t-esc="name_with_type" />
+								</t>
                         </div>
                     </div>
                     <!-- fin datos documento -->

@@ -400,7 +400,12 @@
                                                         <!-- Fin % de IVA -->
                                                         <!-- Cantidad entregada -->
                                                         <div style="width:8%; display:block; float:left; text-align:right">
-                                                            <span t-esc="'%.2f'%line.product_uom_qty"/>
+                                                            <t t-if="line.qty_delivered">
+                                                                <span t-esc="'%.2f'%line.qty_delivered"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <span t-esc="'%.2f'%line.product_uom_qty"/>
+                                                            </t>
                                                         </div>
                                                         <!-- Fin cantidad entregada -->
                                                         <!--Precio / U -->
