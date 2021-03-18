@@ -42,7 +42,7 @@
 
         <!-- Fin boton create Invoice -->
         <!-- Botones de stock picking all done-->
-        <record id="view_order_form_inherit_comercial" model="ir.ui.view">
+        <record id="zoopet_administration.view_order_form_inherit_comercial" model="ir.ui.view">
             <field name="name">view.order.form.inherit</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale_order_picking_all_done.view_order_form_inherit"/>
@@ -73,7 +73,7 @@
             </field>
         </record>
         <!-- Ocultar margen en ventas -->
-        <record id="view_order_form_inherit_without_margin" model="ir.ui.view">
+        <record id="zoopet_administration.view_order_form_inherit_without_margin" model="ir.ui.view">
             <field name="name">view.order.form.inherit.without.margin</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale_margin.sale_margin_sale_order"/>
@@ -86,7 +86,7 @@
         <!-- Fin Ocultar margen en ventas -->
         <!--Sale price-->
 
-        <record model="ir.ui.view" id="show_sale_price_form_product_template">
+        <record model="ir.ui.view" id="zoopet_administration.show_sale_price_form_product_template">
             <field name="name">show_sale_price_form_product_template</field>
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
@@ -97,7 +97,7 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="show_sale_price_tree_product_template">
+        <record model="ir.ui.view" id="zoopet_administration.show_sale_price_tree_product_template">
             <field name="name">show_sale_price_tree_product_template</field>
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_tree_view"/>
@@ -108,7 +108,7 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="show_sale_price_form_product_product">
+        <record model="ir.ui.view" id="zoopet_administration.show_sale_price_form_product_product">
             <field name="name">show_sale_price_form_product_product</field>
             <field name="model">product.product</field>
             <field name="inherit_id" ref="product.product_normal_form_view"/>
@@ -119,7 +119,7 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="show_sale_price_tree_product_product">
+        <record model="ir.ui.view" id="zoopet_administration.show_sale_price_tree_product_product">
             <field name="name">show_sale_price_tree_product_product</field>
             <field name="model">product.product</field>
             <field name="inherit_id" ref="product.product_product_tree_view"/>
@@ -130,7 +130,7 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="show_sale_price_kanban_product_template">
+        <record model="ir.ui.view" id="zoopet_administration.show_sale_price_kanban_product_template">
             <field name="name">show_sale_price_kanban_product_template</field>
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_kanban_view"/>
@@ -147,7 +147,7 @@
 
         <!--Cost price-->
         <!-- Productos -->
-        <record model="ir.ui.view" id="show_cost_price_form_product_template">
+        <record model="ir.ui.view" id="zoopet_administration.show_cost_price_form_product_template">
             <field name="name">show_cost_price_form_product_template</field>
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
@@ -158,7 +158,7 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="show_cost_price_tree_product_template">
+        <record model="ir.ui.view" id="zoopet_administration.show_cost_price_tree_product_template">
             <field name="name">show_cost_price_tree_product_template</field>
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_tree_view"/>
@@ -169,7 +169,7 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="show_cost_price_form_product_product">
+        <record model="ir.ui.view" id="zoopet_administration.show_cost_price_form_product_product">
             <field name="name">show_cost_price_form_product_product</field>
             <field name="model">product.product</field>
             <field name="inherit_id" ref="product.product_normal_form_view"/>
@@ -184,7 +184,7 @@
         </record>
         <!-- Fin productos -->
         <!-- Ventas -->
-        <record model="ir.ui.view" id="show_cost_price_sale_order_line">
+        <record model="ir.ui.view" id="zoopet_administration.show_cost_price_sale_order_line">
             <field name="name">show_cost_price_sale_order_line</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
@@ -217,7 +217,7 @@
         <!-- Fin cost price-->
 
         <!-- Purchase Page -->
-        <record model="ir.ui.view" id="show_purchase_page_form_product_product">
+        <record model="ir.ui.view" id="zoopet_administration.show_purchase_page_form_product_product">
             <field name="name">show_purchase_page_form_product_product</field>
             <field name="model">product.template</field>
             <field name="inherit_id" ref="purchase.view_product_supplier_inherit"/>
@@ -231,7 +231,7 @@
 
         <!--buscar mas... (ventas)-->
 
-        <record model="ir.ui.view" id="product_template_tree_view_inherit">
+        <record model="ir.ui.view" id="zoopet_administration.product_template_tree_view_inherit">
             <field name="name">product.template.tree.view.inherit</field>
             <field name="model">product.product</field>
             <field name="inherit_id" ref="product.product_product_tree_view"/>
@@ -244,7 +244,7 @@
         <!-- Fin buscar mas... (ventas) -->
 
         <!-- Tipo en vista de presupuestos -->
-        <record id="sale_quotation_type_view_list" model="ir.ui.view">
+        <record id="zoopet_administration.sale_quotation_type_view_list" model="ir.ui.view">
             <field name="name">sale.quotation.type.view.list</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_quotation_tree"/>
@@ -258,7 +258,7 @@
         <!-- Fin tipo en vista de presupuestos -->
 
         <!-- Tipo en vista de pedidos -->
-        <record id="sale_order_type_view_list" model="ir.ui.view">
+        <record id="zoopet_administration.sale_order_type_view_list" model="ir.ui.view">
             <field name="name">sale.order.type.view.list</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_tree"/>
@@ -270,6 +270,20 @@
             </field>
         </record>
         <!-- Fin tipo en vista de pedidos -->
+
+        <!-- Editar forma de entrega -->
+        <record model="ir.ui.view" id="zoopet_administration.view_order_form_with_carrier_inherit">
+            <field name="name">view.order.form.with.carrier.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="delivery.view_order_form_with_carrier"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='carrier_id']" position="replace">
+                    <field name="is_comercial" invisible="True"/>
+                    <field name="carrier_id" domain="[('id', 'in', available_carrier_ids)]" context="{'order_id': id}" class="oe_inline" options="{'no_create': True, 'no_open': True}" attrs="{'readonly':[('state','not in',('draft','sent')),('is_comercial','=',True)]}"/> <i class="fa fa-check text-success" role="img" aria-label="Rating OK" title="Rating OK" attrs="{'invisible':['|','|',('carrier_id','=',False),('state','not in',('draft','sent')),('delivery_rating_success','=',False)]}"/>
+                </xpath>
+            </field>
+        </record>
+        <!-- Editar forma de entrega -->
 
     </data>
 </odoo>
