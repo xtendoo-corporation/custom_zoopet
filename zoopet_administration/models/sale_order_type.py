@@ -7,6 +7,5 @@ class SaleOrderTypology(models.Model):
     _inherit = 'sale.order.type'
 
     fiscal_position_id = fields.Many2one(
-        comodel_name='account.fiscal.position',
-         string='Fiscal Position',
-         )
+        comodel_name='account.fiscal.position', string='Fiscal Position',
+        )

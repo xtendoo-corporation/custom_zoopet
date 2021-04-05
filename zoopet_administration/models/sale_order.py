@@ -34,6 +34,14 @@ class SaleOrder(models.Model):
                                 }
                     }
 
+    # Método reescribe la posición fiscal en función del tipo de venta
+    @api.onchange("type_id")
+    def set_fiscal_position_where_type(self):
+        if self.type_id.fiscal_position_id:
+            self.fiscal_position_id = self.type_id.fiscal_position_id
+        else:
+            self.fiscal_position_id=self.fiscal_position_id
+           
 
 
 
