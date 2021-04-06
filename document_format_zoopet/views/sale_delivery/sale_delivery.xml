@@ -80,7 +80,10 @@
                         <div t-if="doc.partner_id" style="margin-left:2%;">
                             <!-- nombre -->
                             <div t-if="doc.partner_id.name">
-                                <span t-field="doc.partner_id.name"/>
+                                <t t-set="partner_name" t-value="doc.partner_id.name"/>
+							    <t t-set="partner_num" t-value="partner_name.find('(') - 1 " />
+							    <t t-set="partner_name" t-value="partner_name[:partner_num]" />
+							    <span t-esc="partner_name" />
                             </div>
                             <!-- nombre commercial_name -->
                             <div t-if="doc.partner_id.comercial">
@@ -131,7 +134,10 @@
                         <div t-if="doc.partner_id" style="margin-left:2%;">
                             <!-- nombre -->
                             <div t-if="doc.partner_id.name">
-                                <span t-field="doc.partner_id.name"/>
+                                <t t-set="partner_name" t-value="doc.partner_id.name"/>
+							    <t t-set="partner_num" t-value="partner_name.find('(') - 1 " />
+							    <t t-set="partner_name" t-value="partner_name[:partner_num]" />
+							    <span t-esc="partner_name" />
                             </div>
                             <!-- nombre commercial_name -->
                             <div t-if="doc.partner_id.comercial">

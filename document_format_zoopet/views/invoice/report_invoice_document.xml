@@ -76,7 +76,10 @@
 									<t t-set="partner_id" t-value="o.partner_id.parent_id" />
 								</t>
 								<div t-if="partner_id.name">
-									<span t-field="partner_id.name" />
+                                	<t t-set="partner_name" t-value="partner_id.name"/>
+							    	<t t-set="partner_num" t-value="partner_name.find('(') - 1 " />
+							    	<t t-set="partner_name" t-value="partner_name[:partner_num]" />
+							    	<span t-esc="partner_name" />
 								</div>
 								<!-- nombre comercial -->
 								<div t-if="partner_id.comercial">
@@ -138,7 +141,10 @@
 									<t t-set="partner_id" t-value="o.partner_id.parent_id" />
 								</t>
 								<div t-if="partner_id.name">
-									<span t-field="partner_id.name" />
+                                	<t t-set="partner_name" t-value="partner_id.name"/>
+							    	<t t-set="partner_num" t-value="partner_name.find('(') - 1 " />
+							    	<t t-set="partner_name" t-value="partner_name[:partner_num]" />
+							    	<span t-esc="partner_name" />
 								</div>
 								<!-- nombre comercial -->
 								<div t-if="partner_id.comercial">
