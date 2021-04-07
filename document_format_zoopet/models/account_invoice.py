@@ -82,4 +82,6 @@ class AccountInvoice(models.Model):
         return no_picking + self._sort_grouped_lines(with_picking)
 
 
+
+
     

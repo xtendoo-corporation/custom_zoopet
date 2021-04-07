@@ -50,131 +50,135 @@
 							</t>
 						</t>
 						<!-- si tiene copias -->
-						<!-- Direcciones -->
-						<!-- DIreccion de facturacion -->
-						<div style="width:49%;float:left;clear:both;margin-right:1%;border:2px solid black;height:223px;">
-							<div style="background-color:blue;color:white;text-align:center;">
-								Dirección de facturacíon
-							</div>
-							<div t-if="o.partner_id" style="margin-left:2%;">
-								<!-- nombre -->
-								<t t-set="partner_id" t-value="o.partner_id" />
-								<t t-if="partner_id.parent_id">
-									<t t-set="partner_id" t-value="o.partner_id.parent_id" />
-								</t>
-								<div t-if="partner_id.name">
-                                	<t t-set="partner_name" t-value="partner_id.name"/>
-							    	<t t-set="partner_num" t-value="partner_name.find('(') - 1 " />
-							    	<t t-set="partner_name" t-value="partner_name[:partner_num]" />
-							    	<span t-esc="partner_name" />
-								</div>
-								<!-- nombre comercial -->
-								<div t-if="partner_id.comercial">
-									<span t-field="o.partner_id.comercial" />
-								</div>
-								<!-- calle -->
-								<div>
-									<span t-field="o.partner_id.street" />
-								</div>
-								<!-- calle 2 -->
-								<div>
-									<span t-field="o.partner_id.street2" />
-								</div>
-								<!-- CP, ciudad -->
-								<div>
-									<span t-if="o.partner_id.zip" t-field="o.partner_id.zip" />
-									<span t-if="o.partner_id.city" t-field="o.partner_id.city" />
-								</div>
-								<!-- Provincia -->
-								<div>
-									<span t-if="o.partner_id.state_id.name" t-field="o.partner_id.state_id.name" />
-								</div>
-								<!-- tlf -->
-								<div>
-									<span t-if="o.partner_id.phone">
-										TLF.:
-									</span>
-									<span t-if="o.partner_id.phone" t-field="o.partner_id.phone" />
-									<span t-if="o.partner_id.mobile">, </span><span t-if="o.partner_id.mobile" t-field="o.partner_id.mobile"/>
-								</div>
-								<!-- CIF/NIF -->
-								<div>
-									<span t-if="o.partner_id.vat">
-										NIF/CIF:
-									</span>
-									<span t-if="o.partner_id.vat" t-field="o.partner_id.vat" />
-								</div>
-								<!-- Nota -->
-								<t t-if="o.partner_id.parent_id">
-									<div t-if="o.partner_id.comment">
-										<span>
-											Nota:
-										</span>
-										<span t-field="o.partner_id.comment" />
-									</div>
-								</t>
-							</div>
-						</div>
-						<!-- Fin direccion de facturacion -->
-						<!-- Direccion de envio -->
-						<div style="width:49%;float:left;border:2px solid black;margin-left:1%;height:223px;">
-							<div style="background-color:blue;color:white;text-align:center;">
-								Dirección de envío
-							</div>
-							<div t-if="o.partner_id" style="margin-left:2%;">
-								<!-- nombre -->
-								<t t-set="partner_id" t-value="o.partner_id" />
-								<t t-if="partner_id.parent_id">
-									<t t-set="partner_id" t-value="o.partner_id.parent_id" />
-								</t>
-								<div t-if="partner_id.name">
-                                	<t t-set="partner_name" t-value="partner_id.name"/>
-							    	<t t-set="partner_num" t-value="partner_name.find('(') - 1 " />
-							    	<t t-set="partner_name" t-value="partner_name[:partner_num]" />
-							    	<span t-esc="partner_name" />
-								</div>
-								<!-- nombre comercial -->
-								<div t-if="partner_id.comercial">
-									<span t-field="partner_id.comercial" />
-								</div>
-								<!-- calle -->
-								<div>
-									<span t-field="o.partner_shipping_id.street" />
-								</div>
-								<!-- calle 2 -->
-								<div>
-									<span t-field="o.partner_shipping_id.street2" />
-								</div>
-								<!-- CP, ciudad -->
-								<div>
-									<span t-if="o.partner_shipping_id.zip" t-field="o.partner_shipping_id.zip" />
-									<span t-if="o.partner_shipping_id.city" t-field="o.partner_shipping_id.city" />
-								</div>
-								<!-- Provincia -->
-								<div>
-									<span t-if="o.partner_shipping_id.state_id.name" t-field="o.partner_shipping_id.state_id.name" />
-								</div>
-								<!-- tlf -->
-								<div>
-									<span t-if="o.partner_shipping_id.phone">
-										TLF.:
-									</span>
-									<span t-if="o.partner_shipping_id.phone" t-field="o.partner_shipping_id.phone" />
-									<span t-if="o.partner_shipping_id.mobile">, </span><span t-if="o.partner_shipping_id.mobile" t-field="o.partner_shipping_id.mobile"/>
-								</div>
-								<!-- Nota -->
-								<t t-if="o.partner_id != o.partner_shipping_id">
-									<div t-if="o.partner_shipping_id.comment">
-										<span>
-											Nota:
-										</span>
-										<span t-field="o.partner_shipping_id.comment" />
-									</div>
-								</t>
-							</div>
-						</div>
-						<!-- Fin direccion de envio -->
-						<!-- Fin direcciones -->
+						 <!-- Direcciones -->
+                    <!-- DIreccion de facturacion -->
+                    <div style="width:49%;float:left;clear:both;margin-right:1%;border:2px solid black;height:223px;">
+                        <div style="background-color:blue;color:white;text-align:center;">
+                            Dirección de facturacíon
+                        </div>
+                        <div t-if="o.partner_id" style="margin-left:2%;">
+                            <!-- nombre -->
+                            <t t-set="partner_id" t-value="o.partner_id" />
+                            <t t-if="partner_id.parent_id">
+                                <t t-set="partner_id" t-value="o.partner_id.parent_id" />
+                            </t>
+                            <div t-if="partner_id.name">
+                                <t t-set="partner_name" t-value="partner_id.name"/>
+							    <t t-set="partner_num" t-value="partner_name.find('(') - 1 " />
+                                <t t-if="partner_num &gt; 0">
+								    <t t-set="partner_name" t-value="partner_name[:partner_num]" />
+							    </t>
+							    <span t-esc="partner_name" />
+                            </div>
+                            <!-- nombre comercial -->
+                            <div t-if="partner_id.comercial">
+                                <span t-field="o.partner_id.comercial" />
+                            </div>
+                            <!-- calle -->
+                            <div>
+                                <span t-field="o.partner_id.street" />
+                            </div>
+                            <!-- calle 2 -->
+                            <div>
+                                <span t-field="o.partner_id.street2" />
+                            </div>
+                            <!-- CP, ciudad -->
+                            <div>
+                                <span t-if="o.partner_id.zip" t-field="o.partner_id.zip" />
+                                <span t-if="o.partner_id.city" t-field="o.partner_id.city" />
+                            </div>
+                            <!-- Provincia -->
+                            <div>
+                                <span t-if="o.partner_id.state_id.name" t-field="o.partner_id.state_id.name" />
+                            </div>
+                            <!-- tlf -->
+                            <div>
+                                <span t-if="o.partner_id.phone">
+                                    TLF.:
+                                </span>
+                                <span t-if="o.partner_id.phone" t-field="o.partner_id.phone" />
+                                <span t-if="o.partner_id.mobile">, </span><span t-if="o.partner_id.mobile" t-field="o.partner_id.mobile"/>
+                            </div>
+                            <!-- CIF/NIF -->
+                            <div>
+                                <span t-if="o.partner_id.vat">
+                                    NIF/CIF:
+                                </span>
+                                <span t-if="o.partner_id.vat" t-field="o.partner_id.vat" />
+                            </div>
+                            <!-- Nota -->
+                            <t t-if="o.partner_id.parent_id">
+                                <div t-if="o.partner_id.comment">
+                                    <span>
+                                        Nota:
+                                    </span>
+                                    <span t-field="o.partner_id.comment" />
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                    <!-- Fin direccion de facturacion -->
+                    <!-- Direccion de envio -->
+                    <div style="width:49%;float:left;border:2px solid black;margin-left:1%;height:223px;">
+                        <div style="background-color:blue;color:white;text-align:center;">
+                            Dirección de envío
+                        </div>
+                        <div t-if="o.partner_id" style="margin-left:2%;">
+                            <!-- nombre -->
+                            <t t-set="partner_id" t-value="o.partner_id" />
+                            <t t-if="partner_id.parent_id">
+                                <t t-set="partner_id" t-value="o.partner_id.parent_id" />
+                            </t>
+                            <div t-if="partner_id.name">
+                                <t t-set="partner_name" t-value="partner_id.name"/>
+							    <t t-set="partner_num" t-value="partner_name.find('(') - 1 " />
+                                <t t-if="partner_num &gt; 0">
+								    <t t-set="partner_name" t-value="partner_name[:partner_num]" />
+							    </t>
+							    <span t-esc="partner_name" />
+                            </div>
+                            <!-- nombre comercial -->
+                            <div t-if="partner_id.comercial">
+                                <span t-field="partner_id.comercial" />
+                            </div>
+                            <!-- calle -->
+                            <div>
+                                <span t-field="o.partner_shipping_id.street" />
+                            </div>
+                            <!-- calle 2 -->
+                            <div>
+                                <span t-field="o.partner_shipping_id.street2" />
+                            </div>
+                            <!-- CP, ciudad -->
+                            <div>
+                                <span t-if="o.partner_shipping_id.zip" t-field="o.partner_shipping_id.zip" />
+                                <span t-if="o.partner_shipping_id.city" t-field="o.partner_shipping_id.city" />
+                            </div>
+                            <!-- Provincia -->
+                            <div>
+                                <span t-if="o.partner_shipping_id.state_id.name" t-field="o.partner_shipping_id.state_id.name" />
+                            </div>
+                            <!-- tlf -->
+                            <div>
+                                <span t-if="o.partner_shipping_id.phone">
+                                    TLF.:
+                                </span>
+                                <span t-if="o.partner_shipping_id.phone" t-field="o.partner_shipping_id.phone" />
+                                 <span t-if="o.partner_shipping_id.mobile">, </span><span t-if="o.partner_shipping_id.mobile" t-field="o.partner_shipping_id.mobile"/>
+                            </div>
+                            <!-- Nota -->
+                            <t t-if="o.partner_id != o.partner_shipping_id">
+                                <div t-if="o.partner_shipping_id.comment">
+                                    <span>
+                                        Nota:
+                                    </span>
+                                    <span t-field="o.partner_shipping_id.comment" />
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                    <!-- Fin direccion de envio -->
+                    <!-- Fin direcciones -->
 						<!-- datos documento -->
 						<div style="width:49%;clear:both;float:left;margin-right:1%;margin-top:5px;font-size:0.9em;margin-bottom:5px;">
 							<div style="width:50%;float:left;border:2px solid black;height:25px;">
