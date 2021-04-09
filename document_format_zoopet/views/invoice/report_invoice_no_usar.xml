@@ -4,13 +4,16 @@
 
     <data>
 
-      <report id="report_invoice_not_use_with_copy"
+      <report id="document_format_zoopet.report_invoice_not_use_with_copy"
                 string="Facturas (NO USAR)"
                 model="account.invoice"
                 report_type="qweb-pdf"
                 name="document_format_zoopet.report_invice_copy_not_use"
                 print_report_name="'Invoice - %s - %s' % (object.partner_id.name or '', object.name)"
         />
+        <record id="document_format_zoopet.report_invoice_not_use_with_copy" model="ir.actions.report">
+            <field name="groups_id" eval="[(4, ref('zoopet_administration.print_all_formats'))]"/>
+        </record>
 
         <template id="document_format_zoopet.report_invice_copy_not_use">
             <t t-name="document_format_zoopet.report_invoice_not_use">

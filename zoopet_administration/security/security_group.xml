@@ -43,6 +43,12 @@
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
         </record>
         <!-- Fin editar pedidos validados -->
+         <!-- Imprimir todos los formatos -->
+        <record id="print_all_formats" model="res.groups">
+            <field name="name">Print all formats</field>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+        <!-- Fin Imprimir todos los formatos -->
         <!--  Regla para que no se puedan crear ni editar clientes a comerciales -->
         <record id="no_create_no_edit_contacts" model="ir.rule">
             <field name="name">Contactos: no crear ni editar</field>

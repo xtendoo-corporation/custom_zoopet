@@ -25,6 +25,7 @@
         "stock_picking_report_valued",
         "point_of_sale",
         "account_invoice_report_grouped_by_picking",
+        "zoopet_administration",
     ],
     "license": "AGPL-3",
     "data": [

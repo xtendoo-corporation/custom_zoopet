@@ -2,6 +2,9 @@
 <odoo>
     <data>
 
+        <!--<function model="ir.actions.server" name="unlink_action" 
+          eval="[ref('website_sale.ir_actions_server_sale_cart_recovery_email')]"/>-->
+
         <!-- Boton create Invoice-->
         <record id="sale_order_view_form" model="ir.ui.view">
             <field name="name">sale.order.form</field>

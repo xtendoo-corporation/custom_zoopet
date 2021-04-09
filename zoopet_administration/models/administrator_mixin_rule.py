@@ -60,3 +60,21 @@ class AdministratorMixinRule(models.Model):
         return self.env["res.users"].has_group(
                 "res_partner_hide_internal_notes.permission_to_archive"
             )
+
+    print_all_formats = fields.Boolean(
+        compute='_print_all_formats',
+        string="Print all Formats",
+        default=lambda self: self._get_print_all_formats()
+    )
+
+    @api.one
+    def _print_all_formats(self):
+        self.permission_to_archive = self.env["res.users"].has_group(
+                "zoopet_administration.print_all_formats"
+            )
+
+    @api.model
+    def _get_print_all_formats(self):
+        return self.env["res.users"].has_group(
+                "zoopet_administration.print_all_formats"
+            )

@@ -1,6 +1,7 @@
 # -- coding: utf-8 --
 
 from odoo import api, models, fields
+import logging
 
 
 class SaleOrder(models.Model):

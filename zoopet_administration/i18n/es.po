@@ -59,3 +59,8 @@ msgstr "Editar pedidos bloqueados"
 #: model:res.groups,name:zoopet_administration.permission_to_archive
 msgid "Permission to archive"
 msgstr "Permiso para archivar"
+
+#. module: zoopet_administration
+#: model:res.groups,name:zoopet_administration.print_all_formats
+msgid "Print all formats"
+msgstr "Imprimir todos los formatos"
