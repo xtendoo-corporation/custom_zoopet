@@ -7,17 +7,18 @@
 
 {
     "name": "Zoopet Sale order only comercial clients",
-    "summary": """Zoopet Sale order only comercial clients""",
+    "summary": """Zoopet sale order only comercial clients""",
     "version": "12.0.1.0.0",
     "description": """Zoopet Sale order only comercial clients""",
-    "author": "DDL",
+    "author": "Dani Domínguez",
     "company": "Xtendoo",
-    "website": "http://www.xtendoo.com",
+    "website": "https://xtendoo.es/",
     "category": "Extra Tools",
-    "depends": ["sale",
-                "zoopet_administration"],
+    "depends": [
+                "sale",
+                "zoopet_administration"
+                ],
     "license": "AGPL-3",
-    "data": ["security/security.xml"],
     "demo": [],
     "installable": True,
     "auto_install": False,

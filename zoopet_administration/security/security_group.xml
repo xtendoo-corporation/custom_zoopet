@@ -73,5 +73,17 @@
             <field name="perm_read" eval="False"/>
         </record>
 <!--  Fin Regla para que no se puedan crear ni editar productos a comerciales -->
+<!--  Regla para que no se puedan crear ni editar tarifas a comerciales -->
+        <record id="no_create_no_edit_pricelist" model="ir.rule">
+            <field name="name">Tarifas: no crear ni editar</field>
+            <field name="model_id" ref="product.model_product_pricelist_item"/>
+            <field name="domain_force">[('id','=', 0)]</field>
+            <field name="groups" eval="[(4, ref('zoopet_administration.comercial_group'))]"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+    <!--  Fin Regla para que no se puedan crear ni tarifas clientes a comerciales -->
     </data>
 </odoo>

@@ -28,4 +28,3 @@ class SaleOrder(models.Model):
             }
 
         return {"domain": domain}
-
