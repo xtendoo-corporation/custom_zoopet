@@ -355,15 +355,18 @@
                 <div style="clear:both;text-align:center;font-family: 'Roboto', sans-serif !important;font-size:0.8em;">
                     <!-- Frase factura -->
                     <t t-if="isInvoice">
-                         <div>
-                            <span>La posesión de esta
-                                <t t-if="not_use_invoice == 1">
-                                    Factura
-                                </t>
-                                <t t-else="">
-                                    Nota de crédito
-                                </t> no justifica su pago</span>
-                        </div>
+                        <t t-if="serieInv not in ('Serie T','Serie P')">
+                            <div>
+                                <span>La posesión de esta Factura no justifica su pago</span>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <t t-if="not_use_invoice == 1">
+                                <div>
+                                    <span>La posesión de esta Factura no justifica su pago</span>
+                                </div>
+                            </t>
+                        </t>
                     </t>
                     <t t-else="">
                     </t>
