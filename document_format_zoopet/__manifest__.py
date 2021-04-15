@@ -34,6 +34,9 @@
         # delivery
         "views/delivery/report_delivery_document_without_price.xml",
         "views/delivery/report_delivery_document_valued.xml",
+        # delivery Labels
+        "views/delivery_print_labels/report_label_25_x_38.xml",
+        "views/delivery_print_labels/report_label_50_x_100.xml",
         # sale_order
         "views/sale/report_saleorder_document.xml",
         "views/sale/sale_without_price.xml",
