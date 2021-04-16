@@ -271,7 +271,9 @@
                                             <td style="padding:0px;margin:0px;border:none;">
                                                 <!-- calculo peso -->
                                                 <t t-if="line.product_id.weight">
-                                                    <t t-set="weight" t-value="weight + line.product_id.weight * line.product_uom_qty"></t>
+                                                    <t t-if="line.qty_delivered &gt; 0.01">
+                                                        <t t-set="weight" t-value="weight + line.product_id.weight * line.qty_delivered"/>
+                                                    </t>
                                                 </t>
                                                 <!-- fin calculo peso -->
                                                 <t t-set="productName" t-value="line.product_id.name"></t>
@@ -300,6 +302,9 @@
                                                             </t>
                                                         </t>
                                                         <!-- verificar que no sea portes = 0€ -->
+                                                        <t t-if="line.qty_delivered  &lt; 0.01">
+                                                            <t t-set="mostrar" t-value="False"/>
+                                                        </t>
                                                         <t t-if="mostrar == True">
                                                             <div style="font-size:0.7em;clear:both;width:99.6%;">
                                                                 <!-- codigo -->
