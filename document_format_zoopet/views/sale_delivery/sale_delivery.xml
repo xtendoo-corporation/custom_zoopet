@@ -448,9 +448,9 @@
                                                         <!-- Fin precio neto / u -->
                                                         <!-- Precio total linea -->
                                                         <div style="width:10%; display:block;float:left;text-align:right;">
-                                                            <t t-set="neto_linea" t-value="line.price_reduce * line.product_uom_qty"/>
+                                                            <t t-set="neto_linea" t-value="line.price_reduce * line.qty_delivered"/>
                                                             <span t-esc="line.price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"></span>
-                                                            <t t-set="total_doc" t-value="total_doc + (line.qty_delivered * line.price_subtotal)"/>
+                                                            <t t-set="total_doc" t-value="total_doc + neto_linea"/>
                                                         </div>
                                                         <!-- Lista de materiales -->
                                                         <t t-if="line.product_id.bom_count">
