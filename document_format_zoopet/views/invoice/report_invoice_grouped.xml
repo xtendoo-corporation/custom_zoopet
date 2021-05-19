@@ -4,7 +4,7 @@
 
     <data>
 
-      <report id="report_invoice_grouped"
+      <report id="document_format_zoopet.report_invoice_grouped"
                 string="Facturas Agrupada"
                 model="account.invoice"
                 report_type="qweb-pdf"

@@ -18,7 +18,7 @@
 
         </record>-->
 
-       <report id="report_delivery_without_price"
+       <report id="document_format_zoopet.report_delivery_without_price"
                 string="Albarán Sin Valorar"
                 model="stock.picking"
                 report_type="qweb-pdf"

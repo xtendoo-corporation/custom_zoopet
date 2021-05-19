@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-      <report id="sale_delivery_without_price"
+      <report id="document_format_zoopet.sale_delivery_without_price"
                 string="Albarán sin valorar"
                 model="sale.order"
                 report_type="qweb-pdf"
@@ -137,7 +137,7 @@
 							    <t t-if="partner_num &gt; 0">
 								    <t t-set="partner_name" t-value="partner_name[:partner_num]" />
 							    </t>
-							    <span t-esc="partner_name"/>                                
+							    <span t-esc="partner_name"/>
                             </div>
                             <!-- nombre commercial_name -->
                             <div t-if="doc.partner_id.comercial">

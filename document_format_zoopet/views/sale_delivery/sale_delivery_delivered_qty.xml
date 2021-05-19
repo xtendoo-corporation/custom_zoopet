@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-      <report id="sale_delivery_delivered_qty"
+      <report id="document_format_zoopet.sale_delivery_delivered_qty"
                 string="Albarán (cantidades entregadas)"
                 model="sale.order"
                 report_type="qweb-pdf"
@@ -627,7 +627,7 @@
                                <table style="border-bottom:4px solid black;">
                                     <tr>
                                         <td style="solid; black; padding: 0px; margin: 0px; width:13%; !important;">
-                            
+
                                 <!-- Base imponible sin descuentos -->
                                 <div t-if="doc.amount_global_discount != 0" style="width:50%;float:left;">
                                     <span>Bruto</span>

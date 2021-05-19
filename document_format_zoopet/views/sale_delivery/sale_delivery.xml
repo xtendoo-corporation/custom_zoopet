@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-      <report id="sale_delivery"
+      <report id="document_format_zoopet.sale_delivery"
                 string="Albarán"
                 model="sale.order"
                 report_type="qweb-pdf"
@@ -652,11 +652,11 @@
 								            <div style="width:50%;float:left;text-align:right;">
 									            <b>
 										            <span style="margin-right:5px;" t-esc="total_doc" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}" />
-									            </b>    
-								            </div>									    
+									            </b>
+								            </div>
 								        </td>
 							        </tr>
-						        </table>    
+						        </table>
 					        </div>
                             <div style="margin-top:10px;text-align:right;clear:both;" t-if="doc.state in ['draft','sent']">
                                 <!--<p>Este presupuesto tiene una validez de 30 días.</p> -->

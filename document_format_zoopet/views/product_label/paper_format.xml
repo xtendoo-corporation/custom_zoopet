@@ -2,7 +2,7 @@
 
 <odoo>
     <data>
-         <record id="label_zoopet_10x5" model="report.paperformat">
+         <record id="document_format_zoopet.label_zoopet_10x5" model="report.paperformat">
             <field name="name">Label Zoopet 10x5</field>
             <field name="default" eval="False"/>
             <field name="format">custom</field>
@@ -20,7 +20,7 @@
        <!-- <record id="product.report_producttemplatebarcode" model="ir.actions.report">
             <field name="paperformat_id" ref="document_format_zoopet.label_zoopet_10x5"/>
         </record> -->
-        <record id="label_zoopet" model="report.paperformat">
+        <record id="document_format_zoopet.label_zoopet" model="report.paperformat">
             <field name="name">Label Zoopet</field>
             <field name="default" eval="False"/>
             <field name="format">custom</field>

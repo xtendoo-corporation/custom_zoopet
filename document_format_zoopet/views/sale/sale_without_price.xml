@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-      <report id="sale_without_price"
+      <report id="document_format_zoopet.sale_without_price"
                 string="Pedido / Presupuesto sin valorar"
                 model="sale.order"
                 report_type="qweb-pdf"

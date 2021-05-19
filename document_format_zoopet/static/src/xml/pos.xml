@@ -1,10 +1,10 @@
 
-<templates id="template" xml:space="preserve">
+<templates id="document_format_zoopet.template" xml:space="preserve">
     <t t-extend="PosTicket">
         <t t-jquery="div[class='pos-sale-ticket']" t-operation="replace">
             <div class="pos-sale-ticket">
                 <div class="pos-center-align">
-                    <t t-esc="order.formatted_validation_date"/> 
+                    <t t-esc="order.formatted_validation_date"/>
                     <t t-esc="order.name"/>
                 </div>
                 <br />
@@ -28,7 +28,7 @@
                     <div style="width:100%;clear:both;height:1px;background-color:grey;"></div>
                 </div>
                 <!--Fin Cabecera-->
-                <!-- Lineas--> 
+                <!-- Lineas-->
                 <t t-foreach="orderlines" t-as="orderline" >
                     <div>
                         <div class="pos-right-align" style="width:15%;float:left;font-size:0.8em;text-align:center;">
@@ -37,7 +37,7 @@
                         </div>
                         <div style="width:55%;float:left;font-size:0.8em;text-align:left;">
                             <span style="margin-left:2px;">
-                                <t t-esc="orderline.get_product().display_name"/> 
+                                <t t-esc="orderline.get_product().display_name"/>
                                 <t t-if="orderline.get_discount() > 0">
                                 <span>con descuento del </span>
                                     <t t-esc="orderline.get_discount()"/>%
