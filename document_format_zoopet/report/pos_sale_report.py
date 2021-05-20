@@ -43,7 +43,8 @@ class SaleReport(models.Model):
             sum((l.price_unit * l.product_uom_qty * l.discount / 100.0 / CASE COALESCE(s.currency_rate, 0) WHEN 0 THEN 1.0 ELSE s.currency_rate END)) as discount_amount,
             s.id as order_id,
             SUM(l.margin / CASE COALESCE(s.currency_rate, 0) WHEN 0 THEN 1.0 ELSE s.currency_rate END) AS margin,
-            s.warehouse_id as warehouse_id
+            s.warehouse_id as warehouse_id,
+            t.website_id as website_id
         """
 
 
@@ -88,11 +89,13 @@ class SaleReport(models.Model):
             sum((l.price_unit * l.discount * l.qty / 100.0 / CASE COALESCE(pos.currency_rate, 0) WHEN 0 THEN 1.0 ELSE pos.currency_rate END)) as discount_amount,
             NULL as order_id,
             SUM(l.margin / CASE COALESCE(pos.currency_rate, 0) WHEN 0 THEN 1.0 ELSE pos.currency_rate END) AS margin,
-            0 as warehouse_id
+            0 as warehouse_id,
+            t.website_id as website_id
         '''
 
-        for field in fields.keys():
-            select_ += ', NULL AS %s' % (field)
+        #for field in fields.keys():
+            #_sale_select_ += ', 0 AS %s' % field
+            #_pos_select_ += ', 0 AS %s' % field
 
         _sale_from_ = '''
             sale_order_line l
@@ -139,9 +142,10 @@ class SaleReport(models.Model):
             l.discount,
             s.id,
             l.margin,
-            s.warehouse_id
+            s.warehouse_id,
+            t.website_id
         '''
-        
+
         _pos_groupby_ = '''
             l.order_id,
             l.product_id,
@@ -164,11 +168,12 @@ class SaleReport(models.Model):
             u.factor,
             config.crm_team_id,
             l.margin,
-            warehouse_id
+            warehouse_id,
+            t.website_id
         '''
 
         sale = '(SELECT %s FROM %s GROUP BY %s)' % (_sale_select_, _sale_from_, _sale_groupby_)
-        
+
         pos = '(SELECT %s FROM %s GROUP BY %s)' % (_pos_select_, _pos_from_, _pos_groupby_)
 
         return '%s UNION ALL %s' % (sale, pos)
