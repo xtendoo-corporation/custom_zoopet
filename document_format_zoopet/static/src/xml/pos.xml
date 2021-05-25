@@ -14,6 +14,17 @@
                 <div class="receipt-phone pos-center-align">
                     Phone: <t t-esc="widget.pos.company.phone || ''"/><br />
                 </div>
+                 <t t-jquery="[t-if='receipt.header_xml']" t-operation="after">
+                    <t t-if="order.get_client()">
+                        <div class="pos-center-align">
+                            <span class="pos-center-align">Datos del cliente</span><br />
+                            Name: <t t-esc="order.get_client().name ? order.get_client().name : ''"/><br />
+                            VAT: <t t-esc="order.get_client().vat ? order.get_client().vat : ''"/><br />
+                            Address: <t t-esc="order.get_client().address ? order.get_client().address : ''"/>
+                        </div>
+                         <br />
+                    </t>
+                </t>
                 <!--Cabecera-->
                 <div>
                     <div style="width:15%;float:left;text-align:center;margin-left:">
