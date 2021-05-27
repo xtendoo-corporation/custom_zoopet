@@ -5,7 +5,10 @@
             <div class="pos-sale-ticket">
                 <div class="pos-center-align">
                     <t t-esc="order.formatted_validation_date"/>
-                    <t t-esc="order.name"/>
+                    <br />
+                    <span>Factura Simplificada:</span>
+                    <span t-esc="order.get_inv_number()"></span>
+                    <!--<t t-esc="order.name"/> -->
                 </div>
                 <br />
                 <div class="pos-center-align">
@@ -20,7 +23,7 @@
                             <span class="pos-center-align">Datos del cliente</span><br />
                             Name: <t t-esc="order.get_client().name ? order.get_client().name : ''"/><br />
                             VAT: <t t-esc="order.get_client().vat ? order.get_client().vat : ''"/><br />
-                            Address: <t t-esc="order.get_client().address ? order.get_client().address : ''"/>
+                            <t t-esc="order.get_client().address ? order.get_client().address : ''"/>
                         </div>
                          <br />
                     </t>
