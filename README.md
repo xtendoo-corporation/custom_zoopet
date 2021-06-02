@@ -7,4 +7,4 @@
 #stock_picking_add_pallets_lumps -> Añade los campos nº de bultos y nº de palets en Albaranes  
 #sale_order_show_more_tags -> Añade etiquetas de productos en la vista "Buscar mas..." en productos al hacer una venta, depende de product_template_tags  
 #zoopet_sale_global_discount -> Añade descuentos globales en ventas (modificado por xtendoo)  
-#zoopet_account_global_discount -> Añade descuentos globales en factura (modificado por xtendoo)
+#zoopet_account_global_discount -> Añade descuentos globales en factura (modificado por xtendoo).
