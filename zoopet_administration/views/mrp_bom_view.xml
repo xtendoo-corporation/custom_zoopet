@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="zoopet_administration.mrp_bom_form_view_print_inherit" model="ir.ui.view">
+            <field name="name">mrp.bom.form.view.print.inherit</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='routing_id']" position="after">
+                    <field name="to_print"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
