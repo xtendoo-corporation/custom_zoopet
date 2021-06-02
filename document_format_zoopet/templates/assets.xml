@@ -1,7 +1,0 @@
-<odoo>
-    <template id="document_format_zoopet.assets" inherit_id="point_of_sale.assets">
-        <xpath expr=".">
-            <script type="text/javascript" src="/document_format_zoopet/static/src/js/models.js"/>
-        </xpath>
-    </template>
-</odoo>
