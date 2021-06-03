@@ -18,11 +18,11 @@ class AccountInvoice(models.Model):
         if self.type == 'out_refund':
             if not self.refund_invoice_id:
                 if self.origin:
-                    invoice=self.env['account.invoice'].search_read([('origin', '=', self.origin), ('type', '=', 'out_invoice')],['id', 'number'], limit=1)
+                    invoice = self.env['account.invoice'].search_read([('origin', '=', self.origin), ('type', '=', 'out_invoice')],['id', 'number'], limit=1)
                     if invoice:
-                        self.refund_invoice_name= invoice[0]['number']
+                        self.refund_invoice_name = invoice[0]['number']
         else:
-            self.refund_invoice_name= ""
+            self.refund_invoice_name = ""
 
     @api.model
     def _sort_grouped_lines(self, lines_dic):
@@ -84,4 +84,3 @@ class AccountInvoice(models.Model):
 
 
 
-    
