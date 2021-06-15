@@ -13,7 +13,7 @@
                             string="Reset to Draft"
                             type="object"
                             groups="account.group_account_invoice"
-                            attrs="{'invisible' : ['|', ('restrict_mode_hash_table', '=', True), ('state', 'not in', ('posted', 'cancel')),('is_comercial','=',True)]}"/>
+                            attrs="{'invisible' : ['|',('state', 'not in', ('posted', 'cancel')),('is_comercial','=',True)]}"/>
                 </xpath>
 
                 <xpath expr="//field[@name='partner_id']" position="attributes">

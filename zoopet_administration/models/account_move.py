@@ -14,14 +14,14 @@ class AccountMove(models.Model):
     )
 
     def _delivery_method(self):
-        sale_order = self.env["sale.order"].search([("name", "=", self.origin)])
+        sale_order = self.env["sale.order"].search([("name", "=", self.invoice_origin)])
         if sale_order:
             self.delivery_method = sale_order[0].carrier_id.name
         else:
             self.delivery_method = ""
 
     def _get_delivery_method(self):
-        sale_order = self.env["sale.order"].search([("name", "=", self.origin)])
+        sale_order = self.env["sale.order"].search([("name", "=", self.invoice_origin)])
         if sale_order:
             return sale_order[0].carrier_id.name
         else:

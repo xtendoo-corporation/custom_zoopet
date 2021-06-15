@@ -27,7 +27,7 @@
         'views/sale_order_views.xml',
         'views/account_move_view.xml',
         'views/mrp_bom_view.xml',
-        'views/permission_to_archive_view.xml',
+        #'views/permission_to_archive_view.xml',
         'views/sale_order_type_views.xml',
         'security/security_group.xml',
 

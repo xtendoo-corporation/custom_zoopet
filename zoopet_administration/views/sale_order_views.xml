@@ -192,12 +192,6 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-                <!--<xpath expr="//button[@name='action_done']" position="attributes">
-                    <attribute name="groups">zoopet_administration.edit_block_so</attribute>
-                </xpath>-->
-                <!--<xpath expr="//button[@name='action_unlock']" position="attributes">
-                    <attribute name="groups">zoopet_administration.edit_block_so</attribute>
-                </xpath> -->
                 <xpath expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="attributes">
                     <attribute name="groups">zoopet_administration.show_cost_price</attribute>
                 </xpath>
@@ -287,6 +281,21 @@
             </field>
         </record>-->
         <!-- Editar forma de entrega -->
+
+         <!-- Botones de stock picking all done-->
+        <record id="zoopet_administration.view_order_e_so" model="ir.ui.view">
+            <field name="name">view.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_auto_done_setting"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_done']" position="attributes">
+                     <attribute name="groups">zoopet_administration.edit_block_so</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_unlock']" position="attributes">
+                     <attribute name="groups">zoopet_administration.edit_block_so</attribute>
+                </xpath>
+            </field>
+        </record>
 
     </data>
 </odoo>

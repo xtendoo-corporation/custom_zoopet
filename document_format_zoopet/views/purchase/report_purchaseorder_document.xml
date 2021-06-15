@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+         <record id="A4_purchase" model="report.paperformat">
+            <field name="name">A4 sales</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">23</field>
+            <field name="margin_right">7</field>
+            <field name="margin_left">7</field>
+            <field name="orientation">Portrait</field>
+            <field name="header_spacing">5</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report id="document_format_zoopet.purchase_order_report"
+                string="Pedido de compras"
+                model="purchase.order"
+                report_type="qweb-pdf"
+                name="document_format_zoopet.purchase_order"
+                print_report_name="(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or 'Order - %s' % (object.name)"
+                paperformat="document_format_zoopet.A4_purchase"
+        />
+
+        <template id="document_format_zoopet.purchase_order">
+            <t t-name="document_format_zoopet.purchase_order">
+                <t t-call="web.html_container">
+                    <t t-foreach="docs" t-as="o">
+                        <t t-call="document_format_zoopet.purchase_order_document" t-lang="o.partner_id.lang"/>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+         <template id="document_format_zoopet.purchase_order_document">
+            <t t-name="document_format_zoopet.purchase_order_document">
+                <t t-call="web.external_layout">
+                <div class="page">
+                     <div class="oe_structure"/>
+                <!-- nombre doc -->
+                <div style="font-size:1.3em;">
+                    <b><p t-if="o.state == 'draft'">Solicitud de presupuesto #<span t-field="o.name"/></p>
+                    <p t-if="o.state in ['sent', 'to approve']">Orden de compra #<span t-field="o.name"/></p>
+                    <p t-if="o.state in ['purchase', 'done']">Confirmación de orden de compra #<span t-field="o.name"/></p>
+                    <p t-if="o.state == 'cancel'">Orden de compra cancelada #<span t-field="o.name"/></p></b>
+                </div>
+                <!-- Fin nombre doc -->
+                <!-- Proveedor y fecha -->
+                <div>
+                    <div style="width:15%;float:left;">
+                        <div>
+                            <b>
+                                <span>Proveedor: </span>
+                            </b>
+                        </div>
+                        <div>
+                            <span t-field="o.partner_id.name"></span>
+                        </div>
+                    </div>
+                    <div style="width:15%;float:left;">
+                        <div>
+                            <b>
+                                <span>Fecha: </span>
+                            </b>
+                        </div>
+                        <div>
+                            <span t-esc="o.date_order.strftime('%d/%m/%Y')"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fin proveedor y fecha -->
+                <div style="clear:both;padding-top:10px;"></div>
+
+                 <table class="table" style="font-size:0.9em;width:100%;border-top:4px solid black;border-bottom:4px solid black;">
+                <thead>
+                    <tr>
+                        <th style="width:45%;text-align:left;"><strong><span>Descripción</span></strong></th>
+                        <th style="width:15%;text-align:right;"><strong><span>IVA</span></strong></th>
+                        <th style="width:15%;text-align:right;"><strong><span>Cant.</span></strong></th>
+                        <th style="width:15%;text-align:right;"><strong><span>Precio/U</span></strong></th>
+                        <th style="width:15%;text-align:right;"><strong><span>Total</span></strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="o.order_line" t-as="line" style="font-size:0.8em;">
+                        <td style="width:45%;text-align:left;">
+                            <span t-field="line.name"/>
+                        </td>
+                        <td>
+                            <span t-esc="', '.join(map(lambda x: str(x.amount), line.taxes_id))"/>
+                        </td>
+                        <td style="width:15%;text-align:right;">
+                            <span t-field="line.product_qty"/>
+                            <span t-field="line.product_uom.name" groups="uom.group_uom"/>
+                        </td>
+                        <td style="width:15%;text-align:right;">
+                            <span t-field="line.price_unit"/>
+                        </td>
+                        <td style="width:15%;text-align:right;">
+                            <span t-field="line.price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div id="total" class="row justify-content-end">
+                <div class="col-4" style="width:100%;">
+                    <table class="table table-sm" style="border-bottom:4px solid black;width:35%;float:right;">
+                        <tr class="border-black">
+                            <td style="width:40%;"><strong><span style="color:black;">Subtotal</span></strong></td>
+                            <td style="width:60%;text-align:right;">
+                                <span t-field="o.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:40%;"><strong><span style="color:black;">IVA</span></strong></td>
+                            <td style="width:60%;text-align:right;">
+                                <span t-field="o.amount_tax" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                            </td>
+                        </tr>
+                        <tr class="border-black o_total">
+                            <td style="width:40%;"><strong><span style="color:black;">Total</span></strong></td>
+                            <td style="width:60%;text-align:right;">
+                                <span t-field="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+                </div>
+            </t>
+            </t>
+         </template>
+    </data>
+</odoo>
