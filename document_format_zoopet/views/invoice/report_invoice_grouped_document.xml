@@ -485,7 +485,7 @@
 							<!-- <hr style="height:2px;width:99.6%;background-color:black;margin-top:-5px;"/> -->
 							<!-- marca de agua -->
 							<div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:450px;">
-								
+
 										<t t-if="isInvoice == 'out_invoice'">
 											<t t-if="serieInv == 'Serie P'">
 												<b><span>
@@ -659,6 +659,11 @@
 																	<t t-if="isIVA &gt; -1">
 																		<span t-esc="'%.2f'%tax.amount" />
 																	</t>
+                                                                    <t t-else="">
+                                                                        <span style="color:white;">
+																	        abc
+																        </span>
+                                                                    </t>
 																</t>
 															</t>
 															<t t-if="not line.invoice_line_tax_ids">
@@ -1175,7 +1180,7 @@
 															</t>
 														</t>
 														<t t-else="">
-															<t t-if="amount_by_group[2] &gt; 0">
+															<t t-if="amount_by_group[1] &gt; 0">
 																<div style="width:60%;float:left;">
 																	<span t-esc="amount_by_group[0]" />
 																	<span>

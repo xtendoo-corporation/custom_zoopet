@@ -24,7 +24,7 @@
                     <t t-set="serieInv" t-value="o.sale_type_id.name" />
                     <!-- Buscamos el tipo en el number de la rectificativa -->
                     <t t-set="isRecT" t-value="doc_name.find('T')" />
-				    <t t-set="isRecP" t-value="doc_name.find('P')" />  
+				    <t t-set="isRecP" t-value="doc_name.find('P')" />
                     <!-- Fin buscamos el tipo en el number de la rectificativa -->
                     <!-- Datos del docuumento -->
                     <!-- si tiene copias -->
@@ -184,19 +184,19 @@
                         <div style="width:50%;float:left;border:2px solid black;height:25px;">
                             <span style="margin-left:2px;">
 								<t t-if="isInvoice == 'out_invoice'">
-									
+
 										<b><span style="font-size:0.8em;">
 											Factura:
 										</span></b>
-			
-			
+
+
 								</t>
 								<t t-else="isInvoice == 'out_refund'">
-						
+
 											<b><span style="font-size:0.8em;">
 												Rectificativa:
 											</span></b>
-									
+
 								</t>
 							</span>
                             <span t-field="o.number" />
@@ -575,6 +575,11 @@
                                                                 <t t-set="isIVA" t-value="tax_name.find('IVA')" />
                                                                 <t t-if="isIVA &gt; -1">
                                                                     <span t-esc="'%.2f'%tax.amount" />
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <span style="color:white;">
+                                                                        abc
+                                                                    </span>
                                                                 </t>
                                                             </t>
                                                         </t>
@@ -1072,7 +1077,7 @@
                                                         </t>
                                                     </t>
                                                     <t t-else="">
-                                                        <t t-if="amount_by_group[2] &gt; 0">
+                                                        <t t-if="amount_by_group[1] &gt; 0">
                                                             <div style="width:60%;float:left;">
                                                                 <span t-esc="amount_by_group[0]" />
                                                                 <span>
