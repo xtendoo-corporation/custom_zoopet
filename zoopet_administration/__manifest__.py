@@ -13,6 +13,7 @@
         'sale_management',
         'product',
         'sale_order_picking_all_done',
+        'stock_picking_all_done',
         'res_partner_hide_internal_notes',
         'crm',
         'stock',
