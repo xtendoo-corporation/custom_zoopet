@@ -385,7 +385,7 @@
                             <tr style="border-top:4px solid black;">
                                 <th style="padding:0px;margin:0px;font-size:0.7em;border-bottom:2px solid black;">
                                     <div style="clear:both;color:black;">
-                                        <div style="width:10%;display:block;float:left;">
+                                        <div style="width:12%;display:block;float:left;">
                                             <span>
                                                 <b>
                                                     Código
@@ -399,7 +399,7 @@
                                                 </b>
                                             </span>
                                         </div>
-                                        <div style="width:7%;display:block;float:left;text-align:right;">
+                                        <div style="width:5%;display:block;float:left;text-align:right;">
                                             <span>
                                                 <b>
                                                     IVA%
@@ -561,7 +561,7 @@
                                             <t t-if="mostrar == True">
                                                 <div style="font-size:0.7em;clear:both;">
                                                     <!-- codigo -->
-                                                    <div style="width:10%;display:block;float:left;">
+                                                    <div style="width:12%;display:block;float:left;">
                                                         <t t-if="l.product_id.default_code">
                                                             <span t-field="l.product_id.default_code" />
                                                         </t>
@@ -588,7 +588,7 @@
                                                     </div>
                                                     <!-- Fin descripcion -->
                                                     <!-- % de IVA -->
-                                                    <div style="width:7%;display:block;float:left;text-align:right;">
+                                                    <div style="width:5%;display:block;float:left;text-align:right;">
                                                         <t t-if="o.sale_type_id.name == 'Serie C'">
                                                             <span style="color:white;">
                                                                 abc
