@@ -44,11 +44,6 @@
 						<t t-if="iteration">
 							<t t-set="inv_copy" t-value="iteration" />
 							<t t-if="iteration &lt; 2">
-								<!--
-								<div style="display:block;width:100%;font-size:0.7em;clear:both;text-align:right;">
-								<span>Documento original</span>
-								</div>
-								-->
 							</t>
 							<t t-else="">
 								<div style="display:block;width:100%;clear:both;text-align:right;">
@@ -498,7 +493,6 @@
 									</th>
 								</tr>
 							</thead>
-							<!-- <hr style="height:2px;width:99.6%;background-color:black;margin-top:-5px;"/> -->
 							<!-- marca de agua -->
 							<div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:450px;">
 
@@ -644,17 +638,7 @@
 																	<t t-if="isIVA &gt; -1">
 																		<span t-esc="'%.2f'%tax.amount" />
 																	</t>
-                                                                    <t t-else="">
-                                                                        <span style="color:white;">
-																	        abc
-                                                                        </span>
-                                                                    </t>
 																</t>
-															</t>
-															<t t-if="not line.invoice_line_tax_ids">
-																<span style="color:white;">
-																	abc
-																</span>
 															</t>
 														</div>
 														<!-- Fin % de IVA -->
@@ -726,48 +710,8 @@
 															<t t-foreach="line.invoice_line_tax_ids" t-as="tax">
 																<t t-set="tax_name" t-value="tax.name" />
 																<t t-set="isIVA" t-value="tax_name.find('IVA')" />
-																<!-- acumulacion de las cantidad de cada iva ventas -->
-																<!--
-																<t t-if="tax.amount == 21.0">
-																<t t-set="importeIva21" t-value="importeIva21 + (total_linea * 0.21)"/>
-																<t t-set="importeIva21Total" t-value="importeIva21Total + total_linea"/>
-																</t>
-																<t t-if="tax.amount == 5.2">
-																<t t-set="importeRec52" t-value="importeRec52 + (total_linea * 0.052)"/>
-																</t>
-																<t t-if="tax.amount == 10.0">
-																<t t-set="importeIva10" t-value="importeIva10 + (total_linea * 0.10)"/>
-																<t t-set="importeIva10Total" t-value="importeIva10Total + total_linea"/>
-																</t>
-																<t t-if="tax.amount == 1.4">
-																<t t-set="importeRec14" t-value="importeRec14 + (total_linea * 0.014)"/>
-																</t>
-																<t t-if="tax.amount == 4.0">
-																<t t-set="importeIva4" t-value="importeIva4 + (total_linea * 0.04)"/>
-																<t t-set="importeIva4Total" t-value="importeIva4Total + total_linea"/>
-																</t>
-																<t t-if="tax.amount == 0.50">
-																<t t-set="importeRec05" t-value="importeRec05 + (total_linea * 0.005)"/>
-																</t>
-																-->
-																<!-- fin acumulaciones de las cantuidades de iva ventas -->
 															</t>
 														</t>
-														<!-- Fin precio total de linea -->
-														<!--
-														<td t-if="has_serial_number and move_line.lot_name" groups="stock.group_lot_on_delivery_slip">
-														<span t-field="move_line.lot_name"/>
-														</td>
-														<td t-else="" groups="stock.group_lot_on_delivery_slip">
-														<span t-field="move_line.lot_id.name"/>
-														</td>
-														-->
-														<!--
-														<td class="text-center">
-														<span t-field="move_line.qty_done"/>
-														<span t-field="move_line.product_uom_id"/>
-														</td>
-														-->
 													</div>
 												</t>
 											</t>
@@ -776,7 +720,6 @@
 								</t>
 							</tbody>
 						</table>
-						<!-- <hr style="height:2px;width:99.6%;background-color:black;"/> -->
 						<!-- fin lineas -->
 						<table class="table table-sm o_main_table" name="invoice_line_table" style="display:none;">
 							<thead>
@@ -834,7 +777,7 @@
 											</td>
 											<!-- Fin descripcion -->
 											<!-- IVA -->
-											<td t-attf-class="text-left {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+											<td t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
 												<span t-esc="', '.join(map(lambda x: str(x.amount), line.invoice_line_tax_ids))" />
 											</td>
 											<!-- Fin IVA -->
@@ -939,19 +882,6 @@
                                                     </t>
 												</t>
 												<t t-else="">
-													<!--
-													<t t-if="amount_by_group[4] &gt; '0'">
-													<td>
-													<span t-esc="amount_by_group[0]"/>
-													<span>&amp;nbsp;<span>on</span>
-													<t t-esc="amount_by_group[4]"/>
-													</span>
-													</td>
-													<td class="text-right o_price_total">
-													<span t-esc="amount_by_group[3]"/>
-													</td>
-													</t>
-													-->
 												</t>
 											</tr>
 										</t>
@@ -989,14 +919,6 @@
 											</t>
 											<t t-else="">
 												<!-- Base imponible -->
-												<!--
-												<div style="width:40%;float:left;">
-												<span>Bruto</span>
-												</div>
-												<div style="width:60%;float:left;text-align:right;">
-												<span t-esc="o.amount_untaxed_before_global_discounts" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-												</div>
-												-->
 											</t>
 											<!-- Fin base imponible -->
 											<!-- Descuentos Globales -->
@@ -1018,14 +940,6 @@
 												</div>
 											</t>
 											<!-- Descuentos Globales -->
-											<!--
-											<div t-if="o.amount_global_discount != 0" style="width:40%;float:left;">
-											<span>Total descuentos</span>
-											</div>
-											<div t-if="o.amount_global_discount != 0" style="width:60%;float:left;text-align:right;">
-											<span t-esc="o.amount_global_discount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-											</div>
-											-->
 											<!-- Fin Descuentos Globales -->
 											<!-- Base imponible -->
 											<div style="width:40%;float:left;">
@@ -1082,14 +996,6 @@
 											</t>
 											<t t-else="">
 												<!-- Base imponible -->
-												<!--
-												<div style="width:50%;float:left;">
-												<span>Bruto</span>
-												</div>
-												<div style="width:50%;float:left;text-align:right;">
-												<span t-esc="o.amount_untaxed_before_global_discounts" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-												</div>
-												-->
 											</t>
 											<!-- Fin base imponible -->
 											<!-- Descuentos Globales -->
@@ -1111,14 +1017,6 @@
 												</div>
 											</t>
 											<!-- Descuentos Globales -->
-											<!--
-											<div t-if="o.amount_global_discount != 0" style="width:50%;float:left;">
-											<span>Total descuentos</span>
-											</div>
-											<div t-if="o.amount_global_discount != 0" style="width:50%;float:left;text-align:right;">
-											<span t-esc="o.amount_global_discount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-											</div>
-											-->
 											<!-- Fin Descuentos Globales -->
 											<!-- Base imponible -->
 											<div style="width:50%;float:left;">
@@ -1184,38 +1082,11 @@
 							</div>
 						</t>
 						<!-- Metodo de pago -->
-						<!--
-						<p t-if="o.payment_term_id" name="payment_term" style="clear:both;">
-						<span t-field="o.payment_term_id.note"/>
-						</p>
-						-->
 						<t t-if="o.payment_term_id">
 							<t t-set="plazos" t-value="o.payment_term_id.name" />
 						</t>
 						<!-- Fin metodo de pago -->
 						<!-- Leyenda Factura -->
-						<!--
-						<div style="clear:both;">
-						<div style="display:block;" t-if="o.partner_shipping_id.country_id.name == 'Portugal'" >
-						<span style="display:block;">Para pagos por transferencia:</span>
-						<span style="display:block;"> BANCO: BPI</span>
-						<span style="display:block;">IBAN: PT50 0010 0000 4423 5081 5019 1</span>
-						</div>
-						<div style="display:block;" t-if="o.partner_shipping_id.country_id.name != 'Portugal'" >
-						<span style="display:block;">Para pagos por transferencia:</span>
-						<span style="display:block;"> BANCO: SANTANDER</span>
-						<span style="display:block;">IBAN: ES94 0049 2336 4225 1408 4617</span>
-						</div>
-						<span style="display:block;">La posesión de esta Factura no justifica su pago</span>
-						-->
-						<!-- <span style="display:block;" >Las incidencias en transporte (roturas, falta de mercancía, etc.), deberán ser comunicadas antes de 24 horas.</span> -->
-						<!-- </div> -->
-						<!-- Fin leyenda Factura -->
-						<!--
-						<p t-if="o.comment" name="comment">
-						<span t-field="o.comment"/>
-						</p>
-						-->
 						<p t-if="o.fiscal_position_id.note" name="note">
 							<span t-field="o.fiscal_position_id.note" />
 						</p>
@@ -1245,23 +1116,11 @@
 									<t t-set="PortPrice" t-value="line.price_unit" />
 								</t>
 							</t>
-							<!--
-							<t t-if="PortPrice != 0">
-							<span>Inversión del sujeto pasivo</span>
-							</t>
-							-->
 						</t>
 						<!-- Fin inversión del sujeto pasivo -->
 					</div>
 				</t>
 			</t>
 		</template>
-		<!--
-		<template id="report_invoice_document_ch_address" inherit_id="account.report_invoice_document_with_payments">
-		<xpath expr="/data" position="replace">
-		<div></div>
-		</xpath>
-		</template>
-		-->
 	</data>
 </odoo>
