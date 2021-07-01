@@ -22,6 +22,8 @@
         'account',
         'sale_order_type',
         'sale_margin',
+        'sale_global_discount',
+        'account_global_discount',
     ],
     'license': 'AGPL-3',
     'data': [
