@@ -35,8 +35,6 @@
         "l10n_es_partner",
         "purchase",
         "account_invoice_date_due",
-        'stock_picking_all_done',
-        'sale_order_picking_all_done',
     ],
     "license": "AGPL-3",
     "data": [
@@ -78,7 +76,7 @@
         "views/res_partner/res_partner_view.xml",
 
         #Añadir JS del POS
-        "templates/assets.xml",
+        #"templates/assets.xml",
 
 
     ],

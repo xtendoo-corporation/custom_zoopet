@@ -1,7 +1,7 @@
 {
     'name': 'Zoopet Administration',
     'summary': """Administration settings for Zoopet""",
-    'version': '12.0.1.0.0',
+    'version': '13.0.1.0.0',
     'description': """Administration settings for Zoopet""",
     'author': 'Dani Domínguez',
     'company': 'Xtendoo',
@@ -22,8 +22,6 @@
         'account',
         'sale_order_type',
         'sale_margin',
-        'sale_global_discount',
-        'account_global_discount',
     ],
     'license': 'AGPL-3',
     'data': [
@@ -33,7 +31,8 @@
         #'views/permission_to_archive_view.xml',
         'views/sale_order_type_views.xml',
         'security/security_group.xml',
-
+        # Añadir JS del Archivar
+        "templates/assets.xml",
     ],
     'installable': True,
     'auto_install': True,
