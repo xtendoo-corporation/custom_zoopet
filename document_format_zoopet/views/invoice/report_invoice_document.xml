@@ -5,12 +5,12 @@
             <field name="name">A4 Invoice</field>
             <field name="default" eval="True"/>
             <field name="format">A4</field>
-            <field name="margin_top">40</field>
+            <field name="margin_top">42</field>
             <field name="margin_bottom">35</field>
             <field name="margin_right">7</field>
             <field name="margin_left">7</field>
             <field name="orientation">Portrait</field>
-            <field name="header_spacing">5</field>
+            <field name="header_spacing">40</field>
             <field name="dpi">90</field>
         </record>
 		 <template id="document_format_zoopet.report_invoice_use_document">
