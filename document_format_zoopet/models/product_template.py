@@ -16,8 +16,8 @@ class ProductTemplate(models.Model):
         compute="_bom_ids")
 
     def _bom_ids(self):
-        self.bom_ids = self.env['mrp.bom'].search(
-            [('product_tmpl_id', '=', self.id)], limit=1)
+        for record in self:
+            record.bom_ids = self.env['mrp.bom'].search([('product_tmpl_id', '=', record.id)], limit=1)
 
     def _get_bom_ids(self):
         bom_ids= self.env['mrp.bom'].search(

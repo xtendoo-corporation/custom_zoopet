@@ -610,18 +610,18 @@
                                                                         </t>
                                                                         <t t-else="">
                                                                             <i>
-                                                                                <span t-esc="bom_list.product_id.default_code" />
+                                                                                <span t-esc="bom_list.product_id.default_code"/>
                                                                             </i>
                                                                         </t>
 																	</div>
 																	<div style="width:31.45%;float:left;">
 																		<i>
-																			<span t-esc="bom_list.product_id.name" />
+																			<span t-esc="bom_list.product_id.name"/>
 																		</i>
 																	</div>
 																	<div style="width:19.5%;float:left;text-align:right;">
 																		<i>
-																			<span t-esc="'%.2f'%bom_list.product_qty" />
+																			<span t-esc="'%.2f'%bom_list.product_qty"/>
 																		</i>
 																	</div>
 																</t>
