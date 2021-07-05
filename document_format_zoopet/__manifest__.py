@@ -5,7 +5,7 @@
 {
     "name": "document_format_Zoopet",
     "summary": """Formatos de documentos Zoopet""",
-    "version": "12.0.1.0.0",
+    "version": "13.0.1.0.2",
     "description": """Formatos de documentos Zoopet""",
     "author": "DDL-Xtendoo",
     "company": "Xtendoo",
