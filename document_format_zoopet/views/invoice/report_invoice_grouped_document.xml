@@ -382,24 +382,30 @@
 								<span style="display:inline-block;width:80%;" t-field="o.partner_id.vat" />
 							</div>
 						</div>
-						<!-- Descuentos -->
-						<t t-set="total_discount1" t-value="0" />
-						<t t-set="total_discount3" t-value="0" />
-						<t t-set="delivery" t-value="0" />
-						<t t-foreach="o.invoice_line_ids" t-as="line">
-							<t t-set="line_discount1" t-value="0" />
-							<t t-set="unit_price" t-value="line.price_unit" />
-							<t t-if="line.product_id">
-								<t t-if="line.discount != 0">
-									<t t-set="line_discount1" t-value="unit_price * line.discount / 100 * line.quantity" />
-									<t t-set="unit_price" t-value="unit_price - (unit_price * line.discount / 100)" />
-								</t>
-								<t t-if="line_discount1 != 0">
-									<t t-set="total_discount1" t-value="total_discount1 + line_discount1" />
-								</t>
-							</t>
-						</t>
-						<!-- fin descuentos -->
+                        <!-- Descuentos -->
+                    <t t-set="total_discount1" t-value="0" />
+                    <t t-set="total_discount3" t-value="0" />
+                    <t t-set="delivery" t-value="0" />
+                    <t t-set="total_IVA" t-value="0" />
+                    <t t-foreach="o.invoice_line_ids" t-as="line">
+                        <t t-set="total_IVA" t-value="0" />
+                        <t t-set="line_discount1" t-value="0" />
+                        <t t-set="unit_price" t-value="line.price_unit" />
+                        <t t-if="line.product_id">
+                            <t t-if="line.discount != 0">
+                                <t t-set="line_discount1" t-value="unit_price * line.discount / 100 * line.quantity" />
+                                <t t-set="unit_price" t-value="unit_price - (unit_price * line.discount / 100)" />
+                            </t>
+                            <t t-if="line_discount1 != 0">
+                                <t t-set="total_discount1" t-value="total_discount1 + line_discount1" />
+                            </t>
+                            <t t-foreach="line.invoice_line_tax_ids" t-as="tax">
+                                <t t-set="total_IVA" t-value="total_IVA + tax.amount"/>
+                            </t>
+                        </t>
+                    </t>
+                    <!-- fin descuentos -->
+
 						<!-- Fin datos documento -->
 						<t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])" />
 						<!-- lineas -->
@@ -423,11 +429,20 @@
 												</span>
 											</div>
 											<div style="width:5%;display:block;float:left;text-align:right;">
-												<span>
-													<b>
-														IVA%
-													</b>
-												</span>
+												 <t t-if="total_IVA != 0">
+                                                <span>
+                                                    <b>
+                                                        IVA%
+                                                    </b>
+                                                </span>
+                                            </t>
+                                             <t t-else="">
+                                                <span style="color:white;">
+                                                    <b>
+                                                        IVA%
+                                                    </b>
+                                                </span>
+                                            </t>
 											</div>
 											<div style="width:10%;display:block;float:left;text-align:right;">
 												<span>
@@ -647,13 +662,21 @@
 															</t>
 															<t t-else="">
 																<t t-set="IVALin" t-value="0" />
+                                                                <t t-set="IVAName" t-value="no"/>
 																<t t-foreach="line.invoice_line_tax_ids" t-as="tax">
 																	<t t-set="tax_name" t-value="tax.name" />
 																	<t t-set="isIVA" t-value="tax_name.find('IVA')" />
-																	<t t-if="isIVA &gt; -1">
-																		<span t-esc="'%.2f'%tax.amount" />
+																	<t t-if="isIVA != ''">
+                                                                        <t t-set="IVAName" t-value="'%.2f'%tax.amount" />
 																	</t>
+
 																</t>
+                                                                <t t-if="IVAName != '0.00'">
+                                                                    <span t-esc="IVAName"></span>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <span style="color:white">aaaa</span>
+                                                                </t>
 															</t>
 															<t t-if="not line.invoice_line_tax_ids">
 																<span style="color:white;">
@@ -1060,14 +1083,16 @@
 											<!-- Descuentos Globales -->
 											<!-- Fin Descuentos Globales -->
 											<!-- Base imponible -->
-											<div style="width:50%;float:left;">
+                                            <t t-if="total_IVA != 0">
+											    <div style="width:50%;float:left;">
 												<span>
 													Base imponible
 												</span>
 											</div>
-											<div style="width:50%;float:left;text-align:right;">
+											    <div style="width:50%;float:left;text-align:right;">
 												<span t-esc="o.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
 											</div>
+                                            </t>
 											<!-- Fin base imponible -->
 											<!-- desglose de Impuestos -->
 											<div style="clear:both;">
