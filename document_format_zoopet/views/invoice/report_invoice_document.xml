@@ -402,9 +402,15 @@
                     <t t-set="total_discount1" t-value="0" />
                     <t t-set="total_discount3" t-value="0" />
                     <t t-set="delivery" t-value="0" />
-                    <t t-set="total_IVA" t-value="0" />
+                    <t t-set="total_IVA" t-value="'no'" />
                     <t t-foreach="o.invoice_line_ids" t-as="line">
-                        <t t-set="total_IVA" t-value="0" />
+                        <t t-foreach="line.invoice_line_tax_ids" t-as="tax">
+                            <t t-set="tax_name" t-value="tax.name" />
+							<t t-set="isIVA" t-value="tax_name.find('IVA')" />
+                            <t t-if="isIVA != -1">
+                                <t t-set="total_IVA" t-value="'si'" />
+							</t>
+                        </t>
                         <t t-set="line_discount1" t-value="0" />
                         <t t-set="unit_price" t-value="line.price_unit" />
                         <t t-if="line.product_id">
@@ -414,9 +420,6 @@
                             </t>
                             <t t-if="line_discount1 != 0">
                                 <t t-set="total_discount1" t-value="total_discount1 + line_discount1" />
-                            </t>
-                            <t t-foreach="line.invoice_line_tax_ids" t-as="tax">
-                                <t t-set="total_IVA" t-value="total_IVA + tax.amount"/>
                             </t>
                         </t>
                     </t>
@@ -444,7 +447,7 @@
 												</span>
 											</div>
 											<div style="width:5%;display:block;float:left;text-align:right;">
-												 <t t-if="total_IVA != 0">
+												 <t t-if="total_IVA != 'no'">
                                                 <span>
                                                     <b>
                                                         IVA%
@@ -645,12 +648,11 @@
 																</span>
 															</t>
 															<t t-else="">
-																<t t-set="IVALin" t-value="0" />
-                                                                <t t-set="IVAName" t-value="no"/>
+                                                                <t t-set="IVAName" t-value="'0.00'"/>
 																<t t-foreach="line.invoice_line_tax_ids" t-as="tax">
 																	<t t-set="tax_name" t-value="tax.name" />
 																	<t t-set="isIVA" t-value="tax_name.find('IVA')" />
-																	<t t-if="isIVA != ''">
+																	<t t-if="isIVA != -1">
                                                                         <t t-set="IVAName" t-value="'%.2f'%tax.amount" />
 																	</t>
 
