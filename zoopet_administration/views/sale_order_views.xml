@@ -256,6 +256,9 @@
                 <field name="name" position="before">
                     <field name="type_id"/>
                 </field>
+                <field name="state" position="after">
+                    <field name="picking_state"/>
+                </field>
             </field>
         </record>
         <!-- Fin tipo en vista de presupuestos -->
