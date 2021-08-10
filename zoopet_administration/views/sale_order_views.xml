@@ -255,7 +255,7 @@
         <!-- Fin tipo en vista de presupuestos -->
 
         <!-- Tipo en vista de pedidos -->
-       <!-- <record id="zoopet_administration.sale_order_type_view_list" model="ir.ui.view">
+       <record id="zoopet_administration.sale_order_type_view_list" model="ir.ui.view">
             <field name="name">sale.order.type.view.list</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_tree"/>
@@ -265,7 +265,7 @@
                     <field name="type_id"/>
                 </field>
             </field>
-        </record> -->
+        </record>
         <!-- Fin tipo en vista de pedidos -->
 
         <!-- Editar forma de entrega -->
