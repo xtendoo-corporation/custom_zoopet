@@ -248,19 +248,19 @@
                             <tr style="border-top:4px solid black;">
                                 <th style="padding:0px;margin:0px;border-bottom:2px solid black;">
                                     <div style="clear:both;padding-bottom:5px;width:100%;font-size:0.7em;color:black;">
-                                        <div style="height:14px;width:10%;display:block;float:left;">
+                                        <div style="height:14px;width:11%;display:block;float:left;">
                                             <span><b>Código</b></span>
                                         </div>
                                             <!-- venta -->
                                         <t t-if="o.sale_id">
-                                            <div style="height:14px;width:51%;display:block;float:left;">
+                                            <div style="height:14px;width:50%;display:block;float:left;">
                                                 <span><b>Descripción</b></span>
                                             </div>
                                         </t>
                                         <t t-else="">
                                             <!-- fin venta -->
                                             <!-- compra -->
-                                            <div style="height:14px;width:52%;display:block;float:left;">
+                                            <div style="height:14px;width:50%;display:block;float:left;">
                                                 <span><b>Descripción</b></span>
                                             </div>
                                         </t>
@@ -323,14 +323,14 @@
                                                     <t t-set="plazos" t-value="move_line.move_id.sale_line_id.order_id.payment_term_id.name"></t>
                                                     <!-- codigo ventas-->
                                                     <t t-if="move_line.move_id.sale_line_id">
-                                                        <div style="width:10%;display:block;clear:both;float:left;">
+                                                        <div style="width:11%;display:block;clear:both;float:left;">
                                                             <span t-field="move_line.move_id.sale_line_id.product_id.default_code"/>
                                                         </div>
                                                     </t>
                                                     <!-- Fin codigo ventas-->
                                                     <!-- codigo compras-->
                                                     <t t-if="move_line.move_id.purchase_line_id">
-                                                        <div style="width:10%;display:block;float:left;">
+                                                        <div style="width:11%;display:block;float:left;">
                                                             <span t-field="move_line.move_id.purchase_line_id.product_id.default_code"/>
                                                         </div>
                                                     </t>
@@ -341,19 +341,19 @@
                                                         <t t-if="move_line.move_id.sale_line_id">
 
                                                             <t t-if="move_line.product_id != move_line.move_id.sale_line_id.product_id">
-                                                                <div style="width:51%;display:block;float:left;">
+                                                                <div style="width:50%;display:block;float:left;">
                                                                     <span t-field="move_line.move_id.sale_line_id.product_id.name"/>
                                                                 </div>
                                                             </t>
                                                             <t t-else="">
-                                                                <div style="width:51%;display:block;float:left;">
+                                                                <div style="width:50%;display:block;float:left;">
                                                                     <span t-field="move_line.product_id.name"/>
                                                                 </div>
                                                             </t>
                                                         </t>
 
                                                         <t t-else="">
-                                                            <div style="width:51%;display:block;float:left;">
+                                                            <div style="width:50%;display:block;float:left;">
                                                                 <span t-field="move_line.product_id.name"/>
                                                             </div>
                                                         </t>
