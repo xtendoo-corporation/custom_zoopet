@@ -93,9 +93,9 @@ class SaleReport(models.Model):
             t.website_id as website_id
         '''
 
-        #for field in fields.keys():
-            #_sale_select_ += ', 0 AS %s' % field
-            #_pos_select_ += ', 0 AS %s' % field
+        for field in fields.keys():
+            _sale_select_ += ', 0 AS %s' % field
+            _pos_select_ += ', 0 AS %s' % field
 
         _sale_from_ = '''
             sale_order_line l
@@ -175,5 +175,4 @@ class SaleReport(models.Model):
         sale = '(SELECT %s FROM %s GROUP BY %s)' % (_sale_select_, _sale_from_, _sale_groupby_)
 
         pos = '(SELECT %s FROM %s GROUP BY %s)' % (_pos_select_, _pos_from_, _pos_groupby_)
-
         return '%s UNION ALL %s' % (sale, pos)

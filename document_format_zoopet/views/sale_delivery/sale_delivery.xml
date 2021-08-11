@@ -272,12 +272,12 @@
                                 <tr style="border-top:4px solid black;">
                                     <th style="padding:0px;margin:0px;border-bottom:2px solid black;">
                                         <div style="clear:both;width:100%;color:black;font-size:0.7em;">
-                                            <div style="height:14px; width:10%; display:block; float:left;text-align:left;">
+                                            <div style="height:14px; width:11%; display:block; float:left;text-align:left;">
                                                 <span>
                                                     <b>Código</b>
                                                 </span>
                                             </div>
-                                            <div style="height:14px; width:44%; display:block;float:left;text-align:left;">
+                                            <div style="height:14px; width:43%; display:block;float:left;text-align:left;">
                                                 <span>
                                                     <b>Descripción</b>
                                                 </span>
@@ -376,7 +376,7 @@
                                                 <t t-if="mostrar == True">
                                                     <div style="font-size:0.7em;clear:both;width:100%;">
                                                         <!-- codigo -->
-                                                        <div style="width:10%;display:block; float:left;">
+                                                        <div style="width:11%;display:block; float:left;">
                                                             <t t-if="line.product_id.default_code">
                                                                 <span t-field="line.product_id.default_code"/>
                                                             </t>
@@ -386,7 +386,7 @@
                                                         </div>
                                                         <!-- Fin codigo -->
                                                         <!-- Descripcion -->
-                                                        <div style="width:44%;display:block;float:left;">
+                                                        <div style="width:43%;display:block;float:left;">
                                                             <t t-if="line.name">
                                                                 <t t-set="productName" t-value="line.name"/>
                                                                 <t t-set="name_num" t-value="productName.find(']') + 1 "/>
