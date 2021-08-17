@@ -22,3 +22,4 @@ class SaleOrder(models.Model):
         return delivery_ids
 
 
+

@@ -750,7 +750,7 @@
 											</td>-->
 											<td class="text-right">
 												<span t-esc="'%.2f'%line.quantity" />
-												<span t-field="line.uom_id" groups="uom.group_uom" />
+												<!--<span t-field="line.uom_id" groups="uom.group_uom" />-->
 											</td>
 											<!-- Fin Unidades -->
 											<!-- Precio -->
