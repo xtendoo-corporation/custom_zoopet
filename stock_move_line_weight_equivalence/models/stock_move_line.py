@@ -14,11 +14,8 @@ class StockMoveLine(models.Model):
         digits="Product Unit of Measure"
     )
 
+    @api.onchange('qty_done')
     def _compute_weight_qty_done(self):
         self.weight_amount = 0.0
         for line in self.filtered(lambda x: x.product_id.weight > 0.0):
             line.weight_amount = line.product_id.weight * line.qty_done
-
-
-
-
