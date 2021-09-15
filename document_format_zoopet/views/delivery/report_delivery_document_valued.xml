@@ -3,14 +3,16 @@
 <odoo>
 
     <data>
+
+
        <report id="document_format_zoopet.report_delivery_valued"
                 string="Albarán"
                 model="stock.picking"
                 report_type="qweb-pdf"
                 name="document_format_zoopet.report_delivery_valued"
                 print_report_name="'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)"
-               paperformat="document_format_zoopet.A4_albaran"
         />
+
         <template id="document_format_zoopet.report_delivery_valued">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
@@ -70,7 +72,7 @@
                             </div>
                             <!-- Direcciones -->
                             <!-- DIreccion de facturacion -->
-                            <div style="width:49%;float:left;clear:both;margin-right:0.5%;border:2px solid black;height:223px;">
+                            <div style="width:49%;float:left;clear:both;margin-right:1%;border:2px solid black;height:223px;">
                                 <div style="background-color:blue;color:white;text-align:center;">
                                     Dirección de facturacíon
                                 </div>
@@ -153,7 +155,7 @@
                             </div>
                             <!-- Fin direccion de facturacion -->
                             <!-- Direccion de envio -->
-                            <div style="width:49%;float:left;border:2px solid black;margin-left:0.5%;height:223px;">
+                            <div style="width:49%;float:left;border:2px solid black;margin-left:1%;height:223px;">
                                 <div style="background-color:blue;color:white;text-align:center;">
                                     Dirección de envío
                                 </div>
@@ -206,28 +208,28 @@
                         <!-- Fin direcciones -->
                         <!-- Datos documento y observaciones -->
                         <!-- datos documento -->
-                        <div style="width:49.5%;clear:both;float:left;margin-right:0.5%;margin-top:5px;font-size:0.8em;">
-                            <div style="width:49.5%;float:left;border:2px solid black;height:25px;">
+                        <div style="width:49%;clear:both;float:left;margin-right:1%;margin-top:5px;font-size:0.8em;">
+                            <div style="width:50%;float:left;border:2px solid black;height:25px;">
                                 <span style="margin-left:2px;"><b>Albaran: </b></span><span t-field="o.name"/>
                             </div>
-                            <div style="width:49%;float:left;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;height:25px;">
+                            <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;height:25px;">
                                 <span style="margin-left:2px;"><b>Fecha: </b></span><span t-field="o.date_done" t-options="{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
                             </div>
-                            <div style="width:49.5%;float:left;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black;height:25px;">
+                            <div style="width:50%;float:left;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black;height:25px;">
                                 <span style="margin-left:2px;"><b>Cliente: </b></span><span t-field="o.partner_id.ref"/>
                             </div>
-                            <div style="width:49%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
+                            <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
                                 <span style="margin-left:2px;"><b>Factura: </b></span><span t-field="o.sale_id.name"/>
                             </div>
                         </div>
                         <!-- fin datos documento -->
                         <!-- observaciones -->
-                        <div style="width:49%;float:left;margin-left:0.5%;border:2px solid black;height:51px;margin-top:5px;margin-bottom:5px;">
+                        <div style="width:49%;float:left;margin-left:1%;border:2px solid black;height:51px;margin-top:5px;margin-bottom:5px;">
                             <span style="margin-left:2px;"><b>Observaciones: </b></span><span t-field="o.note"/>
                         </div>
                         <!-- fin observaciones -->
                         <!-- Fin datos documento -->
-                        <table class="table" style="clear:both;width:100%;border-bottom:2px solid black;">
+                        <table class="table">
                         <!-- Descuentos -->
                         <t t-set="total_discount1" t-value="0"/>
                         <t t-foreach="o.move_line_ids" t-as="line">
@@ -260,7 +262,7 @@
                                         <t t-else="">
                                             <!-- fin venta -->
                                             <!-- compra -->
-                                            <div style="height:14px;width:50%;display:block;float:left;">
+                                            <div style="height:14px;width:52%;display:block;float:left;">
                                                 <span><b>Descripción</b></span>
                                             </div>
                                         </t>
@@ -301,14 +303,15 @@
                                         </div>
                                         <!-- fin marca de agua -->
                         <!-- lineas -->
-                        <tbody>
+                        <tbody style="border-bottom:4px solid black;">
                             <t t-set="plazos" t-value="0"></t>
                             <t t-set="weight" t-value="0"></t>
                             <div style="font-size:0.8em;">
                                 <t t-set="has_serial_number" t-value="o.move_line_ids.mapped('lot_id')"/>
                                 <t t-set="total_doc" t-value="0"/>
                                 <t t-foreach="o.move_line_ids" t-as="move_line">
-                                    <tr>
+                                    <t t-set="kit" t-value="move_line.move_id.sale_line_id.product_id"/>
+                                    <tr t-if="kit != last_kit">
                                         <td style="padding:0px;margin:0px;border:none;">
                                             <!-- verificar que no sea portes = 0€ -->
 
@@ -317,8 +320,8 @@
                                                     <t t-set="mostrar" t-value="False"/>
                                                 </t>
                                             </t>
-                                            <t t-if="mostrar == True">
-                                                <div style="font-size:0.7em;clear:both;width:99.6%;">
+                                            <t t-if="mostrar">
+                                                <div style="font-size:0.7em;clear:both;width:99.6%;font-weight:bold">
                                                     <!-- verificar que no sea portes = 0€ -->
                                                     <t t-set="plazos" t-value="move_line.move_id.sale_line_id.order_id.payment_term_id.name"></t>
                                                     <!-- codigo ventas-->
@@ -360,7 +363,7 @@
 
                                                     </t>
                                                     <t t-else="">
-                                                        <div style="width:44%;display:block;float:left;color:white;">
+                                                        <div style="width:50%;display:block;float:left;color:white;">
                                                             <span>aaa</span>
                                                         </div>
                                                     </t>
@@ -409,16 +412,23 @@
                                                             <t t-set="discount" t-value="price_discount*move_line.move_id.sale_line_id.discount/100"></t>
                                                             <t t-set="price_discount" t-value="price_discount - discount"></t>
                                                         </t>
-                                                        <span t-field="move_line.sale_price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.sale_id.pricelist_id.currency_id}"/>
+                                                        <t t-if="move_line.move_id.sale_line_id.discount">
+                                                            <span t-esc="price_discount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.sale_id.pricelist_id.currency_id}"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <span t-esc="price_discount"/>
+                                                            <span>€</span>
+                                                        </t>
+
                                                     </div>
                                                     <!-- Fin Neto-->
                                                     <div style="width:9%;display:block;float:left;text-align:right;">
-                                                        <t t-if="move_line.product_id != move_line.move_id.sale_line_id.product_id">
+                                                        <t t-if="move_line.move_id.sale_line_id.product_id">
                                                             <span t-esc="price_discount * move_line.move_id.sale_line_id.qty_delivered" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.sale_id.pricelist_id.currency_id}"/>
                                                             <t t-set="total_doc" t-value="total_doc + (price_discount * move_line.move_id.sale_line_id.qty_delivered)"/>
                                                         </t>
                                                         <t t-else="">
-                                                            <span t-field="move_line.sale_price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.sale_id.pricelist_id.currency_id}"/>
+                                                            <span t-field="move_line.move_id.purchase_line_id.price_unit"/>
                                                             <t t-set="total_doc" t-value="total_doc + (price_discount * move_line.qty_done)"/>
                                                         </t>
                                                     </div>
@@ -426,6 +436,62 @@
                                             </t>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td style="padding:0px;margin:0px;border:none;">
+                                            <!-- verificar que no sea portes = 0€ -->
+
+                                            <t t-set="mostrar" t-value="True"/>
+                                            <t t-if="move_line.move_id.sale_line_id.price_unit &lt; 0.01">                                                    <t t-if="move_line.product_id.default_code == 'ENT0'">
+                                                    <t t-set="mostrar" t-value="False"/>
+                                                </t>
+                                            </t>
+                                            <t t-if="mostrar">
+                                                <div style="font-size:0.6em;clear:both;width:99.6%;margin-left:3%;">
+                                                    <!-- verificar que no sea portes = 0€ -->
+                                                    <t t-set="plazos" t-value="move_line.move_id.sale_line_id.order_id.payment_term_id.name"></t>
+                                                    <!-- codigo ventas-->
+                                                    <t t-if="move_line.move_id.sale_line_id">
+                                                        <div style="width:11%;display:block;clear:both;float:left;">
+                                                            <span t-field="move_line.product_id.default_code"/>
+                                                        </div>
+                                                    </t>
+                                                    <!-- Fin codigo ventas-->
+                                                    <!-- codigo compras-->
+                                                    <t t-if="move_line.move_id.purchase_line_id">
+                                                        <div style="width:11%;display:block;float:left;">
+                                                            <span t-field="move_line.move_id.purchase_line_id.product_id.default_code"/>
+                                                        </div>
+                                                    </t>
+                                                    <!-- Fin codigo compras-->
+                                                    <!-- Descripcion ventas y compras-->
+                                                    <t t-if="move_line.product_id.name">
+                                                        <div style="width:47%;display:block;float:left;">
+                                                            <span t-field="move_line.product_id.name"/>
+                                                        </div>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <div style="width:47%;display:block;float:left;color:white;">
+                                                            <span>aaa</span>
+                                                        </div>
+                                                    </t>
+                                                    <!-- Fin descripcion ventas y compras-->
+                                                    <!-- Cantidad entregada -->
+                                                    <div style="width:5%;display:block;float:left;text-align:right;">
+                                                        <t t-if="move_line.product_id != move_line.move_id.sale_line_id.product_id">
+                                                            <span t-esc="move_line.move_id.sale_line_id.qty_delivered"/>
+                                                            <t t-set="weight" t-value="weight + (move_line.move_id.sale_line_id.product_id.weight * move_line.move_id.sale_line_id.qty_delivered)"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <span t-esc="'%.2f'%move_line.qty_done"/>
+                                                            <t t-set="weight" t-value="weight + (move_line.product_id.weight * move_line.qty_done)"/>
+                                                        </t>
+                                                    </div>
+                                                    <!-- Fin cantidad entregada -->
+                                                </div>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                    <t t-set="last_kit" t-value="kit"/>
                                 </t>
                             </div>
                         </tbody>
@@ -438,7 +504,7 @@
                                 <t t-set="carrier_delivery" t-value="o.carrier_id.name"></t>
                             </t>
                                  <!-- Desglose -->
-					<div style="width:35%;float:right;font-size:0.7em;display:block;clear:both;">
+					<div style="width:35%;float:right;font-size:0.7em;margin-top:-15px;display:block;">
 						<table style="border-bottom:4px solid black;width:100%;">
 							<tr style="margin:0;padding:0;">
                                 <td style="margin:0;padding:0;">
@@ -450,9 +516,16 @@
 									    </b>
 								    </div>
 								    <div style="width:50%;float:left;text-align:right;">
-									    <b>
-										    <span style="margin-right:8px;" t-field="o.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.sale_id.pricelist_id.currency_id}" />
-									    </b>
+                                        <t t-if="o.sale_id">
+                                            <b>
+    										     <span style="margin-right:8px;" t-esc="total_doc" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.sale_id.pricelist_id.currency_id}" />
+									        </b>
+                                        </t>
+                                        <t t-else="">
+                                            <span style="margin-right:8px;" t-esc="total_doc"/>
+                                            <span>€</span>
+                                        </t>
+
 								    </div>
 
 								</td>

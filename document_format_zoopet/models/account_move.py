@@ -77,7 +77,7 @@ class AccountMove(models.Model):
             {'picking': key[0], 'line': key[1], 'quantity': value}
             for key, value in picking_dict.items()
         ]
-        return no_picking + self._sort_grouped_lines(with_picking)
+        return self._sort_grouped_lines(with_picking)
 
 
 

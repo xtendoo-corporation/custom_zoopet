@@ -545,7 +545,8 @@
                                                                 </div>
                                                                 <div style="width:19.5%;float:left;text-align:right;">
                                                                     <i>
-                                                                        <span t-esc="'%.2f'%bom_list.product_qty" />
+                                                                        <t t-set="kit_quantity" t-value="bom_list.product_qty*line.quantity"/>
+                                                                        <span t-esc="'%.2f'%kit_quantity" />
                                                                     </i>
                                                                 </div>
                                                             </t>
