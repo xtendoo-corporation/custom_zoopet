@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="sale_order_column_order_zoopet" model="ir.ui.view">
+            <field name="name">sale.order.tag.form.zoopet</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+
+                 <field name="create_date" position="replace">
+                </field>
+                <field name="partner_id" position="replace">
+                </field>
+                <field name="user_id" position="replace">
+                </field>
+                <field name="commitment_date" position="replace">
+                </field>
+                <field name="expected_date" position="replace">
+                </field>
+                <field name="team_id" position="replace">
+                </field>
+                <field name="company_id" position="replace">
+                </field>
+                <field name="amount_untaxed" position="replace">
+                </field>
+                <field name="amount_tax" position="replace">
+                </field>
+                <field name="amount_total" position="replace">
+                </field>
+                <field name="currency_id" position="replace">
+                </field>
+                <field name="state" position="replace">
+                </field>
+                <field name="invoice_status" position="replace">
+                </field>
+                <field name="activity_exception_decoration" position="replace">
+                </field>
+
+
+                <field name="name" position="after">
+                    <field name="create_date" string="Create Date" optional="show"/>
+                </field>
+                 <field name="create_date" position="after">
+                    <field name="so_tag_ids"
+                           placeholder="tag..."
+                           widget="many2many_tags"
+                           options="{'color_field': 'color', 'no_create': True, 'no_create_edit': True}"
+                           optional="show"
+                        />
+                 </field>
+                 <field name="so_tag_ids" position="after">
+                    <field name="partner_id" readonly="1" optional="show"/>
+                 </field>
+                <field name="partner_id" position="after">
+                    <field name="user_id" optional="show"/>
+                </field>
+                <field name="user_id" position="after">
+                    <field name="team_id" optional="hide"/>
+                </field>
+                <field name="team_id" position="after">
+                    <field name="company_id" groups="base.group_multi_company" optional="hide" readonly="1"/>
+                </field>
+                <field name="company_id" position="after">
+                    <field name="amount_untaxed" sum="Total Tax Excluded" widget="monetary" optional="hide"/>
+                </field>
+                <field name="amount_untaxed" position="after">
+                    <field name="amount_tax" sum="Tax Total" widget="monetary" optional="hide"/>
+                </field>
+                <field name="amount_tax" position="after">
+                    <field name="amount_total" sum="Total Tax Included" widget="monetary" optional="show"/>
+                </field>
+                <field name="amount_total" position="after">
+                    <field name="currency_id" invisible="1" optional="show"/>
+                </field>
+                <field name="currency_id" position="after">
+                    <field name="picking_state" optional="show"/>
+                </field>
+                <field name="picking_state" position="after">
+                    <field name="state" optional="show"/>
+                </field>
+                <field name="state" position="after">
+                    <field name="invoice_status" optional="show"/>
+                </field>
+                <field name="invoice_status" position="after">
+                    <field name="total_ordered_weight" optional="show"></field>
+                </field>
+                <field name="total_ordered_weight" position="after">
+                    <field name="total_delivered_weight" optional="show"></field>
+                </field>
+                <field name="total_delivered_weight" position="after">
+                    <field name="activity_exception_decoration" widget="activity_exception"/>
+                </field>
+            </field>
+        </record>
+         <record id="hide_so_tags" model="ir.ui.view">
+            <field name="name">sale.order.tag.form.zoopet</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_tag.sale_order_tag_view_list"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <field name="so_tag_ids" position="replace">
+                </field>
+            </field>
+         </record>
+         <record id="hide_so_weight" model="ir.ui.view">
+            <field name="name">sale.order.tag.form.zoopet</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_weight.quotation_weight_view_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <field name="total_ordered_weight" position="replace">
+                </field>
+                <field name="total_delivered_weight" position="replace">
+                </field>
+            </field>
+         </record>
+
+          <record id="sale_order_column_order_zoopet_quotation" model="ir.ui.view">
+            <field name="name">sale.order.tag.form.zoopet.quotation</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+
+                 <field name="date_order" position="replace">
+                </field>
+                <field name="partner_id" position="replace">
+                </field>
+                <field name="user_id" position="replace">
+                </field>
+                <field name="commitment_date" position="replace">
+                </field>
+                <field name="expected_date" position="replace">
+                </field>
+                <field name="team_id" position="replace">
+                </field>
+                <field name="company_id" position="replace">
+                </field>
+                <field name="amount_untaxed" position="replace">
+                </field>
+                <field name="amount_tax" position="replace">
+                </field>
+                <field name="amount_total" position="replace">
+                </field>
+                <field name="currency_id" position="replace">
+                </field>
+                <field name="state" position="replace">
+                </field>
+                <field name="invoice_status" position="replace">
+                </field>
+                <field name="activity_exception_decoration" position="replace">
+                </field>
+
+
+                <field name="name" position="after">
+                    <field name="date_order" string="Create Date" optional="show"/>
+                </field>
+                 <field name="date_order" position="after">
+                    <field name="so_tag_ids"
+                           placeholder="tag..."
+                           widget="many2many_tags"
+                           options="{'color_field': 'color', 'no_create': True, 'no_create_edit': True}"
+                           optional="show"
+                        />
+                 </field>
+                 <field name="so_tag_ids" position="after">
+                    <field name="partner_id" readonly="1" optional="show"/>
+                 </field>
+                <field name="partner_id" position="after">
+                    <field name="user_id" optional="show"/>
+                </field>
+                <field name="user_id" position="after">
+                    <field name="team_id" optional="hide"/>
+                </field>
+                <field name="team_id" position="after">
+                    <field name="company_id" groups="base.group_multi_company" optional="hide" readonly="1"/>
+                </field>
+                <field name="company_id" position="after">
+                    <field name="amount_untaxed" sum="Total Tax Excluded" widget="monetary" optional="hide"/>
+                </field>
+                <field name="amount_untaxed" position="after">
+                    <field name="amount_tax" sum="Tax Total" widget="monetary" optional="hide"/>
+                </field>
+                <field name="amount_tax" position="after">
+                    <field name="amount_total" sum="Total Tax Included" widget="monetary" optional="show"/>
+                </field>
+                <field name="amount_total" position="after">
+                    <field name="currency_id" invisible="1" optional="show"/>
+                </field>
+                <field name="currency_id" position="after">
+                    <field name="picking_state" optional="show"/>
+                </field>
+                <field name="picking_state" position="after">
+                    <field name="state" optional="show"/>
+                </field>
+                <field name="state" position="after">
+                    <field name="invoice_status" optional="show"/>
+                </field>
+                <field name="invoice_status" position="after">
+                    <field name="total_ordered_weight" optional="show"></field>
+                </field>
+                <field name="total_ordered_weight" position="after">
+                    <field name="total_delivered_weight" optional="show"></field>
+                </field>
+                <field name="total_delivered_weight" position="after">
+                    <field name="activity_exception_decoration" widget="activity_exception"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
