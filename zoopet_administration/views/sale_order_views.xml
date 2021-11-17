@@ -24,7 +24,7 @@
                             string="Create Invoice"
                             type="action"
                             context="{'default_advance_payment_method': 'percentage'}"
-                            attrs="{'invisible': True}"/>/>
+                            attrs="{'invisible': True}"/>
                 </xpath>
 
                 <xpath expr="//field[@name='partner_id']" position="attributes">
