@@ -19,12 +19,13 @@ class SaleOrder(models.Model):
                 "partner_id": [
                     ("user_id", "=", self.env.user.id),
                     ("parent_id", "=", False),
+                    ("supplier_rank", "=", 0)
                 ]
             }
 
         else:
             domain = {
-                "partner_id": [("customer_rank", ">", 0), ("parent_id", "=", False)]
+                "partner_id": [("supplier_rank", "=", 0), ("parent_id", "=", False)]
             }
 
         return {"domain": domain}
