@@ -67,7 +67,7 @@
             <field name="model_id" ref="product.model_product_product"/>
             <field name="domain_force">[('id', '=', '0')]</field>
             <field name="groups" eval="[(4, ref('zoopet_administration.comercial_group'))]"/>
-            <field name="perm_create" eval="True"/>
+            <field name="perm_create" eval="True"/> <!-- no es permitir es aplicar-->
             <field name="perm_unlink" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_read" eval="False"/>
