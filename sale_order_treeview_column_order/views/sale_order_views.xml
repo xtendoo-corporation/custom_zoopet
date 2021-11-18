@@ -36,6 +36,8 @@
                 </field>
                 <field name="activity_exception_decoration" position="replace">
                 </field>
+                <field name="tag_ids" position="replace">
+                </field>
 
 
                 <field name="name" position="after">
@@ -93,6 +95,8 @@
                 </field>
             </field>
         </record>
+
+
          <record id="hide_so_tags" model="ir.ui.view">
             <field name="name">sale.order.tag.form.zoopet</field>
             <field name="model">sale.order</field>
@@ -103,6 +107,7 @@
                 </field>
             </field>
          </record>
+
          <record id="hide_so_weight" model="ir.ui.view">
             <field name="name">sale.order.tag.form.zoopet</field>
             <field name="model">sale.order</field>
@@ -208,5 +213,52 @@
                 </field>
             </field>
         </record>
+
+         <record id="hide_so_tags_crm" model="ir.ui.view">
+            <field name="name">sale.order.tag.form.zoopet</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_crm.view_order_tree"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <field name="tag_ids" position="replace">
+                </field>
+            </field>
+         </record>
+
+        <record id="hide_so_weight" model="ir.ui.view">
+            <field name="name">sale.order.tag.form.zoopet.weight</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_weight.sale_order_weight_view_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <field name="total_ordered_weight" position="replace">
+                </field>
+                <field name="total_delivered_weight" position="replace">
+                </field>
+            </field>
+         </record>
+
+          <record id="hide_so_picking_state" model="ir.ui.view">
+            <field name="name">sale.order.tag.form.zoopet.picking.state</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_picking_state.sale_order_type_view_list"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <field name="picking_state" position="replace">
+                </field>
+            </field>
+         </record>
+
+         <record id="hide_so_tags_order" model="ir.ui.view">
+            <field name="name">sale.order.tag.form.order.zoopet</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="zoopet_sale_order_tags.sale_order_tag_view_form_zoopet"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <field name="so_tag_ids" position="replace">
+                </field>
+            </field>
+         </record>
+
     </data>
 </odoo>

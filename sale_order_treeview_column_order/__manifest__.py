@@ -16,6 +16,7 @@
         "sale",
         "zoopet_sale_order_tags",
         "sale_order_weight",
+        "sale_order_tag",
     ],
     "license": "AGPL-3",
     "data": [
