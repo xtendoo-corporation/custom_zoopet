@@ -82,14 +82,35 @@
                     </div>
                     <!-- si es albaran -->
                     <t t-if="isAlbaran">
-                        <div style="float:left;width:25%;text-align:center;margin-top:30px; -webkit-transform: rotate(-37deg);">
-                            <div style="font-size:1.5em;">
-                                <b><span>*ALBARAN*</span></b>
-                            </div>
-                            <div>
-                                <b><span>NOTA DE ENTREGA</span></b>
-                            </div>
-                        </div>
+                        <t t-if="albaranType">
+                            <t t-if="isDeposito == 'Depositos'">
+                                <div style="float:left;width:25%;text-align:center;margin-top:40px; -webkit-transform: rotate(-37deg);">
+                                        <div style="font-size:1.5em;">
+                                            <b><span>*DEPÓSITO*</span></b>
+                                        </div>
+                                    </div>
+                            </t>
+                            <t t-else="">
+                                <t t-set="isReturn" t-value="albaranType.find('Retorno')"></t>
+                                <t t-if="isReturn == 0">
+                                    <div style="float:left;width:25%;text-align:center;margin-top:40px; -webkit-transform: rotate(-37deg);">
+                                        <div style="font-size:1.5em;">
+                                            <b><span>*DEVOLUCION*</span></b>
+                                        </div>
+                                    </div>
+                                </t>
+                                <t t-else="">
+                                    <div style="float:left;width:25%;text-align:center;margin-top:30px; -webkit-transform: rotate(-37deg);">
+                                        <div style="font-size:1.5em;">
+                                            <b><span>*ALBARAN*</span></b>
+                                        </div>
+                                        <div>
+                                            <b><span>NOTA DE ENTREGA</span></b>
+                                        </div>
+                                    </div>
+                                </t>
+                            </t>
+                        </t>
                     </t>
                     <!-- fin si es albaran -->
                     <!-- si es venta -->

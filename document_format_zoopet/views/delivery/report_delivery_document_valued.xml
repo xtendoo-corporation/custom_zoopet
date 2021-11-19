@@ -3,8 +3,6 @@
 <odoo>
 
     <data>
-
-
        <report id="document_format_zoopet.report_delivery_valued"
                 string="Albarán"
                 model="stock.picking"
@@ -24,6 +22,10 @@
         <template id="document_format_zoopet.report_delivery_document_valued">
             <t t-name="document_format_zoopet.report_delivery_document_valued">
                 <t t-set="isAlbaran" t-value="o.move_line_ids"></t>
+                <t t-set="albaranType" t-value="o.origin"/>
+                <t t-set="isDeposito" t-value="o.sale_id.so_tag_ids.name" />
+                <t t-set="lumps_number" t-value="o.lumps_number" />
+                <t t-set="palets_number" t-value="o.palets_number" />
                 <t t-set="doc_name" t-value="o.name"/>
                 <t t-call="web.html_container">
                     <t t-call="web.external_layout">
@@ -219,13 +221,17 @@
                                 <span style="margin-left:2px;"><b>Cliente: </b></span><span t-field="o.partner_id.ref"/>
                             </div>
                             <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
-                                <span style="margin-left:2px;"><b>Factura: </b></span><span t-field="o.sale_id.name"/>
+                                <span style="margin-left:2px;"><b>Pedido: </b></span><span t-field="o.sale_id.name"/>
                             </div>
                         </div>
                         <!-- fin datos documento -->
                         <!-- observaciones -->
                         <div style="width:49%;float:left;margin-left:1%;border:2px solid black;height:51px;margin-top:5px;margin-bottom:5px;">
-                            <span style="margin-left:2px;"><b>Observaciones: </b></span><span t-field="o.note"/>
+                            <span style="margin-left:2px;"><b>Observaciones: </b></span>
+                            <t t-if="o.sale_id.note">
+                                <span t-field="o.sale_id.note"/>
+                            </t>
+                            <span t-field="o.note"/>
                         </div>
                         <!-- fin observaciones -->
                         <!-- Fin datos documento -->
@@ -296,12 +302,23 @@
                                 </th>
                             </tr>
                         </thead>
-                                <!--<hr style="height:2px;width:99.8%;background-color:black;margin-bottom:-1px;"/>-->
-                                <!-- marca de agua-->
-                                    <div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:300px;">
+                            <!--<hr style="height:2px;width:99.8%;background-color:black;margin-bottom:-1px;"/>-->
+                             <!-- marca de agua-->
+                            <t t-set="isReturn" t-value="o.origin.find('Retorno')"></t>
+                            <div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:300px;">
+                                <t t-if="isDeposito == 'Depositos'">
+                                     <p>*DEPÓSITO*</p>
+                                </t>
+                                <t t-else="">
+                                    <t t-if="isReturn == 0">
+                                        <p>*NOTA DE RECOGIDA*</p>
+                                    </t>
+                                    <t t-else="">
                                         <p>*NOTA DE ENTREGA*</p>
-                                        </div>
-                                        <!-- fin marca de agua -->
+                                    </t>
+                                </t>
+                            </div>
+                            <!-- fin marca de agua -->
                         <!-- lineas -->
                         <tbody style="border-bottom:4px solid black;">
                             <t t-set="plazos" t-value="0"></t>
@@ -444,6 +461,9 @@
                                             <t t-if="move_line.move_id.sale_line_id.price_unit &lt; 0.01">                                                    <t t-if="move_line.product_id.default_code == 'ENT0'">
                                                     <t t-set="mostrar" t-value="False"/>
                                                 </t>
+                                            </t>
+                                             <t t-if="move_line.move_id.sale_line_id.product_id.bom_ids.to_print == False">
+                                                 <t t-set="mostrar" t-value="False"/>
                                             </t>
                                             <t t-if="mostrar">
                                                 <div style="font-size:0.6em;clear:both;width:99.6%;margin-left:3%;">

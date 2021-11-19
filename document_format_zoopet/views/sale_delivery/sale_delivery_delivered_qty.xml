@@ -22,6 +22,7 @@
                 <t t-call="web.external_layout">
                     <div class="page">
                         <t t-set="isAlbaran" t-value="'sale'"/>
+                        <t t-set="albaranType" t-value="doc.name"/>
                         <t t-set="carrier_delivery" t-value="hola"/>
                         <t t-set="doc_name" t-value="doc.delivery_ids.name"/>
                         <t t-set="lumps_number" t-value="doc.lumps_number"/>
