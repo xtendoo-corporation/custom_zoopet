@@ -8,7 +8,6 @@ class StockMoveLine(models.Model):
 
     weight_amount = fields.Float(
         compute="_compute_weight_qty_done",
-        readonly=True,
         store=True,
         string="Weight done",
         digits="Product Unit of Measure"
