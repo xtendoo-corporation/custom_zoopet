@@ -11,6 +11,7 @@
     "category": "Extra Tools",
     "depends": [
         "product_template_tags",
+        "sale",
     ],
     "license": "AGPL-3",
     "data": [

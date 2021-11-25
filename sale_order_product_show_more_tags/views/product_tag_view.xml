@@ -16,4 +16,19 @@
     </record>
     <!-- Fin buscar mas... (ventas) -->
 
+     <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.tags.line.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree//field[@name='name']" position="after">
+                <field name="tag_ids"  widget="many2many_tags"
+                    options="{'color_field': 'color', 'no_create': True, 'no_create_edit': True}"
+                       optional="show"
+                />
+            </xpath>
+
+        </field>
+    </record>
+
 </odoo>
