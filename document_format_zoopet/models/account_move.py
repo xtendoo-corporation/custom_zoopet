@@ -67,7 +67,7 @@ class AccountMove(models.Model):
                         remaining_qty -= qty
             if (not float_is_zero(
                     remaining_qty,
-                    precision_rounding=line.product_id.uom_id.rounding)):
+                    precision_rounding=0.01)):
                 lines_dict[line] = remaining_qty
         no_picking = [
             {'picking': False, 'line': key, 'quantity': value}
