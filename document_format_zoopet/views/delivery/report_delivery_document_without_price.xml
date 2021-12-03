@@ -223,6 +223,12 @@
                                     <span t-if="o.partner_id.phone">TLF.:</span><span t-if="o.partner_id.phone" t-field="o.partner_id.phone"/>
                                     <span t-if="o.partner_id.mobile">, </span><span t-if="o.partner_id.mobile" t-field="o.partner_id.mobile"/>
                                 </div>
+                                    <!-- Nota -->
+                                    <t t-if="o.partner_id.parent_id">
+                                        <div t-if="o.partner_id.comment">
+                                            <span>Nota: </span><span t-field="o.partner_id.comment"/>
+                                        </div>
+                                    </t>
                             </div>
                             <!-- Fin direccion de envio -->
                         </div>
