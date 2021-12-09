@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="zoopet_administration.sale_order_graph" inherit_id="sale.view_sale_order_graph">
+            <xpath expr="//field[@name='amount_total']" position="after">
+                <field name="margin" type="measure" groups="zoopet_administration.show_margins"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

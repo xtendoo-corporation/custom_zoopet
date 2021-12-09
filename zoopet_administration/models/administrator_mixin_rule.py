@@ -62,7 +62,7 @@ class AdministratorMixinRule(models.Model):
     )
 
     def _print_all_formats(self):
-        self.permission_to_archive = self.env["res.users"].has_group(
+        self.print_all_formats = self.env["res.users"].has_group(
                 "zoopet_administration.print_all_formats"
             )
 

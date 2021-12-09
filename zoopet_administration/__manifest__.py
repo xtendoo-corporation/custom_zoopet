@@ -31,6 +31,8 @@
         'views/purchase_order_no_create.xml',
         'views/product_no_create_views.xml',
         'views/stock_picking_view.xml',
+        'views/pivote_view/sale_order_pivot_view.xml',
+        'views/pivote_view/sale_order_graph_view.xml',
         #'views/permission_to_archive_view.xml',
         'views/sale_order_type_views.xml',
         'security/security_group.xml',
