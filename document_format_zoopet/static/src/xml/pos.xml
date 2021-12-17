@@ -1,7 +1,7 @@
 
 <templates id="document_format_zoopet.template" xml:space="preserve">
     <t t-extend="PosTicket">
-        <t t-jquery="div[class='pos-sale-ticket']" t-operation="replace">
+        <t t-jquery="div[class='pos']" t-operation="replace">
             <div class="pos-sale-ticket">
                 <div class="pos-center-align">
                     <t t-esc="order.formatted_validation_date"/>

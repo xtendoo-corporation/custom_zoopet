@@ -75,7 +75,7 @@
         "views/res_partner/res_partner_view.xml",
 
         #Añadir JS del POS
-        #"templates/assets.xml",
+        "templates/assets.xml",
 
 
     ],
