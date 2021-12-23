@@ -305,11 +305,11 @@
                             <span>NºBB: </span>
                         </div>
                     </t>
-                    <t t-if="palets_number">
-                        <t t-if="palets_number != 0">
+                    <t t-if="pallets_number">
+                        <t t-if="pallets_number != 0">
                             <div style="width:7.5%;float:left;">
                                 <span>NºP: </span>
-                                <span t-esc="palets_number"></span>
+                                <span t-esc="pallets_number"></span>
                             </div>
                         </t>
                         <t t-else="">

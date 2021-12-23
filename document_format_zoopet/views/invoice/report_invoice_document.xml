@@ -23,7 +23,7 @@
 						<t t-set="delivery_method" t-value="o.delivery_method" />
 						<t t-if="isInvoice == 'out_invoice'">
 							<t t-set="lumps_number" t-value="o.lumps_number" />
-							<t t-set="palets_number" t-value="o.palets_number" />
+							<t t-set="pallets_number" t-value="o.pallets_number" />
 						</t>
 						<t t-set="mostrarFrasePortes" t-value="False" />
 						<t t-foreach="o.invoice_line_ids" t-as="line">
