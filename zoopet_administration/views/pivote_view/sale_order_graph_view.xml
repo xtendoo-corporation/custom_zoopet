@@ -6,5 +6,10 @@
                 <field name="margin" type="measure" groups="zoopet_administration.show_margins"/>
             </xpath>
         </template>
+        <template id="zoopet_administration.sale_order_graph_product" inherit_id="sale.view_order_product_graph">
+            <xpath expr="//field[@name='price_subtotal']" position="after">
+                <field name="margin" type="measure" groups="zoopet_administration.show_margins"/>
+            </xpath>
+        </template>
     </data>
 </odoo>
