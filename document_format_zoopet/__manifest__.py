@@ -68,15 +68,13 @@
         #Albarán en pedidos
         "views/sale_delivery/sale_delivery_without_price.xml",
         "views/sale_delivery/sale_delivery.xml",
-
         #"views/sale_delivery/sale_delivery_delivered_qty.xml",
-
         #Res_Partner
         "views/res_partner/res_partner_view.xml",
-
         #Añadir JS del POS
         "templates/assets.xml",
-
+        #Vista del informe de ventas, para añadir el grupo
+        "views/sale_report_view/sale_report_view.xml"
 
     ],
     "qweb": [

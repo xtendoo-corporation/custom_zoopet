@@ -6,6 +6,8 @@ from odoo import fields, models
 class SaleReport(models.Model):
     _inherit = "sale.report"
 
+    create_date = fields.Datetime('Create Date', readonly=True)
+
     def _query(self, with_clause='', fields={}, groupby='', from_clause=''):
 
         _sale_select_ = """
@@ -23,6 +25,7 @@ class SaleReport(models.Model):
             count(*) as nbr,
             s.name as name,
             s.date_order as date,
+            s.create_date as create_date,
             s.state as state,
             s.partner_id as partner_id,
             s.user_id as user_id,
@@ -62,6 +65,7 @@ class SaleReport(models.Model):
             count(*) AS nbr,
             pos.name AS name,
             pos.date_order AS date,
+            pos.date_order AS create_date,
             CASE WHEN pos.state = 'draft' THEN 'pos_draft' WHEN pos.state = 'done' THEN 'pos_done' else pos.state END AS state,
             pos.partner_id AS partner_id,
             pos.user_id AS user_id,
@@ -91,9 +95,9 @@ class SaleReport(models.Model):
             t.website_id as website_id
         '''
 
-        #for field in fields.keys():
-            #_sale_select_ += ', 0 AS %s' % field
-            #_pos_select_ += ', 0 AS %s' % field
+        for field in fields.keys():
+            _sale_select_ += ', 0 AS %s' % field
+            _pos_select_ += ', 0 AS %s' % field
 
         _sale_from_ = '''
             sale_order_line l
@@ -126,6 +130,7 @@ class SaleReport(models.Model):
 			t.product_brand_id,
             s.name,
             s.date_order,
+            s.create_date,
             s.partner_id,
             s.user_id,
             s.state,
@@ -154,6 +159,7 @@ class SaleReport(models.Model):
             t.product_brand_id,
             pos.name,
             pos.date_order,
+            pos.create_date,
             pos.partner_id,
             pos.user_id,
             pos.state,
@@ -172,5 +178,4 @@ class SaleReport(models.Model):
         sale = '(SELECT %s FROM %s GROUP BY %s)' % (_sale_select_, _sale_from_, _sale_groupby_)
 
         pos = '(SELECT %s FROM %s GROUP BY %s)' % (_pos_select_, _pos_from_, _pos_groupby_)
-
         return '%s UNION ALL %s' % (sale, pos)

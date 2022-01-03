@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_order_product_search" model="ir.ui.view">
+        <field name="inherit_id" ref="sale.view_order_product_search" />
+        <field name="model">sale.report</field>
+        <field name="arch" type="xml">
+            <filter name="date" position="after">
+                <field name="create_date" invisible="1"/>
+                <filter string="Fecha de creación" name="create_month" context="{'group_by':'create_date:month'}"/>
+            </filter>
+        </field>
+    </record>
+</odoo>
