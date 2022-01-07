@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <record id="sale_order_column_order_zoopet" model="ir.ui.view">
-            <field name="name">sale.order.tag.form.zoopet</field>
+            <field name="name">sale.order.column.order.zoopet</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_quotation_tree"/>
             <field name="type">form</field>
@@ -109,7 +109,7 @@
 
 
          <record id="hide_so_tags" model="ir.ui.view">
-            <field name="name">sale.order.tag.form.zoopet</field>
+            <field name="name">hide.so.tag</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale_order_tag.sale_order_tag_view_list"/>
             <field name="type">form</field>
@@ -120,7 +120,7 @@
          </record>
 
          <record id="hide_so_weight" model="ir.ui.view">
-            <field name="name">sale.order.tag.form.zoopet</field>
+            <field name="name">hide.so.weight</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale_order_weight.quotation_weight_view_form"/>
             <field name="type">form</field>
@@ -131,9 +131,8 @@
                 </field>
             </field>
          </record>
-
           <record id="sale_order_column_order_zoopet_quotation" model="ir.ui.view">
-            <field name="name">sale.order.tag.form.zoopet.quotation</field>
+            <field name="name">sale.order.column.order.zoopet.quotation</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_tree"/>
             <field name="type">form</field>
@@ -236,7 +235,7 @@
         </record>
 
          <record id="hide_so_tags_crm" model="ir.ui.view">
-            <field name="name">sale.order.tag.form.zoopet</field>
+            <field name="name">hide.so.tags.crm</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale_crm.view_order_tree"/>
             <field name="type">form</field>
@@ -246,8 +245,8 @@
             </field>
          </record>
 
-        <record id="hide_so_weight" model="ir.ui.view">
-            <field name="name">sale.order.tag.form.zoopet.weight</field>
+        <record id="hide_po_weight" model="ir.ui.view">
+            <field name="name">hide.po.weight</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale_order_weight.sale_order_weight_view_form"/>
             <field name="type">form</field>
@@ -259,8 +258,8 @@
             </field>
          </record>
 
-          <record id="hide_so_picking_state" model="ir.ui.view">
-            <field name="name">sale.order.tag.form.zoopet.picking.state</field>
+          <record id="hide_po_picking_state" model="ir.ui.view">
+            <field name="name">hide.po.picking.state</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale_picking_state.sale_order_type_view_list"/>
             <field name="type">form</field>
@@ -271,7 +270,7 @@
          </record>
 
          <record id="hide_so_tags_order" model="ir.ui.view">
-            <field name="name">sale.order.tag.form.order.zoopet</field>
+            <field name="name">hide.so.tags.order</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="zoopet_sale_order_tags.sale_order_tag_view_form_zoopet"/>
             <field name="type">form</field>
