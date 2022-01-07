@@ -38,6 +38,10 @@
                 </field>
                 <field name="tag_ids" position="replace">
                 </field>
+                <field name="website_id" position="replace">
+                </field>
+                <field name="warehouse_id" position="replace">
+                </field>
 
 
                 <field name="name" position="after">
@@ -58,41 +62,48 @@
                     <field name="user_id" optional="show"/>
                 </field>
                 <field name="user_id" position="after">
-                    <field name="team_id" optional="hide"/>
+                    <field name="amount_total" sum="Total Tax Included" widget="monetary" optional="show"/>
                 </field>
-                <field name="team_id" position="after">
-                    <field name="company_id" groups="base.group_multi_company" optional="hide" readonly="1"/>
-                </field>
-                <field name="company_id" position="after">
+                <field name="amount_total" position="after">
                     <field name="amount_untaxed" sum="Total Tax Excluded" widget="monetary" optional="hide"/>
                 </field>
                 <field name="amount_untaxed" position="after">
                     <field name="amount_tax" sum="Tax Total" widget="monetary" optional="hide"/>
                 </field>
-                <field name="amount_tax" position="after">
-                    <field name="amount_total" sum="Total Tax Included" widget="monetary" optional="show"/>
+                 <field name="amount_tax" position="after">
+                    <field name="state" optional="hide"/>
                 </field>
-                <field name="amount_total" position="after">
-                    <field name="currency_id" invisible="1" optional="show"/>
-                </field>
-                <field name="currency_id" position="after">
-                    <field name="picking_state" optional="show"/>
-                </field>
-                <field name="picking_state" position="after">
-                    <field name="state" optional="show"/>
-                </field>
-                <field name="state" position="after">
+                 <field name="state" position="after">
                     <field name="invoice_status" optional="show"/>
                 </field>
                 <field name="invoice_status" position="after">
+                    <field name="picking_state" optional="show"/>
+                </field>
+                <field name="picking_state" position="after">
                     <field name="total_ordered_weight" optional="show"></field>
                 </field>
                 <field name="total_ordered_weight" position="after">
                     <field name="total_delivered_weight" optional="show"></field>
                 </field>
                 <field name="total_delivered_weight" position="after">
+                    <field name="warehouse_id" options="{'no_create': True}" groups="stock.group_stock_multi_warehouses" optional="hide"/>
+                </field>
+                <field name="warehouse_id" position="after">
+                    <field name="team_id" optional="hide"/>
+                </field>
+                <field name="team_id" position="after">
+                    <field name="company_id" groups="base.group_multi_company" optional="hide" readonly="1"/>
+                </field>
+                <field name="company_id" position="after">
+                     <field name="website_id" optional="hide"/>
+                </field>
+                <field name="website_id" position="after">
                     <field name="activity_exception_decoration" widget="activity_exception"/>
                 </field>
+                <field name="activity_exception_decoration" position="after">
+                    <field name="currency_id" invisible="1" optional="hide"/>
+                </field>
+
             </field>
         </record>
 
@@ -156,12 +167,16 @@
                 </field>
                 <field name="activity_exception_decoration" position="replace">
                 </field>
+                <field name="website_id" position="replace">
+                </field>
+                <field name="warehouse_id" position="replace">
+                </field>
 
 
                 <field name="name" position="after">
-                    <field name="date_order" string="Create Date" optional="show"/>
+                    <field name="create_date" string="Date Order" optional="show"/>
                 </field>
-                 <field name="date_order" position="after">
+                 <field name="create_date" position="after">
                     <field name="so_tag_ids"
                            placeholder="tag..."
                            widget="many2many_tags"
@@ -176,40 +191,46 @@
                     <field name="user_id" optional="show"/>
                 </field>
                 <field name="user_id" position="after">
-                    <field name="team_id" optional="hide"/>
+                    <field name="amount_total" sum="Total Tax Included" widget="monetary" optional="show"/>
                 </field>
-                <field name="team_id" position="after">
-                    <field name="company_id" groups="base.group_multi_company" optional="hide" readonly="1"/>
-                </field>
-                <field name="company_id" position="after">
+                <field name="amount_total" position="after">
                     <field name="amount_untaxed" sum="Total Tax Excluded" widget="monetary" optional="hide"/>
                 </field>
                 <field name="amount_untaxed" position="after">
                     <field name="amount_tax" sum="Tax Total" widget="monetary" optional="hide"/>
                 </field>
-                <field name="amount_tax" position="after">
-                    <field name="amount_total" sum="Total Tax Included" widget="monetary" optional="show"/>
+                 <field name="amount_tax" position="after">
+                    <field name="state" optional="hide"/>
                 </field>
-                <field name="amount_total" position="after">
-                    <field name="currency_id" invisible="1" optional="show"/>
-                </field>
-                <field name="currency_id" position="after">
-                    <field name="picking_state" optional="show"/>
-                </field>
-                <field name="picking_state" position="after">
-                    <field name="state" optional="show"/>
-                </field>
-                <field name="state" position="after">
+                 <field name="state" position="after">
                     <field name="invoice_status" optional="show"/>
                 </field>
                 <field name="invoice_status" position="after">
+                    <field name="picking_state" optional="show"/>
+                </field>
+                <field name="picking_state" position="after">
                     <field name="total_ordered_weight" optional="show"></field>
                 </field>
                 <field name="total_ordered_weight" position="after">
                     <field name="total_delivered_weight" optional="show"></field>
                 </field>
                 <field name="total_delivered_weight" position="after">
+                    <field name="warehouse_id" options="{'no_create': True}" groups="stock.group_stock_multi_warehouses" optional="hide"/>
+                </field>
+                <field name="warehouse_id" position="after">
+                    <field name="team_id" optional="hide"/>
+                </field>
+                <field name="team_id" position="after">
+                    <field name="company_id" groups="base.group_multi_company" optional="hide" readonly="1"/>
+                </field>
+                <field name="company_id" position="after">
+                     <field name="website_id" optional="hide"/>
+                </field>
+                <field name="website_id" position="after">
                     <field name="activity_exception_decoration" widget="activity_exception"/>
+                </field>
+                <field name="activity_exception_decoration" position="after">
+                    <field name="currency_id" invisible="1" optional="hide"/>
                 </field>
             </field>
         </record>
