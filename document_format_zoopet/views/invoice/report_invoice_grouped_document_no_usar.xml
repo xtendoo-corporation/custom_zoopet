@@ -293,14 +293,14 @@
                             <tr style="border-top:4px solid black;">
                                 <th style="padding:0px;margin:0px;font-size:0.7em;border-bottom:2px solid black;">
                                     <div style="clear:both;color:black;">
-                                        <div style="width:10%;display:block;float:left;">
+                                        <div style="width:15%;display:block;float:left;">
                                             <span>
                                                 <b>
                                                     Código
                                                 </b>
                                             </span>
                                         </div>
-                                        <div style="width:38%;display:block;float:left;">
+                                        <div style="width:33%;display:block;float:left;">
                                             <span>
                                                 <b>
                                                     Descripción
@@ -419,7 +419,15 @@
                                                         <span>Albarán:</span>
                                                         <span t-field="picking.name"/>
                                                         <span> - </span>
-                                                        <span t-field="picking.date_done" t-options="{'widget': 'date'}"/>
+                                                        <!--<span t-field="picking.date_done" t-options="{'widget': 'date'}"/>-->
+                                                        <span>NºB </span>
+                                                        <span t-field="picking.lumps_number"/>
+                                                        <span> NºP </span>
+                                                        <span t-field="picking.pallets_number"/>
+                                                        <t t-if="picking.carrier_id">
+                                                            <span> - </span>
+                                                            <span t-field="picking.carrier_id.name"/>
+                                                        </t>
                                                         <t t-if="picking.note">
                                                             <span> - </span>
                                                             <span t-field="picking.note"/>
@@ -470,7 +478,7 @@
 
                                                     <div style="font-size:0.7em;clear:both;">
                                                         <!-- codigo -->
-                                                        <div style="width:10%;display:block;float:left;">
+                                                        <div style="width:15%;display:block;float:left;">
                                                             <t t-if="l.product_id.default_code">
                                                                 <span t-field="l.product_id.default_code" />
                                                             </t>
@@ -482,7 +490,7 @@
                                                         </div>
                                                         <!-- Fin codigo -->
                                                         <!-- Descripcion -->
-                                                        <div style="width:38%;display:block;float:left;">
+                                                        <div style="width:33%;display:block;float:left;">
                                                             <t t-if="line.name">
                                                                 <t t-set="productName" t-value="l.name" />
                                                                 <t t-set="name_num" t-value="productName.find(']') + 1 " />
@@ -575,7 +583,7 @@
                                                         <t t-if="l.product_id.bom_count">
                                                             <t t-if="l.product_id.product_tmpl_id.bom_ids.to_print == True">
                                                                 <t t-foreach="l.product_id.product_tmpl_id.bom_ids.bom_line_ids" t-as="bom_list">
-                                                                    <div style="width:10%;margin-left:4%;float:left;clear:both;">
+                                                                    <div style="width:15%;margin-left:4%;float:left;clear:both;">
                                                                             <t t-if="not bom_list.product_id.default_code">
                                                                                 <i>
                                                                                     <span style="color:white">aaa</span>
@@ -587,7 +595,7 @@
                                                                                 </i>
                                                                             </t>
                                                                     </div>
-                                                                    <div style="width:31.45%;float:left;">
+                                                                    <div style="width:26.45%;float:left;">
                                                                         <i>
                                                                             <span t-esc="bom_list.product_id.name" />
                                                                         </i>
