@@ -398,7 +398,7 @@
                         <t t-set="weight" t-value="0" />
                         <!-- Fin variables -->
                         <tbody class="sale_tbody">
-                            <t t-foreach="o.invoice_line_ids.sorted(key=lambda il: il.product_id, reverse=True)" t-as="line">
+                            <t t-foreach="o.invoice_line_ids.sorted(key=lambda il: il.sequence)" t-as="line">
                                 <tr>
                                     <td style="padding:0px;margin:0px;border:none;">
                                         <!-- calculo peso -->
