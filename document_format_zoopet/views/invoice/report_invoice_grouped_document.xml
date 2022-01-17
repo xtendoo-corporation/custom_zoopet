@@ -477,11 +477,17 @@
                                                             <span>Albarán:</span>
                                                             <span t-field="picking.name"/>
                                                             <span> - </span>
-                                                            <!--<span t-field="picking.date_done" t-options="{'widget': 'date'}"/>-->
-                                                            <span>NºB </span>
-                                                            <span t-field="picking.lumps_number"/>
-                                                            <span> NºP </span>
-                                                            <span t-field="picking.pallets_number"/>
+                                                            <span t-field="picking.date_done" t-options="{'widget': 'date'}"/>
+                                                            <t t-if="picking.lumps_number &gt; 0">
+                                                                <span> - </span>
+                                                                <span>NºB: </span>
+                                                                <span t-field="picking.lumps_number"/>
+                                                            </t>
+                                                             <t t-if="picking.pallets_number &gt; 0">
+                                                                 <span> - </span>
+                                                                 <span> NºP: </span>
+                                                                 <span t-field="picking.pallets_number"/>
+                                                            </t>
                                                              <t t-if="picking.carrier_id">
                                                                 <span> - </span>
                                                                 <span t-field="picking.carrier_id.name"/>
