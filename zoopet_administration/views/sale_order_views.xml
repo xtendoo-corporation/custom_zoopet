@@ -201,6 +201,10 @@
                 <xpath expr="//page[@name='order_lines']//field[@name='purchase_price']" position="attributes">
                     <attribute name="groups">zoopet_administration.show_cost_price</attribute>
                 </xpath>
+                 <xpath expr="//page[@name='order_lines']//field[@name='price_unit']" position="after">
+                    <field name="unit_weight" invisible="1" />
+                    <field name="total_ordered_weight" />
+                </xpath>
 
                 <!-- Fin Abrir.Lineas del pedido -->
 
