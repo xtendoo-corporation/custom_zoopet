@@ -80,10 +80,10 @@
                     <field name="picking_state" optional="show"/>
                 </field>
                 <field name="picking_state" position="after">
-                    <field name="total_ordered_weight" optional="show"></field>
+                    <field name="total_ordered_weight" sum="Total Peso Pedido"  optional="show"></field>
                 </field>
                 <field name="total_ordered_weight" position="after">
-                    <field name="total_delivered_weight" optional="show"></field>
+                    <field name="total_delivered_weight" sum="Total Peso Enviado"  optional="show"></field>
                 </field>
                 <field name="total_delivered_weight" position="after">
                     <field name="warehouse_id" options="{'no_create': True}" groups="stock.group_stock_multi_warehouses" optional="hide"/>
