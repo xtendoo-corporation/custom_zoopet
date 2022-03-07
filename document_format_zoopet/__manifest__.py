@@ -34,6 +34,7 @@
         "l10n_es_partner",
         "purchase",
         "account_invoice_date_due",
+        "l10n_es_pos"
     ],
     "license": "AGPL-3",
     "data": [
