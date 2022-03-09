@@ -20,6 +20,9 @@
                 <div class="receipt-phone pos-center-align">
                     Phone: <t t-esc="widget.pos.company.phone || ''"/><br />
                 </div>
+                 <div class="receipt-phone pos-center-align">
+                    VAT: <t t-esc="widget.pos.company.vat || ''"/><br />
+                </div>
                  <t t-jquery="[t-if='receipt.header_xml']" t-operation="after">
                     <t t-if="order.get_client()">
                         <div class="pos-center-align">
@@ -77,12 +80,12 @@
                     <div style="width:30%;float:left;text-align:right;">
                          <t t-esc="widget.format_currency(order.get_total_without_tax())"/>
                     </div>
-                    <div style="width:42%;float:left;margin-left:15%;">
-                        <b><span>DESCUENTO TOTAL</span></b>
-                    </div>
-                    <div style="width:30%;float:left;text-align:right;">
-                         <t t-esc="widget.format_currency(order.get_total_discount())"/>
-                    </div>
+<!--                    <div style="width:42%;float:left;margin-left:15%;">-->
+<!--                        <b><span>DESCUENTO TOTAL</span></b>-->
+<!--                    </div>-->
+<!--                    <div style="width:30%;float:left;text-align:right;">-->
+<!--                         <t t-esc="widget.format_currency(order.get_total_discount())"/>-->
+<!--                    </div>-->
                     <t t-foreach="order.get_tax_name()" t-as="taxdetail">
                         <div style="width:42%;float:left;margin-left:15%;">
                             <t t-set="taxName" t-value="taxdetail.name"/>
