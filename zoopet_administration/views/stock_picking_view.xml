@@ -12,6 +12,9 @@
                  <xpath expr="//field[@name='product_id']" position="attributes">
                     <attribute name="options">{"no_create": True}</attribute>
                 </xpath>
+                 <xpath expr="//form//tree" position="attributes">
+                    <attribute name="limit">800</attribute>
+                </xpath>
             </field>
         </record>
 
