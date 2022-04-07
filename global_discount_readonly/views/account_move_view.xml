@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="global_discount_readonly.account_move_form_view" model="ir.ui.view">
+            <field name="name">account.move.form.view.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account_global_discount.view_move_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='global_discount_ids']" position="replace">
+                     <field name="global_discount_ids" readonly="1" invisible="1" widget="many2many_tags" placeholder="Discounts..." groups="base_global_discount.group_global_discount"/>
+                 </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
