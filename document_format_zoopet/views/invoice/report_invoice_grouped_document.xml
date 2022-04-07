@@ -328,7 +328,7 @@
 													</b>
 												</span>
 											</div>
-											<div style="width:33%;display:block;float:left;">
+											<div style="width:30%;display:block;float:left;">
 												<span>
 													<b>
 														Descripción
@@ -356,7 +356,7 @@
 													</b>
 												</span>
 											</div>
-											<div style="width:8%;display:block;float:left;text-align:right;">
+											<div style="width:11%;display:block;float:left;text-align:left;padding-left:1%">
 												<t t-if="total_discount1 != 0">
 													<span>
 														<b>
@@ -553,7 +553,7 @@
                                                             </div>
                                                             <!-- Fin codigo -->
                                                             <!-- Descripcion -->
-                                                            <div style="width:33%;display:block;float:left;">
+                                                            <div style="width:30%;display:block;float:left;">
                                                                 <t t-if="line.name">
                                                                     <t t-set="productName" t-value="line.name" />
                                                                     <t t-set="name_num" t-value="productName.find(']') + 1 " />
@@ -602,9 +602,11 @@
                                                             </div>
                                                             <!-- Fin precio / u -->
                                                             <!-- Descuento -->
-                                                            <div t-if="line.discount != 0.00" style="width:8%;display:block;float:left;text-align:right;">
-                                                                <t t-if="line.discount != 0.00">
-                                                                    <span t-field="line.discount" />
+                                                            <div t-if="line.discount != 0.00" style="width:11%;display:block;float:left;text-align:left;padding-left:1%;">
+                                                                <t t-if="line.account_inline_discount_ids">
+                                                                    <t t-foreach="line.account_inline_discount_ids" t-as="inline_discount">
+                                                                        <span t-field="inline_discount.description" />
+                                                                    </t>
                                                                 </t>
                                                                 <t t-else="">
                                                                     <span style="color:white;">
@@ -612,7 +614,7 @@
                                                                     </span>
                                                                 </t>
                                                             </div>
-                                                            <div t-else="" style="width:8%;display:block;float:left;text-align:right;">
+                                                            <div t-else="" style="width:11%;display:block;float:left;text-align:right;">
                                                                 <span style="color:white;">
                                                                     abc
                                                                 </span>

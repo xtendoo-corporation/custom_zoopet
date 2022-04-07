@@ -34,7 +34,8 @@
         "l10n_es_partner",
         "purchase",
         "account_invoice_date_due",
-        "l10n_es_pos"
+        "l10n_es_pos",
+        "sale_and_invoice_inline_discounts"
     ],
     "license": "AGPL-3",
     "data": [
