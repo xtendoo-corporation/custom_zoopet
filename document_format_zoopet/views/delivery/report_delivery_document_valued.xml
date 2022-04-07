@@ -282,7 +282,7 @@
                                         </div>
                                             <!-- venta -->
                                         <t t-if="o.sale_id">
-                                            <div style="height:14px;width:43%;display:block;float:left;">
+                                            <div style="height:14px;width:48%;display:block;float:left;">
                                                 <span><b>Descripción</b></span>
                                             </div>
                                         </t>
@@ -304,7 +304,7 @@
                                             <span><b>Precio/U</b></span>
                                         </div>
                                         <t t-if="o.sale_id">
-                                            <div style="height:14px;width:11%;display:block;float:left;text-align:left;padding-left:1%;">
+                                            <div style="height:14px;width:6%;display:block;float:left;text-align:left;padding-left:1%;">
                                                 <t t-if="total_discount1 != 0">
                                                     <span><b>Desc.%</b></span>
                                                 </t>
@@ -384,12 +384,12 @@
                                                         <t t-if="move_line.move_id.sale_line_id">
 
                                                             <t t-if="move_line.product_id != move_line.move_id.sale_line_id.product_id">
-                                                                <div style="width:43%;display:block;float:left;">
+                                                                <div style="width:48%;display:block;float:left;">
                                                                     <span t-field="move_line.move_id.sale_line_id.product_id.name"/>
                                                                 </div>
                                                             </t>
                                                             <t t-else="">
-                                                                <div style="width:43%;display:block;float:left;">
+                                                                <div style="width:48%;display:block;float:left;">
                                                                     <span t-field="move_line.product_id.name"/>
                                                                 </div>
                                                             </t>
@@ -403,7 +403,7 @@
 
                                                     </t>
                                                     <t t-else="">
-                                                        <div style="width:43%;display:block;float:left;color:white;">
+                                                        <div style="width:48%;display:block;float:left;color:white;">
                                                             <span>aaa</span>
                                                         </div>
                                                     </t>
@@ -436,14 +436,14 @@
                                                     <!-- Descuento en ventas-->
                                                     <t t-if="move_line.move_id.sale_line_id">
                                                         <t t-if="move_line.move_id.sale_line_id.sale_inline_discount_ids">
-                                                            <div style="width:11%;display:block;float:left;text-align:left;padding-left:1%;">
+                                                            <div style="width:6%;display:block;float:left;text-align:left;padding-left:1%;">
                                                                 <t t-foreach="move_line.move_id.sale_line_id.sale_inline_discount_ids" t-as="inline_discount">
                                                                     <span t-field="inline_discount.description" />
                                                                 </t>
                                                             </div>
                                                         </t>
                                                         <t t-else="">
-                                                            <div style="width:11%;display:block;float:left;text-align:right;color:white;">
+                                                            <div style="width:6%;display:block;float:left;text-align:right;color:white;">
                                                                 <span>aaaaaa</span>
                                                             </div>
                                                         </t>
