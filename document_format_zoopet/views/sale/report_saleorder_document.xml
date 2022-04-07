@@ -516,7 +516,7 @@
                                                         </div>
                                                         <!-- Fin codigo -->
                                                         <!-- Descripcion -->
-                                                        <div style="width:42%;display:block;float:left;">
+                                                        <div style="width:37%;display:block;float:left;">
                                                             <t t-if="line.name">
                                                                 <t t-set="productName" t-value="line.name" />
                                                                 <t t-set="name_num" t-value="productName.find(']') + 1 " />
