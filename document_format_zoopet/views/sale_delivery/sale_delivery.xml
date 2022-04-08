@@ -375,7 +375,14 @@
                                                                 </t>
                                                             </t>
                                                             <t t-else="">
-                                                                <span style="color:white;">abc</span>
+                                                                <t t-if="line.discount != 0.00">
+                                                                    <span t-field="line.discount"/>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <span style="color:white;">
+                                                                        abc
+                                                                    </span>
+                                                                </t>
                                                             </t>
                                                         </div>
                                                         <div t-else="" style="width:6%; display:block; float:left;text-align:right;">

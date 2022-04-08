@@ -369,7 +369,7 @@
 												</span>
 											</div>
 											<div style="width:6%;display:block;float:left;text-align:left;padding-left:1%">
-												<t t-if="total_discount1 != 0">
+												<t t-if="display_discount">
 													<span>
 														<b>
 															Desc.%
@@ -575,9 +575,14 @@
                                                                 </t>
 															</t>
 															<t t-else="">
-																<span style="color:white;">
-																	abc
-																</span>
+																<t t-if="line.discount != 0.00">
+                                                                    <span t-field="line.discount"/>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <span style="color:white;">
+                                                                        abc
+                                                                    </span>
+                                                                </t>
 															</t>
 														</div>
 														<div t-else="" style="width:6%;display:block;float:left;text-align:right;">

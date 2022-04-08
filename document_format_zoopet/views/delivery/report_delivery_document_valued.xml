@@ -443,8 +443,15 @@
                                                             </div>
                                                         </t>
                                                         <t t-else="">
-                                                            <div style="width:6%;display:block;float:left;text-align:right;color:white;">
-                                                                <span>aaaaaa</span>
+                                                            <div style="width:6%;display:block;float:left;text-align:left;padding-left:1%;">
+                                                                <t t-if="move_line.move_id.sale_line_id.discount != 0.00">
+                                                                        <span t-field="move_line.move_id.sale_line_id.discount"/>
+                                                                    </t>
+                                                                    <t t-else="">
+                                                                        <span style="color:white;">
+                                                                            abc
+                                                                        </span>
+                                                                    </t>
                                                             </div>
                                                         </t>
                                                         <!-- Fin Descuento en ventas-->
