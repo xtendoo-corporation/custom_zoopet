@@ -4,7 +4,7 @@
 
     <data>
 
-    <record id="A4_albaran" model="report.paperformat">
+        <record id="A4_albaran" model="report.paperformat">
             <field name="name">A4 Albaran</field>
             <field name="default" eval="True"/>
             <field name="format">A4</field>
@@ -17,7 +17,7 @@
             <field name="dpi">90</field>
         </record>
 
-       <report id="document_format_zoopet.report_delivery_without_price"
+        <report id="document_format_zoopet.report_delivery_without_price"
                 string="Albarán Sin Valorar"
                 model="stock.picking"
                 report_type="qweb-pdf"
@@ -33,20 +33,27 @@
         <template id="document_format_zoopet.delivery_without_price">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
-                    <t t-call="document_format_zoopet.report_delivery_document_without_price" t-lang="o.partner_id.lang"/>
+                    <t t-call="document_format_zoopet.report_delivery_document_without_price"
+                       t-lang="o.partner_id.lang"/>
                 </t>
             </t>
         </template>
 
         <template id="document_format_zoopet.report_delivery_document_without_price">
+           <t t-name="document_format_zoopet.report_delivery_document_without_price">
             <t t-name="document_format_zoopet.report_delivery_document_without_price">
-                <t t-set="isAlbaran" t-value="o.move_line_ids"></t>
+                <t t-set="isAlbaran" t-value="o.move_line_ids"/>
                 <t t-set="albaranType" t-value="o.origin"/>
-                <t t-set="isDeposito" t-value="o.sale_id.so_tag_ids.name" />
-                <t t-set="lumps_number" t-value="o.lumps_number" />
-                <t t-set="pallets_number" t-value="o.pallets_number" />
+                <t t-set="isDeposito" t-value="o.sale_id.so_tag_ids.name"/>
+                <t t-set="lumps_number" t-value="o.lumps_number"/>
+                <t t-set="pallets_number" t-value="o.pallets_number"/>
                 <t t-set="doc_name" t-value="o.name"/>
-                <t t-set="isReturn" t-value="o.origin.find('Retorno')"></t>
+                <t t-if="o.origin">
+                  <t t-set="isReturn" t-value="o.origin.find('Retorno')"/>
+                </t>
+                <t t-else="">
+                  <t t-set="isReturn" t-value="-1"/>
+                </t>
                 <t t-call="web.html_container">
                     <t t-call="web.external_layout">
                         <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
@@ -79,7 +86,7 @@
                                 </div>
                                 <!-- fin primera columna -->
                                 <!--Segunda columna -->
-                                <div  style="float:left; width:50%;">
+                                <div style="float:left; width:50%;">
                                     <div t-if="o.partner_id.comercial">
                                         <span style="width:20%;display:inline-block">Cliente: </span><span style="display:inline-block;width:80%;" t-field="o.partner_id.comercial"/>
                                     </div>
@@ -112,7 +119,7 @@
                                         <t t-set="partner_name" t-value="o.partner_id.parent_id.name"/>
 							            <t t-set="partner_num" t-value="partner_name.find('(') -1"/>
 							            <t t-if="partner_num &gt; 0">
-								            <t t-set="partner_name" t-value="partner_name[:partner_num]" />
+								            <t t-set="partner_name" t-value="partner_name[:partner_num]"/>
 							            </t>
 							            <span t-esc="partner_name"/>
                                     </div>
@@ -140,7 +147,7 @@
                                     </div>
                                     <!-- CIF/NIF -->
                                     <div>
-                                        <span t-if="o.partner_id.parent_id.vat">NIF/CIF: </span><span  t-if="o.partner_id.parent_id.vat" t-field="o.partner_id.parent_id.vat"/>
+                                        <span t-if="o.partner_id.parent_id.vat">NIF/CIF: </span><span t-if="o.partner_id.parent_id.vat" t-field="o.partner_id.parent_id.vat"/>
                                     </div>
                                 </div>
                                 <!-- si es la misma -->
@@ -150,7 +157,7 @@
                                         <t t-set="partner_name" t-value="o.partner_id.name"/>
 							            <t t-set="partner_num" t-value="partner_name.find('(') -1"/>
 							            <t t-if="partner_num &gt; 0">
-								            <t t-set="partner_name" t-value="partner_name[:partner_num]" />
+								            <t t-set="partner_name" t-value="partner_name[:partner_num]"/>
 							            </t>
 							            <span t-esc="partner_name"/>
                                     </div>
@@ -178,7 +185,7 @@
                                     </div>
                                     <!-- CIF/NIF -->
                                     <div>
-                                        <span t-if="o.partner_id.vat">NIF/CIF: </span><span  t-if="o.partner_id.vat" t-field="o.partner_id.vat"/>
+                                        <span t-if="o.partner_id.vat">NIF/CIF: </span><span t-if="o.partner_id.vat" t-field="o.partner_id.vat"/>
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +201,7 @@
                                     <t t-set="partner_name" t-value="o.partner_id.parent_id.name"/>
 							        <t t-set="partner_num" t-value="partner_name.find('(') -1"/>
 							        <t t-if="partner_num &gt; 0">
-								        <t t-set="partner_name" t-value="partner_name[:partner_num]" />
+								        <t t-set="partner_name" t-value="partner_name[:partner_num]"/>
 							        </t>
 							        <span t-esc="partner_name"/>
                                 </div>
@@ -202,7 +209,7 @@
                                     <t t-set="partner_name" t-value="o.partner_id.name"/>
 							        <t t-set="partner_num" t-value="partner_name.find('(') -1"/>
 							        <t t-if="partner_num &gt; 0">
-								        <t t-set="partner_name" t-value="partner_name[:partner_num]" />
+								        <t t-set="partner_name" t-value="partner_name[:partner_num]"/>
 							        </t>
 							        <span t-esc="partner_name"/>
                                 </div>
@@ -294,7 +301,12 @@
                                 </tr>
                             </thead>
                              <!-- marca de agua-->
-                            <t t-set="isReturn" t-value="o.origin.find('Retorno')"></t>
+                            <t t-if="o.origin">
+                              <t t-set="isReturn" t-value="o.origin.find('Retorno')"/>
+                            </t>
+                            <t t-else="">
+                              <t t-set="isReturn" t-value="-1"/>
+                            </t>
                             <div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:300px;">
                                 <t t-if="isDeposito == 'Depositos'">
                                      <p>*DEPÓSITO*</p>
@@ -311,8 +323,8 @@
                             <!-- fin marca de agua -->
                         <!-- lineas -->
                         <tbody>
-                            <t t-set="plazos" t-value="0"></t>
-                            <t t-set="weight" t-value="0"></t>
+                            <t t-set="plazos" t-value="0"/>
+                            <t t-set="weight" t-value="0"/>
                             <div style="font-size:0.8em;">
                                 <t t-set="has_serial_number" t-value="o.move_line_ids.mapped('lot_id')"/>
                                  <t t-foreach="o.move_line_ids" t-as="move_line">
@@ -332,38 +344,33 @@
                                             <t t-if="mostrar">
                                                 <div style="font-size:0.7em;clear:both;width:99.6%;font-weight:bold">
                                                     <!-- verificar que no sea portes = 0€ -->
-                                                    <t t-set="plazos" t-value="move_line.move_id.sale_line_id.order_id.payment_term_id.name"></t>
-                                                    <!-- codigo ventas-->
-                                                    <t t-if="move_line.move_id.sale_line_id">
-                                                        <div style="width:15%;display:block;clear:both;float:left;">
-                                                              <t t-if="move_line.move_id.sale_line_id.product_id.default_code">
-                                                                <span t-field="move_line.move_id.sale_line_id.product_id.default_code"/>
-                                                            </t>
-                                                            <t t-else="">
-                                                                <t t-if="move_line.product_id.default_code">
-                                                                    <span t-field="move_line.product_id.default_code"/>
-                                                                </t>
-                                                                <t t-else="">
-                                                                    <span style="color:white;">aaaaa</span>
-                                                                </t>
-                                                            </t>
-
-                                                        </div>
-                                                    </t>
-                                                    <!-- Fin codigo ventas-->
-                                                    <!-- codigo compras-->
-                                                    <t t-if="move_line.move_id.purchase_line_id">
-                                                        <div style="width:15%;display:block;float:left;">
-                                                            <t t-if="move_line.move_id.purchase_line_id.product_id.default_code">
-                                                                <span t-field="move_line.move_id.purchase_line_id.product_id.default_code"/>
-                                                            </t>
-                                                            <t t-else="">
-                                                                <span style="color:white;">aaaaa</span>
-                                                            </t>
-
-                                                        </div>
-                                                    </t>
-                                                    <!-- Fin codigo compras-->
+                                                    <t t-set="plazos" t-value="move_line.move_id.sale_line_id.order_id.payment_term_id.name"/>
+                                                    <!--  codigo ventas -->
+<t t-if="not o.origin">
+<div style="width:15%;display:block;clear:both;float:left;">
+<span t-field="move_line.product_id.default_code"/>
+</div>
+</t>
+<t t-else="">
+<t t-if="move_line.move_id.sale_line_id">
+<div style="width:15%;display:block;clear:both;float:left;">
+<t t-if="move_line.move_id.sale_line_id.product_id.default_code">
+<span t-field="move_line.move_id.sale_line_id.product_id.default_code"/>
+</t>
+<t t-else="">
+<span style="color:white">aaaa</span>
+</t>
+</div>
+</t>
+<!--  Fin codigo ventas -->
+<!--  codigo compras -->
+<t t-if="move_line.move_id.purchase_line_id">
+<div style="width:15%;display:block;clear:both;float:left;">
+<span t-field="move_line.move_id.purchase_line_id.product_id.default_code"/>
+</div>
+</t>
+</t>
+<!--  Fin codigo compras -->
                                                     <!-- Descripcion ventas y compras-->
                                                     <t t-if="move_line.product_id.name">
 
@@ -382,7 +389,7 @@
                                                         </t>
 
                                                         <t t-else="">
-                                                            <div style="width:84%;display:block;float:left;">
+                                                            <div style="width:80%;display:block;float:left;">
                                                                 <span t-field="move_line.product_id.name"/>
                                                             </div>
                                                         </t>
@@ -396,14 +403,22 @@
                                                     <!-- Fin descripcion ventas y compras-->
                                                     <!-- Cantidad entregada -->
                                                     <div style="width:5%;display:block;float:left;text-align:right;">
-                                                        <t t-if="move_line.product_id != move_line.move_id.sale_line_id.product_id">
+                                                      <t t-if="move_line.move_id.sale_line_id">
+                                                          <t t-if="move_line.product_id != move_line.move_id.sale_line_id.product_id">
                                                             <span t-esc="move_line.move_id.sale_line_id.qty_delivered"/>
                                                             <t t-set="weight" t-value="weight + (move_line.move_id.sale_line_id.product_id.weight * move_line.move_id.sale_line_id.qty_delivered)"/>
-                                                        </t>
-                                                        <t t-else="">
-                                                            <span t-esc="'%.2f'%move_line.qty_done"/>
-                                                            <t t-set="weight" t-value="weight + (move_line.product_id.weight * move_line.qty_done)"/>
-                                                        </t>
+                                                          </t>
+                                                          <t t-else="">
+
+                                                              <span t-esc="'%.2f'%move_line.qty_done"/>
+                                                              <t t-set="weight" t-value="weight + (move_line.product_id.weight * move_line.qty_done)"/>
+                                                          </t>
+                                                      </t>
+                                                      <t t-else="">
+                                                        <span t-esc="'%.2f'%move_line.move_id.quantity_done"/>
+                                                              <t t-set="weight" t-value="weight + (move_line.product_id.weight * move_line.move_id.quantity_done)"/>
+                                                      </t>
+
                                                     </div>
                                                     <!-- Fin cantidad entregada -->
                                                 </div>
@@ -426,7 +441,7 @@
                                             <t t-if="mostrar">
                                                 <div style="font-size:0.6em;clear:both;width:99.6%;margin-left:3%;">
                                                     <!-- verificar que no sea portes = 0€ -->
-                                                    <t t-set="plazos" t-value="move_line.move_id.sale_line_id.order_id.payment_term_id.name"></t>
+                                                    <t t-set="plazos" t-value="move_line.move_id.sale_line_id.order_id.payment_term_id.name"/>
                                                     <!-- codigo ventas-->
                                                     <t t-if="move_line.move_id.sale_line_id">
                                                         <div style="width:15%;display:block;clear:both;float:left;">
@@ -472,8 +487,16 @@
                                                             <t t-set="weight" t-value="weight + (move_line.move_id.sale_line_id.product_id.weight * move_line.move_id.sale_line_id.qty_delivered)"/>
                                                         </t>
                                                         <t t-else="">
-                                                            <span t-esc="'%.2f'%move_line.qty_done"/>
+                                                            <t t-if="move_line.product_id != move_line.move_id.sale_line_id.product_id">
+                                                            <span t-esc="'%.2f'%move_line.quantity_done"/>
+                                                            <t t-set="weight" t-value="weight + (move_line.product_id.weight * move_line.quantity_done)"/>
+                                                            </t>
+                                                        <t t-else="">
+                                                          <span t-esc="'%.2f'%move_line.qty_done"/>
                                                             <t t-set="weight" t-value="weight + (move_line.product_id.weight * move_line.qty_done)"/>
+
+                                                        </t>
+
                                                         </t>
                                                     </div>
                                                     <!-- Fin cantidad entregada -->
@@ -492,12 +515,13 @@
                             <!-- Fin productos -->
                             <!-- Portes -->
                             <t t-if="o.carrier_id.name">
-                                <t t-set="carrier_delivery" t-value="o.carrier_id.name"></t>
+                                <t t-set="carrier_delivery" t-value="o.carrier_id.name"/>
                             </t>
                         </div>
                     </t>
                 </t>
             </t>
+        </t>
         </template>
     </data>
 </odoo>
