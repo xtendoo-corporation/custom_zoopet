@@ -137,7 +137,7 @@
                     <!-- fin si es venta -->
                     <!-- si es factura -->
                     <t t-if="isInvoice">
-                        <div style="float:left;width:25%;text-align:center;margin-top:45px;-webkit-transform: rotate(-37deg);">
+                        <div style="float:left;width:25%;text-align:center;margin-top:58px;-webkit-transform: rotate(-37deg);">
                             <t t-if="not_use_invoice == 0">
                                 <t t-if="isInvoice == 'out_invoice'">
 								    <t t-if="serieInv == 'Serie P'">

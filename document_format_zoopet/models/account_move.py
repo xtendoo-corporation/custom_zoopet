@@ -20,6 +20,8 @@ class AccountMove(models.Model):
                     invoice=self.env['account.move'].search_read([('invoice_origin', '=', self.invoice_origin), ('type', '=', 'out_invoice')],['id', 'number'], limit=1)
                     if invoice:
                         self.refund_invoice_name= invoice[0]['number']
+            else:
+                self.refund_invoice_name = self.refund_invoice_id.number
         else:
             self.refund_invoice_name= ""
 

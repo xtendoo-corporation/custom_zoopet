@@ -15,7 +15,6 @@
         </record>
 		 <template id="document_format_zoopet.report_invoice_use_document">
             <t t-name="document_format_zoopet.report_invoice_use_document">
-            <t t-name="document_format_zoopet.report_invoice_use_document">
                 <t t-call="web.external_layout">
                     <div class="page">
 						<t t-set="not_use_invoice" t-value="0"/>
@@ -193,7 +192,7 @@
                     <!-- Fin direccion de envio -->
                     <!-- Fin direcciones -->
 						<!-- datos documento -->
-						<div style="width:49%;clear:both;float:left;margin-right:0.5%;margin-top:5px;font-size:0.9em;margin-bottom:5px;">
+						<div style="width:50%;clear:both;float:left;margin-right:0%;margin-top:5px;font-size:0.9em;margin-bottom:5px;">
 							<div style="width:49.5%;float:left;border:2px solid black;height:25px;">
 									<span style="margin-left:2px;">
 										<t t-if="isInvoice == 'out_invoice'">
@@ -288,28 +287,23 @@
 						</div>
 						<!-- fin datos documento -->
 						<!-- observaciones -->
-						<div style="width:49%;float:left;margin-left:1%;border:2px solid black;height:51px;margin-top:5px;">
-							<t t-if="isInvoice == 'out_refund'">
-								<div>
-									<span style="margin-left:2px;">
-										<b>
-											Mótivo:
-										</b>
-									</span>
-									<t t-if="o.type == out_refund">
-										<span>Devolución</span>
-									</t>
-									<t t-else="">
-										<span t-field="o.name"/>
-									</t>
-								</div>
-							</t>
-							<span style="margin-left:2px;">
-								<b>
-									Observaciones:
-								</b>
-							</span>
-							<span t-field="o.narration"/>
+                        <div
+                            style="width:49%;float:left;margin-left:0%;border:2px solid black;height:51px;margin-top:5px;">
+                            <t t-if="isInvoice == 'out_refund'">
+                                <div style="margin-left: 2px;">
+                                    <span t-field="o.ref"/>
+                                </div>
+                            </t>
+                             <div style="margin-left: 2px;">
+                                 <t t-if="o.narration">
+                                     <span style="margin-left:2px;">
+                                        <b>
+                                            Observaciones:
+                                        </b>
+                                    </span>
+                                    <span t-field="o.narration"/>
+                                 </t>
+                             </div>
 						</div>
 						<!-- fin observaciones -->
 						<!-- Fin datos documento -->
@@ -1175,7 +1169,6 @@
 					</div>
 				</t>
 			</t>
-		</t>
 		</template>
 		<!--
 		<template id="report_invoice_document_ch_address" inherit_id="account.report_invoice_document_with_payments">
