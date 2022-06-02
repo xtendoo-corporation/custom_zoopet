@@ -22,6 +22,7 @@
         'account',
         'sale_order_type',
         'sale_margin',
+        'barcodes_generator_product',
     ],
     'license': 'AGPL-3',
     'data': [
@@ -30,6 +31,7 @@
         'views/mrp_bom_view.xml',
         'views/purchase_order_no_create.xml',
         'views/product_no_create_views.xml',
+        'views/product_barcode_generator.xml',
         'views/stock_picking_view.xml',
         'views/pivote_view/sale_order_pivot_view.xml',
         'views/pivote_view/sale_order_graph_view.xml',
