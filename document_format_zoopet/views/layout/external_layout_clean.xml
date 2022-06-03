@@ -274,18 +274,25 @@
                 <!-- <hr style="height:2px;width:100%;background-color:black;margin-top:-3px;"></hr> -->
                          <!-- Fin leyenda Factura -->
                 <div style="clear:both;font-family: 'Roboto', sans-serif !important;font-size:0.8em;">
-                    <!-- Plazos de pago -->
-                    <t t-if="plazos">
-                        <div t-if="plazos" style="width:40%;float:left;">
-                            <span>Forma de Pago: </span><b><span t-esc="plazos"/></b>
-                        </div>
+                     <!-- Peso -->
+                    <t t-if="weight">
+                        <t t-if="weight != 0">
+                            <div style="width:10%;float:left;font-family: 'Roboto', sans-serif !important;">
+                                <b><span t-esc="'%.3f'%weight"></span></b>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div style="width:10%;float:left;color:white;">
+                                <b><span>aa</span></b>
+                            </div>
+                        </t>
                     </t>
                     <t t-else="">
-                        <div style="width:40%;float:left;color:white;">
-                            <span style="color:white;">Forma de Pago: </span>
-                        </div>
-                    </t>
-                    <!-- Fin plazos pago -->
+                            <div style="width:10%;float:left;color:white;">
+                                <b><span>aa</span></b>
+                            </div>
+                        </t>
+                    <!-- Fin peso -->
                     <!-- Portes -->
                     <t t-if="isSale">
                         <t t-set="carrier_delivery" t-value="doc.carrier_id.name"></t>
@@ -377,25 +384,18 @@
                         </div>
                     </t> -->
                     <!-- Fin si es albarán, mostramos bultos y palets -->
-                    <!-- Peso -->
-                    <t t-if="weight">
-                        <t t-if="weight != 0">
-                            <div style="width:10%;float:left;font-family: 'Roboto', sans-serif !important;">
-                                <b><span t-esc="'%.3f'%weight"></span></b>
-                            </div>
-                        </t>
-                        <t t-else="">
-                            <div style="width:10%;float:left;color:white;">
-                                <b><span>aa</span></b>
-                            </div>
-                        </t>
+                     <!-- Plazos de pago -->
+                    <t t-if="plazos">
+                        <div t-if="plazos" style="width:40%;float:left;">
+                            <span>Forma de Pago: </span><b><span t-esc="plazos"/></b>
+                        </div>
                     </t>
                     <t t-else="">
-                            <div style="width:10%;float:left;color:white;">
-                                <b><span>aa</span></b>
-                            </div>
-                        </t>
-                    <!-- Fin peso -->
+                        <div style="width:40%;float:left;color:white;">
+                            <span style="color:white;">Forma de Pago: </span>
+                        </div>
+                    </t>
+                    <!-- Fin plazos pago -->
                 </div>
                 <div style="clear:both;text-align:center;font-family: 'Roboto', sans-serif !important;font-size:0.8em;">
                     <!-- Frase factura -->
