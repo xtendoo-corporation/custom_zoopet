@@ -350,8 +350,11 @@
                                             <t t-if="isReturn == 0">
                                                 <p>*NOTA DE RECOGIDA*</p>
                                             </t>
-                                            <t t-else="">
+                                            <t t-if="o.origin">
                                                 <p>*NOTA DE ENTREGA*</p>
+                                            </t>
+                                            <t t-else="">
+                                                <p>*NOTA DE RECOGIDA*</p>
                                             </t>
                                         </t>
                                     </div>

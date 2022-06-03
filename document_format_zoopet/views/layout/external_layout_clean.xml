@@ -114,6 +114,16 @@
                                 </t>
                             </t>
                         </t>
+                        <t t-else="">
+                            <div style="float:left;width:25%;text-align:center;margin-top:30px; -webkit-transform: rotate(-37deg);">
+                                        <div style="font-size:1.5em;">
+                                            <b><span>*ALBARAN*</span></b>
+                                        </div>
+                                        <div>
+                                            <b><span>DEVOLUCIÓN</span></b>
+                                        </div>
+                                    </div>
+                        </t>
                     </t>
                     <!-- fin si es albaran -->
                     <!-- si es venta -->
