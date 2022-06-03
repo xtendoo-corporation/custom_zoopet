@@ -40,27 +40,27 @@
 						<!-- Fin buscamos el tipo en el number de la rectificativa -->
 						<!-- Datos del docuumento -->
 						<!-- si tiene copias -->
-						<t t-if="iteration">
-							<t t-set="inv_copy" t-value="iteration"/>
-							<t t-if="iteration &lt; 2">
-								<!--
-								<div style="display:block;width:100%;font-size:0.7em;clear:both;text-align:right;">
-								<span>Documento original</span>
-								</div>
-								-->
-							</t>
-							<t t-else="">
-								<div style="display:block;width:100%;clear:both;text-align:right;">
-									<b>
-										<span>
-											Copia
-										</span>
-										<span t-esc="iteration -1">
-										</span>
-									</b>
-								</div>
-							</t>
-						</t>
+<!--						<t t-if="iteration">-->
+<!--							<t t-set="inv_copy" t-value="iteration"/>-->
+<!--							<t t-if="iteration &lt; 2">-->
+<!--								&lt;!&ndash;-->
+<!--								<div style="display:block;width:100%;font-size:0.7em;clear:both;text-align:right;">-->
+<!--								<span>Documento original</span>-->
+<!--								</div>-->
+<!--								&ndash;&gt;-->
+<!--							</t>-->
+<!--							<t t-else="">-->
+<!--								<div style="display:block;width:100%;clear:both;text-align:right;">-->
+<!--									<b>-->
+<!--										<span>-->
+<!--											Copia-->
+<!--										</span>-->
+<!--										<span t-esc="iteration -1">-->
+<!--										</span>-->
+<!--									</b>-->
+<!--								</div>-->
+<!--							</t>-->
+<!--						</t>-->
 						<!-- si tiene copias -->
 						 <!-- Direcciones -->
                     <!-- DIreccion de facturacion -->
@@ -550,6 +550,11 @@
 																	<t t-if="isIVA &gt; -1">
 																		<span t-esc="'%.2f'%tax.amount"/>
 																	</t>
+                                                                    <t t-else="">
+                                                                        <span style="color:white;">
+																	abc
+																</span>
+                                                                    </t>
 																</t>
 															</t>
 															<t t-if="not line.tax_ids">
@@ -557,6 +562,7 @@
 																	abc
 																</span>
 															</t>
+<!--                                                            <span t-field="line.tax_ids"></span>-->
 														</div>
 														<!-- Fin % de IVA -->
 														<!-- Cantidad entregada -->

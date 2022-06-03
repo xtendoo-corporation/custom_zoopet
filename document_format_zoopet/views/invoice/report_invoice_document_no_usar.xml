@@ -28,22 +28,22 @@
                         <!-- Fin buscamos el tipo en el number de la rectificativa -->
                         <!-- Datos del docuumento -->
                         <!-- si tiene copias -->
-                        <t t-if="iteration">
-                            <t t-set="inv_copy" t-value="iteration"/>
-                            <t t-if="iteration &lt; 2">
-                            </t>
-                            <t t-else="">
-                                <div style="display:block;width:100%;clear:both;text-align:right;">
-                                    <b>
-                                        <span>
-                                            Copia
-                                        </span>
-                                        <span t-esc="iteration -1">
-                                        </span>
-                                    </b>
-                                </div>
-                            </t>
-                        </t>
+<!--                        <t t-if="iteration">-->
+<!--                            <t t-set="inv_copy" t-value="iteration"/>-->
+<!--                            <t t-if="iteration &lt; 2">-->
+<!--                            </t>-->
+<!--                            <t t-else="">-->
+<!--                                <div style="display:block;width:100%;clear:both;text-align:right;">-->
+<!--                                    <b>-->
+<!--                                        <span>-->
+<!--                                            Copia-->
+<!--                                        </span>-->
+<!--                                        <span t-esc="iteration -1">-->
+<!--                                        </span>-->
+<!--                                    </b>-->
+<!--                                </div>-->
+<!--                            </t>-->
+<!--                        </t>-->
                         <!-- si tiene copias -->
                         <!-- Direcciones -->
                         <!-- DIreccion de facturacion -->
@@ -498,6 +498,11 @@
                                                                     <t t-set="isIVA" t-value="tax_name.find('IVA')"/>
                                                                     <t t-if="isIVA &gt; -1">
                                                                         <span t-esc="'%.2f'%tax.amount"/>
+                                                                    </t>
+                                                                    <t t-else="">
+																        <span style="color:white;">
+																	        abc
+																        </span>
                                                                     </t>
                                                                 </t>
                                                             </t>
