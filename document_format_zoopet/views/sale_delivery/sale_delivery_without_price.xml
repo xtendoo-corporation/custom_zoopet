@@ -180,7 +180,8 @@
                     <!-- Fin direcciones -->
                             <!-- Datos documento y observaciones -->
                             <!-- datos documento -->
-                            <div style="width:49.5%;clear:both;float:left;margin-right:0.5%;margin-top:5px;font-size:0.9em;margin-bottom:5px;">
+                             <div
+                            style="width:50%;clear:both;float:left;margin-right:0%;margin-top:5px;font-size:0.9em;margin-bottom:5px;">
                                 <div style="width:49.5%;float:left;border:2px solid black;height:25px;">
                                     <span style="margin-left:2px;"><b>
                                         <span>Albarán: </span>
@@ -203,7 +204,7 @@
                             </div>
                             <!-- fin datos documento -->
                             <!-- observaciones -->
-                            <div style="width:49%;float:left;margin-left:0.5%;border:2px solid black;height:51px;margin-top:5px;">
+                            <div style="width:49%;float:left;margin-left:0%;border:2px solid black;height:50px;margin-top:5px;">
                                 <span style="margin-left:2px;"><b>Observaciones: </b></span><span t-field="doc.note"/>
                             </div>
                             <!-- fin observaciones -->

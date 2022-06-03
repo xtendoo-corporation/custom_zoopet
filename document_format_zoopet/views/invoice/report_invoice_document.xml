@@ -288,7 +288,7 @@
 						<!-- fin datos documento -->
 						<!-- observaciones -->
                         <div
-                            style="width:49%;float:left;margin-left:0%;border:2px solid black;height:51px;margin-top:5px;">
+                            style="width:49%;float:left;margin-left:0%;border:2px solid black;height:50px;margin-top:5px;">
                             <t t-if="isInvoice == 'out_refund'">
                                 <div style="margin-left: 2px;">
                                     <span t-field="o.ref"/>
