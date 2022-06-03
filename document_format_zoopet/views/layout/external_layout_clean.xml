@@ -432,7 +432,17 @@ así lo requiera. Puede ejercer sus derechos de acceso, rectificación, cancelac
 Huelva
                     </span>
                 </div>
-                <div style="width:100%;text-align:right;font-size:0.7em;">
+                 <div style="width:50%;text-align:left;float:left;">
+                     <t t-if="isInvoice">
+                         <b>
+                            <span t-esc="doc_name"/>
+                         </b>
+                     </t>
+                     <t t-else="">
+                         <span style="color:white;">abc</span>
+                     </t>
+                 </div>
+                <div style="width:50%;text-align:right;font-size:0.7em;float:left;">
                     <ul style="background-color:white; border-color:white;list-style:none;" t-if="report_type == 'pdf'">
                         <li style="color:black;">
                             <strong>
