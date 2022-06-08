@@ -54,7 +54,7 @@ odoo.define("pos_unit_name.models", function (require) {
             return unit.name;
         },
         get_quant_2_decimals: function(){
-            var quant = parseFloat(this.get_quantity_str());
+            var quant = parseFloat(this.get_quantity());
             quant = field_utils.format.float(quant, {digits: [69, 2]});
 
             return quant;
