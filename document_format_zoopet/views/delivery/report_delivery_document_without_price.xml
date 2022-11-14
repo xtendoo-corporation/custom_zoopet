@@ -49,7 +49,7 @@
                     <t t-set="pallets_number" t-value="o.pallets_number"/>
                     <t t-set="doc_name" t-value="o.name"/>
                     <t t-if="o.origin">
-                        <t t-set="isReturn" t-value="o.origin.find('Retorno')"/>
+                        <t t-set="isReturn" t-value="o.origin.find('Retorno de ALM/OUT')"/>
                     </t>
                     <t t-else="">
                         <t t-set="isReturn" t-value="-1"/>
@@ -142,6 +142,10 @@
                                         <div>
                                             <span t-field="o.partner_id.parent_id.street"/>
                                         </div>
+                                         <!-- calle 2 -->
+                                        <div t-if="o.partner_id.parent_id.street2">
+                                            <span t-field="o.partner_id.parent_id.street2"/>
+                                        </div>
                                         <!-- CP, ciudad -->
                                         <div>
                                             <span t-if="o.partner_id.parent_id.zip"
@@ -188,6 +192,10 @@
                                         <!-- calle -->
                                         <div>
                                             <span t-field="o.partner_id.street"/>
+                                        </div>
+                                         <!-- calle 2 -->
+                                        <div t-if="o.partner_id.street2">
+                                            <span t-field="o.partner_id.street2"/>
                                         </div>
                                         <!-- CP, ciudad -->
                                         <div>
@@ -247,6 +255,10 @@
                                         <!-- calle -->
                                         <div>
                                             <span t-field="o.partner_id.street"/>
+                                        </div>
+                                         <!-- calle 2 -->
+                                        <div t-if="o.partner_id.street2">
+                                            <span t-field="o.partner_id.street2"/>
                                         </div>
                                         <!-- CP, ciudad -->
                                         <div>
@@ -336,7 +348,14 @@
                                     </thead>
                                     <!-- marca de agua-->
                                     <t t-if="o.origin">
-                                        <t t-set="isReturn" t-value="o.origin.find('Retorno')"/>
+                                        <t t-set="isPurchase" t-value="o.group_id.name.find('PO')"/>
+                                        <t t-if="isPurchase == 0">
+                                            <t t-set="isReturn" t-value="o.origin.find('Retorno de ALM/IN')"/>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-set="isReturn" t-value="o.origin.find('Retorno de ALM/OUT')"/>
+                                        </t>
+
                                     </t>
                                     <t t-else="">
                                         <t t-set="isReturn" t-value="-1"/>
@@ -348,13 +367,15 @@
                                         </t>
                                         <t t-else="">
                                             <t t-if="isReturn == 0">
-                                                <p>*NOTA DE RECOGIDA*</p>
-                                            </t>
-                                            <t t-if="o.origin">
-                                                <p>*NOTA DE ENTREGA*</p>
+                                                <t t-if="isPurchase == 0">
+                                                    <p>*DEVOLUCIÓN*</p>
+                                                </t>
+                                                <t t-else="">
+                                                    <p>*NOTA DE RECOGIDA*</p>
+                                                </t>
                                             </t>
                                             <t t-else="">
-                                                <p>*NOTA DE RECOGIDA*</p>
+                                                <p>*NOTA DE ENTREGA*</p>
                                             </t>
                                         </t>
                                     </div>
@@ -369,7 +390,7 @@
 
                                                 <t t-set="kit" t-value="move_line.move_id.sale_line_id.product_id"/>
                                                 <t t-set="sale_line" t-value="move_line.move_id.sale_line_id"/>
-                                                <tr t-if="sale_line != last_sale_line">
+                                                <tr t-if="sale_line != last_sale_line or not o.origin">
                                                     <td style="padding:0px;margin:0px;border:none;">
                                                         <!-- verificar que no sea portes = 0€ -->
 

@@ -91,7 +91,16 @@
                                     </div>
                             </t>
                             <t t-else="">
-                                <t t-set="isReturn" t-value="albaranType.find('Retorno')"></t>
+                                <t t-set="isPurchase" t-value="o.group_id.name.find('PO')"/>
+                                <t t-if="isPurchase == 0">
+                                    <t t-set="isReturn" t-value="albaranType.find('Retorno de ALM/IN')"></t>
+                                </t>
+                                <t t-else="">
+                                    <t t-set="isReturn" t-value="albaranType.find('Retorno de ALM/OUT')"></t>
+                                </t>
+
+
+<!--                                <span t-esc="isPurchase"></span>-->
                                 <t t-if="isReturn == 0">
                                     <div style="float:left;width:25%;text-align:center;margin-top:30px; -webkit-transform: rotate(-37deg);">
                                         <div style="font-size:1.5em;">
@@ -115,7 +124,18 @@
                             </t>
                         </t>
                         <t t-else="">
-                            <div style="float:left;width:25%;text-align:center;margin-top:30px; -webkit-transform: rotate(-37deg);">
+                            <t t-if="isReturn == -1 ">
+                                <div style="float:left;width:25%;text-align:center;margin-top:30px; -webkit-transform: rotate(-37deg);">
+                                        <div style="font-size:1.5em;">
+                                            <b><span>*ALBARAN*</span></b>
+                                        </div>
+                                        <div>
+                                            <b><span>NOTA DE ENTREGA</span></b>
+                                        </div>
+                                    </div>
+                            </t>
+                            <t t-else="">
+                                <div style="float:left;width:25%;text-align:center;margin-top:30px; -webkit-transform: rotate(-37deg);">
                                         <div style="font-size:1.5em;">
                                             <b><span>*ALBARAN*</span></b>
                                         </div>
@@ -123,6 +143,7 @@
                                             <b><span>DEVOLUCIÓN</span></b>
                                         </div>
                                     </div>
+                            </t>
                         </t>
                     </t>
                     <!-- fin si es albaran -->
