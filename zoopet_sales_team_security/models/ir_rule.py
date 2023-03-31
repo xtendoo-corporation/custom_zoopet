@@ -25,14 +25,15 @@ class IrRule(models.Model):
         has the group 'Sales / User: Own Documents Only'.
         """
         res = super()._compute_domain(model_name, mode=mode)
-        print("*" * 20)
-        print("res: ", res)
-        print("*" * 20)
+
         user = self.env.user
         group1 = "sales_team.group_sale_salesman"
         group2 = "zoopet_sales_team_security.group_sale_team_manager"
         group3 = "sales_team.group_sale_salesman_all_leads"
         group4 = "zoopet_sales_team_security.group_sale_nuno"
+        print("*" * 20)
+        print("have group 4: ", user.has_group(group4))
+        print("*" * 20)
         if model_name == "res.partner" and not self.env.su:
             if user.has_group(group1) and not user.has_group(group3) and not user.has_group(group4):
                 extra_domain = [
@@ -57,16 +58,60 @@ class IrRule(models.Model):
                         ("team_id", "=", False),
                         ("team_id", "=", user.sale_team_id.id),
                     ]
+                # elif user.has_group(group4):
+                #     extra_domain += [
+                #         "|",
+                #         ("user_id", "=", user.id),
+                #         "&",
+                #         ("user_id", "=", False),
+                #         "&",
+                #         ("user_id", "=", 18),
+                #         "|",
+                #         ("team_id", "=", False),
+                #         ("team_id", "=", user.sale_team_id.id),
+                #     ]
+
                 extra_domain = expression.normalize_domain(extra_domain)
                 res = expression.AND([extra_domain] + [res])
-            if user.has_group(group4):
+
+            elif user.has_group(group4):
+                print("-"*120)
+                print("Entra en group4")
+                print("-"*120)
                 extra_domain = [
-                    ("user_id", "in", [user.id, False, 18]),
+                    "|",
+                    ("message_partner_ids", "in", user.partner_id.ids),
+                    "|",
+                    ("message_partner_ids", "=", 18),
+                    "|",
+                    ("id", "=", user.partner_id.id),
                 ]
+                extra_domain += [
+                    "|",
+                    ("user_id", "=", user.id),
+                    "|",
+                    ("user_id", "=", 18),
+                    "&",
+                    ("user_id", "=", False),
+                    "|",
+                    ("team_id", "=", False),
+                    ("team_id", "=", user.sale_team_id.id),
+                ]
+
                 extra_domain = expression.normalize_domain(extra_domain)
                 res = expression.AND([extra_domain] + [res])
-                print("*" * 20)
-                print("res: ", res)
-                print("*" * 20)
+            # if user.has_group(group4):
+            #     extra_domain = [
+            #         "|",
+            #         ("message_partner_ids", "in", user.partner_id.ids),
+            #         "|",
+            #         ("id", "=", user.partner_id.id),
+            #         ("user_id", "in", [user.id, False, 18]),
+            #     ]
+            #     extra_domain = expression.normalize_domain(extra_domain)
+            #     res = expression.AND([extra_domain] + [res])
+        print("*" * 20)
+        print("res: ", res)
+        print("*" * 20)
 
         return res
