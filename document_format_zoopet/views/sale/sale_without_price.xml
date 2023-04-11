@@ -23,7 +23,12 @@
                 <t t-call="web.external_layout">
                     <div class="page">
                         <t t-set="isSale" t-value="doc.state"></t>
-                        <t t-set="isDep" t-value="doc.so_tag_ids.name"/>
+                        <t t-set="isDep" t-value=""/>
+                    <t t-foreach="doc.so_tag_ids" t-as="tag">
+                      <t t-if="tag.name == 'Depositos'">
+                        <t t-set="isDep" t-value="tag.name"/>
+                      </t>
+                    </t> 
                         <t t-set="carrier_delivery" t-value="hola"></t>
                         <t t-set="doc_name" t-value="doc.name"/>
                         <t t-set="lumps_number" t-value="doc.lumps_number"/>
