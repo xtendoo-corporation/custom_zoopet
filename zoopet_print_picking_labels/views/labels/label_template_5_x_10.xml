@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="zoopet_print_picking_labels.report_simple_label_5_x_10_zoopet">
+            <t t-name="zoopet_print_picking_labels.report_simple_label_5_x_10_zoopet">
+                <div class="page">
+                       <div style="width:100%;">
+                           <div class="row">
+                               <div class="col-6">
+                                   <div style="text-align:center;font-size:1.2em;margin-top:2px!important;">
+                                <span t-field="product.default_code"></span>
+                            </div>
+                               </div>
+                               <div class="col-6">
+                                   <div style="text-align:center;font-size:1.2em;margin-top:2px!important;">
+                               <span>PVP: <strong class="o_label_price_medium" t-esc="move_line.price_to_print_zoopet" t-options="{'widget': 'monetary', 'label_price': True, 'display_currency': product.currency_id}"/></span>
+                            </div>
+                               </div>
+                           </div>
+                            <div style="font-size:1em;text-align:center;height:50px;">
+                                <span t-field="product.name"></span>
+                            </div>
+                            <div class="text-center align-middle">
+                                <t t-if="product.barcode">
+                                <t t-set="product_barcode" t-value="product.barcode"/>
+                                    <img alt="Barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(product.barcode or ''), 600, 130)" style="width:120%;height::4rem;margin-left:-10%;"/>
+                                </t>
+                                <t t-else="">
+                                    <span class="text-muted">No barcode available</span>
+                                </t>
+                            </div>
+                       </div>
+                </div>
+                <p style="page-break-after:always;" />
+            </t>
+        </template>
+        <template id="zoopet_print_picking_labels.report_simple_label_5_x_10_petpoint">
+            <t t-name="zoopet_print_picking_labels.report_simple_label_5_x_10_petpoint">
+                <div class="page">
+                       <div style="width:100%;">
+                           <div class="row">
+                               <div class="col-6">
+                                   <div style="text-align:center;font-size:1.2em;margin-top:2px!important;">
+                                <span t-field="product.default_code"></span>
+                            </div>
+                               </div>
+                               <div class="col-6">
+                                   <div style="text-align:center;font-size:1.2em;margin-top:2px!important;">
+                               <span>PVP: <strong class="o_label_price_medium" t-esc="move_line.price_to_print_petpoint" t-options="{'widget': 'monetary', 'label_price': True, 'display_currency': product.currency_id}"/></span>
+                            </div>
+                               </div>
+                           </div>
+                            <div style="font-size:1em;text-align:center;height:50px;">
+                                <span t-field="product.name"></span>
+                            </div>
+                            <div class="text-center align-middle">
+                                <t t-if="product.barcode">
+                                <t t-set="product_barcode" t-value="product.barcode"/>
+                                    <img alt="Barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(product.barcode or ''), 600, 130)" style="width:120%;height::4rem;margin-left:-10%;"/>
+                                </t>
+                                <t t-else="">
+                                    <span class="text-muted">No barcode available</span>
+                                </t>
+                            </div>
+                       </div>
+                </div>
+                <p style="page-break-after:always;" />
+            </t>
+        </template>
+    </data>
+</odoo>
