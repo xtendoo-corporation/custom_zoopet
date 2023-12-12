@@ -15,10 +15,11 @@
                 </div>
                 <br />
                 <div class="pos-center-align">
-                    <t t-esc="widget.pos.company.name"/><br />
+<!--                    <t t-esc="widget.pos.company.name"/><br />-->
+                    <t t-esc="order.get_company_name()" /><br />
                 </div>
                 <div class="receipt-phone pos-center-align">
-                    Phone: <t t-esc="widget.pos.company.phone || ''"/><br />
+                    Phone: <t t-esc="order.get_company_phone() || ''"/><br />
                 </div>
                  <div class="receipt-phone pos-center-align">
                     VAT: <t t-esc="widget.pos.company.vat || ''"/><br />

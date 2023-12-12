@@ -1,3 +1,49 @@
+odoo.define("company_name.models", function (require) {
+    "use strict";
+
+    var models = require("point_of_sale.models");
+
+    var _super = models.Order.prototype;
+    models.Order = models.Order.extend({
+        get_company_name: function(){
+           var posName = this.pos.config.name || '';
+           if (posName == 'Caja 1') {
+               return "Zoopet S.L.U.";
+              }
+              else if (posName == 'Petpoint') {
+                return "Petpoint";
+                  }
+
+        },
+
+    });
+
+    return models;
+});
+
+odoo.define("company_phone.models", function (require) {
+    "use strict";
+
+    var models = require("point_of_sale.models");
+
+    var _super = models.Order.prototype;
+    models.Order = models.Order.extend({
+        get_company_phone: function(){
+           var posName = this.pos.config.name || '';
+           if (posName == 'Caja 1') {
+               return "959641157";
+              }
+              else if (posName == 'Petpoint') {
+                return "+34 622478495";
+                  }
+
+        },
+
+    });
+
+    return models;
+});
+
 odoo.define("pos_tax_name.models", function (require) {
     "use strict";
 

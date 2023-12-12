@@ -5,16 +5,19 @@
             <t t-name="zoopet_print_picking_labels.report_simple_label_zoopet">
                 <div class="page">
                        <div style="width:100%;">
-                           <div style="text-align:center;font-size:1.3em;margin-top:2px!important;">
+                            <div style="text-align:center;font-size:1.3em;">
                                <span>PVP: <strong class="o_label_price_medium" t-esc="move_line.price_to_print_zoopet" t-options="{'widget': 'monetary', 'label_price': True, 'display_currency': product.currency_id}"/></span>
                             </div>
-                            <div style="text-align:center;font-size:0.7em;margin-top:5px!important;">
+                            <div style="font-size:0.5em;text-align:center;max-height:22px;height:22px;overflow:hidden;width:120%;margin-left:-10%;">
+                                <span t-field="product.name"></span>
+                            </div>
+                            <div style="text-align:center;font-size:0.7em;">
                                 <span t-field="product.default_code"></span>
                             </div>
                             <div class="text-center align-middle">
                                 <t t-if="product.barcode">
                                 <t t-set="product_barcode" t-value="product.barcode"/>
-                                    <img alt="Barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(product.barcode or ''), 600, 150)" style="width:120%;height::5rem;margin-left:-10%;"/>
+                                    <img alt="Barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(product.barcode or ''), 550, 115)" style="width:120%;height::3rem;margin-left:-10%;"/>
                                 </t>
                                 <t t-else="">
                                     <span class="text-muted">No barcode available</span>
@@ -29,16 +32,19 @@
             <t t-name="zoopet_print_picking_labels.report_simple_label_petpoint">
                 <div class="page">
                        <div style="width:100%;">
-                            <div style="text-align:center;font-size:1.3em;margin-top:2px!important;">
+                            <div style="text-align:center;font-size:1.3em;">
                                <span>PVP: <strong class="o_label_price_medium" t-esc="move_line.price_to_print_petpoint" t-options="{'widget': 'monetary', 'label_price': True, 'display_currency': product.currency_id}"/></span>
                             </div>
-                            <div style="text-align:center;font-size:0.7em;margin-top:5px!important;">
+                            <div style="font-size:0.5em;text-align:center;max-height:22px;height:22px;overflow:hidden;width:120%;margin-left:-10%;">
+                                <span t-field="product.name"></span>
+                            </div>
+                            <div style="text-align:center;font-size:0.7em;">
                                 <span t-field="product.default_code"></span>
                             </div>
                             <div class="text-center align-middle">
                                 <t t-if="product.barcode">
                                 <t t-set="product_barcode" t-value="product.barcode"/>
-                                    <img alt="Barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(product.barcode or ''), 600, 150)" style="width:120%;height::5rem;margin-left:-10%;"/>
+                                    <img alt="Barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(product.barcode or ''), 550, 115)" style="width:120%;height::3rem;margin-left:-10%;"/>
                                 </t>
                                 <t t-else="">
                                     <span class="text-muted">No barcode available</span>
