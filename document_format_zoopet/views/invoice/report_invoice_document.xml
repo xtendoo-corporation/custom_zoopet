@@ -254,7 +254,8 @@
 								<span t-if=" not o.partner_id.parent_id" t-field="o.partner_id.ref"/>
 							</div>
 							<div style="width:49%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
-							  	<t t-set="name_with_type" t-value="aaa"/>
+                                <t t-if="o.invoice_origin">
+                                    <t t-set="name_with_type" t-value="aaa"/>
 								<t t-set="origin_label" t-value="'Pedido: '"/>
 								<t t-if="isInvoice == 'out_refund'">
 									<t t-set="origin_label" t-value="'Referencia :'"/>
@@ -275,14 +276,16 @@
 								<t t-else="">
 								   <t t-set="origin_num" t-value="0"/>
 								</t>
-								<t t-if="origin_num &gt; 0">
+								<t t-if="origin_num &lt; 0">
 								</t>
 								<t t-else="">
 									<b>
 									<span style="margin-left:2px;" t-esc="origin_label"/>
-									</b>aaa
+									</b>
 									<span t-esc="name_with_type"/>
 								</t>
+                                </t>
+
 							</div>
 						</div>
 						<!-- fin datos documento -->
