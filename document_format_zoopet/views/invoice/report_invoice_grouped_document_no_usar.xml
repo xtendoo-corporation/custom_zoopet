@@ -241,13 +241,12 @@
 									<t t-set="name_with_type" t-value="o.sale_type_id.journal_id.code + '/' + o.invoice_origin"/>
 								</t>
 								<t t-if="name_with_type != 'aaa'">
-								 <!-- <t t-set="origin_num" t-value="name_with_type.find(',')"/> -->
-								 <t t-set="origin_num" t-value="1"/>
+								  <t t-set="origin_num" t-value="name_with_type.find(',')"/>
 								</t>
 								<t t-else="">
 								   <t t-set="origin_num" t-value="0"/>
 								</t>
-								<t t-if="origin_num &lt; 0">
+								<t t-if="origin_num &gt; 0">
 								</t>
 								<t t-else="">
 									<b>
