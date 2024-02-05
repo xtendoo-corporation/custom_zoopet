@@ -16,6 +16,7 @@
     "category": "Extra Tools",
     "depends": [
                 "sale_order_type",
+                "invoice_value_date",
                 ],
     "license": "AGPL-3",
     "demo": [],

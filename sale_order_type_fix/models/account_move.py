@@ -11,7 +11,6 @@ class AccountMove(models.Model):
     sale_type_id = fields.Many2one(
         comodel_name="sale.order.type",
         string="Sale Type",
-        default=lambda self: self._compute_sale_type_id(),
         compute="",
         store=True,
         readonly=False,
@@ -21,9 +20,8 @@ class AccountMove(models.Model):
 
     @api.model
     def create(self, vals):
-        if vals.get('sale_type_id'):
-            vals['sale_type_id'] = self._compute_sale_type_id(vals)
         res = super(AccountMove, self).create(vals)
+        res.update({"sale_type_id": self._compute_sale_type_id(vals)})
         return res
 
     def _compute_sale_type_id(self, vals):
@@ -38,7 +36,7 @@ class AccountMove(models.Model):
             sale_type_id = self.env["sale.order.type"].search(
                 [("company_id", "in", [self.env.company.id, False])], limit=1
             )
-        if vals['type'] in ["out_invoice"]:
+        if vals.get("type") and vals['type'] in ["out_invoice"]:
             #rectificativa desde el boton create invoice en pedidos
             refunded_invoice = self.env["account.move"].search(
                 [
@@ -49,7 +47,7 @@ class AccountMove(models.Model):
             )
             if refunded_invoice:
                 sale_type_id = refunded_invoice.sale_type_id
-        if vals['type'] in ["out_refund"]:
+        if vals.get("type") and vals['type'] in ["out_refund"]:
             #rectificativa desde crear rectificativa dentro de una factura
             refunded_invoice = self.env["account.move"].search(
                 [
