@@ -47,7 +47,7 @@ class AccountMove(models.Model):
             )
             if refunded_invoice:
                 sale_type_id = refunded_invoice.sale_type_id
-        if vals.get("type") and vals['type'] in ["out_refund"]:
+        elif vals.get("type") and vals['type'] in ["out_refund"]:
             #rectificativa desde crear rectificativa dentro de una factura
             refunded_invoice = self.env["account.move"].search(
                 [
@@ -59,18 +59,23 @@ class AccountMove(models.Model):
             if refunded_invoice:
                 sale_type_id = refunded_invoice.sale_type_id
         else:
-            #Si no es ninguna, mete el del partner_id.
-            partner_id = self.env['res.partner'].browse(vals['partner_id'])
-            sale_type = (
-                partner_id.with_context(
+            # Si no es ninguna, mete el del partner_id.
+            if not vals.get('partner_id'):
+                sale_type_id = self.env["sale.order.type"].search(
+                    [("company_id", "in", [self.env.company.id, False])], limit=1
+                )
+            else:
+                partner_id = self.env['res.partner'].browse(vals['partner_id'])
+                sale_type = (
+                    partner_id.with_context(
+                        force_company=self.company_id.id
+                    ).sale_type
+                    or partner_id.commercial_partner_id.with_context(
                     force_company=self.company_id.id
-                ).sale_type
-                or partner_id.commercial_partner_id.with_context(
-                force_company=self.company_id.id
-                ).sale_type
-            )
-            if sale_type:
-                sale_type_id = sale_type
+                    ).sale_type
+                )
+                if sale_type:
+                    sale_type_id = sale_type
         return sale_type_id.id
 
 
