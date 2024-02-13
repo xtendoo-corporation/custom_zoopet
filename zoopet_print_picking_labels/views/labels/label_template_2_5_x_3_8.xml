@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <!-- DESDE PICKING -->
     <data>
         <template id="zoopet_print_picking_labels.report_simple_label_zoopet">
             <t t-name="zoopet_print_picking_labels.report_simple_label_zoopet">
@@ -11,9 +12,9 @@
                             <div style="font-size:0.5em;text-align:center;max-height:22px;height:22px;overflow:hidden;width:120%;margin-left:-10%;">
                                 <span t-field="product.name"></span>
                             </div>
-<!--                            <div style="text-align:center;font-size:0.7em;">-->
-<!--                                <span t-field="product.default_code"></span>-->
-<!--                            </div>-->
+                            <div style="text-align:center;font-size:0.7em;">
+                                <span t-field="product.default_code"></span>
+                            </div>
                             <div class="text-center align-middle">
                                 <t t-if="product.barcode">
                                 <t t-set="product_barcode" t-value="product.barcode"/>
@@ -38,9 +39,9 @@
                             <div style="font-size:0.5em;text-align:center;max-height:22px;height:22px;overflow:hidden;width:120%;margin-left:-10%;">
                                 <span t-field="product.name"></span>
                             </div>
-<!--                            <div style="text-align:center;font-size:0.7em;">-->
-<!--                                <span t-field="product.default_code"></span>-->
-<!--                            </div>-->
+                            <div style="text-align:center;font-size:0.7em;">
+                                <span t-field="product.default_code"></span>
+                            </div>
                             <div class="text-center align-middle">
                                 <t t-if="product.barcode">
                                 <t t-set="product_barcode" t-value="product.barcode"/>
@@ -56,4 +57,60 @@
             </t>
         </template>
     </data>
+    <!-- FIN DESDE PICKING -->
+    <!-- DESDE PRODUCT TEMPLATE -->
+    <template id="zoopet_print_picking_labels.report_simple_label_zoopet_product_template">
+            <t t-name="zoopet_print_picking_labels.report_simple_label_zoopet_product_template">
+                <div class="page">
+                       <div style="width:100%;">
+                            <div style="text-align:center;font-size:1.2em;">
+                               <span>PVP: <strong class="o_label_price_medium" t-esc="doc.price_to_print_zoopet" t-options="{'widget': 'monetary', 'label_price': True, 'display_currency': doc.currency_id}"/></span>
+                            </div>
+                            <div style="font-size:0.5em;text-align:center;max-height:22px;height:22px;overflow:hidden;width:120%;margin-left:-10%;">
+                                <span t-field="doc.name"></span>
+                            </div>
+                            <div style="text-align:center;font-size:0.7em;">
+                                <span t-field="doc.default_code"></span>
+                            </div>
+                            <div class="text-center align-middle">
+                                <t t-if="doc.barcode">
+                                <t t-set="product_barcode" t-value="doc.barcode"/>
+                                    <img alt="Barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(doc.barcode or ''), 550, 90)" style="width:120%;height::2rem;margin-left:-10%;"/>
+                                </t>
+                                <t t-else="">
+                                    <span class="text-muted">No barcode available</span>
+                                </t>
+                            </div>
+                       </div>
+                </div>
+            </t>
+        </template>
+
+    <template id="zoopet_print_picking_labels.report_simple_label_petpoint_product_template">
+            <t t-name="zoopet_print_picking_labels.report_simple_label_petpoint_product_template">
+                <div class="page">
+                       <div style="width:100%;">
+                            <div style="text-align:center;font-size:1.2em;">
+                               <span>PVP: <strong class="o_label_price_medium" t-esc="doc.price_to_print_petpoint" t-options="{'widget': 'monetary', 'label_price': True, 'display_currency': doc.currency_id}"/></span>
+                            </div>
+                            <div style="font-size:0.5em;text-align:center;max-height:22px;height:22px;overflow:hidden;width:120%;margin-left:-10%;">
+                                <span t-field="doc.name"></span>
+                            </div>
+                            <div style="text-align:center;font-size:0.7em;">
+                                <span t-field="doc.default_code"></span>
+                            </div>
+                            <div class="text-center align-middle">
+                                <t t-if="doc.barcode">
+                                <t t-set="product_barcode" t-value="doc.barcode"/>
+                                    <img alt="Barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(doc.barcode or ''), 550, 90)" style="width:120%;height::2rem;margin-left:-10%;"/>
+                                </t>
+                                <t t-else="">
+                                    <span class="text-muted">No barcode available</span>
+                                </t>
+                            </div>
+                       </div>
+                </div>
+            </t>
+        </template>
+    <!-- FIN DESDE PRODUCT TEMPLATE -->
 </odoo>

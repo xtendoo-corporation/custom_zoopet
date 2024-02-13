@@ -14,6 +14,8 @@ class StockMove(models.Model):
     price_to_print_zoopet = fields.Float("Price to print zoopet", digits="Product Price", default=0.0 )
     price_to_print_petpoint = fields.Float("Price to print petpoint", digits="Product Price", default=0.0)
 
+
+
     @api.onchange('to_print')
     def calculate_prices_to_print(self):
         self.price_to_print_zoopet = self.get_price_with_tax(self.calculate_pricelist_price('Zoopet'))
