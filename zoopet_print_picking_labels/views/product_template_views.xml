@@ -7,8 +7,8 @@
         <field name="priority" eval="20"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='type']" position="after">
-                <field name="price_to_print_zoopet" string="Precio Zoopet"/>
-                <field name="price_to_print_petpoint" string="Precio PetPoint"/>
+                <field name="price_to_print_zoopet" invisible="1" string="Precio Zoopet"/>
+                <field name="price_to_print_petpoint" invisible="1" string="Precio PetPoint"/>
             </xpath>
         </field>
     </record>
