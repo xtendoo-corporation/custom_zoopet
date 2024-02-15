@@ -61,7 +61,7 @@
     <data>
         <report id="report_labels_25_23_zoopet_product_template"
                 string="Etiquetas 2.5 x 3.8 Zoopet"
-                model="product.template"
+                model="product.product"
                 report_type="qweb-pdf"
                 name="zoopet_print_picking_labels.report_labels_25_23_document_zoopet_product_template"
                 print_report_name="'Producto - %s' % (object.name)"
@@ -80,7 +80,7 @@
      <data>
         <report id="report_labels_25_23_petpoint_product_template"
                 string="Etiquetas 2.5 x 3.8 Petpoint"
-                model="product.template"
+                model="product.product"
                 report_type="qweb-pdf"
                 name="zoopet_print_picking_labels.report_labels_25_23_document_petpoint_product_template"
                 print_report_name="'Producto - %s' % (object.name)"

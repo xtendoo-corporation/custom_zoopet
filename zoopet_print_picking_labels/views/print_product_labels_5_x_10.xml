@@ -57,7 +57,7 @@
         <!-- DESDE PRODUCT TEMPLATE -->
         <report id="report_label_50_x_100_zoopet_product_template"
                 string="Etiquetas 5 x 10 Zoopet"
-                model="product.template"
+                model="product.product"
                 report_type="qweb-pdf"
                 name="zoopet_print_picking_labels.report_label_50_x_100_document_zoopet_product_template"
                 print_report_name="'Producto- %s' % (object.name)"
@@ -74,7 +74,7 @@
 
         <report id="report_label_50_x_100_petpoint_product_template"
                 string="Etiquetas 5 x 10 Petpoint"
-                model="product.template"
+                model="product.product"
                 report_type="qweb-pdf"
                 name="zoopet_print_picking_labels.report_label_50_x_100_document_petpoint_product_template"
                 print_report_name="'Producto- %s' % (object.name)"
