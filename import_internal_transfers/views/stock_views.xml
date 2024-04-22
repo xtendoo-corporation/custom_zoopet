@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <menuitem
+        id="internal_transfer_import_action"
+        action="internal_transfer_import_action"
+        name="Importar transferencia interna"
+        parent="stock.menu_stock_warehouse_mgmt"
+    />
+</odoo>

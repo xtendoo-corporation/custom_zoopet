@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="internal_transfer_import" model="ir.ui.view">
+        <field name="name">internal.transfer.import</field>
+        <field name="model">internal.transfer.import</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <form string="Internal Transfer Import">
+                <group>
+                    <field name="picking_type_id" />
+                    <group>
+                        <field name="location_id" options="{'no_create': True}" readonly="1" force_save="1" groups="stock.group_stock_multi_locations"/>
+                    </group>
+                    <group>
+                        <field name="location_dest_id" options="{'no_create': True}" force_save="1" readonly="1" groups="stock.group_stock_multi_locations"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="import_file" />
+                </group>
+                <footer>
+                    <button
+                        name="action_import_file"
+                        string="Import"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="internal_transfer_import_action" model="ir.actions.act_window">
+        <field name="name">Internal transfer Import</field>
+        <field name="res_model">internal.transfer.import</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
