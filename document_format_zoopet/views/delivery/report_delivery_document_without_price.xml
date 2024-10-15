@@ -348,10 +348,7 @@
                                     </thead>
                                     <!-- marca de agua-->
                                     <t t-if="o.origin">
-                                        <t t-set="isPurchase" t-value="hola"/>
-                                        <t t-if="o.group_id.name">
-                                            <t t-set="isPurchase" t-value="o.group_id.name.find('PO')"/>
-                                        </t>
+                                        <t t-set="isPurchase" t-value="o.group_id.name.find('PO')"/>
                                         <t t-if="isPurchase == 0">
                                             <t t-set="isReturn" t-value="o.origin.find('Retorno de ALM/IN')"/>
                                         </t>
@@ -437,12 +434,6 @@
                                                                             style="width:15%;display:block;clear:both;float:left;">
                                                                             <span
                                                                                 t-field="move_line.move_id.purchase_line_id.product_id.default_code"/>
-                                                                        </div>
-                                                                    </t>
-                                                                    <t t-else="">
-                                                                        <div
-                                                                            style="width:15%;display:block;clear:both;float:left;">
-                                                                            <span style="color:white">aaaa</span>
                                                                         </div>
                                                                     </t>
                                                                 </t>

@@ -627,7 +627,8 @@
                                                         <div
                                                             style="width:10%;display:block;float:left;text-align:right;">
                                                             <t t-set="total_linea" t-value="neto_linea * line_qty"/>
-                                                            <t t-if="line_qty" id="picking_subtotal">
+                                                            <t t-if="line_qty" id="picking_subtotal"
+                                                               groups="!account.group_show_line_subtotals_tax_included">
                                                                 <!--  Compute subtotal for that picking with discounts  -->
                                                                 <t t-set="line_picking_subtotal"
                                                                    t-value="line_qty and lines_group['quantity'] * (l.price_subtotal / line_qty) or 0.0"/>

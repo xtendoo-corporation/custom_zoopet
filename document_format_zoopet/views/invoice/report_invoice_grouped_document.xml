@@ -628,7 +628,8 @@
                                                             </t>
                                                             <t t-else="">
                                                                 <t t-set="IVALin" t-value="0"/>
-                                                                <t t-foreach="line.tax_ids" t-as="tax">
+                                                                <t t-set="sorted_tax" t-value="line._get_sorted_taxes()"/>
+                                                                <t t-foreach="sorted_tax" t-as="tax">
                                                                     <t t-set="tax_name" t-value="tax.name"/>
                                                                     <t t-set="isIVA" t-value="tax_name.find('IVA')"/>
                                                                     <t t-if="isIVA &gt; -1">
@@ -704,9 +705,8 @@
                                                         <div
                                                             style="width:10%;display:block;float:left;text-align:right;">
                                                             <t t-set="total_linea" t-value="neto_linea * line_qty"/>
-<!--                                                            <span t-esc="total_linea"-->
-<!--                                                                  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>-->
-                                                            <t t-if="line_qty" id="picking_subtotal">
+                                                            <t t-if="line_qty" id="picking_subtotal"
+                                                               groups="!account.group_show_line_subtotals_tax_included">
                                                                 <!--  Compute subtotal for that picking with discounts  -->
                                                                 <t t-set="line_picking_subtotal"
                                                                    t-value="line_qty and lines_group['quantity'] * (l.price_subtotal / line_qty) or 0.0"/>

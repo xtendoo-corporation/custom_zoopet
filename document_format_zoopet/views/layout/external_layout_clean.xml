@@ -96,10 +96,7 @@
                                     <t t-set="isReturn" t-value="1"></t>
                                 </t>
                                 <t t-else="">
-                                    <t t-set="isPurchase" t-value="hola"/>
-                                    <t t-if="o.group_id.name">
-                                        <t t-set="isPurchase" t-value="o.group_id.name.find('PO')"/>
-                                    </t>
+                                                <t t-set="isPurchase" t-value="o.group_id.name.find('PO')"/>
                                 <t t-if="isPurchase == 0">
                                     <t t-set="isReturn" t-value="albaranType.find('Retorno de ALM/IN')"></t>
                                 </t>
@@ -107,7 +104,7 @@
                                     <t t-set="isReturn" t-value="albaranType.find('Retorno de ALM/OUT')"></t>
                                 </t>
                                 </t>
-
+                                
 <!--                                <span t-esc="isPurchase"></span>-->
                                 <t t-if="isReturn == 0">
                                     <div style="float:left;width:25%;text-align:center;margin-top:30px; -webkit-transform: rotate(-37deg);">

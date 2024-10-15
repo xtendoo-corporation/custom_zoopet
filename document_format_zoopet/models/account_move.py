@@ -82,5 +82,9 @@ class AccountMove(models.Model):
         return self._sort_grouped_lines(with_picking)
 
 
+class AccountMoveLine(models.Model):
+    _inherit = "account.move.line"
 
+    def _get_sorted_taxes(self):
+        return self.tax_ids.sorted(lambda tax: tax.tax_group_id.sequence)
 
