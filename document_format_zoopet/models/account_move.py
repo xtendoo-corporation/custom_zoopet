@@ -86,5 +86,10 @@ class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
     def _get_sorted_taxes(self):
-        return self.tax_ids.sorted(lambda tax: tax.tax_group_id.sequence)
+        sorter_taxes = self.tax_ids.sorted(lambda tax: tax.name, reverse=True)
+        for tax in sorter_taxes:
+            print("*"*50)
+            print(tax.name)
+            print("*"*50)
+        return sorter_taxes
 

@@ -551,7 +551,8 @@
                                                             </t>
                                                             <t t-else="">
                                                                 <t t-set="IVALin" t-value="0"/>
-                                                                <t t-foreach="l.tax_ids" t-as="tax">
+                                                                <t t-set="sorted_tax" t-value="line._get_sorted_taxes()"/>
+                                                                <t t-foreach="sorted_tax" t-as="tax">
                                                                     <t t-set="tax_name" t-value="tax.name"/>
                                                                     <t t-set="isIVA" t-value="tax_name.find('IVA')"/>
                                                                     <t t-if="isIVA &gt; -1">
