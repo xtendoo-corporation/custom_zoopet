@@ -28,27 +28,27 @@
                         <!-- Fin buscamos el tipo en el number de la rectificativa -->
                         <!-- Datos del docuumento -->
                         <!-- si tiene copias -->
-<!--                        <t t-if="iteration">-->
-<!--                            <t t-set="inv_copy" t-value="iteration"/>-->
-<!--                            <t t-if="iteration &lt; 2">-->
-<!--                                &lt;!&ndash;-->
-<!--                                <div style="display:block;width:100%;font-size:0.7em;clear:both;text-align:right;">-->
-<!--                                <span>Documento original</span>-->
-<!--                                </div>-->
-<!--                                &ndash;&gt;-->
-<!--                            </t>-->
-<!--                            <t t-else="">-->
-<!--                                <div style="display:block;width:100%;clear:both;text-align:right;">-->
-<!--                                    <b>-->
-<!--                                        <span>-->
-<!--                                            Copia-->
-<!--                                        </span>-->
-<!--                                        <span t-esc="iteration -1">-->
-<!--                                        </span>-->
-<!--                                    </b>-->
-<!--                                </div>-->
-<!--                            </t>-->
-<!--                        </t>-->
+                        <!--                        <t t-if="iteration">-->
+                        <!--                            <t t-set="inv_copy" t-value="iteration"/>-->
+                        <!--                            <t t-if="iteration &lt; 2">-->
+                        <!--                                &lt;!&ndash;-->
+                        <!--                                <div style="display:block;width:100%;font-size:0.7em;clear:both;text-align:right;">-->
+                        <!--                                <span>Documento original</span>-->
+                        <!--                                </div>-->
+                        <!--                                &ndash;&gt;-->
+                        <!--                            </t>-->
+                        <!--                            <t t-else="">-->
+                        <!--                                <div style="display:block;width:100%;clear:both;text-align:right;">-->
+                        <!--                                    <b>-->
+                        <!--                                        <span>-->
+                        <!--                                            Copia-->
+                        <!--                                        </span>-->
+                        <!--                                        <span t-esc="iteration -1">-->
+                        <!--                                        </span>-->
+                        <!--                                    </b>-->
+                        <!--                                </div>-->
+                        <!--                            </t>-->
+                        <!--                        </t>-->
                         <!-- si tiene copias -->
                         <!-- Direcciones -->
                         <!-- DIreccion de facturacion -->
@@ -260,40 +260,41 @@
                                 <span t-if="o.partner_id.parent_id" t-field="o.partner_id.parent_id.ref"/>
                                 <span t-if=" not o.partner_id.parent_id" t-field="o.partner_id.ref"/>
                             </div>
-                            <div style="width:49%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
-                                <t t-if="o.invoice_origin">
+                            <div
+                                style="width:49%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
+                                 <t t-if="o.invoice_origin">
                                     <t t-set="name_with_type" t-value="aaa"/>
-								<t t-set="origin_label" t-value="'Pedido: '"/>
-								<t t-if="isInvoice == 'out_refund'">
-									<t t-set="origin_label" t-value="'Referencia :'"/>
-									<t t-if="o.type == out_refund">
-										<t t-set="name_with_type" t-value="o.refund_invoice_name"/>
-									</t>
-									<t t-else="">
-										<t t-set="name_with_type" t-value="o.invoice_origin"/>
-									</t>
-								</t>
-								<t t-else="">
-									<t t-set="name_with_type" t-value="o.sale_type_id.journal_id.code + '/' + o.invoice_origin"/>
-								</t>
-								<t t-if="name_with_type != 'aaa'">
-								 <!-- <t t-set="origin_num" t-value="name_with_type.find(',')"/> -->
-								 <t t-set="origin_num" t-value="1"/>
-								</t>
-								<t t-else="">
-								   <t t-set="origin_num" t-value="0"/>
-								</t>
-								<t t-if="origin_num &lt; 0">
-								</t>
-								<t t-else="">
-									<b>
-									<span style="margin-left:2px;" t-esc="origin_label"/>
-									</b>
-									<span t-esc="name_with_type"/>
-								</t>
+                                    <t t-set="origin_label" t-value="'Pedido: '"/>
+                                    <t t-if="isInvoice == 'out_refund'">
+                                        <t t-set="origin_label" t-value="'Referencia :'"/>
+                                        <t t-if="o.type == out_refund">
+                                            <t t-set="name_with_type" t-value="o.refund_invoice_name"/>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-set="name_with_type" t-value="o.invoice_origin"/>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-set="name_with_type"
+                                           t-value="o.sale_type_id.journal_id.code + '/' + o.invoice_origin"/>
+                                    </t>
+                                    <t t-if="name_with_type != 'aaa'">
+                                        <t t-set="origin_num" t-value="name_with_type.find(',')"/>
+                                        <!--								 <t t-set="origin_num" t-value="1"/>-->
+                                    </t>
+                                    <t t-else="">
+                                        <t t-set="origin_num" t-value="0"/>
+                                    </t>
+                                    <t t-if="origin_num &gt; 0">
+                                    </t>
+                                    <t t-else="">
+                                        <b>
+                                            <span style="margin-left:2px;" t-esc="origin_label"/>
+                                        </b>
+                                        <span t-esc="name_with_type"/>
+                                    </t>
                                 </t>
-
-							</div>
+                            </div>
                         </div>
                         <!-- fin datos documento -->
                         <!-- observaciones -->
@@ -628,17 +629,16 @@
                                                             </t>
                                                             <t t-else="">
                                                                 <t t-set="IVALin" t-value="0"/>
-                                                                <t t-set="sorted_tax" t-value="line._get_sorted_taxes()"/>
-                                                                <t t-foreach="sorted_tax" t-as="tax">
+                                                                <t t-foreach="line.tax_ids" t-as="tax">
                                                                     <t t-set="tax_name" t-value="tax.name"/>
                                                                     <t t-set="isIVA" t-value="tax_name.find('IVA')"/>
                                                                     <t t-if="isIVA &gt; -1">
                                                                         <span t-esc="'%.2f'%tax.amount"/>
                                                                     </t>
-                                                                     <t t-else="">
-																        <span style="color:white;">
-																	        abc
-																        </span>
+                                                                    <t t-else="">
+                                                                        <span style="color:white;">
+                                                                            abc
+                                                                        </span>
                                                                     </t>
                                                                 </t>
                                                             </t>
@@ -705,8 +705,9 @@
                                                         <div
                                                             style="width:10%;display:block;float:left;text-align:right;">
                                                             <t t-set="total_linea" t-value="neto_linea * line_qty"/>
-                                                            <t t-if="line_qty" id="picking_subtotal"
-                                                               groups="!account.group_show_line_subtotals_tax_included">
+                                                            <!--                                                            <span t-esc="total_linea"-->
+                                                            <!--                                                                  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>-->
+                                                            <t t-if="line_qty" id="picking_subtotal">
                                                                 <!--  Compute subtotal for that picking with discounts  -->
                                                                 <t t-set="line_picking_subtotal"
                                                                    t-value="line_qty and lines_group['quantity'] * (l.price_subtotal / line_qty) or 0.0"/>
