@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- DESDE PICKING -->
+         <report id="report_label_50_x_100_zoopet"
+                string="Etiquetas 5 x 10 Zoopet"
+                model="stock.picking"
+                report_type="qweb-pdf"
+                name="zoopet_print_picking_labels.report_label_50_x_100_document_zoopet"
+                print_report_name="'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)"
+        />
+        <template id="report_label_50_x_100_document_zoopet">
+             <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="picking">
+                    <t t-foreach="picking.move_lines" t-as="move_line">
+                        <t t-if="move_line.to_print">
+                            <t t-foreach="int(move_line.quantity_done)" t-as="">
+                                <div class="page">
+                                    <t t-call="zoopet_print_picking_labels.report_simple_label_5_x_10_zoopet">
+                                        <t t-set="product" t-value="move_line.product_id"/>
+                                         <t t-set="moveline" t-value="move_line"/>
+                                    </t>
+                                </div>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <report id="report_label_50_x_100_petpoint"
+                string="Etiquetas 5 x 10 Petpoint"
+                model="stock.picking"
+                report_type="qweb-pdf"
+                name="zoopet_print_picking_labels.report_label_50_x_100_document_petpoint"
+                print_report_name="'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)"
+        />
+        <template id="report_label_50_x_100_document_petpoint">
+             <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="picking">
+                    <t t-foreach="picking.move_lines" t-as="move_line">
+                        <t t-if="move_line.to_print">
+                            <t t-foreach="int(move_line.quantity_done)" t-as="">
+                                <div class="page">
+                                    <t t-call="zoopet_print_picking_labels.report_simple_label_5_x_10_petpoint">
+                                        <t t-set="product" t-value="move_line.product_id"/>
+                                         <t t-set="moveline" t-value="move_line"/>
+                                    </t>
+                                </div>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </template>
+        <!-- FIN DESDE PICKING -->
+        <!-- DESDE PRODUCT TEMPLATE -->
+        <report id="report_label_50_x_100_zoopet_product_template"
+                string="Etiquetas 5 x 10 Zoopet"
+                model="product.product"
+                report_type="qweb-pdf"
+                name="zoopet_print_picking_labels.report_label_50_x_100_document_zoopet_product_template"
+                print_report_name="'Producto- %s' % (object.name)"
+        />
+        <template id="report_label_50_x_100_document_zoopet_product_template">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+                        <t t-call="zoopet_print_picking_labels.report_simple_label_5_x_10_zoopet_product_template"/>
+                     </div>
+                </t>
+            </t>
+        </template>
+
+        <report id="report_label_50_x_100_petpoint_product_template"
+                string="Etiquetas 5 x 10 Petpoint"
+                model="product.product"
+                report_type="qweb-pdf"
+                name="zoopet_print_picking_labels.report_label_50_x_100_document_petpoint_product_template"
+                print_report_name="'Producto- %s' % (object.name)"
+        />
+        <template id="report_label_50_x_100_document_petpoint_product_template">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+                        <t t-call="zoopet_print_picking_labels.report_simple_label_5_x_10_petpoint_product_template"/>
+                     </div>
+                </t>
+            </t>
+        </template>
+        <!-- FIN DESDE PRODUCT TEMPLATE -->
+    </data>
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Boton create Invoice-->
+        <record id="zoopet_administration.sot_sale_order_type_form_view_inherit" model="ir.ui.view">
+            <field name="name">sot.sale.order.type.form.view.inherit</field>
+            <field name="model">sale.order.type</field>
+            <field name="inherit_id" ref="sale_order_type.sot_sale_order_type_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sequence_id']" position="after">
+
+                    <field name="fiscal_position_id" widget="Selection"/>
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
