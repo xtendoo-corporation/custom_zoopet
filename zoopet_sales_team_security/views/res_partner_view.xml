@@ -11,5 +11,8 @@
             </xpath>
         </field>
     </record>
+<<<<<<< HEAD
+=======
 
+>>>>>>> d64ccec (todo funciona excepto informes y detalles de administration)
 </odoo>

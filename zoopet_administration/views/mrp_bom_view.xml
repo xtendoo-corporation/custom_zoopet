@@ -6,7 +6,7 @@
             <field name="model">mrp.bom</field>
             <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='routing_id']" position="after">
+                <xpath expr="//field[@name='product_tmpl_id']" position="after">
                     <field name="to_print"/>
                 </xpath>
                 <xpath expr="//field[@name='product_tmpl_id']" position="attributes">

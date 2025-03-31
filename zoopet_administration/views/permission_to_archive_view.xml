@@ -122,7 +122,7 @@
         </record>
         <!-- Fin Archivar en Tipos de operación-->
         <!-- Archivar en Metodo de envio-->
-      <!--  <record id="zoopet_administration.delivery_carrier_form_inherit" model="ir.ui.view">
+       <record id="zoopet_administration.delivery_carrier_form_inherit" model="ir.ui.view">
             <field name="name">delivery.carrier.form.inherit</field>
             <field name="model">delivery.carrier</field>
             <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
@@ -131,7 +131,7 @@
                       <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
                  </xpath>
             </field>
-        </record>-->
+        </record>
         <!-- Fin Archivar en Metodo de envio-->
         <!-- Archivar en Regla de abastecimiento-->
         <record id="zoopet_administration.stock_warehouse_orderpoint_form_inherit" model="ir.ui.view">
@@ -182,7 +182,7 @@
         </record>
         <!-- Fin Archivar en Centros de producción-->
         <!-- Archivar en Impuestos-->
-        <!--<record id="zoopet_administration.account_tax_form_inherit" model="ir.ui.view">
+        <record id="zoopet_administration.account_tax_form_inherit" model="ir.ui.view">
             <field name="name">account.tax.form.inherit</field>
             <field name="model">account.tax</field>
             <field name="inherit_id" ref="account.view_tax_form"/>
@@ -191,7 +191,7 @@
                       <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
                  </xpath>
             </field>
-        </record>-->
+        </record>
         <!-- Fin Archivar en Impuestos-->
         <!-- Archivar en Icotemrs-->
         <record id="zoopet_administration.account_incoterms_form_inherit" model="ir.ui.view">
@@ -205,5 +205,25 @@
             </field>
         </record>
         <!-- Fin Archivar en Icotemrss-->
+
+
     </data>
 </odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -9,6 +9,9 @@
                  <xpath expr="//field[@name='global_discount_ids']" position="replace">
                      <field name="global_discount_ids" readonly="1" invisible="1" widget="many2many_tags" placeholder="Discounts..." groups="base_global_discount.group_global_discount"/>
                  </xpath>
+                <xpath expr="//field[@name='global_discount_ids_readonly']" position="replace">
+                     <field name="global_discount_ids_readonly" readonly="1" invisible="1" widget="many2many_tags" placeholder="Discounts..." groups="base_global_discount.group_global_discount"/>
+                 </xpath>
             </field>
         </record>
     </data>

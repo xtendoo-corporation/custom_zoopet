@@ -84,6 +84,12 @@
                 <xpath expr="//field[@name='margin']" position="attributes">
                     <attribute name="groups">zoopet_administration.show_margins</attribute>
                 </xpath>
+                <xpath expr="//div[@class='text-nowrap']" position="attributes">
+                    <attribute name="groups">zoopet_administration.show_margins</attribute>
+                </xpath>
+                <xpath expr="//label[@for='margin']" position="attributes">
+                    <attribute name="groups">zoopet_administration.show_margins</attribute>
+                </xpath>
             </field>
         </record>
         <!-- Fin Ocultar margen en ventas -->
@@ -141,9 +147,12 @@
                 <xpath expr="//field[@name='lst_price']" position="attributes">
                     <attribute name="groups">zoopet_administration.show_sale_price</attribute>
                 </xpath>
+                <!-- Este xpath está fallando -->
+                <!--
                 <xpath expr="//div/div/ul/li/field[@name='lst_price']" position="attributes">
                     <attribute name="groups">zoopet_administration.show_sale_price</attribute>
                 </xpath>
+                -->
             </field>
         </record>
         <!-- Fin sale price -->
@@ -198,17 +207,21 @@
 
                 <!-- Abrir:Lineas del pedido -->
 
-                <xpath expr="//page[@name='order_lines']//field[@name='price_unit']" position="attributes">
-                    <attribute name="groups">zoopet_administration.show_sale_price</attribute>
-                </xpath>
+                <!--
+   <xpath expr="//page[@name='order_lines']//field[@name='price_unit']" position="attributes">
+       <attribute name="groups">zoopet_administration.show_sale_price</attribute>
+   </xpath>
 
-                <xpath expr="//page[@name='order_lines']//field[@name='purchase_price']" position="attributes">
-                    <attribute name="groups">zoopet_administration.show_cost_price</attribute>
-                </xpath>
-                 <xpath expr="//page[@name='order_lines']//field[@name='price_unit']" position="after">
-                    <field name="unit_weight" invisible="1" />
-                    <field name="total_ordered_weight" />
-                </xpath>
+   <xpath expr="//page[@name='order_lines']//field[@name='purchase_price']" position="attributes">
+       <attribute name="groups">zoopet_administration.show_cost_price</attribute>
+   </xpath>
+
+   <xpath expr="//page[@name='order_lines']//field[@name='price_unit']" position="after">
+       <field name="unit_weight" invisible="1"/>
+       <field name="total_ordered_weight"/>
+   </xpath>
+   -->
+
 
                 <!-- Fin Abrir.Lineas del pedido -->
 
@@ -259,7 +272,7 @@
         <!-- Fin tipo en vista de presupuestos -->
 
         <!-- Tipo en vista de pedidos -->
-       <record id="zoopet_administration.sale_order_type_view_list" model="ir.ui.view">
+        <record id="zoopet_administration.sale_order_type_view_list" model="ir.ui.view">
             <field name="name">sale.order.type.view.list</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_tree"/>
@@ -283,20 +296,20 @@
                     <field name="carrier_id" domain="[('id', 'in', available_carrier_ids)]" context="{'order_id': id}" class="oe_inline" options="{'no_create': True, 'no_open': True}" attrs="{'readonly':[('state','not in',('draft','sent')),('is_comercial','=',True)]}"/> <i class="fa fa-check text-success" role="img" aria-label="Rating OK" title="Rating OK" attrs="{'invisible':['|','|',('carrier_id','=',False),('state','not in',('draft','sent')),('delivery_rating_success','=',False)]}"/>
                 </xpath>
             </field>
-        </record>-->
+        </record> -->
         <!-- Editar forma de entrega -->
 
-         <!-- Botones de stock picking all done-->
+        <!-- Botones de stock picking all done-->
         <record id="zoopet_administration.view_order_e_so" model="ir.ui.view">
             <field name="name">view.order.form.inherit</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_sales_order_auto_done_setting"/>
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='action_done']" position="attributes">
-                     <attribute name="groups">zoopet_administration.edit_block_so</attribute>
+                    <attribute name="groups">zoopet_administration.edit_block_so</attribute>
                 </xpath>
                 <xpath expr="//button[@name='action_unlock']" position="attributes">
-                     <attribute name="groups">zoopet_administration.edit_block_so</attribute>
+                    <attribute name="groups">zoopet_administration.edit_block_so</attribute>
                 </xpath>
             </field>
         </record>

@@ -36,6 +36,30 @@ class AccountMove(models.Model):
             sale_type_id = self.env["sale.order.type"].search(
                 [("company_id", "in", [self.env.company.id, False])], limit=1
             )
+<<<<<<< HEAD
+        if vals.get("type") and vals['type'] in ["out_invoice"]:
+            #rectificativa desde el boton create invoice en pedidos
+            refunded_invoice = self.env["account.move"].search(
+                [
+                    ("invoice_origin", "=", vals['invoice_origin']),
+                    ("type", "=", "out_invoice"),
+                    ("state", "=", "posted"),
+                ], limit=1
+            )
+            if refunded_invoice:
+                sale_type_id = refunded_invoice.sale_type_id
+        elif vals.get("type") and vals['type'] in ["out_refund"]:
+            #rectificativa desde crear rectificativa dentro de una factura
+            refunded_invoice = self.env["account.move"].search(
+                [
+                    ("invoice_origin", "=", vals['invoice_origin']),
+                    ("type", "=", "out_invoice"),
+                    ("state", "=", "posted"),
+                ], limit=1
+            )
+            if refunded_invoice:
+                sale_type_id = refunded_invoice.sale_type_id
+=======
         if vals.get("type") == "out_invoice":
             # rectificativa desde el botón create invoice en pedidos
             refunded_invoice = self.env["account.move"].search(
@@ -62,6 +86,7 @@ class AccountMove(models.Model):
             if refunded_invoice:
                 sale_type_id = refunded_invoice.sale_type_id
 
+>>>>>>> d64ccec (todo funciona excepto informes y detalles de administration)
         else:
             # Si no es ninguna, mete el del partner_id.
             if not vals.get('partner_id'):
@@ -76,8 +101,17 @@ class AccountMove(models.Model):
                     ).sale_type
                     or partner_id.commercial_partner_id.with_context(
                     force_company=self.company_id.id
+<<<<<<< HEAD
+                    ).sale_type
+=======
                 ).sale_type
+>>>>>>> d64ccec (todo funciona excepto informes y detalles de administration)
                 )
                 if sale_type:
                     sale_type_id = sale_type
         return sale_type_id.id
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> d64ccec (todo funciona excepto informes y detalles de administration)
