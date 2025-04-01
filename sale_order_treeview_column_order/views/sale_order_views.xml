@@ -77,15 +77,15 @@
                 <field name="invoice_status" position="after">
                     <field name="picking_state" optional="show"/>
                 </field>
-                <!-- <field name="picking_state" position="after">
-                     <field name="total_ordered_weight" sum="Total Peso Pedido" optional="show">
+                <field name="picking_state" position="after">
+                     <field name="total_ordered_weight_display" sum="Total Peso Pedido" optional="show">
                      </field>
                  </field>
-                 <field name="total_ordered_weight" position="after">
-                     <field name="total_delivered_weight" sum="Total Peso Enviado" optional="show">
+                 <field name="total_ordered_weight_display" position="after">
+                     <field name="total_delivered_weight_display" sum="Total Peso Enviado" optional="show">
                      </field>
-                 </field> -->
-                <field name="picking_state" position="after">
+                 </field>
+                <field name="total_delivered_weight_display" position="after">
                     <field name="warehouse_id" options="{'no_create': True}" groups="stock.group_stock_multi_warehouses"
                            optional="hide"/>
                 </field>
@@ -209,15 +209,15 @@
                 <field name="invoice_status" position="after">
                     <field name="picking_state" optional="show"/>
                 </field>
-                <!-- <field name="picking_state" position="after">
-                    <field name="total_ordered_weight" sum="Total Peso Pedido" optional="show">
+                 <field name="picking_state" position="after">
+                    <field name="total_ordered_weight_display" sum="Total Peso Pedido" optional="show">
                     </field>
                 </field>
-                <field name="total_ordered_weight" position="after">
-                    <field name="total_delivered_weight" sum="Total Peso Enviado" optional="show">
+                <field name="total_ordered_weight_display" position="after">
+                    <field name="total_delivered_weight_display" sum="Total Peso Enviado" optional="show">
                     </field>
-                </field> -->
-                <field name="picking_state" position="after">
+                </field>
+                <field name="total_delivered_weight_display" position="after">
                     <field name="warehouse_id" options="{'no_create': True}" groups="stock.group_stock_multi_warehouses"
                            optional="hide"/>
                 </field>
