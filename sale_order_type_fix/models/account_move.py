@@ -25,93 +25,45 @@ class AccountMove(models.Model):
         return res
 
     def _compute_sale_type_id(self, vals):
-        if vals.get('type') not in ["out_invoice", "out_refund"]:
-            sale_type_id = self.env["sale.order.type"]
-        else:
-            if vals.get('invoice_origin'):
-                sale_type_id = self.env['sale.order'].search([('name', '=', vals['invoice_origin'])], limit=1).type_id
-            else:
-                sale_type_id = vals.get('sale_type_id')
-        if not vals.get('partner_id'):
+        sale_type_id = False
+
+        if vals.get('type') in ["out_invoice", "out_refund"] and vals.get('invoice_origin'):
+            # Intentamos encontrar la factura original para heredar el tipo de venta
+            refunded_invoice = self.env["account.move"].search(
+                [
+                    ("invoice_origin", "=", vals.get("invoice_origin")),
+                    ("type", "=", "out_invoice"),
+                    ("state", "=", "posted"),
+                ],
+                limit=1
+            )
+            if refunded_invoice:
+                sale_type_id = refunded_invoice.sale_type_id
+
+        # Si no lo conseguimos por origen, tomamos el valor directo si lo trae
+        if not sale_type_id and vals.get('sale_type_id'):
+            sale_type_id = self.env['sale.order.type'].browse(vals['sale_type_id'])
+
+        # Si aún no se tiene, buscamos por origen del pedido
+        if not sale_type_id and vals.get('invoice_origin'):
+            sale_order = self.env['sale.order'].search([('name', '=', vals['invoice_origin'])], limit=1)
+            if sale_order:
+                sale_type_id = sale_order.type_id
+
+        # Si no hay partner, usamos uno por defecto de la compañía
+        if not sale_type_id and not vals.get('partner_id'):
             sale_type_id = self.env["sale.order.type"].search(
                 [("company_id", "in", [self.env.company.id, False])], limit=1
             )
-<<<<<<< HEAD
-        if vals.get("type") and vals['type'] in ["out_invoice"]:
-            #rectificativa desde el boton create invoice en pedidos
-            refunded_invoice = self.env["account.move"].search(
-                [
-                    ("invoice_origin", "=", vals['invoice_origin']),
-                    ("type", "=", "out_invoice"),
-                    ("state", "=", "posted"),
-                ], limit=1
-            )
-            if refunded_invoice:
-                sale_type_id = refunded_invoice.sale_type_id
-        elif vals.get("type") and vals['type'] in ["out_refund"]:
-            #rectificativa desde crear rectificativa dentro de una factura
-            refunded_invoice = self.env["account.move"].search(
-                [
-                    ("invoice_origin", "=", vals['invoice_origin']),
-                    ("type", "=", "out_invoice"),
-                    ("state", "=", "posted"),
-                ], limit=1
-            )
-            if refunded_invoice:
-                sale_type_id = refunded_invoice.sale_type_id
-=======
-        if vals.get("type") == "out_invoice":
-            # rectificativa desde el botón create invoice en pedidos
-            refunded_invoice = self.env["account.move"].search(
-                [
-                    ("invoice_origin", "=", vals.get("invoice_origin")),
-                    ("type", "=", "out_invoice"),
-                    ("state", "=", "posted"),
-                ],
-                limit=1
-            )
-            if refunded_invoice:
-                sale_type_id = refunded_invoice.sale_type_id
 
-        elif vals.get("type") == "out_refund":
-            # rectificativa desde crear rectificativa dentro de una factura
-            refunded_invoice = self.env["account.move"].search(
-                [
-                    ("invoice_origin", "=", vals.get("invoice_origin")),
-                    ("type", "=", "out_invoice"),
-                    ("state", "=", "posted"),
-                ],
-                limit=1
+        # Si hay partner, intentamos sacarlo desde ahí
+        elif not sale_type_id and vals.get('partner_id'):
+            partner_id = self.env['res.partner'].browse(vals['partner_id'])
+            sale_type = (
+                partner_id.with_context(force_company=self.company_id.id).sale_type or
+                partner_id.commercial_partner_id.with_context(force_company=self.company_id.id).sale_type
             )
-            if refunded_invoice:
-                sale_type_id = refunded_invoice.sale_type_id
+            if sale_type:
+                sale_type_id = sale_type
 
->>>>>>> d64ccec (todo funciona excepto informes y detalles de administration)
-        else:
-            # Si no es ninguna, mete el del partner_id.
-            if not vals.get('partner_id'):
-                sale_type_id = self.env["sale.order.type"].search(
-                    [("company_id", "in", [self.env.company.id, False])], limit=1
-                )
-            else:
-                partner_id = self.env['res.partner'].browse(vals['partner_id'])
-                sale_type = (
-                    partner_id.with_context(
-                        force_company=self.company_id.id
-                    ).sale_type
-                    or partner_id.commercial_partner_id.with_context(
-                    force_company=self.company_id.id
-<<<<<<< HEAD
-                    ).sale_type
-=======
-                ).sale_type
->>>>>>> d64ccec (todo funciona excepto informes y detalles de administration)
-                )
-                if sale_type:
-                    sale_type_id = sale_type
-        return sale_type_id.id
-<<<<<<< HEAD
-
-
-=======
->>>>>>> d64ccec (todo funciona excepto informes y detalles de administration)
+        return sale_type_id.id if sale_type_id else False
