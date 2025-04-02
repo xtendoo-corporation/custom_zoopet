@@ -57,6 +57,8 @@
                     <t t-call="web.html_container">
                         <t t-call="web.external_layout">
                             <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+                            <t t-set="company" t-value="o.company_id"/>
+
                             <t t-set="partner"
                                t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"/>
                             <!-- <t t-if="partner" name="partner_header">
@@ -119,7 +121,7 @@
                                         </div>
                                     </t>
                                     <t t-else="">
-                                        <div style="background-color:blue;color:white;text-align:center;">
+                                        <div style="color:black;text-align:center;font-weight: bold">
                                             Dirección de facturacíon
                                         </div>
                                     </t>
@@ -142,7 +144,7 @@
                                         <div>
                                             <span t-field="o.partner_id.parent_id.street"/>
                                         </div>
-                                         <!-- calle 2 -->
+                                        <!-- calle 2 -->
                                         <div t-if="o.partner_id.parent_id.street2">
                                             <span t-field="o.partner_id.parent_id.street2"/>
                                         </div>
@@ -193,7 +195,7 @@
                                         <div>
                                             <span t-field="o.partner_id.street"/>
                                         </div>
-                                         <!-- calle 2 -->
+                                        <!-- calle 2 -->
                                         <div t-if="o.partner_id.street2">
                                             <span t-field="o.partner_id.street2"/>
                                         </div>
@@ -256,7 +258,7 @@
                                         <div>
                                             <span t-field="o.partner_id.street"/>
                                         </div>
-                                         <!-- calle 2 -->
+                                        <!-- calle 2 -->
                                         <div t-if="o.partner_id.street2">
                                             <span t-field="o.partner_id.street2"/>
                                         </div>
@@ -289,38 +291,62 @@
                                 </div>
                                 <!-- Fin direcciones -->
                                 <!-- Datos documento y observaciones -->
-                                  <!-- datos documento -->
-                        <div style="width:49%;clear:both;float:left;margin-right:1%;margin-top:5px;font-size:0.8em;">
-                            <div style="width:50%;float:left;border:2px solid black;height:25px;">
-                                <span style="margin-left:2px;"><b>Albaran: </b></span><span t-field="o.name"/>
-                            </div>
-                            <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;height:25px;">
-                                <span style="margin-left:2px;"><b>Fecha: </b></span><span t-field="o.date_done" t-options="{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
-                            </div>
-                             <t t-if="isReturn == 0">
-                                 <div style="width:50%;float:left;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black;height:25px;">
-                                    <span style="margin-left:2px;"><b>Proveedor: </b></span><span t-field="o.partner_id.ref"/>
+                                <!-- datos documento -->
+                                <div
+                                    style="width:49%;clear:both;float:left;margin-right:1%;margin-top:5px;font-size:0.8em;">
+                                    <div style="width:50%;float:left;border:2px solid black;height:25px;">
+                                        <span style="margin-left:2px;">
+                                            <b>Albaran:</b>
+                                        </span>
+                                        <span t-field="o.name"/>
+                                    </div>
+                                    <div
+                                        style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;height:25px;">
+                                        <span style="margin-left:2px;">
+                                            <b>Fecha:</b>
+                                        </span>
+                                        <span t-field="o.date_done"
+                                              t-options="{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
+                                    </div>
+                                    <t t-if="isReturn == 0">
+                                        <div
+                                            style="width:50%;float:left;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black;height:25px;">
+                                            <span style="margin-left:2px;">
+                                                <b>Proveedor:</b>
+                                            </span>
+                                            <span t-field="o.partner_id.ref"/>
+                                        </div>
+                                    </t>
+                                    <t t-else="">
+                                        <div
+                                            style="width:50%;float:left;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black;height:25px;">
+                                            <span style="margin-left:2px;">
+                                                <b>Cliente:</b>
+                                            </span>
+                                            <span t-field="o.partner_id.ref"/>
+                                        </div>
+                                    </t>
+                                    <div
+                                        style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
+                                        <span style="margin-left:2px;">
+                                            <b>Pedido:</b>
+                                        </span>
+                                        <span t-field="o.sale_id.name"/>
+                                    </div>
                                 </div>
-                             </t>
-                            <t t-else="">
-                                <div style="width:50%;float:left;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black;height:25px;">
-                                    <span style="margin-left:2px;"><b>Cliente: </b></span><span t-field="o.partner_id.ref"/>
+                                <!-- fin datos documento -->
+                                <!-- observaciones -->
+                                <div
+                                    style="width:49%;float:left;margin-left:0%;border:2px solid black;height:50px;margin-top:5px;margin-bottom:5px;">
+                                    <span style="margin-left:2px;">
+                                        <b>Observaciones:</b>
+                                    </span>
+                                    <t t-if="o.sale_id.note">
+                                        <span t-field="o.sale_id.note"/>
+                                    </t>
+                                    <span t-field="o.note"/>
                                 </div>
-                            </t>
-                            <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
-                                <span style="margin-left:2px;"><b>Pedido: </b></span><span t-field="o.sale_id.name"/>
-                            </div>
-                        </div>
-                        <!-- fin datos documento -->
-                        <!-- observaciones -->
-                        <div style="width:49%;float:left;margin-left:0%;border:2px solid black;height:50px;margin-top:5px;margin-bottom:5px;">
-                            <span style="margin-left:2px;"><b>Observaciones: </b></span>
-                            <t t-if="o.sale_id.note">
-                                <span t-field="o.sale_id.note"/>
-                            </t>
-                            <span t-field="o.note"/>
-                        </div>
-                        <!-- fin observaciones -->
+                                <!-- fin observaciones -->
                                 <!-- Fin datos documento -->
                                 <table class="table" style="clear:both;width:100%;border-bottom:2px solid black;">
                                     <thead>
@@ -350,7 +376,7 @@
                                     <t t-if="o.origin">
                                         <t t-set="isPurchase" t-value="hola"/>
                                         <t t-if="o.group_id.name">
-                                            <t t-set="isPurchase" t-value="o.group_id.name.find('PO')"/>
+                                            <t t-set="isPurchase" t-value="'PO' in (o.group_id.name or '')"/>
                                         </t>
                                         <t t-if="isPurchase == 0">
                                             <t t-set="isReturn" t-value="o.origin.find('Retorno de ALM/IN')"/>

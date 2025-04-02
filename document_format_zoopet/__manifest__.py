@@ -21,7 +21,6 @@
         "sale_global_discount",
         "account_global_discount",
         "zoopet_administration",
-        "stock_picking_and_sale_order_pallets_and_lumps",
         "sale_margin",
         "product_brand",
         "stock_picking_report_valued",
@@ -58,24 +57,24 @@
         # Invoice Agrupada
         "views/invoice/report_invoice_grouped_document.xml",
         "views/invoice/report_invoice_grouped.xml",
-        #Invoice Agrupada - NO USAR
+        # Invoice Agrupada - NO USAR
         "views/invoice/report_invoice_grouped_document_no_usar.xml",
         "views/invoice/report_invoice_grouped_no_usar.xml",
-        #Invoice - NO USAR
+        # Invoice - NO USAR
         "views/invoice/report_invoice_document_no_usar.xml",
         "views/invoice/report_invoice_no_usar.xml",
         # Product Label
         "views/product_label/paper_format.xml",
         "views/product_label/label_template.xml",
-        #Albarán en pedidos
+        # Albarán en pedidos
         "views/sale_delivery/sale_delivery_without_price.xml",
         "views/sale_delivery/sale_delivery.xml",
-        #"views/sale_delivery/sale_delivery_delivered_qty.xml",
-        #Res_Partner
+        # "views/sale_delivery/sale_delivery_delivered_qty.xml",
+        # Res_Partner
         "views/res_partner/res_partner_view.xml",
-        #Añadir JS del POS
+        # Añadir JS del POS
         "templates/assets.xml",
-        #Vista del informe de ventas, para añadir el grupo
+        # Vista del informe de ventas, para añadir el grupo
         "views/sale_report_view/sale_report_view.xml"
 
     ],

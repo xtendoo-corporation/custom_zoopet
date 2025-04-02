@@ -97,8 +97,8 @@
                                 </t>
                                 <t t-else="">
                                     <t t-set="isPurchase" t-value="hola"/>
-                                    <t t-if="o.group_id.name">
-                                        <t t-set="isPurchase" t-value="o.group_id.name.find('PO')"/>
+                                   <t t-if="o._name == 'purchase.order' and o.group_id and o.group_id.name">
+                                        <t t-set="isPurchase" t-value="o.group_id and o.group_id.name and 'PO' in o.group_id.name"/>/>
                                     </t>
                                 <t t-if="isPurchase == 0">
                                     <t t-set="isReturn" t-value="albaranType.find('Retorno de ALM/IN')"></t>
