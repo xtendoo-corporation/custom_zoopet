@@ -114,14 +114,14 @@
                                 <!-- Direcciones -->
                                 <!-- DIreccion de facturacion -->
                                 <div
-                                    style="width:49%;float:left;clear:both;margin-right:0.5%;border:2px solid black;height:223px;">
+                                    style="width:49%;float:left;clear:both;margin-right:0.5%;height:223px">
                                     <t t-if="isReturn == 0">
-                                        <div style="background-color:blue;color:white;text-align:center;">
+                                        <div style="color:black;text-align:left;font-weight: bold; margin-bottom:5px">
                                             Proveedor
                                         </div>
                                     </t>
                                     <t t-else="">
-                                        <div style="color:black;text-align:center;font-weight: bold">
+                                        <div style="color:black;text-align:left;font-weight: bold; margin-bottom:5px">
                                             Dirección de facturacíon
                                         </div>
                                     </t>
@@ -225,8 +225,8 @@
                                 </div>
                                 <!-- Fin direccion de facturacion -->
                                 <!-- Direccion de envio -->
-                                <div style="width:49%;float:left;border:2px solid black;margin-left:0.5%;height:223px;">
-                                    <div style="background-color:blue;color:white;text-align:center;">
+                                <div style="width:49%;float:left;margin-left:0.5%;height:223px;">
+                                    <div style="color:black;text-align:left;font-weight: bold; margin-bottom:5px">
                                         Dirección de envío
                                     </div>
                                     <!-- nombre -->
@@ -293,15 +293,15 @@
                                 <!-- Datos documento y observaciones -->
                                 <!-- datos documento -->
                                 <div
-                                    style="width:49%;clear:both;float:left;margin-right:1%;margin-top:5px;font-size:0.8em;">
-                                    <div style="width:50%;float:left;border:2px solid black;height:25px;">
+                                    style="width:49%; clear:both; float:left; margin-right:1%;margin-top:-50% font-size:0.8em;margin-top:-90px; height:200px;;">
+                                    <div style="wwidth:49%; float:left;  height:25px;">
                                         <span style="margin-left:2px;">
                                             <b>Albaran:</b>
                                         </span>
                                         <span t-field="o.name"/>
                                     </div>
                                     <div
-                                        style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;height:25px;">
+                                        style="width:49%; float:left;  height:25px;">
                                         <span style="margin-left:2px;">
                                             <b>Fecha:</b>
                                         </span>
@@ -310,7 +310,7 @@
                                     </div>
                                     <t t-if="isReturn == 0">
                                         <div
-                                            style="width:50%;float:left;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black;height:25px;">
+                                            style="width:49%; float:left;  height:25px;">
                                             <span style="margin-left:2px;">
                                                 <b>Proveedor:</b>
                                             </span>
@@ -319,7 +319,7 @@
                                     </t>
                                     <t t-else="">
                                         <div
-                                            style="width:50%;float:left;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black;height:25px;">
+                                            style="width:49%; float:left;  height:25px;">
                                             <span style="margin-left:2px;">
                                                 <b>Cliente:</b>
                                             </span>
@@ -327,7 +327,7 @@
                                         </div>
                                     </t>
                                     <div
-                                        style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
+                                        style="width:49%; float:left;  height:25px;">
                                         <span style="margin-left:2px;">
                                             <b>Pedido:</b>
                                         </span>
@@ -337,7 +337,7 @@
                                 <!-- fin datos documento -->
                                 <!-- observaciones -->
                                 <div
-                                    style="width:49%;float:left;margin-left:0%;border:2px solid black;height:50px;margin-top:5px;margin-bottom:5px;">
+                                    style="width:49%;float:left;margin-left:0%;height:50px;margin-bottom:5px;margin-top:-90px; height:200px">
                                     <span style="margin-left:2px;">
                                         <b>Observaciones:</b>
                                     </span>
@@ -348,7 +348,7 @@
                                 </div>
                                 <!-- fin observaciones -->
                                 <!-- Fin datos documento -->
-                                <table class="table" style="clear:both;width:100%;border-bottom:2px solid black;">
+                                <table class="table" style="clear:both;width:100%;border-bottom:2px solid black;margin-top:-400 px; position: relative; bottom:150px">
                                     <thead>
                                         <tr style="border-top:4px solid black;">
                                             <th style="padding:0px;margin:0px;font-size:0.7em;border-bottom:2px solid black;">

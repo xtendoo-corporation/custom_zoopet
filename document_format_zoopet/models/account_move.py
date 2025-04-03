@@ -14,10 +14,10 @@ class AccountMove(models.Model):
         )
 
     def _refund_invoice_name(self):
-        if self.type == 'out_refund':
+        if self.move_type == 'out_refund':
             if not self.refund_invoice_id:
                 if self.invoice_origin:
-                    invoice=self.env['account.move'].search_read([('invoice_origin', '=', self.invoice_origin), ('type', '=', 'out_invoice')],['id', 'number'], limit=1)
+                    invoice=self.env['account.move'].search_read([('invoice_origin', '=', self.invoice_origin), ('move_type', '=', 'out_invoice')],['id', 'number'], limit=1)
                     if invoice:
                         self.refund_invoice_name= invoice[0]['number']
             else:
@@ -46,7 +46,7 @@ class AccountMove(models.Model):
         self.ensure_one()
         picking_dict = OrderedDict()
         lines_dict = OrderedDict()
-        sign = -1.0 if self.type == 'out_refund' else 1.0
+        sign = -1.0 if self.move_type == 'out_refund' else 1.0
         # Let's get first a correspondance between pickings and sales order
         pickings = self.mapped('invoice_line_ids.move_line_ids.picking_id')
         so_dict = {x.sale_id: x for x in pickings if x.sale_id}

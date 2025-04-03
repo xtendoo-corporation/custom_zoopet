@@ -2,15 +2,17 @@
 <odoo>
     <data>
         <!-- DESDE PICKING -->
-         <report id="report_label_50_x_100_zoopet"
+        <report id="report_label_50_x_100_zoopet"
                 string="Etiquetas 5 x 10 Zoopet"
                 model="stock.picking"
                 report_type="qweb-pdf"
                 name="zoopet_print_picking_labels.report_label_50_x_100_document_zoopet"
                 print_report_name="'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)"
+                paperformat="document_format_zoopet.label_zoopet_10x5"
+
         />
         <template id="report_label_50_x_100_document_zoopet">
-             <t t-call="web.basic_layout">
+            <t t-call="web.basic_layout">
                 <t t-foreach="docs" t-as="picking">
                     <t t-foreach="picking.move_lines" t-as="move_line">
                         <t t-if="move_line.to_print">
@@ -18,7 +20,7 @@
                                 <div class="page">
                                     <t t-call="zoopet_print_picking_labels.report_simple_label_5_x_10_zoopet">
                                         <t t-set="product" t-value="move_line.product_id"/>
-                                         <t t-set="moveline" t-value="move_line"/>
+                                        <t t-set="moveline" t-value="move_line"/>
                                     </t>
                                 </div>
                             </t>
@@ -34,9 +36,11 @@
                 report_type="qweb-pdf"
                 name="zoopet_print_picking_labels.report_label_50_x_100_document_petpoint"
                 print_report_name="'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)"
+                paperformat="document_format_zoopet.label_zoopet_10x5"
+
         />
         <template id="report_label_50_x_100_document_petpoint">
-             <t t-call="web.basic_layout">
+            <t t-call="web.basic_layout">
                 <t t-foreach="docs" t-as="picking">
                     <t t-foreach="picking.move_lines" t-as="move_line">
                         <t t-if="move_line.to_print">
@@ -44,7 +48,7 @@
                                 <div class="page">
                                     <t t-call="zoopet_print_picking_labels.report_simple_label_5_x_10_petpoint">
                                         <t t-set="product" t-value="move_line.product_id"/>
-                                         <t t-set="moveline" t-value="move_line"/>
+                                        <t t-set="moveline" t-value="move_line"/>
                                     </t>
                                 </div>
                             </t>
@@ -61,13 +65,15 @@
                 report_type="qweb-pdf"
                 name="zoopet_print_picking_labels.report_label_50_x_100_document_zoopet_product_template"
                 print_report_name="'Producto- %s' % (object.name)"
+        paperformat="document_format_zoopet.label_zoopet_10x5"
+
         />
         <template id="report_label_50_x_100_document_zoopet_product_template">
             <t t-call="web.basic_layout">
                 <t t-foreach="docs" t-as="doc">
                     <div class="page">
                         <t t-call="zoopet_print_picking_labels.report_simple_label_5_x_10_zoopet_product_template"/>
-                     </div>
+                    </div>
                 </t>
             </t>
         </template>
@@ -78,13 +84,15 @@
                 report_type="qweb-pdf"
                 name="zoopet_print_picking_labels.report_label_50_x_100_document_petpoint_product_template"
                 print_report_name="'Producto- %s' % (object.name)"
+        paperformat="document_format_zoopet.label_zoopet_10x5"
+
         />
         <template id="report_label_50_x_100_document_petpoint_product_template">
             <t t-call="web.basic_layout">
                 <t t-foreach="docs" t-as="doc">
                     <div class="page">
                         <t t-call="zoopet_print_picking_labels.report_simple_label_5_x_10_petpoint_product_template"/>
-                     </div>
+                    </div>
                 </t>
             </t>
         </template>
