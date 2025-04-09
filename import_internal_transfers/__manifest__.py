@@ -5,7 +5,7 @@
 {
     "name": "Import internal transfers",
     "summary": """Import internal transfers""",
-    "version": "13.0.1.0.2",
+    "version": "14.0.1.0.2",
     "description": """Import internal transfers""",
     "author": "Dani Domínguez",
     "company": "Xtendoo",
@@ -17,7 +17,6 @@
     ],
     "license": "AGPL-3",
     "data": [
-        "security/ir.model.access.csv",
         "wizard/internal_transfer_import_wizard.xml",
         "views/stock_views.xml",
     ],

@@ -31,7 +31,7 @@
         </field>
     </record>
 
-    <record id="internal_transfer_import_action" model="ir.actions.act_window">
+    <record id="internal_transfer_import_action_new" model="ir.actions.act_window">
         <field name="name">Internal transfer Import</field>
         <field name="res_model">internal.transfer.import</field>
         <field name="view_mode">form</field>
