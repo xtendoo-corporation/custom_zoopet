@@ -169,7 +169,6 @@
                 </field>
                 <field name="warehouse_id" position="replace">
                 </field>
-                <field name="so_tag_ids" position="replace"/>
                 <field name="activity_ids" position="replace"/>
                 <field name="tag_ids" position="replace"/>
 
