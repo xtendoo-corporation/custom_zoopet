@@ -10,7 +10,7 @@
             <field name="margin_right">7</field>
             <field name="margin_left">7</field>
             <field name="orientation">Portrait</field>
-            <field name="header_spacing">5</field>
+            <field name="header_spacing">40</field>
             <field name="dpi">90</field>
         </record>
         <report id="document_format_zoopet.sale_price"
@@ -44,7 +44,7 @@
                         <t t-set="carrier_delivery" t-value="hola"/>
                         <t t-set="doc_name" t-value="doc.name"/>
                         <t t-set="lumps_number" t-value="doc.lumps_number"/>
-                        <t t-set="pallets_number" t-value="o.palets_number"/>
+                        <t t-set="pallets_number" t-value="o.pallets_number"/>
                         <!-- Variables cuadro de direcciones -->
                         <!--
                         <t t-set="partner_name" t-value="doc.partner_id"/>
@@ -122,8 +122,8 @@
                         <!-- Direcciones -->
                         <!-- DIreccion de facturacion -->
                         <div
-                            style="width:49%;float:left;clear:both;margin-right:0.5%;height:223px">
-                            <div style="color:black;text-align:left;font-weight: bold; margin-bottom:5px">
+                            style="width:49%;float:left;clear:both;margin-right:0.5%;margin-bottom:20px; height:250px ">
+                            <div style="color:black;text-align:left;font-weight: bold; margin-bottom:5px;">
                                 Dirección de facturacíon
                             </div>
                             <div t-if="doc.partner_id" style="margin-left:2%;">
@@ -187,7 +187,7 @@
                         </div>
                         <!-- Fin direccion de facturacion -->
                         <!-- Direccion de envio -->
-                        <div style="width:49%;float:left;margin-left:0.5%;height:223px;">
+                        <div style="width:49%;float:left;margin-left:0.5%;">
                             <div style="color:black;text-align:left;font-weight: bold; margin-bottom:5px">
                                 Dirección de envío
                             </div>
@@ -249,7 +249,7 @@
                         <!-- Datos documento y observaciones -->
                         <!-- datos documento -->
                         <div
-                            style="width:49%; clear:both; float:left; margin-right:1%;margin-top:-50% font-size:0.8em;margin-top:-90px; height:200px;">
+                            style="width:49%; clear:both; float:left; margin-right:1%;font-size:0.8em;margin-top:-90px;margin-bottom:150px">
                             <div style="width:49%; float:left;  height:25px;">
                                 <span style="margin-left:2px;">
                                     <b>
@@ -310,7 +310,7 @@
                         <!-- fin datos documento -->
                         <!-- observaciones -->
                         <div
-                            style="width:49%;float:left;margin-left:0%;height:50px;margin-bottom:5px;margin-top:-90px; height:200px">
+                            style="width:49%;float:left;margin-left:0%;height:50px;margin-bottom:5px;margin-top:-90px">
                             <span style="margin-left:2px;">
                                 <b>
                                     Observaciones:

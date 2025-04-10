@@ -10,7 +10,7 @@
             <field name="margin_right">7</field>
             <field name="margin_left">7</field>
             <field name="orientation">Portrait</field>
-            <field name="header_spacing">5</field>
+            <field name="header_spacing">40</field>
             <field name="dpi">90</field>
         </record>
         <template id="document_format_zoopet.report_invoice_use_document">
@@ -25,7 +25,7 @@
                         <t t-set="delivery_method" t-value="o.delivery_method"/>
                         <t t-if="isInvoice == 'out_invoice'">
                             <t t-set="lumps_number" t-value="o.lumps_number"/>
-                            <t t-set="pallets_number" t-value="o.palets_number"/>
+                            <t t-set="pallets_number" t-value="o.pallets_number"/>
                         </t>
                         <t t-set="mostrarFrasePortes" t-value="False"/>
                         <t t-foreach="o.invoice_line_ids" t-as="line">
@@ -67,7 +67,7 @@
                         <!-- Direcciones -->
                         <!-- DIreccion de facturacion -->
                         <div
-                            style="width:49%;float:left;clear:both;margin-right:0.5%;height:223px">
+                            style="width:49%;float:left;clear:both;margin-right:0.5%;height:250px">
                             <div style="color:black;text-align:left;font-weight: bold; margin-bottom:5px">
                                 Dirección de facturacíon
                             </div>
@@ -969,7 +969,7 @@
                         </div>
                         <!-- desgloses IVA y RECARAGO  serie C -->
                         <t t-if="o.sale_type_id.name == 'Serie C'">
-                            <div style="width:43%;float:right;font-size:0.7em;clear:both;">
+                            <div style="width:35%;float:right;font-size:0.7em;display:block;clear:both;margin-top:-150px">
                                 <table style="border-bottom:4px solid black;">
                                     <tr>
                                         <td style="solid; black; padding: 0px; margin: 0px; width:13%; !important;">

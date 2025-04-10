@@ -31,11 +31,11 @@
                         <t t-set="carrier_delivery" t-value="hola"/>
                         <t t-set="doc_name" t-value="doc.delivery_ids.name"/>
                         <t t-set="lumps_number" t-value="doc.lumps_number"/>
-                        <t t-set="pallets_number" t-value="o.palets_number"/>
+                        <t t-set="pallets_number" t-value="o.pallets_number"/>
                         <div class="oe_structure"/>
                         <!-- Direcciones -->
                         <!-- DIreccion de facturacion -->
-                        <div style="width:49%;float:left;clear:both;margin-right:0.5%;height:223px">
+                        <div style="width:49%;float:left;clear:both;margin-right:0.5%;height:250px margin-bottom:30px">
                         <div style="color:black;text-align:left;font-weight: bold; margin-bottom:5px">
                             Dirección de facturacíon
                         </div>
@@ -92,7 +92,7 @@
                     </div>
                     <!-- Fin direccion de facturacion -->
                     <!-- Direccion de envio -->
-                    <div style=";width:49%;float:left;margin-left:0.5%;height:223px;">
+                    <div style=";width:49%;float:left;margin-left:0.5%;height:250px;">
                         <div style="color:black;text-align:left;font-weight: bold; margin-bottom:5px">
                             Dirección de envío
                         </div>
@@ -146,14 +146,14 @@
                         <!-- Datos documento y observaciones -->
                         <!-- datos documento -->
                              <div
-                            style="width:49%; clear:both; float:left; margin-right:1%;margin-top:-50% font-size:0.8em;margin-top:-90px; height:200px;">
-                                <div style="width:49%; float:left;  height:25px;">
+                            style="width:49%;float:left;margin-left:0%;height:50px;margin-bottom:5px;margin-top:-75px; height:200px">
+                                <div style="width:50%; float:left;  height:25px;">
                                     <span style="margin-left:2px;"><b>
                                         <span>Albarán: </span>
                                     </b></span>
                                     <span t-field="doc.delivery_ids.name" style="font-size:0.8em;"/>
                                 </div>
-                                <div style="width:49%; float:left;  height:25px;">
+                                <div style="width:48%; float:left;  height:25px;">
                                     <span style="margin-left:2px;"><b>Fecha: </b></span><span t-field="doc.date_order" t-options="{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
                                 </div>
                                 <div style="width:49%; float:left;  height:25px;">

@@ -46,7 +46,7 @@
                     <t t-set="albaranType" t-value="o.origin"/>
                     <t t-set="isDeposito" t-value="o.sale_id.so_tag_ids.name"/>
                     <t t-set="lumps_number" t-value="o.lumps_number"/>
-                    <t t-set="pallets_number" t-value="o.pallets_number"/>
+                   <t t-set="pallets_number" t-value="o.pallets_number"/>
                     <t t-set="doc_name" t-value="o.name"/>
                     <t t-if="o.origin">
                         <t t-set="isReturn" t-value="o.origin.find('Retorno de ALM/OUT')"/>
@@ -114,7 +114,7 @@
                                 <!-- Direcciones -->
                                 <!-- DIreccion de facturacion -->
                                 <div
-                                    style="width:49%;float:left;clear:both;margin-right:0.5%;height:223px">
+                                    style="width:49%;float:left;clear:both;margin-right:0.5%;height:250px">
                                     <t t-if="isReturn == 0">
                                         <div style="color:black;text-align:left;font-weight: bold; margin-bottom:5px">
                                             Proveedor
@@ -293,15 +293,15 @@
                                 <!-- Datos documento y observaciones -->
                                 <!-- datos documento -->
                                 <div
-                                    style="width:49%; clear:both; float:left; margin-right:1%;margin-top:-50% font-size:0.8em;margin-top:-90px; height:200px;;">
-                                    <div style="wwidth:49%; float:left;  height:25px;">
+                                    style="width:49%;float:left;margin-left:0%;height:50px;margin-bottom:5px;margin-top:-90px; height:200px">
+                                    <div style="width:50%; float:left;  height:25px;">
                                         <span style="margin-left:2px;">
                                             <b>Albaran:</b>
                                         </span>
                                         <span t-field="o.name"/>
                                     </div>
                                     <div
-                                        style="width:49%; float:left;  height:25px;">
+                                        style="width:48%; float:left;  height:25px;">
                                         <span style="margin-left:2px;">
                                             <b>Fecha:</b>
                                         </span>
