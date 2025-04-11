@@ -33,7 +33,7 @@
                             <t t-foreach="int(o.partner_id.copy_num)" t-as="">
                                 <t t-set="iteration" t-value="iteration+1"/>
                                 <t t-set="lang"
-                                   t-value="o.user_id.sudo().lang if o.type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>
+                                   t-value="o.user_id.sudo().lang if o.move_type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>
                                 <t t-call="document_format_zoopet.report_invoice_not_use_grouped_document"
                                    t-lang="lang"/>
                             </t>

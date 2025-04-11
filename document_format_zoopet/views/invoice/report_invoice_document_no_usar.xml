@@ -7,7 +7,7 @@
                     <div class="page">
                         <t t-set="not_use_invoice" t-value="1"/>
                         <t t-set="doc_name" t-value="o.name"/>
-                        <t t-set="isInvoice" t-value="o.type"/>
+                        <t t-set="isInvoice" t-value="o.move_type"/>
                         <t t-set="delivery_method" t-value="o.delivery_method"/>
                         <t t-if="isInvoice == 'out_invoice'">
                             <t t-set="lumps_number" t-value="o.lumps_number"/>
@@ -48,8 +48,8 @@
                         <!-- Direcciones -->
                         <!-- DIreccion de facturacion -->
                         <div
-                            style="width:49%;float:left;clear:both;margin-right:0.5%;border:2px solid black;height:223px;">
-                            <div style="background-color:blue;color:white;text-align:center;">
+                            style="width:49%;float:left;clear:both;margin-right:0.5%;height:250px">
+                            <div style="color:black;text-align:left;font-weight: bold; margin-bottom:5px">
                                 Dirección de facturacíon
                             </div>
                             <div t-if="o.partner_id" style="margin-left:2%;">
@@ -116,8 +116,8 @@
                         </div>
                         <!-- Fin direccion de facturacion -->
                         <!-- Direccion de envio -->
-                        <div style="width:49%;float:left;border:2px solid black;margin-left:0.5%;height:223px;">
-                            <div style="background-color:blue;color:white;text-align:center;">
+                        <div style="width:49%;float:left;margin-left:0.5%;height:223px;">
+                            <div style="color:black;text-align:left;font-weight: bold; margin-bottom:5px">
                                 Dirección de envío
                             </div>
                             <div t-if="o.partner_id" style="margin-left:2%;">
@@ -180,13 +180,13 @@
                         <!-- Fin direcciones -->
                         <!-- datos documento -->
                         <div
-                            style="width:50%;clear:both;float:left;margin-right:0%;margin-top:5px;font-size:0.9em;margin-bottom:5px;">
-                            <div style="width:49.5%;float:left;border:2px solid black;height:25px;">
+                            style="width:49%; clear:both; float:left; margin-right:1%;margin-top:-50% font-size:0.8em;margin-top:-90px; height:200px;">
+                            <div style="width:49%; float:left;  height:25px;">
                                 <span style="margin-left:2px;">
                                     <t t-if="isInvoice == 'out_invoice'">
 
                                         <b>
-                                            <span style="font-size:0.8em;">
+                                            <span >
                                                 Factura:
                                             </span>
                                         </b>
@@ -196,7 +196,7 @@
                                     <t t-else="isInvoice == 'out_refund'">
 
                                         <b>
-                                            <span style="font-size:0.8em;">
+                                            <span >
                                                 Rectificativa:
                                             </span>
                                         </b>
@@ -206,7 +206,7 @@
                                 <span t-field="o.name"/>
                             </div>
                             <div
-                                style="width:49%;float:left;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;height:25px;">
+                                style="width:49%; float:left;  height:25px;">
                                 <span style="margin-left:2px;">
                                     <b>
                                         Fecha:
@@ -215,7 +215,7 @@
                                 <span t-field="o.create_date" t-options="{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
                             </div>
                             <div
-                                style="width:49.5%;float:left;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black;height:25px;">
+                                style="width:49%; float:left;  height:25px;">
                                 <span style="margin-left:2px;">
                                     <b>
                                         Cliente:
@@ -225,13 +225,13 @@
                                 <span t-if=" not o.partner_id.parent_id" t-field="o.partner_id.ref"/>
                             </div>
                             <div
-                                style="width:49%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
+                                style="width:49%; float:left;  height:25px;">
                                  <t t-if="o.invoice_origin">
                                     <t t-set="name_with_type" t-value="aaa"/>
                                     <t t-set="origin_label" t-value="'Pedido: '"/>
                                     <t t-if="isInvoice == 'out_refund'">
                                         <t t-set="origin_label" t-value="'Referencia :'"/>
-                                        <t t-if="o.type == out_refund">
+                                        <t t-if="o.move_type == out_refund">
                                             <t t-set="name_with_type" t-value="o.refund_invoice_name"/>
                                         </t>
                                         <t t-else="">
@@ -263,7 +263,7 @@
                         <!-- fin datos documento -->
                         <!-- observaciones -->
                         <div
-                            style="width:49%;float:left;margin-left:0%;border:2px solid black;height:50px;margin-top:5px;">
+                            style="width:49%;float:left;margin-left:0%;height:50px;margin-bottom:5px;margin-top:-90px; height:200px">
                             <t t-if="isInvoice == 'out_refund'">
                                 <div style="margin-left: 2px;">
                                     <span t-field="o.ref"/>
@@ -306,7 +306,7 @@
                         <!-- Fin datos documento -->
                         <t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
                         <!-- lineas -->
-                        <table class="table" style="clear:both;width:100%;border-bottom:2px solid black;">
+                        <table class="table" style="clear:both;width:100%;border-bottom:2px solid black;margin-top:-400 px; position: relative; bottom:150px">
                             <thead>
                                 <tr style="border-top:4px solid black;">
                                     <th style="padding:0px;margin:0px;font-size:0.7em;border-bottom:2px solid black;">
@@ -681,7 +681,7 @@
                         </t>
                         <!-- desgloses IVA y RECARAGO  serie C -->
                         <t t-if="o.sale_type_id.name == 'Serie C'">
-                            <div style="width:43%;float:right;font-size:0.7em;clear:both;">
+                            <div style="width:35%;float:right;font-size:0.7em;display:block;clear:both;margin-top:-150px">
                                 <table style="border-bottom:4px solid black;">
                                     <tr>
                                         <td style="solid; black; padding: 0px; margin: 0px; width:13%; !important;">
@@ -765,7 +765,7 @@
                         <t t-if="o.sale_type_id.name != 'Serie C'">
                             <!-- Desglose -->
                             <div
-                                style="width:40%;margin-left:8%;float:right;font-size:0.7em;clear:both;;margin-right:0.65%;">
+                                style="width:35%;float:right;font-size:0.7em;display:block;clear:both;margin-top:-150px">
                                 <table style="border-bottom:4px solid black;">
                                     <tr>
                                         <td style="solid; black; padding: 0px; margin: 0px; width:13%; !important;">
