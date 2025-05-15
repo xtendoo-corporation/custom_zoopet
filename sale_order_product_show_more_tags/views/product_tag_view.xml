@@ -31,4 +31,16 @@
         </field>
     </record>
 
+     <record id="view_order_form_pvp" model="ir.ui.view">
+        <field name="name">view.order.form.pvp</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+           <xpath expr="//div[@name='pricing']//field[@name='list_price']" position="replace">
+                <field name="list_price" invisible="1"/>
+                <field name="lst_price" nolabel="1" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
