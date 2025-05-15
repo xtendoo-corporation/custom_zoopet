@@ -17,6 +17,7 @@
     ],
     "license": "AGPL-3",
     "data": [
+        "security/ir.model.access.csv",
         "wizard/internal_transfer_import_wizard.xml",
         "views/stock_views.xml",
     ],
