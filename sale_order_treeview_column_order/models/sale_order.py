@@ -25,3 +25,6 @@ class SaleOrder(models.Model):
                 line.qty_delivered * line.product_id.weight
                 for line in order.order_line if line.product_id and line.product_id.weight
             )
+
+    def recalculate_weight(self):
+        self.mapped('order_line')._onchange_weight()
