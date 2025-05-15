@@ -92,6 +92,21 @@
                 </xpath>
             </field>
         </record>
+
+         <record id="zoopet_administration.view_order_form_inherit_without_margin_2" model="ir.ui.view">
+            <field name="name">view.order.form.inherit.without.margin.2</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='margin']" position="attributes">
+                    <attribute name="groups">zoopet_administration.show_margins</attribute>
+                </xpath>
+                <xpath expr="//field[@name='margin_percent']" position="attributes">
+                    <attribute name="groups">zoopet_administration.show_margins</attribute>
+                </xpath>
+
+            </field>
+        </record>
         <!-- Fin Ocultar margen en ventas -->
         <!--Sale price-->
 
