@@ -23,6 +23,7 @@
         'sale_order_type',
         'sale_margin',
         'barcodes_generator_product',
+        'purchase',
     ],
     'license': 'AGPL-3',
     'data': [
