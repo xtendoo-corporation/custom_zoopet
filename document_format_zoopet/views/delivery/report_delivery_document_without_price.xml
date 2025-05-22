@@ -395,6 +395,10 @@
                                             <p>*DEPÓSITO*</p>
                                         </t>
                                         <t t-else="">
+                                            <h1>IS RETURN</h1>
+                                            <h1 t-esc="isReturn"></h1>
+                                            <h1>is purchase</h1>
+                                            <h1 t-esc="isPurchase"></h1>
                                             <t t-if="isReturn == 0">
                                                 <t t-if="isPurchase == 0">
                                                     <p>*DEVOLUCIÓN*</p>

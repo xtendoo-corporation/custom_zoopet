@@ -382,8 +382,12 @@
                                     </thead>
                                     <!-- marca de agua-->
                                     <t t-if="o.origin">
-                                        <t t-set="isPurchase"
-                                           t-value="o.group_id and o.group_id.name and 'PO' in o.group_id.name"/>
+                                        <t t-set="isPurchase" t-value="-1"/>
+                                        <t t-if="o.group_id and o.group_id.name and 'PO' in o.group_id.name">
+                                            <t t-set="isPurchase" t-value="0"/>
+                                        </t>
+<!--                                        <t t-set="isPurchase"-->
+<!--                                           t-value="o.group_id and o.group_id.name and 'PO' in o.group_id.name"/>-->
                                         <t t-if="isPurchase == 0">
                                             <t t-set="isReturn" t-value="o.origin.find('Retorno de ALM/IN')"/>
                                         </t>
