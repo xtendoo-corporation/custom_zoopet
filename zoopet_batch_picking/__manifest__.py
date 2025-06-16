@@ -1,0 +1,21 @@
+{
+    'name': 'Zoopet Batch Picking',
+    'version': '14.0.1.0.0',
+    'category': 'Inventory/Delivery',
+    'summary': 'Sistema propio de agrupación de albaranes para Zoopet',
+    'author': 'Dani Domínguez',
+    'website': 'https://www.xtendoo.es',
+    'license': 'AGPL-3',
+    'depends': ['stock', 'delivery'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/stock_picking_batch_views.xml',
+        'views/stock_picking_views.xml',
+        'views/menu.xml',
+        'views/report_picking_batch.xml',
+        'data/ir_sequence_data.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}

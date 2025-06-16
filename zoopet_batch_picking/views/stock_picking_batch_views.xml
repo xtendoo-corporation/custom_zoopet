@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="view_picking_batch_selection_search" model="ir.ui.view">
+    <field name="name">stock.picking.batch.selection.search</field>
+    <field name="model">stock.picking</field>
+    <field name="arch" type="xml">
+        <search string="Buscar albaranes disponibles">
+            <field name="name"/>
+            <field name="partner_id"/>
+            <field name="origin"/>
+            <filter string="No asignados" name="not_assigned" domain="[('batch_id', '=', False)]"/>
+            <filter string="No cancelados" name="not_cancelled" domain="[('state', '!=', 'cancel')]"/>
+            <filter string="Disponibles para asignación" name="available_for_batch"
+                   domain="[('batch_id', '=', False), ('state', '!=', 'cancel')]"/>
+        </search>
+    </field>
+</record>
+    <!-- Vista de formulario -->
+    <record id="stock_picking_batch_form" model="ir.ui.view">
+        <field name="name">stock.picking.batch.form</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="arch" type="xml">
+            <form string="Agrupación de Albaranes">
+                <header>
+                    <button name="action_confirm" states="draft" string="Confirmar" type="object" class="oe_highlight"/>
+                    <button name="action_assign" states="in_progress" string="Comprobar disponibilidad" type="object"/>
+                    <button name="action_done" states="in_progress" string="Validar" type="object" class="oe_highlight"/>
+                    <button name="action_cancel" states="draft,in_progress" string="Cancelar" type="object"/>
+                    <button name="action_draft" states="cancel" string="Volver a borrador" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" class="oe_inline"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_id" invisible="1"/>
+                            <field name="user_id" required="1"/>
+                            <field name="delivery_id" context="{'order_id': id}" options="{'no_create': True, 'no_open': True}" required="1"/>
+                            <field name="date_planned" required="1"/>
+                            <field name="total_weight" widget="float" required="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Transferencias" name="pickings">
+                            <field name="picking_ids" widget="many2many"  options="{'not_delete': True}" >
+                                <tree editable="bottom">
+                                    <field name="name" optional="show" readonly="1"/>
+                                    <field name="partner_id" optional="show" readonly="1"/>
+                                    <field name="partner_phone" optional="show" readonly="1"/>
+                                    <field name="date" optional="show" readonly="1"/>
+                                    <field name="scheduled_date" optional="show" readonly="1"/>
+                                    <field name="comercial_id" optional="show" readonly="1"/>
+                                    <field name="shipping_weight" optional="show" readonly="1"/>
+                                    <field name="lumps_number" optional="show"/>
+                                    <field name="pallets_number" optional="show"/>
+                                    <field name="state" optional="show" readonly="1"/>
+                                    <field name="invoice_id" optional="show" readonly="1"/>
+                                    <field name="payment_term" optional="show"/>
+                                    <field name="amount_total" optional="show"/>
+                                    <button name="action_assign" string="Confirm picking" type="object" icon="fa-check text-success" attrs="{'invisible': [('state', 'in', ('done', 'cancel', 'confirmed', 'assigned'))]}"/>
+                                    <button name="action_cancel" string="Cancel picking" type="object" icon="fa-times-circle text-danger" attrs="{'invisible': [('state', 'in', ('done', 'cancel'))]}"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Operaciones" name="operations">
+                            <field name="move_ids">
+                                <tree>
+                                    <field name="product_id"/>
+                                    <field name="product_uom_qty"/>
+                                    <field name="product_uom"/>
+                                    <field name="location_id"/>
+                                    <field name="location_dest_id"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Transferencias disponibles" name="allowed_pickings">
+                            <!-- Cambiar este dominio en la vista -->
+                            <field name="allowed_picking_ids" widget="many2many"
+                                   domain="[('company_id', '=', company_id), ('state', '!=', 'cancel'),
+                                   '|', ('batch_id', '=', False), ('batch_id', '=', id)]">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="partner_id"/>
+                                    <field name="scheduled_date"/>
+                                    <field name="origin"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de árbol -->
+    <record id="stock_picking_batch_tree" model="ir.ui.view">
+        <field name="name">stock.picking.batch.tree</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="arch" type="xml">
+            <tree string="Agrupación de Albaranes" decoration-info="state=='draft'" decoration-muted="state=='cancel'">
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="scheduled_date"/>
+                <field name="date_planned"/>
+                <field name="total_weight"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista de búsqueda -->
+    <record id="stock_picking_batch_filter" model="ir.ui.view">
+        <field name="name">stock.picking.batch.filter</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="arch" type="xml">
+            <search string="Buscar lotes">
+                <field name="name"/>
+                <field name="user_id"/>
+                <filter string="Borrador" name="draft" domain="[('state','=','draft')]"/>
+                <filter string="En progreso" name="in_progress" domain="[('state','=','in_progress')]"/>
+                <filter string="Validado" name="done" domain="[('state','=','done')]"/>
+                <separator/>
+                <filter string="Mis lotes" name="my_batches" domain="[('user_id','=',uid)]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_by_state" string="Estado" domain="[]" context="{'group_by': 'state'}"/>
+                    <filter name="group_by_user_id" string="Responsable" domain="[]" context="{'group_by': 'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Acción para el menú -->
+    <record id="stock_picking_batch_action" model="ir.actions.act_window">
+        <field name="name">Agrupación de Albaranes</field>
+        <field name="res_model">stock.picking.batch</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay Agrupación de Albaranes creados todavía
+            </p><p>
+                Los lotes se usan para agrupar y procesar múltiples transferencias a la vez.
+            </p>
+        </field>
+    </record>
+
+</odoo>

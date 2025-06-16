@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menú principal para Agrupación de Albaranes -->
+    <menuitem id="zoopet_stock_batch_picking_menu_root"
+              name="Agrupación de Albaranes"
+              parent="stock.menu_stock_root"
+              sequence="5"/>
+
+    <!-- Submenú para los lotes -->
+    <menuitem id="zoopet_stock_batch_picking_menu_action"
+              name="Agrupación de Albaranes"
+              action="stock_picking_batch_action"
+              parent="zoopet_stock_batch_picking_menu_root"
+              sequence="1"/>
+</odoo>
