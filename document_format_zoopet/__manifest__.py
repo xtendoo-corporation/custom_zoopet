@@ -78,9 +78,12 @@
         "views/sale_report_view/sale_report_view.xml"
 
     ],
-    "qweb": [
-        "static/src/xml/pos.xml",
-    ],
+    'assets': {
+        'point_of_sale.assets': [
+            'document_format_zoopet/static/src/xml/pos.xml',
+        ],
+    },
+
     "installable": True,
     "auto_install": False,
 }
