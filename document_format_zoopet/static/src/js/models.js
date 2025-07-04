@@ -19,12 +19,10 @@ odoo.define('document_format_zoopet.models', function (require) {
     models.Order = models.Order.extend({
         export_for_printing: function () {
             var result = _super_order.export_for_printing.apply(this, arguments);
-
-            // Tus modificaciones al ticket
             if (this.pos.config.name.includes('Tienda 1')) {
-                    result.company.name = "Zoopet S.L.U";
+                    result.company.contact_address = "Zoopet S.L.U";
                 } else {
-                    result.company.name = "PetPoint";
+                    result.company.contact_address = "PetPoint";
                 }
 
             return result;
@@ -32,4 +30,24 @@ odoo.define('document_format_zoopet.models', function (require) {
     });
 
     return models;
+});
+
+odoo.define('document_format_zoopet.receipt', function(require) {
+    'use strict';
+
+    var Registries = require('point_of_sale.Registries');
+    var OrderReceipt = require('point_of_sale.OrderReceipt');
+
+    // Extendemos el componente OrderReceipt para modificar el template
+    const CustomOrderReceipt = OrderReceipt =>
+        class extends OrderReceipt {
+            get receiptHeader() {
+                // Devolvemos un objeto vacío en lugar del header normal
+                return '';
+            }
+        };
+
+    Registries.Component.extend(OrderReceipt, CustomOrderReceipt);
+
+    return CustomOrderReceipt;
 });

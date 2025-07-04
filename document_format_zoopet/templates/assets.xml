@@ -2,6 +2,7 @@
     <template id="document_format_zoopet.assets" inherit_id="point_of_sale.assets">
         <xpath expr=".">
             <script type="text/javascript" src="/document_format_zoopet/static/src/js/models.js"/>
+              <link rel="stylesheet" href="/document_format_zoopet/static/src/css/pos.css"/>
         </xpath>
     </template>
 </odoo>

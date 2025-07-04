@@ -1,0 +1,4 @@
+/* Ocultar completamente el bloque del logo y nombre */
+.pos-receipt-center-align, .pos-receipt-logo {
+    display: none !important;
+}
