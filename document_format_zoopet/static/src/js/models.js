@@ -21,9 +21,19 @@ odoo.define('document_format_zoopet.models', function (require) {
             var result = _super_order.export_for_printing.apply(this, arguments);
             if (this.pos.config.name.includes('Tienda 1')) {
                     result.company.contact_address = "Zoopet S.L.U";
+
                 } else {
                     result.company.contact_address = "PetPoint";
+                    result.company.phone = "+34 662478495";
+                    result.company.street = "";
+                    result.company.email = "";
+                    result.company.website = "";
+                    result.company.zip = "";
+                    result.company.city = "";
+                    result.company.state_id = "";
+                    result.company.country_id = "";
                 }
+            result.company.vat_label = "CIF/DNI";
 
             return result;
         },
