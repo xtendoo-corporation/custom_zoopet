@@ -10,5 +10,10 @@
         </xpath>
         <xpath expr="//t[@t-if='!pos.company_logo_base64']" position="replace">
         </xpath>
+        <xpath expr="//t[@t-if='receipt.cashier']" position="replace">
+        </xpath>
+         <xpath expr="//div[contains(text(), '--------------------------------')]" position="replace">
+        </xpath>
+
     </t>
 </templates>
