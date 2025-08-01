@@ -72,149 +72,209 @@
                                 </div>
                             </div>
                         </div>
-                                  <!-- Direcciones -->
-                    <!-- DIreccion de facturacion -->
-                    <div style="width:49%;float:left;clear:both;margin-right:1%;border:2px solid black;height:223px;">
-                        <div style="background-color:blue;color:white;text-align:center;">
-                            Dirección de facturacíon
-                        </div>
-                        <div t-if="doc.partner_id" style="margin-left:2%;">
-                            <!-- nombre -->
-                            <div t-if="doc.partner_id.name">
-                                <t t-set="partner_name" t-value="doc.partner_id.name"/>
-							    <t t-set="partner_num" t-value="partner_name.find('(') - 1 " />
-							    <t t-set="partner_name" t-value="partner_name[:partner_num]" />
-							    <span t-esc="partner_name" />
-                            </div>
-                            <!-- nombre commercial_name -->
-                            <div t-if="doc.partner_id.comercial">
-                                <span t-field="doc.partner_id.comercial"/>
-                            </div>
-                            <!-- calle -->
-                            <div>
-                                <span t-field="doc.partner_invoice_id.street"/>
-                            </div>
-                            <!-- calle 2 -->
-                            <div>
-                                <span t-field="doc.partner_invoice_id.street2"/>
-                            </div>
-                            <!-- CP, ciudad -->
-                            <div>
-                                <span t-if="doc.partner_invoice_id.zip" t-field="doc.partner_invoice_id.zip"/>
-                                <span t-if="doc.partner_invoice_id.city" t-field="doc.partner_invoice_id.city"/>
-                            </div>
-                            <!-- Provincia -->
-                            <div>
-                                <span t-if="doc.partner_invoice_id.state_id.name" t-field="doc.partner_invoice_id.state_id.name"/>
-                            </div>
-                            <!-- tlf -->
-                            <div>
-                                <span t-if="doc.partner_invoice_id.phone">TLF.:</span>
-                                <span t-if="doc.partner_invoice_id.phone" t-field="doc.partner_invoice_id.phone"/>
-                                <span t-if="doc.partner_invoice_id.mobile">, </span><span t-if="doc.partner_invoice_id.mobile" t-field="doc.partner_invoice_id.mobile"/>
-                            </div>
-                            <!-- CIF/NIF -->
-                            <div>
-                                <span t-if="doc.partner_invoice_id.vat">NIF/CIF:</span>
-                                <span t-if="doc.partner_invoice_id.vat" t-field="doc.partner_invoice_id.vat"/>
-                            </div>
-                            <!-- Nota -->
-                            <t t-if="doc.partner_id != doc.partner_invoice_id">
-                                <div t-if="doc.partner_invoice_id.comment">
-                                    <span>Nota: </span><span t-field="doc.partner_invoice_id.comment"/>
+                                            <!-- Direcciones -->
+                        <!-- DIreccion de facturacion -->
+                        <div class="row">
+                            <div class="col-6">
+                                <div style="color:black;text-align:left;font-weight: bold; margin-bottom:5px;">
+                                    Dirección de facturacíon
                                 </div>
-                            </t>
-                        </div>
-                    </div>
-                    <!-- Fin direccion de facturacion -->
-                    <!-- Direccion de envio -->
-                    <div style="width:49%;float:left;border:2px solid black;margin-left:1%;height:223px;">
-                        <div style="background-color:blue;color:white;text-align:center;">
-                            Dirección de envío
-                        </div>
-                        <div t-if="doc.partner_id" style="margin-left:2%;">
-                            <!-- nombre -->
-                            <div t-if="doc.partner_id.name">
-                                <t t-set="partner_name" t-value="doc.partner_id.name"/>
-							    <t t-set="partner_num" t-value="partner_name.find('(') - 1 " />
-							    <t t-set="partner_name" t-value="partner_name[:partner_num]" />
-							    <span t-esc="partner_name" />
-                            </div>
-                            <!-- nombre commercial_name -->
-                            <div t-if="doc.partner_id.comercial">
-                                <span t-field="doc.partner_id.comercial"/>
-                            </div>
-                            <!-- calle -->
-                            <div>
-                                <span t-field="doc.partner_shipping_id.street"/>
-                            </div>
-                             <!-- calle 2 -->
-                            <div>
-                                <span t-field="doc.partner_shipping_id.street2"/>
-                            </div>
-                            <!-- CP, ciudad -->
-                            <div>
-                                <span t-if="doc.partner_shipping_id.zip" t-field="doc.partner_shipping_id.zip"/>
-                                <span t-if="doc.partner_shipping_id.city" t-field="doc.partner_shipping_id.city"/>
-                            </div>
-                            <!-- Provincia -->
-                            <div>
-                                <span t-if="doc.partner_shipping_id.state_id.name" t-field="doc.partner_shipping_id.state_id.name"/>
-                            </div>
-                            <!-- tlf -->
-                            <div>
-                                <span t-if="doc.partner_shipping_id.phone">TLF.: </span><span t-if="doc.partner_shipping_id.phone" t-field="doc.partner_shipping_id.phone"/>
-                                <span t-if="doc.partner_shipping_id.mobile">, </span><span t-if="doc.partner_shipping_id.mobile" t-field="doc.partner_shipping_id.mobile"/>
-                            </div>
-                            <!-- Nota -->
-                            <t t-if="doc.partner_id != doc.partner_shipping_id">
-                                <div t-if="doc.partner_shipping_id.comment">
-                                    <span>Nota: </span><span t-field="doc.partner_shipping_id.comment"/>
+                                <div t-if="doc.partner_id" style="margin-left:2%;">
+                                    <!-- nombre -->
+                                    <t t-set="partner_id" t-value="doc.partner_id"/>
+                                    <t t-if="partner_id.parent_id">
+                                        <t t-set="partner_id" t-value="doc.partner_id.parent_id"/>
+                                    </t>
+                                    <div t-if="partner_id.name">
+                                        <t t-set="partner_name" t-value="partner_id.name"/>
+                                        <t t-set="partner_num" t-value="partner_name.find('(') -1"/>
+                                        <t t-if="partner_num &gt; 0">
+                                            <t t-set="partner_name" t-value="partner_name[:partner_num]"/>
+                                        </t>
+                                        <span t-esc="partner_name"/>
+                                    </div>
+                                    <!-- nombre comercial -->
+                                    <div t-if="partner_id.comercial">
+                                        <span t-field="partner_id.comercial"/>
+                                    </div>
+                                    <!-- calle -->
+                                    <div>
+                                        <span t-field="doc.partner_invoice_id.street"/>
+                                    </div>
+                                    <!-- calle 2 -->
+                                    <div>
+                                        <span t-field="doc.partner_invoice_id.street2"/>
+                                    </div>
+                                    <!-- CP, ciudad -->
+                                    <div>
+                                        <span t-if="doc.partner_invoice_id.zip" t-field="doc.partner_invoice_id.zip"/>
+                                        <span t-if="doc.partner_invoice_id.city" t-field="doc.partner_invoice_id.city"/>
+                                    </div>
+                                    <!-- Provincia -->
+                                    <div>
+                                        <span t-if="doc.partner_invoice_id.state_id.name"
+                                              t-field="doc.partner_invoice_id.state_id.name"/>
+                                    </div>
+                                    <!-- tlf -->
+                                    <div>
+                                        <span t-if="doc.partner_invoice_id.phone">
+                                            TLF.:
+                                        </span>
+                                        <span t-if="doc.partner_invoice_id.phone" t-field="doc.partner_invoice_id.phone"/>
+                                        <span t-if="doc.partner_invoice_id.mobile">,</span>
+                                        <span t-if="doc.partner_invoice_id.mobile" t-field="doc.partner_invoice_id.mobile"/>
+                                    </div>
+                                    <!-- CIF/NIF -->
+                                    <div>
+                                        <span t-if="doc.partner_invoice_id.vat">
+                                            NIF/CIF:
+                                        </span>
+                                        <span t-if="doc.partner_invoice_id.vat" t-field="doc.partner_invoice_id.vat"/>
+                                    </div>
+                                    <!-- Nota -->
+                                    <t t-if="doc.partner_id != doc.partner_invoice_id">
+                                        <div t-if="doc.partner_invoice_id.comment">
+                                            <span>
+                                                Nota:
+                                            </span>
+                                            <span t-field="doc.partner_invoice_id.comment"/>
+                                        </div>
+                                    </t>
                                 </div>
-                            </t>
+                            </div>
+                            <!-- Fin direccion de facturacion -->
+                            <!-- Direccion de envio -->
+                            <div class="col-6">
+                                <div style="color:black;text-align:left;font-weight: bold; margin-bottom:5px">
+                                    Dirección de envío
+                                </div>
+                                <div t-if="doc.partner_id" style="margin-left:2%;">
+                                    <!-- nombre -->
+                                    <t t-set="partner_id" t-value="doc.partner_id"/>
+                                    <t t-if="partner_id.parent_id">
+                                        <t t-set="partner_id" t-value="doc.partner_id.parent_id"/>
+                                    </t>
+                                    <div t-if="partner_id.name">
+                                        <t t-set="partner_name" t-value="partner_id.name"/>
+                                        <t t-set="partner_num" t-value="partner_name.find('(') -1"/>
+                                        <t t-if="partner_num &gt; 0">
+                                            <t t-set="partner_name" t-value="partner_name[:partner_num]"/>
+                                        </t>
+                                        <span t-esc="partner_name"/>
+                                    </div>
+                                    <!-- nombre comercial -->
+                                    <div t-if="partner_id.comercial">
+                                        <span t-field="partner_id.comercial"/>
+                                    </div>
+                                    <!-- calle -->
+                                    <div>
+                                        <span t-field="doc.partner_shipping_id.street"/>
+                                    </div>
+                                    <!-- calle 2 -->
+                                    <div>
+                                        <span t-field="doc.partner_shipping_id.street2"/>
+                                    </div>
+                                    <!-- CP, ciudad -->
+                                    <div>
+                                        <span t-if="doc.partner_shipping_id.zip" t-field="doc.partner_shipping_id.zip"/>
+                                        <span t-if="doc.partner_shipping_id.city" t-field="doc.partner_shipping_id.city"/>
+                                    </div>
+                                    <!-- Provincia -->
+                                    <div>
+                                        <span t-if="doc.partner_shipping_id.state_id.name"
+                                              t-field="doc.partner_shipping_id.state_id.name"/>
+                                    </div>
+                                    <!-- tlf -->
+                                    <div>
+                                        <span t-if="doc.partner_shipping_id.phone">
+                                            TLF.:
+                                        </span>
+                                        <span t-if="doc.partner_shipping_id.phone" t-field="doc.partner_shipping_id.phone"/>
+                                        <span t-if="doc.partner_shipping_id.mobile">,</span>
+                                        <span t-if="doc.partner_shipping_id.mobile" t-field="doc.partner_shipping_id.mobile"/>
+                                    </div>
+                                    <!-- Nota -->
+                                    <t t-if="doc.partner_id != doc.partner_shipping_id">
+                                        <div t-if="doc.partner_shipping_id.comment">
+                                            <span>
+                                                Nota:
+                                            </span>
+                                            <span t-field="doc.partner_shipping_id.comment"/>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Fin direccion de envio -->
-                    <!-- Fin direcciones -->
+                        <!-- Fin direcciones -->
                         <!-- Datos documento y observaciones -->
                         <!-- datos documento -->
-                        <div style="width:49%;clear:both;float:left;margin-right:1%;margin-top:5px;font-size:0.9em;margin-bottom:5px;">
-                            <div style="width:50%;float:left;border:2px solid black;height:25px;">
-                                <span style="margin-left:2px;">
-                                    <b>
-                                        <span>Albarán: </span>
-                                    </b>
-                                </span>
-                                <span t-field="doc.delivery_ids.name" style="font-size:0.8em;"/>
+                        <div class="row">
+                            <!-- datos documento -->
+                            <div class="col-7">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <span style="margin-left:2px;">
+                                            <b>
+
+                                                    <span>
+                                                        Albarán:
+                                                    </span>
+
+                                            </b>
+                                        </span>
+                                        <t t-set="name_with_type"
+                                           t-value="(doc.type_id.journal_id.code or '') + '/' + (doc.name or '')"/>
+                                        <span t-esc="name_with_type" style="font-size:0.8em;"/>
+                                    </div>
+                                    <div class="col-6">
+                                        <span style="margin-left:2px;">
+                                            <b>
+                                                Fecha:
+                                            </b>
+                                        </span>
+                                        <span t-field="doc.date_order"
+                                              t-options="{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <span style="margin-left:2px;">
+                                            <b>
+                                                Cliente:
+                                            </b>
+                                        </span>
+                                        <span t-if="doc.partner_id.parent_id" t-field="doc.partner_id.parent_id.ref"/>
+                                        <span t-if=" not doc.partner_id.parent_id" t-field="doc.partner_id.ref"/>
+                                    </div>
+                                    <div class="col-6">
+                                        <!--
+                                        <span style="margin-left:2px;">
+                                        <t t-if="doc.state not in ['draft','sent']">
+                                        <b>Pedido:</b>
+                                        </t>
+                                        <t t-if="doc.state in ['draft','sent']">
+                                        <b>Presupuesto:</b>
+                                        </t>
+                                        </span>
+                                        <span t-field="doc.origin"/>
+                                        -->
+                                    </div>
+                                </div>
                             </div>
-                            <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;border-top:2px solid black;height:25px;">
-                                <span style="margin-left:2px;">
-                                    <b>Fecha: </b>
-                                </span>
-                                <span t-field="doc.date_order" t-options="{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}"/>
+                            <!-- fin datos documento -->
+                            <!-- observaciones -->
+                            <div class="col-5">
+                                <div style="margin-left: 2px;">
+                                    <span style="margin-left:2px;">
+                                        <b>
+                                            Observaciones:
+                                        </b>
+                                    </span>
+                                    <span t-field="doc.note"/>
+                                </div>
                             </div>
-                            <div style="width:50%;float:left;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black;height:25px;">
-                                <span style="margin-left:2px;">
-                                    <b>Cliente: </b>
-                                </span>
-                                <span t-if="doc.partner_id.parent_id" t-field="doc.partner_id.parent_id.ref"/>
-                                <span t-if=" not doc.partner_id.parent_id" t-field="doc.partner_id.ref"/>
-                            </div>
-                            <div style="width:50%;float:left;border-bottom:2px solid black;border-right:2px solid black;height:25px;">
-                                <span style="margin-left:2px;"><b>Pedido: </b></span>
-                                <t t-set="name_with_type" t-value="doc.type_id.journal_id.code + '/' + doc.name"/>
-                                <span t-esc="name_with_type"/>
-                            </div>
+                            <!-- fin observaciones -->
                         </div>
-                        <!-- fin datos documento -->
-                        <!-- observaciones -->
-                        <div style="width:49%;float:left;margin-left:1%;border:2px solid black;height:51px;margin-top:5px;">
-                            <span style="margin-left:2px;">
-                                <b>Observaciones: </b>
-                            </span>
-                            <span t-field="doc.note"/>
-                        </div>
-                        <!-- fin observaciones -->
                         <!-- Fin datos documento -->
                         <div class="row mt32 mb32" id="informations" style="display:none;">
                             <div t-if="doc.client_order_ref" class="col-auto mw-100 mb-2">
@@ -260,7 +320,7 @@
                             </t>
                         </t>
                         <!-- fin descuentos -->
-                        <table class="table">
+                        <table class="table" style="clear:both;">
                             <thead>
                                 <tr style="border-top:4px solid black;">
                                     <th style="padding:0px;margin:0px;border-bottom:2px solid black;">
@@ -312,7 +372,7 @@
                                 </tr>
                             </thead>
                                             <!-- marca de agua-->
-                                            <div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:450px;">
+                                            <div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:100px;">
                                                 <p>*NOTA DE ENTREGA*</p>
                                             </div>
                                             <!-- fin marca de agua -->
