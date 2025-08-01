@@ -329,20 +329,5 @@
             </field>
         </record>
 
-
-
-        <!--Mostrar boton de ventas en cliente -->
-        <record id="zoopet_administration_res_partner_view_buttons_inherit" model="ir.ui.view">
-            <field name="name">res.partner.view.buttons.inherit</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="sale.res_partner_view_buttons"/>
-            <field name="arch" type="xml">
-                <xpath expr="//button[@name='action_view_sale_order']" position="attributes">
-                    <attribute name="groups"></attribute>
-                </xpath>
-            </field>
-        </record>
-        <!-- Fin mostrar boton de ventas en clientes -->
-
     </data>
 </odoo>
