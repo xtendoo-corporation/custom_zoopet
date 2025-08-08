@@ -24,6 +24,7 @@
         'sale_margin',
         'barcodes_generator_product',
         'purchase',
+        'stock_picking_report_valued',
     ],
     'license': 'AGPL-3',
     'data': [

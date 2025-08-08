@@ -51,3 +51,84 @@ class AccountMove(models.Model):
             return min(qty_ratios)
         else:
             return 0.0
+
+class StockMove(models.Model):
+    _inherit = 'stock.move.line'
+
+    def _compute_sale_order_line_fields(self):
+        """This is computed with sudo for avoiding problems if you don't have
+        access to sales orders (stricter warehouse users, inter-company
+        records...).
+        """
+        self.sale_tax_description = False
+        self.sale_price_subtotal = False
+        self.sale_price_tax = False
+        self.sale_price_total = False
+        self.sale_price_unit = False
+        for line in self:
+            valued_line = line.sale_line
+            if not valued_line:
+                continue
+            quantity = line._get_report_valued_quantity()
+            sale_line_uom = valued_line.product_uom
+            different_uom = valued_line.product_uom != line.product_uom_id
+            different_qty = float_compare(
+                quantity,
+                line.sale_line.product_uom_qty,
+                precision_rounding=line.product_uom_id.rounding,
+            )
+            # --- INICIO CAMBIO KIT ---
+            # Si el producto de la línea de venta es un kit, usar el precio del kit y no el de los componentes
+            bom_kit = self.env['mrp.bom'].search([
+                ('product_tmpl_id', '=', valued_line.product_id.product_tmpl_id.id),
+                ('type', '=', 'phantom')
+            ], limit=1)
+            if bom_kit:
+                # El producto es un kit, usar el precio unitario y total de la línea de venta original
+                price_unit = line.sale_line.price_unit
+                # Calcula impuestos igual que el cálculo original
+                taxes = line.sale_line.tax_id.compute_all(
+                    price_unit,
+                    line.sale_line.order_id.currency_id,
+                    quantity,
+                    product=line.sale_line.product_id,
+                    partner=line.sale_line.order_id.partner_shipping_id,
+                )
+                price_subtotal = taxes['total_excluded']
+                price_tax = taxes['total_included'] - taxes['total_excluded']
+                price_total = taxes['total_included']
+                line.update({
+                    "sale_tax_description": ", ".join(
+                        t.name or t.description for t in line.sale_tax_id
+                    ),
+                    "sale_price_subtotal": price_subtotal,
+                    "sale_price_tax": price_tax,
+                    "sale_price_total": price_total,
+                    "sale_price_unit": price_unit,
+                })
+            else:
+                if different_uom or different_qty:
+                    # Force read to cache M2M field for get values with _convert_to_write
+                    line.sale_line.mapped("tax_id")
+                    # Create virtual sale line with stock move line quantity
+                    sol_vals = line.sale_line._convert_to_write(line.sale_line._cache)
+                    valued_line = line.sale_line.new(sol_vals)
+                    valued_line.product_uom_qty = quantity
+                if different_qty:
+                    # Force original price unit to avoid pricelist recomputed (not needed)
+                    valued_line.price_unit = line.sale_line.price_unit
+                if different_uom:
+                    valued_line.price_unit = sale_line_uom._compute_price(
+                        valued_line.price_unit, line.product_uom_id
+                    )
+            line.update(
+                {
+                    "sale_tax_description": ", ".join(
+                        t.name or t.description for t in line.sale_tax_id
+                    ),
+                    "sale_price_subtotal": valued_line.price_subtotal,
+                    "sale_price_tax": valued_line.price_tax,
+                    "sale_price_total": valued_line.price_total,
+                    "sale_price_unit": valued_line.price_unit,
+                }
+            )
