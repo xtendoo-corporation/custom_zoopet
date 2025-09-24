@@ -1,7 +1,7 @@
 {
     'name': 'Stock Picking Add Pallets And Lumps',
     'summary': """Añade los campos numericos palets y bultos al albarán""",
-    'version': '15.0.1.0',
+    'version': '15.0.2.2.0',
     'description': """Añade los campos numericos palets y bultos al albarán""",
     'author': 'Dani Domínguez',
     'company': 'Xtendoo',

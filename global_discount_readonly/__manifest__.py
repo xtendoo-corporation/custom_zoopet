@@ -5,7 +5,7 @@
 {
     "name": "Global discount readonly",
     "summary": """Convierte en readonly y oculta el campo global discount en ventas, facturas y contactos""",
-    "version": "15.0.1.0",
+    "version": "15.0.2.2.0",
     "description": """Convierte en readonly y oculta el campo global discount en ventas, facturas y contactos""",
     "author": "DDL-Xtendoo",
     "company": "Xtendoo",
