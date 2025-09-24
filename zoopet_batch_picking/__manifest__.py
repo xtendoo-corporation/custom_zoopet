@@ -1,6 +1,6 @@
 {
     'name': 'Zoopet Batch Picking',
-    'version': '14.0.1.0.0',
+    'version': '15.0.1.0',
     'category': 'Inventory/Delivery',
     'summary': 'Sistema propio de agrupación de albaranes para Zoopet',
     'author': 'Dani Domínguez',

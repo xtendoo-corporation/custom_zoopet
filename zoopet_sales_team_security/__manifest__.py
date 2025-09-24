@@ -4,7 +4,7 @@
 {
     "name": "Zoopet Sales documents permissions by channels (teams)",
     "summary": "New group for seeing only sales channel's documents",
-    "version": "13.0.3.0.0",
+    "version": "15.0.1.0",
     "category": "Sales",
     "website": "https://github.com/OCA/sale-workflow",
     "author": "Tecnativa, Odoo Community Association (OCA)",
@@ -13,6 +13,9 @@
     "development_status": "Production/Stable",
     "maintainers": ["pedrobaeza"],
     "depends": ["crm", "sale", "sales_team"],
-    "data": ["security/sales_team_security.xml", "views/res_partner_view.xml"],
+    "data": [
+        "security/sales_team_security.xml",
+       # "views/res_partner_view.xml"
+    ],
     "post_init_hook": "post_init_hook",
 }

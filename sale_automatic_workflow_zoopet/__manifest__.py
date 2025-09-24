@@ -5,7 +5,7 @@
 
 {
     "name": "Sale Automatic Workflow Zoopet",
-    "version": "14.0.1.5.0",
+    "version": "15.0.1.0",
     "category": "Sales Management",
     "license": "AGPL-3",
     "author": "Akretion, "
@@ -17,8 +17,8 @@
     "external_dependencies": {"python": ["openupgradelib"]},
     "data": [
         "security/ir.model.access.csv",
-        "views/sale_view.xml",
-        "views/sale_workflow_process_view.xml",
+        # "views/sale_view.xml",
+        # "views/sale_workflow_process_view.xml",
         "data/automatic_workflow_data.xml",
     ],
 }

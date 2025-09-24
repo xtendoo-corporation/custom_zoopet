@@ -5,7 +5,7 @@
 {
     "name": "sale_order_treeview_column_order",
     "summary": """Orden de las columnas de sale pedidos y presupuestos de ventas""",
-    "version": "14.0.1.0.2",
+    "version": "15.0.1.0",
     "description": """Orden de las columnas de sale pedidos y presupuestos de ventas""",
     "author": "DDL-Xtendoo",
     "company": "Xtendoo",
@@ -21,7 +21,7 @@
     ],
     "license": "AGPL-3",
     "data": [
-        "views/sale_order_views.xml",
+       # "views/sale_order_views.xml",
     ],
     "qweb": [
     ],

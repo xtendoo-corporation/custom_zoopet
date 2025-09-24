@@ -5,7 +5,7 @@
 {
     "name": "Import internal transfers",
     "summary": """Import internal transfers""",
-    "version": "14.0.1.0.2",
+    "version": "15.0.1.0",
     "description": """Import internal transfers""",
     "author": "Dani Domínguez",
     "company": "Xtendoo",
@@ -19,7 +19,7 @@
     "data": [
         "security/ir.model.access.csv",
         "wizard/internal_transfer_import_wizard.xml",
-        "views/stock_views.xml",
+        #"views/stock_views.xml",
     ],
 
     "installable": True,

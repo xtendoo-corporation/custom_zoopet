@@ -5,7 +5,7 @@
 {
     "name": "document_format_Zoopet",
     "summary": """Formatos de documentos Zoopet""",
-    "version": "14.0.1.0.2",
+    "version": "15.0.1.0",
     "description": """Formatos de documentos Zoopet""",
     "author": "DDL-Xtendoo",
     "company": "Xtendoo",
@@ -38,49 +38,49 @@
     ],
     "license": "AGPL-3",
     "data": [
-        # layout
-        "views/layout/external_layout_clean.xml",
-        # delivery
-        #"views/delivery/report_delivery_document_without_price.xml",
-        "views/delivery/report_delivery_document_valued.xml",
-        # delivery Labels
-        "views/delivery_print_labels/report_label_25_x_38.xml",
-        "views/delivery_print_labels/report_label_50_x_100.xml",
-        # sale_order
-        "views/sale/report_saleorder_document.xml",
-        "views/sale/sale_without_price.xml",
-        # Purchase_order
-        "views/purchase/report_purchaseorder_document.xml",
-        # Invoice
-        "views/invoice/report_invoice_document.xml",
-        "views/invoice/report_invoice.xml",
-        # Invoice Agrupada
-        "views/invoice/report_invoice_grouped_document.xml",
-        "views/invoice/report_invoice_grouped.xml",
-        # Invoice Agrupada - NO USAR
-        "views/invoice/report_invoice_grouped_document_no_usar.xml",
-        "views/invoice/report_invoice_grouped_no_usar.xml",
-        # Invoice - NO USAR
-        "views/invoice/report_invoice_document_no_usar.xml",
-        "views/invoice/report_invoice_no_usar.xml",
-        # Product Label
-        "views/product_label/paper_format.xml",
-        "views/product_label/label_template.xml",
-        # Albarán en pedidos
-        "views/sale_delivery/sale_delivery_without_price.xml",
-        "views/sale_delivery/sale_delivery.xml",
-        # "views/sale_delivery/sale_delivery_delivered_qty.xml",
-        # Res_Partner
-        "views/res_partner/res_partner_view.xml",
-        # Añadir JS del POS
-        "templates/assets.xml",
-        # Vista del informe de ventas, para añadir el grupo
-        "views/sale_report_view/sale_report_view.xml"
+        # # layout
+        # "views/layout/external_layout_clean.xml",
+        # # delivery
+        # #"views/delivery/report_delivery_document_without_price.xml",
+        # "views/delivery/report_delivery_document_valued.xml",
+        # # delivery Labels
+        # "views/delivery_print_labels/report_label_25_x_38.xml",
+        # "views/delivery_print_labels/report_label_50_x_100.xml",
+        # # sale_order
+        # "views/sale/report_saleorder_document.xml",
+        # "views/sale/sale_without_price.xml",
+        # # Purchase_order
+        # "views/purchase/report_purchaseorder_document.xml",
+        # # Invoice
+        # "views/invoice/report_invoice_document.xml",
+        # "views/invoice/report_invoice.xml",
+        # # Invoice Agrupada
+        # "views/invoice/report_invoice_grouped_document.xml",
+        # "views/invoice/report_invoice_grouped.xml",
+        # # Invoice Agrupada - NO USAR
+        # "views/invoice/report_invoice_grouped_document_no_usar.xml",
+        # "views/invoice/report_invoice_grouped_no_usar.xml",
+        # # Invoice - NO USAR
+        # "views/invoice/report_invoice_document_no_usar.xml",
+        # "views/invoice/report_invoice_no_usar.xml",
+        # # Product Label
+        # "views/product_label/paper_format.xml",
+        # "views/product_label/label_template.xml",
+        # # Albarán en pedidos
+        # "views/sale_delivery/sale_delivery_without_price.xml",
+        # "views/sale_delivery/sale_delivery.xml",
+        # # "views/sale_delivery/sale_delivery_delivered_qty.xml",
+        # # Res_Partner
+        # "views/res_partner/res_partner_view.xml",
+        # # Añadir JS del POS
+        # "templates/assets.xml",
+        # # Vista del informe de ventas, para añadir el grupo
+        # "views/sale_report_view/sale_report_view.xml"
 
     ],
     'assets': {
         'point_of_sale.assets': [
-            'document_format_zoopet/static/src/xml/pos.xml',
+            # 'document_format_zoopet/static/src/xml/pos.xml',
         ],
     },
 
