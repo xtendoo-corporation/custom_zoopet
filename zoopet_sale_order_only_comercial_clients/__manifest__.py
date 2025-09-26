@@ -8,7 +8,7 @@
 {
     "name": "Zoopet Sale order only comercial clients",
     "summary": """Zoopet sale order only comercial clients""",
-    "version": "17.0.1.1.1",
+    "version": "18.0.1.0.2",
     "description": """Zoopet Sale order only comercial clients""",
     "author": "Dani Domínguez",
     "company": "Xtendoo",

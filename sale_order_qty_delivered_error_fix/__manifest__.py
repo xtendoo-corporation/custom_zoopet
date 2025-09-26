@@ -4,7 +4,7 @@
 {
     "name": "Sale Order qty delivered error fix",
     "summary": """Sale Order qty delivered error fix""",
-    "version": "17.0.1.1.1",
+    "version": "18.0.1.0.2",
     "description": """Sale Order qty delivered error fix""",
     "author": "Dani Domínguez",
     "company": "Xtendoo",
