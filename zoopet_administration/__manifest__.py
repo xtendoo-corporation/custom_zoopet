@@ -22,7 +22,6 @@
         'account',
         'sale_order_type',
         'sale_margin',
-        'barcodes_generator_product',
         'purchase',
         'stock_picking_report_valued',
     ],
