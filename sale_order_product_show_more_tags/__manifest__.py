@@ -3,7 +3,7 @@
 {
     "name": "sale_order_product_show_more_tags",
     "summary": """Tags in sale order product search more...""",
-    "version": "16.0.2.5.0",
+    "version": "17.0.1.1.1",
     "description": """Tags in sale order product search more...""",
     "author": "Dani Domínguez",
     "company": "Xtendoo",

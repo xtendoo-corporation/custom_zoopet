@@ -5,7 +5,7 @@
 {
     "name": "sale_order_treeview_column_order",
     "summary": """Orden de las columnas de sale pedidos y presupuestos de ventas""",
-    "version": "16.0.2.5.0",
+    "version": "17.0.1.1.1",
     "description": """Orden de las columnas de sale pedidos y presupuestos de ventas""",
     "author": "DDL-Xtendoo",
     "company": "Xtendoo",

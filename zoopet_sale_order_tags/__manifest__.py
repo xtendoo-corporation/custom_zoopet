@@ -1,7 +1,7 @@
 {
     'name': 'Zoopet Sale Order Tags',
     'summary': """Añade etiqueta de ventas en la vista de pedidos""",
-    'version': '16.0.2.5.0',
+    'version': '17.0.1.1.1',
     'description': """Añade etiqueta de ventas en la vista de pedidos""",
     'author': 'Dani Domínguez',
     'company': 'Xtendoo',

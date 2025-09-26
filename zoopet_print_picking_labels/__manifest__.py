@@ -2,7 +2,7 @@
 {
     "name": "Zoopet print picking labels",
     "summary": """Imprimir etiquetas en el icking""",
-    "version": "16.0.2.5.0",
+    "version": "17.0.1.1.1",
     "description": """FImprimir etiquetas en el icking""",
     "author": "DDL-Xtendoo",
     "company": "Xtendoo",

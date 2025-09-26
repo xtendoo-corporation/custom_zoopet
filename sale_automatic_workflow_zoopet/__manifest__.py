@@ -5,7 +5,7 @@
 
 {
     "name": "Sale Automatic Workflow Zoopet",
-    "version": "16.0.2.5.0",
+    "version": "17.0.1.1.1",
     "category": "Sales Management",
     "license": "AGPL-3",
     "author": "Akretion, "

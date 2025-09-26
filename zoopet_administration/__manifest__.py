@@ -1,7 +1,7 @@
 {
     'name': 'Zoopet Administration',
     'summary': """Administration settings for Zoopet""",
-    'version': '16.0.2.5.0',
+    'version': '17.0.1.1.1',
     'description': """Administration settings for Zoopet""",
     'author': 'Dani Domínguez',
     'company': 'Xtendoo',

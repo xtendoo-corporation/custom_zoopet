@@ -1,7 +1,7 @@
 {
     'name': 'Stock move line weight equivalence',
     'summary': """Añade un campo calculado en stock_move_line, con la equivalencia del campo qty_done en kg""",
-    'version': '16.0.2.5.0',
+    'version': '17.0.1.1.1',
     'description': """Añade un campo calculado en stock_move_line, con la equivalencia del campo qty_done en kg""",
     'author': 'Dani Domínguez',
     'company': 'Xtendoo',
