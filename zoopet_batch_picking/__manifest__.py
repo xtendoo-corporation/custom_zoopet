@@ -1,6 +1,6 @@
 {
     'name': 'Zoopet Batch Picking',
-    'version': '15.0.2.2.0',
+    'version': '16.0.2.5.0',
     'category': 'Inventory/Delivery',
     'summary': 'Sistema propio de agrupación de albaranes para Zoopet',
     'author': 'Dani Domínguez',
@@ -9,10 +9,10 @@
     'depends': ['stock', 'delivery'],
     'data': [
         'security/ir.model.access.csv',
-        'views/stock_picking_batch_views.xml',
-        'views/stock_picking_views.xml',
-        'views/menu.xml',
-        'views/report_picking_batch.xml',
+        # 'views/stock_picking_batch_views.xml',
+        # 'views/stock_picking_views.xml',
+        # 'views/menu.xml',
+        # 'views/report_picking_batch.xml',
         'data/ir_sequence_data.xml',
     ],
     'installable': True,

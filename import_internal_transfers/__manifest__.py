@@ -5,7 +5,7 @@
 {
     "name": "Import internal transfers",
     "summary": """Import internal transfers""",
-    "version": "15.0.2.2.0",
+    "version": "16.0.2.5.0",
     "description": """Import internal transfers""",
     "author": "Dani Domínguez",
     "company": "Xtendoo",

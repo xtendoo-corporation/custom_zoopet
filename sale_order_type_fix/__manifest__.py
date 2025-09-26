@@ -8,7 +8,7 @@
 {
     "name": "Sale Order Type Fix",
     "summary": """Sale Order Type Fix""",
-    "version": "15.0.2.2.0",
+    "version": "16.0.2.5.0",
     "description": """Sale Order Type Fix""",
     "author": "Dani Domínguez",
     "company": "Xtendoo",
