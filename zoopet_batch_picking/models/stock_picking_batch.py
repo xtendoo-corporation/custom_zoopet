@@ -16,56 +16,64 @@ class StockPickingBatch(models.Model):
     user_id = fields.Many2one(
         'res.users', string='Responsable',
         tracking=True,
-        default=lambda self: self.env.user,
-        states={'done': [('readonly', True)], 'cancel': [('readonly', True)]})
+        default=lambda self: self.env.user
+    )
 
     scheduled_date = fields.Datetime(
         'Fecha programada',
         copy=False,
-        states={'done': [('readonly', True)], 'cancel': [('readonly', True)]},
-        help="Fecha programada para las transferencias")
+        help="Fecha programada para las transferencias"
+    )
 
     date_planned = fields.Datetime(
         'Fecha prevista',
         default=fields.Datetime.now,
         index=True,
-        required=True,
-        states={'done': [('readonly', True)]})
+        required=True
+    )
 
     total_weight = fields.Float(
         compute='_compute_total_weight',
-        string='Peso Total')
+        string='Peso Total'
+    )
 
     company_id = fields.Many2one(
         'res.company', string='Compañía', required=True, readonly=True,
-        default=lambda self: self.env.company)
+        default=lambda self: self.env.company
+    )
 
     picking_ids = fields.One2many(
         'stock.picking', 'batch_id', string='Transferencias',
-        states={'done': [('readonly', True)], 'cancel': [('readonly', True)]},
-        help='Lista de transferencias')
+        help='Lista de transferencias'
+    )
 
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('in_progress', 'En progreso'),
         ('done', 'Validado'),
-        ('cancel', 'Cancelado')], default='draft',
-        store=True, tracking=True, copy=False)
+        ('cancel', 'Cancelado')],
+        default='draft',
+        store=True, tracking=True, copy=False
+    )
 
     picking_type_id = fields.Many2one(
-        'stock.picking.type', string='Tipo de operación')
+        'stock.picking.type', string='Tipo de operación'
+    )
 
     move_ids = fields.One2many(
-        'stock.move', compute='_compute_move_ids', string='Movimientos de stock')
+        'stock.move', compute='_compute_move_ids', string='Movimientos de stock'
+    )
 
     allowed_picking_ids = fields.Many2many(
         'stock.picking', compute='_compute_allowed_picking_ids',
-        string='Transferencias permitidas')
+        string='Transferencias permitidas'
+    )
 
     delivery_id = fields.Many2one(
         'delivery.carrier',
         string='Método de entrega'
     )
+
     @api.depends('picking_ids')
     def compute_total_weight(self):
         if not self.picking_ids:

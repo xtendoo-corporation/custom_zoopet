@@ -10,20 +10,21 @@
                 <header />
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button
-                            name="%(product.product_template_action)d"
-                            type="action"
-                            class="oe_stat_button"
-                            icon="fa-tags"
-                            context="{'search_default_tag_ids': active_id}"
-                        >
-                            <field
-                                name="products_count"
-                                widget="statinfo"
-                                string="Products"
-                            />
-                        </button>
-                    </div>
+    <button
+        name="%(product.product_template_action)d"
+        type="action"
+        class="oe_stat_button"
+        icon="fa-tags"
+        context="{'search_default_tag_ids': id}"
+    >
+        <field
+            name="products_count"
+            widget="statinfo"
+            string="Products"
+        />
+    </button>
+</div>
+
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only" />
                         <h1>
@@ -73,7 +74,7 @@
         <field name="name">product.template.tag.tree (in product_template_tags)</field>
         <field name="model">product.template.tag</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="sequence" widget="handle" />
                 <field name="name" />
                 <field
@@ -83,7 +84,7 @@
                 />
                 <field name="parent_id" optional="hide" />
                 <field name="color" widget="color_picker" />
-            </tree>
+            </list>
         </field>
     </record>
     <record id="product_template_tag_act_window" model="ir.actions.act_window">

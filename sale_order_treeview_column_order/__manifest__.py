@@ -21,7 +21,7 @@
     ],
     "license": "AGPL-3",
     "data": [
-       # "views/sale_order_views.xml",
+       "views/sale_order_views.xml",
     ],
     "qweb": [
     ],

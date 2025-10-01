@@ -15,7 +15,7 @@
     ],
     "license": "AGPL-3",
     "data": [
-       # "views/product_tag_view.xml",
+       "views/product_tag_view.xml",
     ],
     "demo": [],
     "installable": True,

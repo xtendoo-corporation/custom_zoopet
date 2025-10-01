@@ -17,8 +17,8 @@
     "external_dependencies": {"python": ["openupgradelib"]},
     "data": [
         "security/ir.model.access.csv",
-        # "views/sale_view.xml",
-        # "views/sale_workflow_process_view.xml",
+        "views/sale_view.xml",
+        "views/sale_workflow_process_view.xml",
         "data/automatic_workflow_data.xml",
     ],
 }
