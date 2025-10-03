@@ -12,7 +12,7 @@
                  <xpath expr="//field[@name='product_id']" position="attributes">
                     <attribute name="options">{"no_create": True}</attribute>
                 </xpath>
-                 <xpath expr="//form//tree" position="attributes">
+                 <xpath expr="//form//list" position="attributes">
                     <attribute name="limit">800</attribute>
                 </xpath>
             </field>
@@ -28,15 +28,15 @@
                 </xpath>
             </field>
         </record>
-         <record id="zoopet_administration.view_picking_form_edit_carrier" model="ir.ui.view">
-            <field name="name">view.picking.form.edit.carrier</field>
-            <field name="model">stock.picking</field>
-            <field name="inherit_id" ref="delivery.view_picking_withcarrier_out_form"/>
-            <field name="arch" type="xml">
-                 <xpath expr="//field[@name='carrier_id']" position="replace">
-                    <field name="carrier_id" options="{'no_create': True, 'no_open': True}"/>
-                </xpath>
-            </field>
-        </record>
+<!--         <record id="zoopet_administration.view_picking_form_edit_carrier" model="ir.ui.view">-->
+<!--            <field name="name">view.picking.form.edit.carrier</field>-->
+<!--            <field name="model">stock.picking</field>-->
+<!--            <field name="inherit_id" ref="delivery.view_picking_withcarrier_out_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                 <xpath expr="//field[@name='carrier_id']" position="replace">-->
+<!--                    <field name="carrier_id" options="{'no_create': True, 'no_open': True}"/>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
     </data>
 </odoo>

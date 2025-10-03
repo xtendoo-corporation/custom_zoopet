@@ -38,10 +38,10 @@
     ],
     "license": "AGPL-3",
     "data": [
-        # # layout
-        # "views/layout/external_layout_clean.xml",
-        # # delivery
-        # #"views/delivery/report_delivery_document_without_price.xml",
+        # layout
+        #"views/layout/external_layout_clean.xml",
+        # delivery
+        #"views/delivery/report_delivery_document_without_price.xml",
         # "views/delivery/report_delivery_document_valued.xml",
         # # delivery Labels
         # "views/delivery_print_labels/report_label_25_x_38.xml",
@@ -54,6 +54,7 @@
         # # Invoice
         # "views/invoice/report_invoice_document.xml",
         # "views/invoice/report_invoice.xml",
+        "views/invoice/report_invoice_nuevo.xml",
         # # Invoice Agrupada
         # "views/invoice/report_invoice_grouped_document.xml",
         # "views/invoice/report_invoice_grouped.xml",
@@ -71,7 +72,7 @@
         # "views/sale_delivery/sale_delivery.xml",
         # # "views/sale_delivery/sale_delivery_delivered_qty.xml",
         # # Res_Partner
-        # "views/res_partner/res_partner_view.xml",
+        "views/res_partner/res_partner_view.xml",
         # # Añadir JS del POS
         # "templates/assets.xml",
         # # Vista del informe de ventas, para añadir el grupo

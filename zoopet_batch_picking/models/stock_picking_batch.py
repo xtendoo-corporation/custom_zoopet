@@ -49,7 +49,6 @@ class StockPickingBatch(models.Model):
 
     state = fields.Selection([
         ('draft', 'Borrador'),
-        ('in_progress', 'En progreso'),
         ('done', 'Validado'),
         ('cancel', 'Cancelado')],
         default='draft',

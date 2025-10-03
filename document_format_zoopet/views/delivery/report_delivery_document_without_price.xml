@@ -4,40 +4,49 @@
 
     <data>
 
-        <record id="A4_albaran" model="report.paperformat">
-            <field name="name">A4 Albaran</field>
-            <field name="default" eval="True"/>
-            <field name="format">A4</field>
-            <field name="margin_top">42</field>
-            <field name="margin_bottom">23</field>
-            <field name="margin_right">7</field>
-            <field name="margin_left">7</field>
-            <field name="orientation">Portrait</field>
-            <field name="header_spacing">40</field>
-            <field name="dpi">90</field>
-        </record>
+<!-- Definición de paperformat -->
+<record id="A4_albaran" model="report.paperformat">
+    <field name="name">A4 Albaran</field>
+    <field name="default" eval="True"/>
+    <field name="format">A4</field>
+    <field name="margin_top">42</field>
+    <field name="margin_bottom">23</field>
+    <field name="margin_right">7</field>
+    <field name="margin_left">7</field>
+    <field name="orientation">Portrait</field>
+    <field name="header_spacing">40</field>
+    <field name="dpi">90</field>
+</record>
 
-        <report id="document_format_zoopet.report_delivery_without_price"
-                string="Albarán Sin Valorar"
-                model="stock.picking"
-                report_type="qweb-pdf"
-                name="document_format_zoopet.delivery_without_price"
-                print_report_name="'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)"
-                paperformat="document_format_zoopet.A4_albaran"
-        />
+<!-- Definición del reporte -->
+<report
+    id="report_delivery_without_price"
+    string="Albarán Sin Valorar"
+    model="stock.picking"
+    report_type="qweb-pdf"
+    name="document_format_zoopet.delivery_without_price"
+    print_report_name="'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)"
+    paperformat="document_format_zoopet.A4_albaran"
+/>
 
-        <!--<record id="document_format_zoopet.report_delivery_without_price" model="ir.actions.report">
-            <field name="paperformat_id" ref="document_format_zoopet.A4_albaran"/>
-        </record>-->
+<!-- Acción para que aparezca en el menú "Imprimir" -->
+<record id="action_report_delivery_without_price" model="ir.actions.report">
+    <field name="name">Albarán Sin Valorar</field>
+    <field name="model">stock.picking</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">document_format_zoopet.delivery_without_price</field>
+    <field name="paperformat_id" ref="document_format_zoopet.A4_albaran"/>
+</record>
 
-        <template id="document_format_zoopet.delivery_without_price">
-            <t t-call="web.html_container">
-                <t t-foreach="docs" t-as="o">
-                    <t t-call="document_format_zoopet.report_delivery_document_without_price"
-                       t-lang="o.partner_id.lang"/>
-                </t>
-            </t>
-        </template>
+<!-- Template principal -->
+<template id="document_format_zoopet.delivery_without_price">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="document_format_zoopet.report_delivery_document_without_price"
+               t-lang="o.partner_id.lang"/>
+        </t>
+    </t>
+</template>
 
         <template id="document_format_zoopet.report_delivery_document_without_price">
             <t t-name="document_format_zoopet.report_delivery_document_without_price">
@@ -525,9 +534,9 @@
                                                                         </t>
                                                                         <t t-else="">
 
-                                                                            <span t-esc="'%.2f'%move_line.qty_done"/>
+                                                                            <span t-esc="'%.2f'%move_line.quantity"/>
                                                                             <t t-set="weight"
-                                                                               t-value="weight + (move_line.product_id.weight * move_line.qty_done)"/>
+                                                                               t-value="weight + (move_line.product_id.weight * move_line.quantity)"/>
                                                                         </t>
                                                                     </t>
                                                                     <t t-else="">
@@ -621,9 +630,9 @@
                                                                                t-value="weight + (move_line.product_id.weight * move_line.quantity_done)"/>
                                                                         </t>
                                                                         <t t-else="">
-                                                                            <span t-esc="'%.2f'%move_line.qty_done"/>
+                                                                            <span t-esc="'%.2f'%move_line.quantity"/>
                                                                             <t t-set="weight"
-                                                                               t-value="weight + (move_line.product_id.weight * move_line.qty_done)"/>
+                                                                               t-value="weight + (move_line.product_id.weight * move_line.quantity)"/>
 
                                                                         </t>
 

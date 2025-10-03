@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <data>
+        <template id="report_invoice_inherit" inherit_id="account.report_invoice">
+            <xpath expr="//t[@t-call='web.html_container']" position="replace">
+                <t t-call="web.html_container">
+                    <t t-set="iteration" t-value="0"/>
+                    <t t-foreach="docs" t-as="o">
+                        <!-- Comprobamos que numero de copias sea > 1-->
+                        <t t-if="o.partner_id.copy_num &lt; 2">
+                            <t t-set="lang" t-value="o.partner_id.lang"/>
+                            <t t-if="o._get_name_invoice_report() == 'account.report_invoice_document'"
+                               t-call="account.report_invoice_document" t-lang="lang"/>
+                        </t>
+                        <t t-else="">
+                            <!-- lanzamos el bucle si es mayor que 1 -->
+                            <t t-foreach="int(o.partner_id.copy_num)" t-as="a">
+                                <t t-set="iteration" t-value="iteration+1"/>
+                                <t t-set="lang" t-value="o.partner_id.lang"/>
+                                <t t-if="o._get_name_invoice_report() == 'account.report_invoice_document'"
+                                   t-call="account.report_invoice_document" t-lang="lang"/>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+            </xpath>
+        </template>
+
+<!--        <template id="document_format_zoopet.report_invice_copy">-->
+<!--            <t t-name="account.report_invoice">-->
+<!--                <t t-call="web.html_container">-->
+<!--                    <t t-set="iteration" t-value="0"/>-->
+<!--                    <t t-foreach="docs" t-as="o">-->
+<!--                        &lt;!&ndash; Comprobamos que numero de copias sea > 1&ndash;&gt;-->
+<!--                        <t t-if="o.partner_id.copy_num &lt; 2">-->
+<!--                            <t t-set="lang"-->
+<!--                               t-value="o.user_id.sudo().lang if o.move_type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>-->
+<!--                            <t t-call="document_format_zoopet.report_invoice_use_document" t-lang="lang"/>-->
+<!--                        </t>-->
+<!--                        <t t-else="">-->
+<!--                            &lt;!&ndash; lanzamos el bucle si es mayor que 1 &ndash;&gt;-->
+<!--                            <t t-foreach="int(o.partner_id.copy_num)" t-as="">-->
+<!--                                <t t-set="iteration" t-value="iteration+1"/>-->
+<!--                                <t t-set="lang"-->
+<!--                                   t-value="o.user_id.sudo().lang if o.move_type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>-->
+<!--                                <t t-call="document_format_zoopet.report_invoice_use_document" t-lang="lang"/>-->
+<!--                            </t>-->
+<!--                        </t>-->
+<!--                    </t>-->
+<!--                </t>-->
+<!--            </t>-->
+<!--        </template>-->
+    </data>
+</odoo>

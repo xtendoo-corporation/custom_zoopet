@@ -14,12 +14,12 @@
     ],
     "license": "AGPL-3",
     "data": [
-        # "views/stock_move_line_views.xml",
-        # "views/product_template_views.xml",
-        # "views/print_product_labels_2_5_x_3_8.xml",
-        # "views/print_product_labels_5_x_10.xml",
-        # "views/labels/label_template_2_5_x_3_8.xml",
-        # "views/labels/label_template_5_x_10.xml"
+        "views/stock_move_line_views.xml",
+        "views/product_template_views.xml",
+        "views/print_product_labels_2_5_x_3_8.xml",
+        "views/print_product_labels_5_x_10.xml",
+        "views/labels/label_template_2_5_x_3_8.xml",
+        "views/labels/label_template_5_x_10.xml"
     ],
     "installable": True,
     "auto_install": False,

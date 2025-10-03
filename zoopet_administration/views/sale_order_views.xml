@@ -10,33 +10,31 @@
 
                 <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d']" position="replace">
                     <field name="is_comercial" invisible="1"/>
-<!--                    <button name="%(sale.action_view_sale_advance_payment_inv)d"-->
-<!--                            string="Create Invoice"-->
-<!--                            type="action"-->
-<!--                            class="btn-primary"-->
-<!--                            attrs="{'invisible':-->
-<!--                            ['|',   ('invoice_status', '!=', 'to invoice'),-->
-<!--                                    ('is_comercial', '=', True)]}"/>-->
+                    <button name="%(sale.action_view_sale_advance_payment_inv)d"
+                            string="Create Invoice"
+                            type="action"
+                            class="btn-primary"
+                            invisible="1 if invoice_status != 'to invoice' or is_comercial else 0"/>
                 </xpath>
 
                 <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d'][2]" position="replace">
-<!--                    <button name="%(sale.action_view_sale_advance_payment_inv)d"-->
-<!--                            string="Create Invoice"-->
-<!--                            type="action"-->
-<!--                            context="{'default_advance_payment_method': 'percentage'}"-->
-<!--                            attrs="{'invisible': True}"/>-->
+                    <button name="%(sale.action_view_sale_advance_payment_inv)d"
+                            string="Create Invoice"
+                            type="action"
+                            context="{'default_advance_payment_method': 'percentage'}"
+                            invisible="1"/>
                 </xpath>
 
                 <xpath expr="//field[@name='partner_id']" position="attributes">
                     <attribute name="options">{"no_create": True}</attribute>
                 </xpath>
 
-                <xpath expr="//form//tree//field[@name='product_id']" position="attributes">
+                <xpath expr="//form//list/field[@name='product_id']" position="attributes">
                     <attribute name="options">{"no_create": True}</attribute>
                 </xpath>
 
 
-                <xpath expr="//form//tree" position="attributes">
+                <xpath expr="//form//list" position="attributes">
                     <attribute name="limit">800</attribute>
                 </xpath>
             </field>
@@ -52,27 +50,31 @@
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='action_sale_order_confirm_and_delivery']" position="replace">
                     <field name="is_comercial" invisible="1"/>
-                    <!-- Pedido sin confirmar(Presupuesto-->
-<!--                    <button name="action_sale_order_confirm_and_delivery" string="Confirm and delivery"-->
-<!--                            type="object" attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>-->
+                    <!-- Pedido sin confirmar(Presupuesto) -->
+                    <button name="action_sale_order_confirm_and_delivery"
+                            string="Confirm and delivery"
+                            type="object"
+                            invisible="state not in ['draft']"/>
                 </xpath>
                 <xpath expr="//button[@name='action_sale_order_confirm_and_invoice']" position="replace">
-<!--                    <button name="action_sale_order_confirm_and_invoice" string="Confirm and invoiced"-->
-<!--                            type="object"-->
-<!--                            attrs="{'invisible': ['|',('state', 'not in', ['draft']),('is_comercial','=',True)]}"/>-->
+                    <button name="action_sale_order_confirm_and_invoice"
+                            string="Confirm and invoiced"
+                            type="object"
+                            invisible="state not in ['draft'] or is_comercial"/>
                 </xpath>
                 <!-- Pedido confirmado(Pedido de ventas)-->
                 <xpath expr="//button[@name='action_sale_order_delivery']" position="replace">
-<!--                    <button name="action_sale_order_delivery" string="Delivery all"-->
-<!--                            type="object"-->
-<!--                            attrs="{'invisible': ['|',('invoice_status', 'in', ['invoiced']),('state','==','draft')]}"/>-->
+                    <button name="action_sale_order_delivery"
+                            string="Delivery all"
+                            type="object"
+                            invisible="invoice_status in ['invoiced'] or state == 'draft'"/>
                 </xpath>
                 <xpath expr="//button[@name='action_sale_order_delivery_and_invoiced']" position="replace">
-<!--                    <button name="action_sale_order_delivery_and_invoiced" string="Delivery and invoiced"-->
-<!--                            type="object"-->
-<!--                            attrs="{'invisible': ['|',('invoice_status', 'in', ['invoiced']),'|',('state','==','draft'), ('is_comercial','=',True)]}"/>-->
+                    <button name="action_sale_order_delivery_and_invoiced"
+                            string="Delivery and invoiced"
+                            type="object"
+                            invisible="invoice_status in ['invoiced'] or state == 'draft' or is_comercial"/>
                 </xpath>
-                <!--Fin Botones stock picking all done -->
             </field>
         </record>
         <!-- Ocultar margen en ventas -->
@@ -84,7 +86,7 @@
                 <xpath expr="//field[@name='margin']" position="attributes">
                     <attribute name="groups">zoopet_administration.show_margins</attribute>
                 </xpath>
-                <xpath expr="//div[@class='text-nowrap']" position="attributes">
+                <xpath expr="//div[@class='d-flex float-end']" position="attributes">
                     <attribute name="groups">zoopet_administration.show_margins</attribute>
                 </xpath>
                 <xpath expr="//label[@for='margin']" position="attributes">
@@ -159,7 +161,7 @@
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_kanban_view"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='lst_price']" position="attributes">
+                <xpath expr="//field[@name='list_price']" position="attributes">
                     <attribute name="groups">zoopet_administration.show_sale_price</attribute>
                 </xpath>
                 <!-- Este xpath está fallando -->
@@ -216,13 +218,13 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="attributes">
+                <xpath expr="//field[@name='order_line']/list/field[@name='purchase_price']" position="attributes">
                     <attribute name="groups">zoopet_administration.show_cost_price</attribute>
                 </xpath>
 
                 <!-- Abrir:Lineas del pedido -->
 
-                <!--
+
    <xpath expr="//page[@name='order_lines']//field[@name='price_unit']" position="attributes">
        <attribute name="groups">zoopet_administration.show_sale_price</attribute>
    </xpath>
@@ -235,7 +237,7 @@
        <field name="unit_weight" invisible="1"/>
        <field name="total_ordered_weight"/>
    </xpath>
-   -->
+
 
 
                 <!-- Fin Abrir.Lineas del pedido -->
@@ -277,7 +279,6 @@
             <field name="name">sale.quotation.type.view.list</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_quotation_tree"/>
-            <field name="type">tree</field>
             <field name="arch" type="xml">
                 <field name="name" position="before">
                     <field name="type_id"/>
@@ -291,7 +292,6 @@
             <field name="name">sale.order.type.view.list</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_tree"/>
-            <field name="type">tree</field>
             <field name="arch" type="xml">
                 <field name="name" position="before">
                     <field name="type_id"/>
@@ -315,19 +315,19 @@
         <!-- Editar forma de entrega -->
 
         <!-- Botones de stock picking all done-->
-        <record id="zoopet_administration.view_order_e_so" model="ir.ui.view">
-            <field name="name">view.order.form.inherit</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_sales_order_auto_done_setting"/>
-            <field name="arch" type="xml">
-                <xpath expr="//button[@name='action_done']" position="attributes">
-                    <attribute name="groups">zoopet_administration.edit_block_so</attribute>
-                </xpath>
-                <xpath expr="//button[@name='action_unlock']" position="attributes">
-                    <attribute name="groups">zoopet_administration.edit_block_so</attribute>
-                </xpath>
-            </field>
-        </record>
+<!--        <record id="zoopet_administration.view_order_e_so" model="ir.ui.view">-->
+<!--            <field name="name">view.order.form.inherit</field>-->
+<!--            <field name="model">sale.order</field>-->
+<!--            <field name="inherit_id" ref="sale.view_sales_order_auto_done_setting"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//button[@name='action_done']" position="attributes">-->
+<!--                    <attribute name="groups">zoopet_administration.edit_block_so</attribute>-->
+<!--                </xpath>-->
+<!--                <xpath expr="//button[@name='action_unlock']" position="attributes">-->
+<!--                    <attribute name="groups">zoopet_administration.edit_block_so</attribute>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
 
     </data>
 </odoo>

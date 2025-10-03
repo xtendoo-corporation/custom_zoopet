@@ -158,16 +158,16 @@
         </record>
         <!-- Fin Archivar en lista de materiales-->
         <!-- Archivar en Rutas de producción-->
-        <record id="zoopet_administration.mrp_routing_form_inherit" model="ir.ui.view">
-            <field name="name">mrp.routing.form.inherit</field>
-            <field name="model">mrp.routing</field>
-            <field name="inherit_id" ref="mrp.mrp_routing_form_view"/>
-            <field name="arch" type="xml">
-                 <xpath expr="//widget[@name='web_ribbon']" position="attributes">
-                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>
-                 </xpath>
-            </field>
-        </record>
+<!--        <record id="zoopet_administration.mrp_routing_form_inherit" model="ir.ui.view">-->
+<!--            <field name="name">mrp.routing.form.inherit</field>-->
+<!--            <field name="model">mrp.routing</field>-->
+<!--            <field name="inherit_id" ref="mrp.mrp_routing_form_view"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                 <xpath expr="//widget[@name='web_ribbon']" position="attributes">-->
+<!--                      <attribute name="groups">zoopet_administration.permission_to_archive</attribute>-->
+<!--                 </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
         <!-- Fin Archivar en Rutas de producción-->
         <!-- Archivar en Centros de producción-->
         <record id="zoopet_administration.mrp_workcenter_form_inherit" model="ir.ui.view">
