@@ -14,9 +14,8 @@ class AdministratorMixinRule(models.Model):
     )
 
     def _is_comercial(self):
-        self.is_comercial = self.env["res.users"].has_group(
-                "zoopet_administration.comercial_group"
-            )
+        self.is_comercial = self.env.user.has_group("zoopet_administration.group_comercial")
+
 
     def _get_default_comercial(self):
         return self.env["res.users"].has_group(
@@ -30,9 +29,7 @@ class AdministratorMixinRule(models.Model):
     )
 
     def _show_admin_notes(self):
-        self.show_admin_notes = self.env["res.users"].has_group(
-                "res_partner_hide_internal_notes.view_partner_internal_notes"
-            )
+        self.show_admin_notes = self.env.user.has_group("zoopet_administration.view_partner_internal_notes")
 
     def _get_default_show_admin_notes(self):
         return self.env["res.users"].has_group(
@@ -46,9 +43,7 @@ class AdministratorMixinRule(models.Model):
     )
 
     def _permission_to_archive(self):
-        self.permission_to_archive = self.env["res.users"].has_group(
-                "res_partner_hide_internal_notes.permission_to_archive"
-            )
+        self.permission_to_archive = self.env.user.has_group("zoopet_administration.permission_to_archive")
 
     def _get_permission_to_archive(self):
         return self.env["res.users"].has_group(
@@ -62,9 +57,7 @@ class AdministratorMixinRule(models.Model):
     )
 
     def _print_all_formats(self):
-        self.print_all_formats = self.env["res.users"].has_group(
-                "zoopet_administration.print_all_formats"
-            )
+        self.print_all_formats = self.env.user.has_group("zoopet_administration.print_all_formats")
 
     def _get_print_all_formats(self):
         return self.env["res.users"].has_group(
